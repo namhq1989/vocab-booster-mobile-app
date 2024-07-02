@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'theme_mode.dart';
+part of 'app_theme_mode.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -16,7 +16,7 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$AppThemeMode {
-  Brightness get brightness => throw _privateConstructorUsedError;
+  ThemeMode get mode => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $AppThemeModeCopyWith<AppThemeMode> get copyWith =>
@@ -29,7 +29,7 @@ abstract class $AppThemeModeCopyWith<$Res> {
           AppThemeMode value, $Res Function(AppThemeMode) then) =
       _$AppThemeModeCopyWithImpl<$Res, AppThemeMode>;
   @useResult
-  $Res call({Brightness brightness});
+  $Res call({ThemeMode mode});
 }
 
 /// @nodoc
@@ -45,13 +45,13 @@ class _$AppThemeModeCopyWithImpl<$Res, $Val extends AppThemeMode>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? brightness = null,
+    Object? mode = null,
   }) {
     return _then(_value.copyWith(
-      brightness: null == brightness
-          ? _value.brightness
-          : brightness // ignore: cast_nullable_to_non_nullable
-              as Brightness,
+      mode: null == mode
+          ? _value.mode
+          : mode // ignore: cast_nullable_to_non_nullable
+              as ThemeMode,
     ) as $Val);
   }
 }
@@ -64,7 +64,7 @@ abstract class _$$AppThemeModeImplCopyWith<$Res>
       __$$AppThemeModeImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({Brightness brightness});
+  $Res call({ThemeMode mode});
 }
 
 /// @nodoc
@@ -78,13 +78,13 @@ class __$$AppThemeModeImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? brightness = null,
+    Object? mode = null,
   }) {
     return _then(_$AppThemeModeImpl(
-      brightness: null == brightness
-          ? _value.brightness
-          : brightness // ignore: cast_nullable_to_non_nullable
-              as Brightness,
+      mode: null == mode
+          ? _value.mode
+          : mode // ignore: cast_nullable_to_non_nullable
+              as ThemeMode,
     ));
   }
 }
@@ -92,14 +92,14 @@ class __$$AppThemeModeImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$AppThemeModeImpl implements _AppThemeMode {
-  const _$AppThemeModeImpl({required this.brightness});
+  const _$AppThemeModeImpl({required this.mode});
 
   @override
-  final Brightness brightness;
+  final ThemeMode mode;
 
   @override
   String toString() {
-    return 'AppThemeMode(brightness: $brightness)';
+    return 'AppThemeMode(mode: $mode)';
   }
 
   @override
@@ -107,12 +107,11 @@ class _$AppThemeModeImpl implements _AppThemeMode {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$AppThemeModeImpl &&
-            (identical(other.brightness, brightness) ||
-                other.brightness == brightness));
+            (identical(other.mode, mode) || other.mode == mode));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, brightness);
+  int get hashCode => Object.hash(runtimeType, mode);
 
   @JsonKey(ignore: true)
   @override
@@ -122,11 +121,11 @@ class _$AppThemeModeImpl implements _AppThemeMode {
 }
 
 abstract class _AppThemeMode implements AppThemeMode {
-  const factory _AppThemeMode({required final Brightness brightness}) =
+  const factory _AppThemeMode({required final ThemeMode mode}) =
       _$AppThemeModeImpl;
 
   @override
-  Brightness get brightness;
+  ThemeMode get mode;
   @override
   @JsonKey(ignore: true)
   _$$AppThemeModeImplCopyWith<_$AppThemeModeImpl> get copyWith =>
