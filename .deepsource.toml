@@ -1,0 +1,8 @@
+version = 1
+
+[[analyzers]]
+name = "dart-analyze"
+type = "community"
+
+[analyzers.meta]
+import_root = "github.com/namhq1989/vocab-booster-mobile-app"

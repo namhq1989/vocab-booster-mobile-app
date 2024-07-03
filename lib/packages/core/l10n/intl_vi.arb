@@ -1,0 +1,18 @@
+{
+  "@@locale": "vi",
+
+  "languageTitle": "Ngôn ngữ",
+  "languageEn": "Tiếng Anh",
+  "languageVi": "Tiếng Việt",
+
+  "signInOnboardingSlide0Title": "Tăng Cường Từ Vựng",
+  "signInOnboardingSlide0Content": "Nâng cao từ vựng và kỹ năng nghe tiếng Anh của bạn với các bài tập tập trung được thiết kế để cải thiện hiệu quả trình độ ngôn ngữ của bạn",
+  "signInOnboardingSlide1Title": "Sáng Tạo Và Chia Sẻ",
+  "signInOnboardingSlide1Content": "Tự viết câu của bạn và chia sẻ với cộng đồng để nhận phản hồi và cải thiện kỹ năng viết tiếng Anh",
+  "signInOnboardingSlide2Title": "Kết Nối Với Người Học",
+  "signInOnboardingSlide2Content": "Tham gia cộng đồng của chúng tôi để kết nối với các người học tiếng Anh khác, trao đổi mẹo và thực hành cùng nhau để đạt kết quả tốt hơn",
+  "signInOnboardingSlide3Title": "Theo Dõi Tiến Trình",
+  "signInOnboardingSlide3Content": "Theo dõi sự phát triển từ vựng và kỹ năng nghe của bạn với các công cụ theo dõi của chúng tôi, đảm bảo cải thiện liên tục và thành công",
+  "signInOnboardingSlide4Title": "Đạt Được Mục Tiêu",
+  "signInOnboardingSlide4Content": "Đặt ra và đạt được mục tiêu từ vựng của bạn với chương trình cấu trúc của chúng tôi, được thiết kế để giúp bạn thành công trong việc nắm vững tiếng Anh"
+}

@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:shadcn_ui/shadcn_ui.dart';
 import 'package:vocab_booster/packages/auth/auth.dart';
+import 'package:vocab_booster/packages/core/l10n/generated/l10n.dart';
+import 'package:vocab_booster/packages/core/language/language.dart';
 import 'package:vocab_booster/packages/core/theme/theme.dart';
 import 'package:vocab_booster/packages/core/router/router.dart';
 import 'package:vocab_booster/packages/core/router/router.gr.dart';
@@ -28,6 +30,7 @@ class _AppState extends ConsumerState<App> {
 
     final authState = ref.watch(authenticationProvider);
     final themeMode = ref.watch(appThemeProvider);
+    final language = ref.watch(appLanguageProvider.notifier);
 
     return ShadApp.router(
       title: 'Vocab Booster',
@@ -41,6 +44,11 @@ class _AppState extends ConsumerState<App> {
         colorScheme: const ShadYellowColorScheme.dark(),
       ),
       themeMode: themeMode,
+      locale: Locale(language.getLanguage()),
+      localizationsDelegates: const [
+        L10N.delegate,
+      ],
+      supportedLocales: L10N.delegate.supportedLocales,
       builder: (context, r) {
         return authState.when(
           data: (_) {

@@ -21,6 +21,7 @@ class WidgetSettingToggle extends StatelessWidget {
     const double itemHorizontalSpacing = 24;
 
     return Container(
+      height: 56,
       padding: const EdgeInsets.symmetric(
         horizontal: 24,
         vertical: 8,

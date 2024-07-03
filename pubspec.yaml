@@ -21,6 +21,8 @@ dependencies:
   flutter_svg: ^2.0.10+1
   font_awesome_flutter: ^10.7.0
   shadcn_ui: ^0.5.7
+  flutter_localization: ^0.2.0
+  intl_utils: ^2.8.7
 
 dev_dependencies:
   flutter_test:
@@ -31,6 +33,20 @@ dev_dependencies:
   custom_lint: ^0.6.4
   riverpod_lint: ^2.3.10
   auto_route_generator: ^8.0.0
+
+flutter_intl:
+  enabled: true
+  class_name: L10N
+  main_locale: en
+  arb_dir: lib/packages/core/l10n
+  output_dir: lib/packages/core/l10n/generated
+
+targets:
+  $default:
+    builders:
+      auto_route_generator:auto_route_generator:
+      generate_for:
+        - lib/ui/**/**_screen.dart
 
 flutter:
   uses-material-design: true

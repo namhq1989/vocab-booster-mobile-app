@@ -5,7 +5,9 @@ import 'package:flutter_svg/svg.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:introduction_screen/introduction_screen.dart';
 import 'package:vocab_booster/packages/auth/auth.dart';
+import 'package:vocab_booster/packages/core/l10n/generated/l10n.dart';
 import 'package:vocab_booster/packages/core/theme/theme.dart';
+import 'package:vocab_booster/widgets/settings/language.dart';
 import 'package:vocab_booster/widgets/settings/toggle.dart';
 
 @RoutePage()
@@ -35,7 +37,7 @@ class SignInScreen extends ConsumerWidget {
                       borderRadius: BorderRadius.circular(25.0),
                     ),
                   ),
-                  pages: _buildPageViews(),
+                  pages: _buildPageViews(context),
                   showNextButton: false,
                   showBackButton: false,
                   showDoneButton: false,
@@ -58,26 +60,33 @@ class SignInScreen extends ConsumerWidget {
     );
   }
 
-  List<PageViewModel> _buildPageViews() {
+  List<PageViewModel> _buildPageViews(BuildContext context) {
     return [
       _buildPageView(
-          'assets/images/onboarding/onboarding-0.svg',
-          'Hac maecenas vel platea',
-          'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque porta posuere turpis lobortis ante. Maecenas leo nisi condimentum urna enim'),
+        'assets/images/onboarding/onboarding-0.svg',
+        L10N.of(context).signInOnboardingSlide0Title,
+        L10N.of(context).signInOnboardingSlide0Content,
+      ),
       _buildPageView(
-          'assets/images/onboarding/onboarding-1.svg',
-          'Parturient torquent',
-          'Nisl dolor morbi cras commodo. Taciti velit cras potenti ridiculus. Accumsan dui litora sagittis congue. Etiam aptent lacus sapien mattis'),
+        'assets/images/onboarding/onboarding-1.svg',
+        L10N.of(context).signInOnboardingSlide1Title,
+        L10N.of(context).signInOnboardingSlide1Content,
+      ),
       _buildPageView(
-          'assets/images/onboarding/onboarding-2.svg',
-          'Massa adipiscing habitant',
-          'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Per enim viverra donec inceptos habitant pulvinar. Tincidunt egestas molestie donec consequat dignissim lobortis'),
+        'assets/images/onboarding/onboarding-2.svg',
+        L10N.of(context).signInOnboardingSlide2Title,
+        L10N.of(context).signInOnboardingSlide2Content,
+      ),
       _buildPageView(
-          'assets/images/onboarding/onboarding-3.svg',
-          'Suspendisse consectetur massa',
-          'Dapibus lectus vitae id aliquet tincidunt urna. Convallis hendrerit aliquet dictumst curae varius posuere'),
-      _buildPageView('assets/images/onboarding/onboarding-4.svg', 'Odio',
-          'Vulputate phasellus enim sem euismod. Inceptos gravida ornare curabitur phasellus. Felis nam aliquet aliquam aenean'),
+        'assets/images/onboarding/onboarding-3.svg',
+        L10N.of(context).signInOnboardingSlide3Title,
+        L10N.of(context).signInOnboardingSlide3Content,
+      ),
+      _buildPageView(
+        'assets/images/onboarding/onboarding-4.svg',
+        L10N.of(context).signInOnboardingSlide4Title,
+        L10N.of(context).signInOnboardingSlide4Content,
+      ),
     ];
   }
 
@@ -264,14 +273,7 @@ class SignInScreen extends ConsumerWidget {
                           },
                         ),
                         const SizedBox(height: 8),
-                        WidgetSettingToggle(
-                          title: 'Language',
-                          icon: FontAwesomeIcons.language,
-                          value: false,
-                          cb: (v) {
-                            // print('new value $v');
-                          },
-                        ),
+                        const WidgetSettingLanguage(),
                       ],
                     ),
                   );
