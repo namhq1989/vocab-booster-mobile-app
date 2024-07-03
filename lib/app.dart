@@ -1,6 +1,6 @@
-import 'package:flex_color_scheme/flex_color_scheme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:shadcn_ui/shadcn_ui.dart';
 import 'package:vocab_booster/packages/auth/auth.dart';
 import 'package:vocab_booster/packages/core/theme/theme.dart';
 import 'package:vocab_booster/packages/core/router/router.dart';
@@ -26,33 +26,38 @@ class _AppState extends ConsumerState<App> {
       });
     });
 
-    // final authState = ref.watch(authenticationProvider);
-    // final themeMode = ref.watch(themeModeStateProvider);
+    final authState = ref.watch(authenticationProvider);
+    final themeMode = ref.watch(appThemeProvider);
 
-    final themeMode = ref.watch(appThemeProvider.notifier);
-
-    return MaterialApp.router(
+    return ShadApp.router(
       title: 'Vocab Booster',
       debugShowCheckedModeBanner: false,
-      theme: FlexThemeData.light(
-        scheme: FlexScheme.vesuviusBurn,
-        fontFamily: 'Inter',
-        splashFactory: NoSplash.splashFactory,
-        subThemesData: const FlexSubThemesData(
-          interactionEffects: false,
-          elevatedButtonRadius: 12,
-        ),
+      theme: ShadThemeData(
+        brightness: Brightness.light,
+        colorScheme: const ShadYellowColorScheme.light(),
       ),
-      darkTheme: FlexThemeData.dark(
-        scheme: FlexScheme.vesuviusBurn,
-        fontFamily: 'Inter',
-        splashFactory: NoSplash.splashFactory,
-        subThemesData: const FlexSubThemesData(
-          interactionEffects: false,
-          elevatedButtonRadius: 12,
-        ),
+      darkTheme: ShadThemeData(
+        brightness: Brightness.dark,
+        colorScheme: const ShadYellowColorScheme.dark(),
       ),
-      themeMode: themeMode.getThemeMode(),
+      themeMode: themeMode,
+      builder: (context, r) {
+        return authState.when(
+          data: (_) {
+            final theme = Theme.of(context);
+            return ProviderScope(
+              overrides: [silentThemeModeProvider.overrideWithValue(theme)],
+              child: r!,
+            );
+          },
+          loading: () => const Scaffold(
+            body: Center(child: CircularProgressIndicator()),
+          ),
+          error: (error, _) => Scaffold(
+            body: Center(child: Text('Error: $error')),
+          ),
+        );
+      },
       routerConfig: router.config(),
     );
   }

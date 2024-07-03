@@ -1,6 +1,6 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
-import 'package:vocab_booster/packages/core/database/database.dart';
+import 'package:vocab_booster/packages/core/database/prefs.dart';
 
 part 'auth.freezed.dart';
 part 'auth.g.dart';
