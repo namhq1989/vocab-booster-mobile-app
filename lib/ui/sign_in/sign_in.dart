@@ -1,7 +1,12 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_svg/svg.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:introduction_screen/introduction_screen.dart';
 import 'package:vocab_booster/packages/auth/auth.dart';
+import 'package:vocab_booster/packages/core/theme/theme.dart';
+import 'package:vocab_booster/widgets/settings/toggle.dart';
 
 @RoutePage()
 class SignInScreen extends ConsumerWidget {
@@ -10,19 +15,290 @@ class SignInScreen extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return Scaffold(
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            const Text('Sign In Screen'),
-            const SizedBox(
-              height: 20,
+      body: LayoutBuilder(builder: (context, constraints) {
+        final availableHeight = constraints.maxHeight - 500;
+        return SingleChildScrollView(
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              SizedBox(
+                height: 500,
+                child: IntroductionScreen(
+                  controlsMargin: const EdgeInsets.only(top: 12, bottom: 24),
+                  dotsDecorator: DotsDecorator(
+                    size: const Size.square(10.0),
+                    activeSize: const Size(20.0, 10.0),
+                    activeColor: Theme.of(context).colorScheme.primary,
+                    color: Theme.of(context).colorScheme.outline,
+                    spacing: const EdgeInsets.symmetric(horizontal: 3.0),
+                    activeShape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(25.0),
+                    ),
+                  ),
+                  pages: _buildPageViews(),
+                  showNextButton: false,
+                  showBackButton: false,
+                  showDoneButton: false,
+                  showSkipButton: false,
+                ),
+              ),
+              ConstrainedBox(
+                constraints: BoxConstraints(
+                  minHeight: availableHeight,
+                ),
+                child: _buildForm(
+                  context: context,
+                  ref: ref,
+                ),
+              ),
+            ],
+          ),
+        );
+      }),
+    );
+  }
+
+  List<PageViewModel> _buildPageViews() {
+    return [
+      _buildPageView(
+          'assets/images/onboarding/onboarding-0.svg',
+          'Hac maecenas vel platea',
+          'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque porta posuere turpis lobortis ante. Maecenas leo nisi condimentum urna enim'),
+      _buildPageView(
+          'assets/images/onboarding/onboarding-1.svg',
+          'Parturient torquent',
+          'Nisl dolor morbi cras commodo. Taciti velit cras potenti ridiculus. Accumsan dui litora sagittis congue. Etiam aptent lacus sapien mattis'),
+      _buildPageView(
+          'assets/images/onboarding/onboarding-2.svg',
+          'Massa adipiscing habitant',
+          'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Per enim viverra donec inceptos habitant pulvinar. Tincidunt egestas molestie donec consequat dignissim lobortis'),
+      _buildPageView(
+          'assets/images/onboarding/onboarding-3.svg',
+          'Suspendisse consectetur massa',
+          'Dapibus lectus vitae id aliquet tincidunt urna. Convallis hendrerit aliquet dictumst curae varius posuere'),
+      _buildPageView('assets/images/onboarding/onboarding-4.svg', 'Odio',
+          'Vulputate phasellus enim sem euismod. Inceptos gravida ornare curabitur phasellus. Felis nam aliquet aliquam aenean'),
+    ];
+  }
+
+  PageViewModel _buildPageView(String imgName, title, description) {
+    return PageViewModel(
+      title: title,
+      body: description,
+      image: Center(
+        child: SvgPicture.asset(
+          imgName,
+          width: 350,
+          fit: BoxFit.scaleDown,
+        ),
+      ),
+      decoration: const PageDecoration(
+        imageFlex: 3,
+        bodyFlex: 2,
+        imagePadding: EdgeInsets.only(top: 24),
+        titlePadding: EdgeInsets.only(top: 32, bottom: 12),
+        bodyPadding: EdgeInsets.all(0),
+        contentMargin: EdgeInsets.symmetric(horizontal: 24, vertical: 0),
+        pageMargin: EdgeInsets.only(bottom: 12),
+        titleTextStyle: TextStyle(fontSize: 24.0, fontWeight: FontWeight.bold),
+        bodyTextStyle: TextStyle(fontSize: 13.0),
+      ),
+    );
+  }
+
+  Widget _buildForm(
+      {required BuildContext context, required WidgetRef ref, double? height}) {
+    return Container(
+      width: double.infinity,
+      height: height,
+      padding: const EdgeInsets.only(top: 40, left: 24, right: 24, bottom: 12),
+      decoration: BoxDecoration(
+        color: Theme.of(context).colorScheme.primary,
+        // borderRadius: const BorderRadius.only(
+        //   topLeft: Radius.circular(32),
+        //   topRight: Radius.circular(32),
+        // ),
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            'VOCAB BOOSTER',
+            style: TextStyle(
+              fontSize: 28,
+              fontWeight: FontWeight.bold,
+              color: Theme.of(context).colorScheme.onPrimary,
             ),
-            ElevatedButton(
-              onPressed: () {
-                ref.watch(authenticationProvider.notifier).setUserId('1');
-              },
-              child: const Text('Tap to sign in'),
+          ),
+          Text(
+            'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nascetur lectus porttitor risus iaculis odio.',
+            style: TextStyle(
+              fontSize: 14,
+              fontStyle: FontStyle.italic,
+              color: Theme.of(context).colorScheme.onPrimary,
+            ),
+          ),
+          const SizedBox(
+            height: 24,
+          ),
+          _buildSocialSignInButton(
+              context, ref, 'Sign in with Google', FontAwesomeIcons.google, () {
+            ref.watch(authenticationProvider.notifier).setUserId('1');
+          }),
+          _buildSocialSignInButton(
+              context, ref, 'Sign in with Facebook', FontAwesomeIcons.facebookF,
+              () {
+            ref.watch(authenticationProvider.notifier).setUserId('1');
+          }),
+          const SizedBox(
+            height: 40,
+          ),
+          _buildSettingButton(context),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildSocialSignInButton(
+    BuildContext context,
+    WidgetRef ref,
+    String text,
+    IconData icon,
+    Function cb,
+  ) {
+    return Container(
+      margin: const EdgeInsets.symmetric(vertical: 4),
+      child: ElevatedButton(
+        onPressed: () => cb(),
+        style: ElevatedButton.styleFrom(
+          backgroundColor: Theme.of(context).colorScheme.primary,
+          minimumSize: const Size(double.infinity, 48),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(12),
+            side: BorderSide(
+              color: Theme.of(context).colorScheme.onPrimary,
+              width: 1,
+            ),
+          ),
+          elevation: 0,
+          padding: const EdgeInsets.symmetric(horizontal: 24.0),
+        ),
+        child: Row(
+          children: [
+            SizedBox(
+              width: 24,
+              height: 24,
+              child: FaIcon(
+                icon,
+                size: 20,
+                color: Theme.of(context).colorScheme.onPrimary,
+              ),
+            ),
+            const SizedBox(width: 12),
+            Expanded(
+              child: Center(
+                child: Text(
+                  text,
+                  style: TextStyle(
+                    color: Theme.of(context).colorScheme.onPrimary,
+                    fontSize: 14,
+                    fontWeight: FontWeight.bold,
+                    letterSpacing: 1.1,
+                  ),
+                ),
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget _buildSettingButton(BuildContext context) {
+    return SizedBox(
+      width: double.infinity,
+      height: 40,
+      child: GestureDetector(
+        onTap: () {
+          showModalBottomSheet<void>(
+            context: context,
+            isDismissible: true,
+            builder: (BuildContext context) {
+              return Consumer(
+                builder: (context, ref, _) {
+                  final isDarkMode =
+                      ref.watch(appThemeProvider.notifier).isDarkMode();
+
+                  return Container(
+                    width: double.infinity,
+                    height: 240,
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 24, vertical: 24),
+                    decoration: BoxDecoration(
+                      color: Theme.of(context).colorScheme.surface,
+                      borderRadius: const BorderRadius.only(
+                        topLeft: Radius.circular(32),
+                        topRight: Radius.circular(32),
+                      ),
+                    ),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisSize: MainAxisSize.min,
+                      children: <Widget>[
+                        const Text(
+                          'Preference',
+                          style: TextStyle(
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                        const SizedBox(height: 24),
+                        WidgetSettingToggle(
+                          title: 'Dark Mode',
+                          icon: FontAwesomeIcons.moon,
+                          value: isDarkMode,
+                          cb: (v) {
+                            ref
+                                .read(appThemeProvider.notifier)
+                                .switchThemeMode();
+                          },
+                        ),
+                        const SizedBox(height: 8),
+                        WidgetSettingToggle(
+                          title: 'Language',
+                          icon: FontAwesomeIcons.language,
+                          value: false,
+                          cb: (v) {
+                            // print('new value $v');
+                          },
+                        ),
+                      ],
+                    ),
+                  );
+                },
+              );
+            },
+          );
+        },
+        child: Row(
+          mainAxisSize: MainAxisSize.min,
+          mainAxisAlignment: MainAxisAlignment.end,
+          children: [
+            FaIcon(
+              FontAwesomeIcons.gear,
+              size: 18,
+              color: Theme.of(context).colorScheme.onPrimary,
+            ),
+            const SizedBox(
+              width: 6,
+            ),
+            Text(
+              'Settings',
+              style: TextStyle(
+                fontSize: 14,
+                fontWeight: FontWeight.bold,
+                color: Theme.of(context).colorScheme.onPrimary,
+              ),
             ),
           ],
         ),

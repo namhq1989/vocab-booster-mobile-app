@@ -1,39 +1,49 @@
 import 'package:flutter/material.dart';
-import 'package:riverpod_annotation/riverpod_annotation.dart';
-import 'package:vocab_booster/packages/core/database/database.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:vocab_booster/packages/core/database/prefs.dart';
 
-part 'theme.g.dart';
+final silentThemeModeProvider = Provider<ThemeData>(
+  (ref) => throw UnimplementedError(),
+  dependencies: const [],
+);
 
-@Riverpod(keepAlive: true)
-class AppTheme extends _$AppTheme {
+final appThemeProvider = StateNotifierProvider<ThemeModeState, ThemeMode>(
+  (ref) => ThemeModeState(ref),
+);
+
+class ThemeModeState extends StateNotifier<ThemeMode> {
+  final Ref ref;
+
   final String _keyThemeMode = 'theme_mode';
   final Map<String, ThemeMode> _themeModes = {
     'light': ThemeMode.light,
     'dark': ThemeMode.dark,
   };
 
-  @override
-  Future<ThemeMode> build() async {
-    final prefs = await ref.read(prefsProvider.future);
-    final themeModeValue = prefs.getString(_keyThemeMode);
-    final mode = _getThemeMode(themeModeValue);
-    return mode;
+  ThemeModeState(this.ref) : super(ThemeMode.dark) {
+    _initialize();
   }
 
-  ThemeMode getThemeMode() => state.value!;
+  void _initialize() async {
+    final prefs = await ref.read(prefsProvider.future);
+    final mode = prefs.getString(_keyThemeMode);
+    state = _getThemeMode(mode);
+  }
 
   ThemeMode _getThemeMode(String? value) {
     return _themeModes[value] ?? ThemeMode.system;
   }
 
-  Future<ThemeMode> switchThemeMode() async {
+  Future<void> switchThemeMode() async {
+    final newThemeMode =
+        state == ThemeMode.dark ? ThemeMode.light : ThemeMode.dark;
+    state = newThemeMode;
+
     final prefs = await ref.read(prefsProvider.future);
-    final themeModeValue = prefs.getString(_keyThemeMode);
-    final currentMode = _getThemeMode(themeModeValue);
-    final newMode =
-        currentMode == ThemeMode.dark ? ThemeMode.light : ThemeMode.dark;
-    await prefs.setString(_keyThemeMode, newMode.name);
-    state = AsyncData(newMode);
-    return newMode;
+    await prefs.setString(_keyThemeMode, state.name);
   }
+
+  ThemeMode getThemeMode() => state;
+
+  bool isDarkMode() => state.name == 'dark';
 }
