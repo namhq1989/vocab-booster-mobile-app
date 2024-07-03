@@ -1,0 +1,18 @@
+{
+  "@@locale": "en",
+
+  "languageTitle": "Language",
+  "languageEn": "English",
+  "languageVi": "Vietnamese",
+
+  "signInOnboardingSlide0Title": "Boost Vocabulary Skills",
+  "signInOnboardingSlide0Content": "Enhance your English vocabulary and listening skills with our focused exercises designed to improve your language proficiency effectively",
+  "signInOnboardingSlide1Title": "Create and Share",
+  "signInOnboardingSlide1Content": "Compose your own sentences and share them with the community to get feedback and improve your English writing skills",
+  "signInOnboardingSlide2Title": "Connect with Learners",
+  "signInOnboardingSlide2Content": "Join our community to connect with other English learners, exchange tips, and practice together for better results",
+  "signInOnboardingSlide3Title": "Track Your Progress",
+  "signInOnboardingSlide3Content": "Monitor your vocabulary development and listening skills with our tracking tools, ensuring continuous improvement and success",
+  "signInOnboardingSlide4Title": "Achieve Your Goals",
+  "signInOnboardingSlide4Content": "Set and achieve your vocabulary goals with our structured program, designed to help you succeed in mastering English"
+}

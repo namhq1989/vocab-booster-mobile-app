@@ -1,4 +1,7 @@
 #!bin/bash
 
-generate:
-	flutter pub run build_runner build
+build-runner:
+	dart run build_runner build
+
+gen-locale:
+	dart run intl_utils:generate
