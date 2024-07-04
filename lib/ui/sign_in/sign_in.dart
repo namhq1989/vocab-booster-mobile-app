@@ -2,8 +2,8 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:introduction_screen/introduction_screen.dart';
+import 'package:shadcn_ui/shadcn_ui.dart';
 import 'package:vocab_booster/packages/auth/auth.dart';
 import 'package:vocab_booster/packages/core/l10n/generated/l10n.dart';
 import 'package:vocab_booster/ui/settings/language.dart';
@@ -160,17 +160,24 @@ class SignInScreen extends ConsumerWidget {
           const SizedBox(
             height: 8,
           ),
-          _buildSocialSignInButton(context, ref,
-              L10N.of(context).signInWithGoogle, FontAwesomeIcons.google, () {
-            ref.watch(authenticationProvider.notifier).setUserId('1');
-          }),
           _buildSocialSignInButton(
-              context,
-              ref,
-              L10N.of(context).signInWithFacebook,
-              FontAwesomeIcons.facebookF, () {
-            ref.watch(authenticationProvider.notifier).setUserId('1');
-          }),
+            context,
+            ref,
+            L10N.of(context).signInWithGoogle,
+            'google',
+            () {
+              ref.watch(authenticationProvider.notifier).setUserId('1');
+            },
+          ),
+          _buildSocialSignInButton(
+            context,
+            ref,
+            L10N.of(context).signInWithFacebook,
+            'facebook',
+            () {
+              ref.watch(authenticationProvider.notifier).setUserId('1');
+            },
+          ),
           const SizedBox(
             height: 24,
           ),
@@ -184,7 +191,7 @@ class SignInScreen extends ConsumerWidget {
     BuildContext context,
     WidgetRef ref,
     String text,
-    IconData icon,
+    String iconName,
     Function cb,
   ) {
     return Container(
@@ -206,14 +213,9 @@ class SignInScreen extends ConsumerWidget {
         ),
         child: Row(
           children: [
-            SizedBox(
+            SvgPicture.asset(
+              'assets/images/misc/$iconName.svg',
               width: 24,
-              height: 24,
-              child: FaIcon(
-                icon,
-                size: 20,
-                color: Theme.of(context).colorScheme.onPrimary,
-              ),
             ),
             const SizedBox(width: 12),
             Expanded(
@@ -283,8 +285,8 @@ class SignInScreen extends ConsumerWidget {
             mainAxisSize: MainAxisSize.min,
             mainAxisAlignment: MainAxisAlignment.end,
             children: [
-              FaIcon(
-                FontAwesomeIcons.gear,
+              Icon(
+                LucideIcons.settings2,
                 size: 18,
                 color: Theme.of(context).colorScheme.onPrimary,
               ),

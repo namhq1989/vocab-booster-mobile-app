@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:shadcn_ui/shadcn_ui.dart';
 import 'package:vocab_booster/packages/core/l10n/generated/l10n.dart';
 import 'package:vocab_booster/packages/core/theme/theme.dart';
@@ -31,7 +30,7 @@ class SettingsDarkMode extends ConsumerWidget {
           Container(
             alignment: Alignment.centerLeft,
             width: 30,
-            child: const FaIcon(FontAwesomeIcons.moon, size: 18),
+            child: const Icon(LucideIcons.moon, size: 18),
           ),
           const SizedBox(width: itemHorizontalSpacing),
           Expanded(
