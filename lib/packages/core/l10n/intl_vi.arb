@@ -1,9 +1,14 @@
 {
   "@@locale": "vi",
 
+  "slogan": "Xây dựng vốn từ vựng mạnh mẽ và giao tiếp hiệu quả hơn với việc luyện tập thường xuyên",
+
   "languageTitle": "Ngôn ngữ",
   "languageEn": "Tiếng Anh",
   "languageVi": "Tiếng Việt",
+
+  "settingsTitle": "Thiết lập",
+  "settingsDarkMode": "Nền tối",
 
   "signInOnboardingSlide0Title": "Tăng Cường Từ Vựng",
   "signInOnboardingSlide0Content": "Nâng cao từ vựng và kỹ năng nghe tiếng Anh của bạn với các bài tập tập trung được thiết kế để cải thiện hiệu quả trình độ ngôn ngữ của bạn",
@@ -14,5 +19,8 @@
   "signInOnboardingSlide3Title": "Theo Dõi Tiến Trình",
   "signInOnboardingSlide3Content": "Theo dõi sự phát triển từ vựng và kỹ năng nghe của bạn với các công cụ theo dõi của chúng tôi, đảm bảo cải thiện liên tục và thành công",
   "signInOnboardingSlide4Title": "Đạt Được Mục Tiêu",
-  "signInOnboardingSlide4Content": "Đặt ra và đạt được mục tiêu từ vựng của bạn với chương trình cấu trúc của chúng tôi, được thiết kế để giúp bạn thành công trong việc nắm vững tiếng Anh"
+  "signInOnboardingSlide4Content": "Đặt ra và đạt được mục tiêu từ vựng của bạn với chương trình cấu trúc của chúng tôi, được thiết kế để giúp bạn thành công trong việc nắm vững tiếng Anh",
+  "signInFreeText": "Hoàn toàn miễn phí! Đăng nhập và bắt đầu học nào!",
+  "signInWithGoogle": "Đăng nhập với Google",
+  "signInWithFacebook": "Đăng nhập với Facebook"
 }

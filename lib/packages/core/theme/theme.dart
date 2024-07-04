@@ -34,7 +34,7 @@ class ThemeModeState extends StateNotifier<ThemeMode> {
     return _themeModes[value] ?? ThemeMode.system;
   }
 
-  Future<void> switchThemeMode() async {
+  void switchThemeMode() async {
     final newThemeMode =
         state == ThemeMode.dark ? ThemeMode.light : ThemeMode.dark;
     state = newThemeMode;
