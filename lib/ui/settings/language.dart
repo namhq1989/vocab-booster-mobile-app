@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:shadcn_ui/shadcn_ui.dart';
 import 'package:vocab_booster/packages/core/l10n/generated/l10n.dart';
 import 'package:vocab_booster/packages/core/language/language.dart';
 import 'package:vocab_booster/ui/settings/constant.dart';
@@ -33,7 +33,7 @@ class SettingsLanguage extends ConsumerWidget {
           Container(
             alignment: Alignment.centerLeft,
             width: 30,
-            child: const FaIcon(FontAwesomeIcons.language, size: 18),
+            child: const Icon(LucideIcons.languages, size: 18),
           ),
           const SizedBox(width: itemHorizontalSpacing),
           Expanded(
@@ -95,9 +95,7 @@ class SettingsLanguage extends ConsumerWidget {
               width: 60,
               child: SvgPicture.asset(
                 lang.getLanguageFlag(lang.getLanguage()),
-                width: 16,
-                height: 16,
-                fit: BoxFit.fitWidth,
+                width: 24,
               ),
             ),
           )
@@ -141,23 +139,29 @@ class SettingsLanguage extends ConsumerWidget {
               child: SvgPicture.asset(
                 flag,
                 width: 24,
-                fit: BoxFit.scaleDown,
               ),
             ),
             const SizedBox(width: itemHorizontalSpacing),
             Expanded(
-                child: Text(
-              text,
-              textAlign: TextAlign.start,
-            )),
+              child: Text(
+                text,
+                textAlign: TextAlign.start,
+                style: TextStyle(
+                  color: isSelected
+                      ? Theme.of(context).colorScheme.primary
+                      : Theme.of(context).colorScheme.onSurface,
+                ),
+              ),
+            ),
             const SizedBox(width: itemHorizontalSpacing),
             Container(
               alignment: Alignment.centerRight,
               width: 30,
               child: isSelected
-                  ? const FaIcon(
-                      FontAwesomeIcons.solidCircleCheck,
+                  ? Icon(
+                      LucideIcons.circleCheck,
                       size: 20,
+                      color: Theme.of(context).colorScheme.primary,
                     )
                   : const SizedBox(),
             ),

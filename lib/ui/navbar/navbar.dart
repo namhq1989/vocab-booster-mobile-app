@@ -2,7 +2,7 @@ import 'package:animated_bottom_navigation_bar/animated_bottom_navigation_bar.da
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:shadcn_ui/shadcn_ui.dart';
 import 'package:vocab_booster/packages/core/router/router.gr.dart';
 
 @RoutePage()
@@ -15,10 +15,10 @@ class NavBar extends ConsumerStatefulWidget {
 
 class _NavBarState extends ConsumerState<NavBar> {
   final iconList = <IconData>[
-    FontAwesomeIcons.house,
-    FontAwesomeIcons.dumbbell,
-    FontAwesomeIcons.book,
-    FontAwesomeIcons.user,
+    LucideIcons.home,
+    LucideIcons.swords,
+    LucideIcons.bookOpenCheck,
+    LucideIcons.userRound,
   ];
 
   @override

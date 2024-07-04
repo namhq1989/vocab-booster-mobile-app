@@ -52,6 +52,6 @@ class LanguageState extends StateNotifier<String> {
       flag = 'vi';
     }
 
-    return '$_flagAssetsPath/flag-$flag.svg';
+    return '$_flagAssetsPath/$flag.svg';
   }
 }
