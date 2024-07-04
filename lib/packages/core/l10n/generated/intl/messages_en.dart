@@ -25,6 +25,10 @@ class MessageLookup extends MessageLookupByLibrary {
         "languageEn": MessageLookupByLibrary.simpleMessage("English"),
         "languageTitle": MessageLookupByLibrary.simpleMessage("Language"),
         "languageVi": MessageLookupByLibrary.simpleMessage("Vietnamese"),
+        "settingsDarkMode": MessageLookupByLibrary.simpleMessage("Dark mode"),
+        "settingsTitle": MessageLookupByLibrary.simpleMessage("Settings"),
+        "signInFreeText": MessageLookupByLibrary.simpleMessage(
+            "It\'\'s totally free! Just sign in and start learning!"),
         "signInOnboardingSlide0Content": MessageLookupByLibrary.simpleMessage(
             "Enhance your English vocabulary and listening skills with our focused exercises designed to improve your language proficiency effectively"),
         "signInOnboardingSlide0Title":
@@ -44,6 +48,12 @@ class MessageLookup extends MessageLookupByLibrary {
         "signInOnboardingSlide4Content": MessageLookupByLibrary.simpleMessage(
             "Set and achieve your vocabulary goals with our structured program, designed to help you succeed in mastering English"),
         "signInOnboardingSlide4Title":
-            MessageLookupByLibrary.simpleMessage("Achieve Your Goals")
+            MessageLookupByLibrary.simpleMessage("Achieve Your Goals"),
+        "signInWithFacebook":
+            MessageLookupByLibrary.simpleMessage("Sign in with Facebook"),
+        "signInWithGoogle":
+            MessageLookupByLibrary.simpleMessage("Sign in with Google"),
+        "slogan": MessageLookupByLibrary.simpleMessage(
+            "Build a stronger vocabulary and communicate more effectively with consistent practice")
       };
 }

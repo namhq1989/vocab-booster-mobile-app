@@ -6,9 +6,8 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:introduction_screen/introduction_screen.dart';
 import 'package:vocab_booster/packages/auth/auth.dart';
 import 'package:vocab_booster/packages/core/l10n/generated/l10n.dart';
-import 'package:vocab_booster/packages/core/theme/theme.dart';
-import 'package:vocab_booster/widgets/settings/language.dart';
-import 'package:vocab_booster/widgets/settings/toggle.dart';
+import 'package:vocab_booster/ui/settings/language.dart';
+import 'package:vocab_booster/ui/settings/dark_mode.dart';
 
 @RoutePage()
 class SignInScreen extends ConsumerWidget {
@@ -140,7 +139,7 @@ class SignInScreen extends ConsumerWidget {
             ),
           ),
           Text(
-            'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nascetur lectus porttitor risus iaculis odio.',
+            L10N.of(context).slogan,
             style: TextStyle(
               fontSize: 14,
               fontStyle: FontStyle.italic,
@@ -148,19 +147,32 @@ class SignInScreen extends ConsumerWidget {
             ),
           ),
           const SizedBox(
-            height: 24,
+            height: 16,
           ),
-          _buildSocialSignInButton(
-              context, ref, 'Sign in with Google', FontAwesomeIcons.google, () {
+          Text(
+            L10N.of(context).signInFreeText,
+            style: TextStyle(
+              fontSize: 14,
+              fontStyle: FontStyle.italic,
+              color: Theme.of(context).colorScheme.onPrimary,
+            ),
+          ),
+          const SizedBox(
+            height: 8,
+          ),
+          _buildSocialSignInButton(context, ref,
+              L10N.of(context).signInWithGoogle, FontAwesomeIcons.google, () {
             ref.watch(authenticationProvider.notifier).setUserId('1');
           }),
           _buildSocialSignInButton(
-              context, ref, 'Sign in with Facebook', FontAwesomeIcons.facebookF,
-              () {
+              context,
+              ref,
+              L10N.of(context).signInWithFacebook,
+              FontAwesomeIcons.facebookF, () {
             ref.watch(authenticationProvider.notifier).setUserId('1');
           }),
           const SizedBox(
-            height: 40,
+            height: 24,
           ),
           _buildSettingButton(context),
         ],
@@ -224,85 +236,71 @@ class SignInScreen extends ConsumerWidget {
   }
 
   Widget _buildSettingButton(BuildContext context) {
-    return SizedBox(
-      width: double.infinity,
-      height: 40,
-      child: GestureDetector(
-        onTap: () {
-          showModalBottomSheet<void>(
-            context: context,
-            isDismissible: true,
-            builder: (BuildContext context) {
-              return Consumer(
-                builder: (context, ref, _) {
-                  final isDarkMode =
-                      ref.watch(appThemeProvider.notifier).isDarkMode();
-
-                  return Container(
-                    width: double.infinity,
-                    height: 240,
-                    padding: const EdgeInsets.symmetric(
-                        horizontal: 24, vertical: 24),
-                    decoration: BoxDecoration(
-                      color: Theme.of(context).colorScheme.surface,
-                      borderRadius: const BorderRadius.only(
-                        topLeft: Radius.circular(32),
-                        topRight: Radius.circular(32),
-                      ),
+    return GestureDetector(
+      onTap: () {
+        showModalBottomSheet<void>(
+          context: context,
+          isDismissible: true,
+          builder: (BuildContext context) {
+            return Container(
+              width: double.infinity,
+              height: 240,
+              padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 24),
+              decoration: BoxDecoration(
+                color: Theme.of(context).colorScheme.surface,
+                borderRadius: const BorderRadius.only(
+                  topLeft: Radius.circular(32),
+                  topRight: Radius.circular(32),
+                ),
+              ),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisSize: MainAxisSize.min,
+                children: <Widget>[
+                  Text(
+                    L10N.of(context).settingsTitle,
+                    style: const TextStyle(
+                      fontSize: 20,
+                      fontWeight: FontWeight.bold,
                     ),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      mainAxisSize: MainAxisSize.min,
-                      children: <Widget>[
-                        const Text(
-                          'Preference',
-                          style: TextStyle(
-                            fontSize: 20,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                        const SizedBox(height: 24),
-                        WidgetSettingToggle(
-                          title: 'Dark Mode',
-                          icon: FontAwesomeIcons.moon,
-                          value: isDarkMode,
-                          cb: (v) {
-                            ref
-                                .read(appThemeProvider.notifier)
-                                .switchThemeMode();
-                          },
-                        ),
-                        const SizedBox(height: 8),
-                        const WidgetSettingLanguage(),
-                      ],
-                    ),
-                  );
-                },
-              );
-            },
-          );
-        },
-        child: Row(
-          mainAxisSize: MainAxisSize.min,
-          mainAxisAlignment: MainAxisAlignment.end,
-          children: [
-            FaIcon(
-              FontAwesomeIcons.gear,
-              size: 18,
-              color: Theme.of(context).colorScheme.onPrimary,
-            ),
-            const SizedBox(
-              width: 6,
-            ),
-            Text(
-              'Settings',
-              style: TextStyle(
-                fontSize: 14,
-                fontWeight: FontWeight.bold,
+                  ),
+                  const SizedBox(height: 24),
+                  const SettingsDarkMode(),
+                  const SizedBox(height: 8),
+                  const SettingsLanguage(),
+                ],
+              ),
+            );
+          },
+        );
+      },
+      child: Align(
+        alignment: Alignment.centerRight,
+        child: SizedBox(
+          height: 40,
+          width: 100,
+          child: Row(
+            mainAxisSize: MainAxisSize.min,
+            mainAxisAlignment: MainAxisAlignment.end,
+            children: [
+              FaIcon(
+                FontAwesomeIcons.gear,
+                size: 18,
                 color: Theme.of(context).colorScheme.onPrimary,
               ),
-            ),
-          ],
+              const SizedBox(
+                width: 6,
+              ),
+              Text(
+                L10N.of(context).settingsTitle,
+                style: TextStyle(
+                  fontSize: 14,
+                  fontWeight: FontWeight.bold,
+                  color: Theme.of(context).colorScheme.onPrimary,
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );

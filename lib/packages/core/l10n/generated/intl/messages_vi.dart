@@ -25,6 +25,10 @@ class MessageLookup extends MessageLookupByLibrary {
         "languageEn": MessageLookupByLibrary.simpleMessage("Tiếng Anh"),
         "languageTitle": MessageLookupByLibrary.simpleMessage("Ngôn ngữ"),
         "languageVi": MessageLookupByLibrary.simpleMessage("Tiếng Việt"),
+        "settingsDarkMode": MessageLookupByLibrary.simpleMessage("Nền tối"),
+        "settingsTitle": MessageLookupByLibrary.simpleMessage("Thiết lập"),
+        "signInFreeText": MessageLookupByLibrary.simpleMessage(
+            "Hoàn toàn miễn phí! Đăng nhập và bắt đầu học nào!"),
         "signInOnboardingSlide0Content": MessageLookupByLibrary.simpleMessage(
             "Nâng cao từ vựng và kỹ năng nghe tiếng Anh của bạn với các bài tập tập trung được thiết kế để cải thiện hiệu quả trình độ ngôn ngữ của bạn"),
         "signInOnboardingSlide0Title":
@@ -44,6 +48,12 @@ class MessageLookup extends MessageLookupByLibrary {
         "signInOnboardingSlide4Content": MessageLookupByLibrary.simpleMessage(
             "Đặt ra và đạt được mục tiêu từ vựng của bạn với chương trình cấu trúc của chúng tôi, được thiết kế để giúp bạn thành công trong việc nắm vững tiếng Anh"),
         "signInOnboardingSlide4Title":
-            MessageLookupByLibrary.simpleMessage("Đạt Được Mục Tiêu")
+            MessageLookupByLibrary.simpleMessage("Đạt Được Mục Tiêu"),
+        "signInWithFacebook":
+            MessageLookupByLibrary.simpleMessage("Đăng nhập với Facebook"),
+        "signInWithGoogle":
+            MessageLookupByLibrary.simpleMessage("Đăng nhập với Google"),
+        "slogan": MessageLookupByLibrary.simpleMessage(
+            "Xây dựng vốn từ vựng mạnh mẽ và giao tiếp hiệu quả hơn với việc luyện tập thường xuyên")
       };
 }

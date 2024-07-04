@@ -30,7 +30,7 @@ class _AppState extends ConsumerState<App> {
 
     final authState = ref.watch(authenticationProvider);
     final themeMode = ref.watch(appThemeProvider);
-    final language = ref.watch(appLanguageProvider.notifier);
+    final language = ref.watch(appLanguageProvider);
 
     return ShadApp.router(
       title: 'Vocab Booster',
@@ -44,7 +44,7 @@ class _AppState extends ConsumerState<App> {
         colorScheme: const ShadYellowColorScheme.dark(),
       ),
       themeMode: themeMode,
-      locale: Locale(language.getLanguage()),
+      locale: Locale(language),
       localizationsDelegates: const [
         L10N.delegate,
       ],
@@ -54,7 +54,10 @@ class _AppState extends ConsumerState<App> {
           data: (_) {
             final theme = Theme.of(context);
             return ProviderScope(
-              overrides: [silentThemeModeProvider.overrideWithValue(theme)],
+              overrides: [
+                silentThemeModeProvider.overrideWithValue(theme),
+                silentLanguageProvider.overrideWithValue(language),
+              ],
               child: r!,
             );
           },

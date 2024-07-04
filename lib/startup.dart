@@ -2,18 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:vocab_booster/app.dart';
-import 'package:vocab_booster/packages/core/language/language.dart';
 
 part 'startup.g.dart';
 
 @Riverpod(keepAlive: true)
 Future<void> appStartup(AppStartupRef ref) async {
   ref.onDispose(() {
-    ref.invalidate(appLanguageProvider);
     // ref.invalidate(appStorageProvider);
     // ref.invalidate(appHttpProvider);
   });
-  await ref.watch(appLanguageProvider.future);
   // await ref.watch(appConfigProvider.future);
   // await ref.watch(appStorageProvider.future);
   // await ref.watch(appHttpProvider.future);

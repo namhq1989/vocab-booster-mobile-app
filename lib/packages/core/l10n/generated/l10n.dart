@@ -50,6 +50,16 @@ class L10N {
     return Localizations.of<L10N>(context, L10N);
   }
 
+  /// `Build a stronger vocabulary and communicate more effectively with consistent practice`
+  String get slogan {
+    return Intl.message(
+      'Build a stronger vocabulary and communicate more effectively with consistent practice',
+      name: 'slogan',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Language`
   String get languageTitle {
     return Intl.message(
@@ -75,6 +85,26 @@ class L10N {
     return Intl.message(
       'Vietnamese',
       name: 'languageVi',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Settings`
+  String get settingsTitle {
+    return Intl.message(
+      'Settings',
+      name: 'settingsTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Dark mode`
+  String get settingsDarkMode {
+    return Intl.message(
+      'Dark mode',
+      name: 'settingsDarkMode',
       desc: '',
       args: [],
     );
@@ -175,6 +205,36 @@ class L10N {
     return Intl.message(
       'Set and achieve your vocabulary goals with our structured program, designed to help you succeed in mastering English',
       name: 'signInOnboardingSlide4Content',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `It''s totally free! Just sign in and start learning!`
+  String get signInFreeText {
+    return Intl.message(
+      'It\'\'s totally free! Just sign in and start learning!',
+      name: 'signInFreeText',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Sign in with Google`
+  String get signInWithGoogle {
+    return Intl.message(
+      'Sign in with Google',
+      name: 'signInWithGoogle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Sign in with Facebook`
+  String get signInWithFacebook {
+    return Intl.message(
+      'Sign in with Facebook',
+      name: 'signInWithFacebook',
       desc: '',
       args: [],
     );

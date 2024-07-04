@@ -1,9 +1,14 @@
 {
   "@@locale": "en",
 
+  "slogan": "Build a stronger vocabulary and communicate more effectively with consistent practice",
+
   "languageTitle": "Language",
   "languageEn": "English",
   "languageVi": "Vietnamese",
+
+  "settingsTitle": "Settings",
+  "settingsDarkMode": "Dark mode",
 
   "signInOnboardingSlide0Title": "Boost Vocabulary Skills",
   "signInOnboardingSlide0Content": "Enhance your English vocabulary and listening skills with our focused exercises designed to improve your language proficiency effectively",
@@ -14,5 +19,8 @@
   "signInOnboardingSlide3Title": "Track Your Progress",
   "signInOnboardingSlide3Content": "Monitor your vocabulary development and listening skills with our tracking tools, ensuring continuous improvement and success",
   "signInOnboardingSlide4Title": "Achieve Your Goals",
-  "signInOnboardingSlide4Content": "Set and achieve your vocabulary goals with our structured program, designed to help you succeed in mastering English"
+  "signInOnboardingSlide4Content": "Set and achieve your vocabulary goals with our structured program, designed to help you succeed in mastering English",
+  "signInFreeText": "It''s totally free! Just sign in and start learning!",
+  "signInWithGoogle": "Sign in with Google",
+  "signInWithFacebook": "Sign in with Facebook"
 }
