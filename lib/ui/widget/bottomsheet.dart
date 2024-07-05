@@ -5,17 +5,19 @@ class AppBottomSheet extends StatelessWidget {
     super.key,
     required this.child,
     this.height,
+    this.padding,
   });
 
   final Widget child;
   final double? height;
+  final EdgeInsetsGeometry? padding;
 
   @override
   Widget build(BuildContext context) {
     return Container(
       width: double.infinity,
       height: height,
-      padding: const EdgeInsets.only(top: 24, left: 24, right: 24, bottom: 0),
+      padding: padding ?? const EdgeInsets.all(24),
       decoration: BoxDecoration(
         color: Theme.of(context).colorScheme.surface,
         borderRadius: const BorderRadius.only(
