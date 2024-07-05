@@ -1,1 +1,1 @@
-const double itemHorizontalSpacing = 24;
+const double itemHorizontalSpacing = 16;

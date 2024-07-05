@@ -8,6 +8,7 @@ import 'package:vocab_booster/packages/auth/auth.dart';
 import 'package:vocab_booster/packages/core/l10n/generated/l10n.dart';
 import 'package:vocab_booster/ui/settings/language.dart';
 import 'package:vocab_booster/ui/settings/dark_mode.dart';
+import 'package:vocab_booster/ui/widget/bottomsheet.dart';
 
 @RoutePage()
 class SignInScreen extends ConsumerWidget {
@@ -244,17 +245,8 @@ class SignInScreen extends ConsumerWidget {
           context: context,
           isDismissible: true,
           builder: (BuildContext context) {
-            return Container(
-              width: double.infinity,
+            return AppBottomSheet(
               height: 240,
-              padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 24),
-              decoration: BoxDecoration(
-                color: Theme.of(context).colorScheme.surface,
-                borderRadius: const BorderRadius.only(
-                  topLeft: Radius.circular(32),
-                  topRight: Radius.circular(32),
-                ),
-              ),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisSize: MainAxisSize.min,

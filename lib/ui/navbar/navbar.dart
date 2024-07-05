@@ -45,9 +45,8 @@ class _NavBarState extends ConsumerState<NavBar> {
           bottomNavigationBar: AnimatedBottomNavigationBar.builder(
             backgroundColor: Theme.of(context).colorScheme.surface,
             splashColor: Theme.of(context).colorScheme.primary,
-            // elevation: 3,
             borderWidth: 1,
-            borderColor: Theme.of(context).colorScheme.outline.withOpacity(0.5),
+            borderColor: Theme.of(context).colorScheme.outline.withOpacity(0.2),
             itemCount: iconList.length,
             tabBuilder: (int index, bool isActive) {
               return Icon(

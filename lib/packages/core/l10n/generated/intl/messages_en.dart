@@ -22,10 +22,29 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+        "cancel": MessageLookupByLibrary.simpleMessage("Cancel"),
         "languageEn": MessageLookupByLibrary.simpleMessage("English"),
         "languageTitle": MessageLookupByLibrary.simpleMessage("Language"),
         "languageVi": MessageLookupByLibrary.simpleMessage("Vietnamese"),
-        "settingsDarkMode": MessageLookupByLibrary.simpleMessage("Dark mode"),
+        "settingsAccountAchievement":
+            MessageLookupByLibrary.simpleMessage("Achievements"),
+        "settingsAccountInformation":
+            MessageLookupByLibrary.simpleMessage("Information"),
+        "settingsAccountSubscription":
+            MessageLookupByLibrary.simpleMessage("Subscription"),
+        "settingsAccountTitle":
+            MessageLookupByLibrary.simpleMessage("My account"),
+        "settingsOtherPrivacy":
+            MessageLookupByLibrary.simpleMessage("Privacy Policy"),
+        "settingsOtherTitle": MessageLookupByLibrary.simpleMessage("Other"),
+        "settingsOtherTnc":
+            MessageLookupByLibrary.simpleMessage("Terms and conditions"),
+        "settingsPreferenceDarkMode":
+            MessageLookupByLibrary.simpleMessage("Dark mode"),
+        "settingsPreferenceNotification":
+            MessageLookupByLibrary.simpleMessage("Notification"),
+        "settingsPreferenceTitle":
+            MessageLookupByLibrary.simpleMessage("Preferences"),
         "settingsTitle": MessageLookupByLibrary.simpleMessage("Settings"),
         "signInFreeText": MessageLookupByLibrary.simpleMessage(
             "It\'\'s totally free! Just sign in and start learning!"),
@@ -53,7 +72,11 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Sign in with Facebook"),
         "signInWithGoogle":
             MessageLookupByLibrary.simpleMessage("Sign in with Google"),
+        "signOut": MessageLookupByLibrary.simpleMessage("Sign out"),
+        "signOutTitle": MessageLookupByLibrary.simpleMessage(
+            "Are you sure you want to sign out?"),
         "slogan": MessageLookupByLibrary.simpleMessage(
-            "Build a stronger vocabulary and communicate more effectively with consistent practice")
+            "Build a stronger vocabulary and communicate more effectively with consistent practice"),
+        "version": MessageLookupByLibrary.simpleMessage("Version")
       };
 }
