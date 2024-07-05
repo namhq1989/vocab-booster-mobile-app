@@ -37,9 +37,12 @@ class SettingsSignOut extends ConsumerWidget {
                   InkWell(
                     onTap: () => Navigator.of(context).pop(true),
                     child: SizedBox(
-                        width: 70,
-                        height: 30,
-                        child: Center(child: Text(L10N.of(context).cancel))),
+                      width: 70,
+                      height: 30,
+                      child: Center(
+                        child: Text(L10N.of(context).cancel),
+                      ),
+                    ),
                   ),
                 ],
               ),

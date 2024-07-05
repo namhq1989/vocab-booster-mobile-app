@@ -1,7 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:vocab_booster/packages/core/l10n/generated/l10n.dart';
 import 'package:vocab_booster/ui/settings/account.dart';
 import 'package:vocab_booster/ui/settings/achievement.dart';

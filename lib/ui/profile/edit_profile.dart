@@ -1,6 +1,5 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:shadcn_ui/shadcn_ui.dart';
 import 'package:vocab_booster/packages/core/l10n/generated/l10n.dart';
 import 'package:vocab_booster/ui/widget/appbar_title.dart';
@@ -58,9 +57,12 @@ class _ProfileEditScreenState extends State<ProfileEditScreen> {
                 onTap: () {
                   showModalBottomSheet(
                     context: context,
+                    isScrollControlled: true,
                     isDismissible: true,
                     builder: (context) {
                       return AppBottomSheet(
+                        height: 700,
+                        padding: const EdgeInsets.all(0),
                         child: _buildAvatarSelection(),
                       );
                     },
@@ -163,13 +165,15 @@ class _ProfileEditScreenState extends State<ProfileEditScreen> {
   }
 
   Widget _buildAvatarSelection() {
+    _avatars.shuffle();
     return StatefulBuilder(
       builder: (BuildContext context, StateSetter setState) {
         return Column(
           children: [
-            const SizedBox(height: 16),
+            // const SizedBox(height: 16),
             Expanded(
               child: GridView.builder(
+                padding: const EdgeInsets.all(24),
                 gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                   crossAxisCount: 3,
                   mainAxisSpacing: 16.0,
@@ -215,27 +219,33 @@ class _ProfileEditScreenState extends State<ProfileEditScreen> {
                 },
               ),
             ),
-            const SizedBox(height: 16),
-            ShadButton(
-              width: double.infinity,
-              text: Text(L10N.of(context).update),
-              onPressed: () {
-                Navigator.of(context).pop(true);
-              },
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 24),
+              child: Column(
+                children: [
+                  const SizedBox(height: 16),
+                  ShadButton(
+                    width: double.infinity,
+                    text: Text(L10N.of(context).update),
+                    onPressed: () {
+                      Navigator.of(context).pop(true);
+                    },
+                  ),
+                  const SizedBox(height: 8),
+                  InkWell(
+                    onTap: () => Navigator.of(context).pop(true),
+                    child: SizedBox(
+                      width: 70,
+                      height: 30,
+                      child: Center(
+                        child: Text(L10N.of(context).cancel),
+                      ),
+                    ),
+                  ),
+                  const SizedBox(height: 8),
+                ],
+              ),
             ),
-            const SizedBox(height: 8),
-            // Positioned(
-            //   bottom: 0.0,
-            //   left: 0.0,
-            //   right: 0.0,
-            //   child: ShadButton(
-            //     width: double.infinity,
-            //     text: Text(L10N.of(context).update),
-            //     onPressed: () {
-            //       Navigator.of(context).pop(true);
-            //     },
-            //   ),
-            // ),
           ],
         );
       },

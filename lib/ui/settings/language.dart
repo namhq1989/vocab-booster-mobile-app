@@ -45,7 +45,7 @@ class SettingsLanguage extends ConsumerWidget {
           const SizedBox(width: itemHorizontalSpacing),
           GestureDetector(
             onTap: () {
-              showModalBottomSheet<void>(
+              showModalBottomSheet(
                 backgroundColor: Colors.transparent,
                 context: context,
                 isDismissible: true,
@@ -55,7 +55,7 @@ class SettingsLanguage extends ConsumerWidget {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       mainAxisSize: MainAxisSize.min,
-                      children: <Widget>[
+                      children: [
                         Text(
                           L10N.of(context).languageTitle,
                           style: const TextStyle(
