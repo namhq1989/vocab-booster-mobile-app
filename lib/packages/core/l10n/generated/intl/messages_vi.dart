@@ -22,10 +22,17 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+        "bio": MessageLookupByLibrary.simpleMessage("Giới thiệu"),
         "cancel": MessageLookupByLibrary.simpleMessage("Hủy"),
+        "email": MessageLookupByLibrary.simpleMessage("Email"),
+        "inputBioPlaceholder":
+            MessageLookupByLibrary.simpleMessage("Chia sẻ gì đó về bạn đi nào"),
+        "inputNamePlaceholder":
+            MessageLookupByLibrary.simpleMessage("Tên của bạn"),
         "languageEn": MessageLookupByLibrary.simpleMessage("Tiếng Anh"),
         "languageTitle": MessageLookupByLibrary.simpleMessage("Ngôn ngữ"),
         "languageVi": MessageLookupByLibrary.simpleMessage("Tiếng Việt"),
+        "name": MessageLookupByLibrary.simpleMessage("Tên"),
         "settingsAccountAchievement":
             MessageLookupByLibrary.simpleMessage("Thành tích"),
         "settingsAccountInformation":
@@ -77,6 +84,9 @@ class MessageLookup extends MessageLookupByLibrary {
             "Bạn có thật sự muốn đăng xuất không?"),
         "slogan": MessageLookupByLibrary.simpleMessage(
             "Xây dựng vốn từ vựng mạnh mẽ và giao tiếp hiệu quả hơn với việc luyện tập thường xuyên"),
+        "update": MessageLookupByLibrary.simpleMessage("Cập nhật"),
+        "userInvalidName": MessageLookupByLibrary.simpleMessage(
+            "Your name must be between 2 and 64 characters, including letters and numbers"),
         "version": MessageLookupByLibrary.simpleMessage("Phiên bản")
       };
 }
