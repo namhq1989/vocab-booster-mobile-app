@@ -15,7 +15,7 @@ class AppBottomSheet extends StatelessWidget {
     return Container(
       width: double.infinity,
       height: height,
-      padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 24),
+      padding: const EdgeInsets.only(top: 24, left: 24, right: 24, bottom: 0),
       decoration: BoxDecoration(
         color: Theme.of(context).colorScheme.surface,
         borderRadius: const BorderRadius.only(

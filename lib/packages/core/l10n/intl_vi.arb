@@ -37,5 +37,14 @@
   "signInWithFacebook": "Đăng nhập với Facebook",
 
   "signOut": "Đăng xuất",
-  "signOutTitle": "Bạn có thật sự muốn đăng xuất không?"
+  "signOutTitle": "Bạn có thật sự muốn đăng xuất không?",
+
+  "name": "Tên",
+  "inputNamePlaceholder": "Tên của bạn",
+  "email": "Email",
+  "bio": "Giới thiệu",
+  "inputBioPlaceholder": "Chia sẻ gì đó về bạn đi nào",
+  "update": "Cập nhật",
+
+  "userInvalidName": "Your name must be between 2 and 64 characters, including letters and numbers"
 }

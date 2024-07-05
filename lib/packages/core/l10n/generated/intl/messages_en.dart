@@ -22,10 +22,17 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+        "bio": MessageLookupByLibrary.simpleMessage("Bio"),
         "cancel": MessageLookupByLibrary.simpleMessage("Cancel"),
+        "email": MessageLookupByLibrary.simpleMessage("Email"),
+        "inputBioPlaceholder": MessageLookupByLibrary.simpleMessage(
+            "Let\'\'s share something about yourself"),
+        "inputNamePlaceholder":
+            MessageLookupByLibrary.simpleMessage("Your name"),
         "languageEn": MessageLookupByLibrary.simpleMessage("English"),
         "languageTitle": MessageLookupByLibrary.simpleMessage("Language"),
         "languageVi": MessageLookupByLibrary.simpleMessage("Vietnamese"),
+        "name": MessageLookupByLibrary.simpleMessage("Name"),
         "settingsAccountAchievement":
             MessageLookupByLibrary.simpleMessage("Achievements"),
         "settingsAccountInformation":
@@ -77,6 +84,9 @@ class MessageLookup extends MessageLookupByLibrary {
             "Are you sure you want to sign out?"),
         "slogan": MessageLookupByLibrary.simpleMessage(
             "Build a stronger vocabulary and communicate more effectively with consistent practice"),
+        "update": MessageLookupByLibrary.simpleMessage("Update"),
+        "userInvalidName": MessageLookupByLibrary.simpleMessage(
+            "Tên của bạn phải có từ 2-64 ký tự, chỉ bao gồm chữ và số"),
         "version": MessageLookupByLibrary.simpleMessage("Version")
       };
 }

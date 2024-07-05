@@ -369,6 +369,76 @@ class L10N {
       args: [],
     );
   }
+
+  /// `Name`
+  String get name {
+    return Intl.message(
+      'Name',
+      name: 'name',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Your name`
+  String get inputNamePlaceholder {
+    return Intl.message(
+      'Your name',
+      name: 'inputNamePlaceholder',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Email`
+  String get email {
+    return Intl.message(
+      'Email',
+      name: 'email',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Bio`
+  String get bio {
+    return Intl.message(
+      'Bio',
+      name: 'bio',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Let''s share something about yourself`
+  String get inputBioPlaceholder {
+    return Intl.message(
+      'Let\'\'s share something about yourself',
+      name: 'inputBioPlaceholder',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Update`
+  String get update {
+    return Intl.message(
+      'Update',
+      name: 'update',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Tên của bạn phải có từ 2-64 ký tự, chỉ bao gồm chữ và số`
+  String get userInvalidName {
+    return Intl.message(
+      'Tên của bạn phải có từ 2-64 ký tự, chỉ bao gồm chữ và số',
+      name: 'userInvalidName',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<L10N> {

@@ -10,7 +10,6 @@
   "languageEn": "English",
   "languageVi": "Vietnamese",
 
-
   "settingsTitle": "Settings",
   "settingsAccountTitle": "My account",
   "settingsAccountInformation": "Information",
@@ -38,5 +37,14 @@
   "signInWithFacebook": "Sign in with Facebook",
 
   "signOut": "Sign out",
-  "signOutTitle": "Are you sure you want to sign out?"
+  "signOutTitle": "Are you sure you want to sign out?",
+
+  "name": "Name",
+  "inputNamePlaceholder": "Your name",
+  "email": "Email",
+  "bio": "Bio",
+  "inputBioPlaceholder": "Let''s share something about yourself",
+  "update": "Update",
+
+  "userInvalidName": "Tên của bạn phải có từ 2-64 ký tự, chỉ bao gồm chữ và số"
 }

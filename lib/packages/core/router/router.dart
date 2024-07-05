@@ -30,6 +30,24 @@ class AppRouter extends $AppRouter {
             AutoRoute(page: ProfileRoute.page, maintainState: true),
           ],
         ),
+        _buildChild(
+          page: ProfileEditRoute.page,
+        ),
+
+        // NO AUTH
         AutoRoute(page: SignInRoute.page),
       ];
+}
+
+CustomRoute _buildChild({
+  required PageInfo page,
+  transitionsBuilder = TransitionsBuilders.slideLeft,
+}) {
+  return CustomRoute(
+    page: page,
+    maintainState: true,
+    transitionsBuilder: transitionsBuilder,
+    durationInMilliseconds: 150,
+    reverseDurationInMilliseconds: 150,
+  );
 }
