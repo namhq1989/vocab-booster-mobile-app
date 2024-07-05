@@ -5,6 +5,7 @@ import 'package:shadcn_ui/shadcn_ui.dart';
 import 'package:vocab_booster/packages/core/l10n/generated/l10n.dart';
 import 'package:vocab_booster/packages/core/language/language.dart';
 import 'package:vocab_booster/ui/settings/constant.dart';
+import 'package:vocab_booster/ui/widget/bottomsheet.dart';
 
 class SettingsLanguage extends ConsumerWidget {
   const SettingsLanguage({
@@ -45,21 +46,12 @@ class SettingsLanguage extends ConsumerWidget {
           GestureDetector(
             onTap: () {
               showModalBottomSheet<void>(
+                backgroundColor: Colors.transparent,
                 context: context,
                 isDismissible: true,
                 builder: (BuildContext context) {
-                  return Container(
-                    width: double.infinity,
+                  return AppBottomSheet(
                     height: 240,
-                    padding: const EdgeInsets.symmetric(
-                        horizontal: 24, vertical: 24),
-                    decoration: BoxDecoration(
-                      color: Theme.of(context).colorScheme.surface,
-                      borderRadius: const BorderRadius.only(
-                        topLeft: Radius.circular(32),
-                        topRight: Radius.circular(32),
-                      ),
-                    ),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       mainAxisSize: MainAxisSize.min,
@@ -92,7 +84,7 @@ class SettingsLanguage extends ConsumerWidget {
             child: Container(
               alignment: Alignment.centerRight,
               padding: const EdgeInsets.only(right: 4),
-              width: 60,
+              width: 50,
               child: SvgPicture.asset(
                 lang.getLanguageFlag(lang.getLanguage()),
                 width: 24,

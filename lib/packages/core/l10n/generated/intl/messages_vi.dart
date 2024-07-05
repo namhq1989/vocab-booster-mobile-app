@@ -22,10 +22,29 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+        "cancel": MessageLookupByLibrary.simpleMessage("Hủy"),
         "languageEn": MessageLookupByLibrary.simpleMessage("Tiếng Anh"),
         "languageTitle": MessageLookupByLibrary.simpleMessage("Ngôn ngữ"),
         "languageVi": MessageLookupByLibrary.simpleMessage("Tiếng Việt"),
-        "settingsDarkMode": MessageLookupByLibrary.simpleMessage("Nền tối"),
+        "settingsAccountAchievement":
+            MessageLookupByLibrary.simpleMessage("Thành tích"),
+        "settingsAccountInformation":
+            MessageLookupByLibrary.simpleMessage("Thông tin"),
+        "settingsAccountSubscription":
+            MessageLookupByLibrary.simpleMessage("Đăng ký"),
+        "settingsAccountTitle":
+            MessageLookupByLibrary.simpleMessage("Tài khoản"),
+        "settingsOtherPrivacy":
+            MessageLookupByLibrary.simpleMessage("Chính sách bảo mật"),
+        "settingsOtherTitle": MessageLookupByLibrary.simpleMessage("Khác"),
+        "settingsOtherTnc":
+            MessageLookupByLibrary.simpleMessage("Điều khoản sử dụng"),
+        "settingsPreferenceDarkMode":
+            MessageLookupByLibrary.simpleMessage("Nền tối"),
+        "settingsPreferenceNotification":
+            MessageLookupByLibrary.simpleMessage("Thông báo"),
+        "settingsPreferenceTitle":
+            MessageLookupByLibrary.simpleMessage("Thiết lập"),
         "settingsTitle": MessageLookupByLibrary.simpleMessage("Thiết lập"),
         "signInFreeText": MessageLookupByLibrary.simpleMessage(
             "Hoàn toàn miễn phí! Đăng nhập và bắt đầu học nào!"),
@@ -53,7 +72,11 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Đăng nhập với Facebook"),
         "signInWithGoogle":
             MessageLookupByLibrary.simpleMessage("Đăng nhập với Google"),
+        "signOut": MessageLookupByLibrary.simpleMessage("Đăng xuất"),
+        "signOutTitle": MessageLookupByLibrary.simpleMessage(
+            "Bạn có thật sự muốn đăng xuất không?"),
         "slogan": MessageLookupByLibrary.simpleMessage(
-            "Xây dựng vốn từ vựng mạnh mẽ và giao tiếp hiệu quả hơn với việc luyện tập thường xuyên")
+            "Xây dựng vốn từ vựng mạnh mẽ và giao tiếp hiệu quả hơn với việc luyện tập thường xuyên"),
+        "version": MessageLookupByLibrary.simpleMessage("Phiên bản")
       };
 }

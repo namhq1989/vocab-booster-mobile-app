@@ -60,6 +60,26 @@ class L10N {
     );
   }
 
+  /// `Version`
+  String get version {
+    return Intl.message(
+      'Version',
+      name: 'version',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Cancel`
+  String get cancel {
+    return Intl.message(
+      'Cancel',
+      name: 'cancel',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Language`
   String get languageTitle {
     return Intl.message(
@@ -100,11 +120,101 @@ class L10N {
     );
   }
 
+  /// `My account`
+  String get settingsAccountTitle {
+    return Intl.message(
+      'My account',
+      name: 'settingsAccountTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Information`
+  String get settingsAccountInformation {
+    return Intl.message(
+      'Information',
+      name: 'settingsAccountInformation',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Subscription`
+  String get settingsAccountSubscription {
+    return Intl.message(
+      'Subscription',
+      name: 'settingsAccountSubscription',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Achievements`
+  String get settingsAccountAchievement {
+    return Intl.message(
+      'Achievements',
+      name: 'settingsAccountAchievement',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Preferences`
+  String get settingsPreferenceTitle {
+    return Intl.message(
+      'Preferences',
+      name: 'settingsPreferenceTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Dark mode`
-  String get settingsDarkMode {
+  String get settingsPreferenceDarkMode {
     return Intl.message(
       'Dark mode',
-      name: 'settingsDarkMode',
+      name: 'settingsPreferenceDarkMode',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Notification`
+  String get settingsPreferenceNotification {
+    return Intl.message(
+      'Notification',
+      name: 'settingsPreferenceNotification',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Other`
+  String get settingsOtherTitle {
+    return Intl.message(
+      'Other',
+      name: 'settingsOtherTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Privacy Policy`
+  String get settingsOtherPrivacy {
+    return Intl.message(
+      'Privacy Policy',
+      name: 'settingsOtherPrivacy',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Terms and conditions`
+  String get settingsOtherTnc {
+    return Intl.message(
+      'Terms and conditions',
+      name: 'settingsOtherTnc',
       desc: '',
       args: [],
     );
@@ -235,6 +345,26 @@ class L10N {
     return Intl.message(
       'Sign in with Facebook',
       name: 'signInWithFacebook',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Sign out`
+  String get signOut {
+    return Intl.message(
+      'Sign out',
+      name: 'signOut',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Are you sure you want to sign out?`
+  String get signOutTitle {
+    return Intl.message(
+      'Are you sure you want to sign out?',
+      name: 'signOutTitle',
       desc: '',
       args: [],
     );

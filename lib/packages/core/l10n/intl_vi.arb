@@ -2,13 +2,25 @@
   "@@locale": "vi",
 
   "slogan": "Xây dựng vốn từ vựng mạnh mẽ và giao tiếp hiệu quả hơn với việc luyện tập thường xuyên",
+  "version": "Phiên bản",
+
+  "cancel": "Hủy",
 
   "languageTitle": "Ngôn ngữ",
   "languageEn": "Tiếng Anh",
   "languageVi": "Tiếng Việt",
 
   "settingsTitle": "Thiết lập",
-  "settingsDarkMode": "Nền tối",
+  "settingsAccountTitle": "Tài khoản",
+  "settingsAccountInformation": "Thông tin",
+  "settingsAccountSubscription": "Đăng ký",
+  "settingsAccountAchievement": "Thành tích",
+  "settingsPreferenceTitle": "Thiết lập",
+  "settingsPreferenceDarkMode": "Nền tối",
+  "settingsPreferenceNotification": "Thông báo",
+  "settingsOtherTitle": "Khác",
+  "settingsOtherPrivacy": "Chính sách bảo mật",
+  "settingsOtherTnc": "Điều khoản sử dụng",
 
   "signInOnboardingSlide0Title": "Tăng Cường Từ Vựng",
   "signInOnboardingSlide0Content": "Nâng cao từ vựng và kỹ năng nghe tiếng Anh của bạn với các bài tập tập trung được thiết kế để cải thiện hiệu quả trình độ ngôn ngữ của bạn",
@@ -22,5 +34,8 @@
   "signInOnboardingSlide4Content": "Đặt ra và đạt được mục tiêu từ vựng của bạn với chương trình cấu trúc của chúng tôi, được thiết kế để giúp bạn thành công trong việc nắm vững tiếng Anh",
   "signInFreeText": "Hoàn toàn miễn phí! Đăng nhập và bắt đầu học nào!",
   "signInWithGoogle": "Đăng nhập với Google",
-  "signInWithFacebook": "Đăng nhập với Facebook"
+  "signInWithFacebook": "Đăng nhập với Facebook",
+
+  "signOut": "Đăng xuất",
+  "signOutTitle": "Bạn có thật sự muốn đăng xuất không?"
 }
