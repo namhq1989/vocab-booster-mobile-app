@@ -13,6 +13,7 @@ import 'package:vocab_booster/ui/settings/subscription.dart';
 import 'package:vocab_booster/ui/settings/tnc.dart';
 import 'package:vocab_booster/ui/settings/version.dart';
 import 'package:vocab_booster/ui/widget/screen.dart';
+import 'package:vocab_booster/ui/widget/secondary_text.dart';
 
 @RoutePage()
 class ProfileScreen extends ConsumerWidget {
@@ -25,42 +26,20 @@ class ProfileScreen extends ConsumerWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const SizedBox(
-              height: 20,
-            ),
             _buildHeader(context),
-            // const SizedBox(
-            //   height: 20,
-            // ),
-            // Container(
-            //   width: double.infinity,
-            //   height: 80,
-            //   decoration: BoxDecoration(
-            //     border: Border.all(
-            //       color: Theme.of(context)
-            //           .colorScheme
-            //           .onSurface
-            //           .withOpacity(0.3),
-            //     ),
-            //     borderRadius: BorderRadius.circular(12),
-            //   ),
-            //   child: const Center(
-            //     child: Text('ADVERTISEMENT'),
-            //   ),
-            // ),
             const SizedBox(
               height: 30,
             ),
 
             _buildStats(context),
             const SizedBox(
-              height: 50,
+              height: 30,
             ),
 
             // Account
             Text(
               L10N.of(context).settingsAccountTitle,
-              style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+              style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
             ),
             const SizedBox(
               height: 8,
@@ -83,7 +62,7 @@ class ProfileScreen extends ConsumerWidget {
             // Preference
             Text(
               L10N.of(context).settingsPreferenceTitle,
-              style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+              style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
             ),
             const SizedBox(
               height: 8,
@@ -104,7 +83,7 @@ class ProfileScreen extends ConsumerWidget {
             // Other
             Text(
               L10N.of(context).settingsOtherTitle,
-              style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+              style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
             ),
             const SizedBox(
               height: 8,
@@ -133,36 +112,40 @@ class ProfileScreen extends ConsumerWidget {
   }
 
   Widget _buildHeader(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: [
-        const Text(
-          'Profile',
-          style: TextStyle(
-            fontSize: 28,
-            fontWeight: FontWeight.bold,
-          ),
-        ),
-        ClipRRect(
-          borderRadius: BorderRadius.circular(30),
-          child: SizedBox(
-            width: 60,
-            height: 60,
-            child: Image.asset(
-              'assets/images/avatar/male-5.png',
-              fit: BoxFit.cover,
+    return SizedBox(
+      height: 50,
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          Text(
+            L10N.of(context).profileTitle,
+            style: const TextStyle(
+              fontSize: 28,
+              fontWeight: FontWeight.bold,
             ),
           ),
-        ),
-      ],
+          ClipRRect(
+            borderRadius: BorderRadius.circular(25),
+            child: SizedBox(
+              width: 50,
+              height: 50,
+              child: Image.asset(
+                'assets/images/avatar/male-5.png',
+                fit: BoxFit.cover,
+              ),
+            ),
+          ),
+        ],
+      ),
     );
   }
 
   Widget _buildStats(BuildContext context) {
-    return Column(
+    return const Column(
       children: [
-        const Divider(),
-        const SizedBox(height: 20),
+        Divider(),
+        SizedBox(height: 20),
         IntrinsicHeight(
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -171,27 +154,18 @@ class ProfileScreen extends ConsumerWidget {
               Expanded(
                 child: Column(
                   children: [
-                    const Text(
+                    Text(
                       '23',
                       style: TextStyle(
                         fontSize: 28,
                         fontWeight: FontWeight.bold,
                       ),
                     ),
-                    Text(
-                      'Vocab',
-                      style: TextStyle(
-                        fontSize: 14,
-                        color: Theme.of(context)
-                            .colorScheme
-                            .outline
-                            .withOpacity(0.5),
-                      ),
-                    ),
+                    SecondaryText(text: 'vocab'),
                   ],
                 ),
               ),
-              const VerticalDivider(
+              VerticalDivider(
                 width: 1,
                 // indent: 4,
                 // endIndent: 4,
@@ -199,55 +173,39 @@ class ProfileScreen extends ConsumerWidget {
               Expanded(
                 child: Column(
                   children: [
-                    const Text(
+                    Text(
                       '87',
                       style: TextStyle(
                         fontSize: 28,
                         fontWeight: FontWeight.bold,
                       ),
                     ),
-                    Text(
-                      'Exercises',
-                      style: TextStyle(
-                        fontSize: 14,
-                        color: Theme.of(context)
-                            .colorScheme
-                            .outline
-                            .withOpacity(0.5),
-                      ),
-                    ),
+                    SecondaryText(text: 'exercises'),
                   ],
                 ),
               ),
-              const VerticalDivider(
+              VerticalDivider(
                 width: 1,
               ),
               Expanded(
                 child: Column(
                   children: [
-                    const Text(
+                    Text(
                       '1,249',
                       style: TextStyle(
                         fontSize: 28,
                         fontWeight: FontWeight.bold,
                       ),
                     ),
-                    Text(
-                      'Points',
-                      style: TextStyle(
-                        fontSize: 14,
-                        color: Theme.of(context)
-                            .colorScheme
-                            .outline
-                            .withOpacity(0.5),
-                      ),
-                    ),
+                    SecondaryText(text: 'points'),
                   ],
                 ),
               ),
             ],
           ),
         ),
+        SizedBox(height: 20),
+        Divider(),
       ],
     );
   }

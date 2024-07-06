@@ -34,6 +34,10 @@ class AppRouter extends $AppRouter {
           page: ProfileEditRoute.page,
         ),
 
+        _buildChild(
+          page: ExerciseRuleRoute.page,
+        ),
+
         // NO AUTH
         AutoRoute(page: SignInRoute.page),
       ];

@@ -430,11 +430,381 @@ class L10N {
     );
   }
 
-  /// `Tên của bạn phải có từ 2-64 ký tự, chỉ bao gồm chữ và số`
+  /// `mastered`
+  String get mastered {
+    return Intl.message(
+      'mastered',
+      name: 'mastered',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `for reviews`
+  String get forReviews {
+    return Intl.message(
+      'for reviews',
+      name: 'forReviews',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Reviews`
+  String get reviews {
+    return Intl.message(
+      'Reviews',
+      name: 'reviews',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Recents`
+  String get recents {
+    return Intl.message(
+      'Recents',
+      name: 'recents',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Favorites`
+  String get favorites {
+    return Intl.message(
+      'Favorites',
+      name: 'favorites',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Your name must be between 2 and 64 characters, including letters and numbers`
   String get userInvalidName {
     return Intl.message(
-      'Tên của bạn phải có từ 2-64 ký tự, chỉ bao gồm chữ và số',
+      'Your name must be between 2 and 64 characters, including letters and numbers',
       name: 'userInvalidName',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Profile`
+  String get profileTitle {
+    return Intl.message(
+      'Profile',
+      name: 'profileTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Exercises`
+  String get exerciseTitle {
+    return Intl.message(
+      'Exercises',
+      name: 'exerciseTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Exercise Statuses`
+  String get exerciseStatusesTitle {
+    return Intl.message(
+      'Exercise Statuses',
+      name: 'exerciseStatusesTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Your progress with each exercise is tracked through different statuses. Here''s how it works:`
+  String get exerciseStatusesDescription {
+    return Intl.message(
+      'Your progress with each exercise is tracked through different statuses. Here\'\'s how it works:',
+      name: 'exerciseStatusesDescription',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Ready for Review`
+  String get exerciseReadyForReviewTitle {
+    return Intl.message(
+      'Ready for Review',
+      name: 'exerciseReadyForReviewTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `After you successfully complete an exercise, it will be marked as ready for review. This means you''ll see it again at the next review milestone to reinforce your learning.`
+  String get exerciseReadyForReviewDescription {
+    return Intl.message(
+      'After you successfully complete an exercise, it will be marked as ready for review. This means you\'\'ll see it again at the next review milestone to reinforce your learning.',
+      name: 'exerciseReadyForReviewDescription',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Mastered`
+  String get exerciseMasteredTitle {
+    return Intl.message(
+      'Mastered',
+      name: 'exerciseMasteredTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Once you achieve a streak of 5 successful completions in a row for an exercise, it will be marked as mastered.\nMastered exercises still need to be reviewed periodically, but the review intervals will be much longer compared to other exercises.`
+  String get exerciseMasteredDescription {
+    return Intl.message(
+      'Once you achieve a streak of 5 successful completions in a row for an exercise, it will be marked as mastered.\nMastered exercises still need to be reviewed periodically, but the review intervals will be much longer compared to other exercises.',
+      name: 'exerciseMasteredDescription',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `If you make a mistake on an exercise, your current streak will break, and you will need to start building it again from 0`
+  String get exerciseMasteredBreak {
+    return Intl.message(
+      'If you make a mistake on an exercise, your current streak will break, and you will need to start building it again from 0',
+      name: 'exerciseMasteredBreak',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Review milestones`
+  String get exerciseReviewMilestoneTableTitle {
+    return Intl.message(
+      'Review milestones',
+      name: 'exerciseReviewMilestoneTableTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Completions`
+  String get exerciseReviewMilestoneTableHeaderCompletions {
+    return Intl.message(
+      'Completions',
+      name: 'exerciseReviewMilestoneTableHeaderCompletions',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Interval`
+  String get exerciseReviewMilestoneTableHeaderInterval {
+    return Intl.message(
+      'Interval',
+      name: 'exerciseReviewMilestoneTableHeaderInterval',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `1 time`
+  String get exerciseReviewMilestone1TimeCompletion {
+    return Intl.message(
+      '1 time',
+      name: 'exerciseReviewMilestone1TimeCompletion',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `6 hours`
+  String get exerciseReviewMilestone1TimeInterval {
+    return Intl.message(
+      '6 hours',
+      name: 'exerciseReviewMilestone1TimeInterval',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `2 times`
+  String get exerciseReviewMilestone2TimeCompletion {
+    return Intl.message(
+      '2 times',
+      name: 'exerciseReviewMilestone2TimeCompletion',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `1 day`
+  String get exerciseReviewMilestone2TimeInterval {
+    return Intl.message(
+      '1 day',
+      name: 'exerciseReviewMilestone2TimeInterval',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `3 times`
+  String get exerciseReviewMilestone3TimeCompletion {
+    return Intl.message(
+      '3 times',
+      name: 'exerciseReviewMilestone3TimeCompletion',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `3 days`
+  String get exerciseReviewMilestone3TimeInterval {
+    return Intl.message(
+      '3 days',
+      name: 'exerciseReviewMilestone3TimeInterval',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `4 times`
+  String get exerciseReviewMilestone4TimeCompletion {
+    return Intl.message(
+      '4 times',
+      name: 'exerciseReviewMilestone4TimeCompletion',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `7 days`
+  String get exerciseReviewMilestone4TimeInterval {
+    return Intl.message(
+      '7 days',
+      name: 'exerciseReviewMilestone4TimeInterval',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `5 times`
+  String get exerciseReviewMilestone5TimeCompletion {
+    return Intl.message(
+      '5 times',
+      name: 'exerciseReviewMilestone5TimeCompletion',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `14 days`
+  String get exerciseReviewMilestone5TimeInterval {
+    return Intl.message(
+      '14 days',
+      name: 'exerciseReviewMilestone5TimeInterval',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Mastered`
+  String get exerciseReviewMilestoneMasteredCompletion {
+    return Intl.message(
+      'Mastered',
+      name: 'exerciseReviewMilestoneMasteredCompletion',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Every 30 days`
+  String get exerciseReviewMilestoneMasteredInterval {
+    return Intl.message(
+      'Every 30 days',
+      name: 'exerciseReviewMilestoneMasteredInterval',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Collections`
+  String get exerciseSectionCollectionsTitle {
+    return Intl.message(
+      'Collections',
+      name: 'exerciseSectionCollectionsTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Explore collections of practice sentences`
+  String get exerciseSectionCollectionsSubtitle {
+    return Intl.message(
+      'Explore collections of practice sentences',
+      name: 'exerciseSectionCollectionsSubtitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Library`
+  String get exerciseSectionLibraryTitle {
+    return Intl.message(
+      'Library',
+      name: 'exerciseSectionLibraryTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Your learning exercises`
+  String get exerciseSectionLibrarySubtitle {
+    return Intl.message(
+      'Your learning exercises',
+      name: 'exerciseSectionLibrarySubtitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Progress`
+  String get exerciseSectionProgressTitle {
+    return Intl.message(
+      'Progress',
+      name: 'exerciseSectionProgressTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Daily exercises completion over the last 7 days`
+  String get exerciseSectionProgressSubtitle {
+    return Intl.message(
+      'Daily exercises completion over the last 7 days',
+      name: 'exerciseSectionProgressSubtitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Collections`
+  String get exerciseSectionPointsTitle {
+    return Intl.message(
+      'Collections',
+      name: 'exerciseSectionPointsTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Daily points earned over the last 7 days`
+  String get exerciseSectionPointsSubtitle {
+    return Intl.message(
+      'Daily points earned over the last 7 days',
+      name: 'exerciseSectionPointsSubtitle',
       desc: '',
       args: [],
     );

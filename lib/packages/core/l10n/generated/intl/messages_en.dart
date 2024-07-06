@@ -25,6 +25,70 @@ class MessageLookup extends MessageLookupByLibrary {
         "bio": MessageLookupByLibrary.simpleMessage("Bio"),
         "cancel": MessageLookupByLibrary.simpleMessage("Cancel"),
         "email": MessageLookupByLibrary.simpleMessage("Email"),
+        "exerciseMasteredBreak": MessageLookupByLibrary.simpleMessage(
+            "If you make a mistake on an exercise, your current streak will break, and you will need to start building it again from 0"),
+        "exerciseMasteredDescription": MessageLookupByLibrary.simpleMessage(
+            "Once you achieve a streak of 5 successful completions in a row for an exercise, it will be marked as mastered.\nMastered exercises still need to be reviewed periodically, but the review intervals will be much longer compared to other exercises."),
+        "exerciseMasteredTitle":
+            MessageLookupByLibrary.simpleMessage("Mastered"),
+        "exerciseReadyForReviewDescription": MessageLookupByLibrary.simpleMessage(
+            "After you successfully complete an exercise, it will be marked as ready for review. This means you\'\'ll see it again at the next review milestone to reinforce your learning."),
+        "exerciseReadyForReviewTitle":
+            MessageLookupByLibrary.simpleMessage("Ready for Review"),
+        "exerciseReviewMilestone1TimeCompletion":
+            MessageLookupByLibrary.simpleMessage("1 time"),
+        "exerciseReviewMilestone1TimeInterval":
+            MessageLookupByLibrary.simpleMessage("6 hours"),
+        "exerciseReviewMilestone2TimeCompletion":
+            MessageLookupByLibrary.simpleMessage("2 times"),
+        "exerciseReviewMilestone2TimeInterval":
+            MessageLookupByLibrary.simpleMessage("1 day"),
+        "exerciseReviewMilestone3TimeCompletion":
+            MessageLookupByLibrary.simpleMessage("3 times"),
+        "exerciseReviewMilestone3TimeInterval":
+            MessageLookupByLibrary.simpleMessage("3 days"),
+        "exerciseReviewMilestone4TimeCompletion":
+            MessageLookupByLibrary.simpleMessage("4 times"),
+        "exerciseReviewMilestone4TimeInterval":
+            MessageLookupByLibrary.simpleMessage("7 days"),
+        "exerciseReviewMilestone5TimeCompletion":
+            MessageLookupByLibrary.simpleMessage("5 times"),
+        "exerciseReviewMilestone5TimeInterval":
+            MessageLookupByLibrary.simpleMessage("14 days"),
+        "exerciseReviewMilestoneMasteredCompletion":
+            MessageLookupByLibrary.simpleMessage("Mastered"),
+        "exerciseReviewMilestoneMasteredInterval":
+            MessageLookupByLibrary.simpleMessage("Every 30 days"),
+        "exerciseReviewMilestoneTableHeaderCompletions":
+            MessageLookupByLibrary.simpleMessage("Completions"),
+        "exerciseReviewMilestoneTableHeaderInterval":
+            MessageLookupByLibrary.simpleMessage("Interval"),
+        "exerciseReviewMilestoneTableTitle":
+            MessageLookupByLibrary.simpleMessage("Review milestones"),
+        "exerciseSectionCollectionsSubtitle":
+            MessageLookupByLibrary.simpleMessage(
+                "Explore collections of practice sentences"),
+        "exerciseSectionCollectionsTitle":
+            MessageLookupByLibrary.simpleMessage("Collections"),
+        "exerciseSectionLibrarySubtitle":
+            MessageLookupByLibrary.simpleMessage("Your learning exercises"),
+        "exerciseSectionLibraryTitle":
+            MessageLookupByLibrary.simpleMessage("Library"),
+        "exerciseSectionPointsSubtitle": MessageLookupByLibrary.simpleMessage(
+            "Daily points earned over the last 7 days"),
+        "exerciseSectionPointsTitle":
+            MessageLookupByLibrary.simpleMessage("Collections"),
+        "exerciseSectionProgressSubtitle": MessageLookupByLibrary.simpleMessage(
+            "Daily exercises completion over the last 7 days"),
+        "exerciseSectionProgressTitle":
+            MessageLookupByLibrary.simpleMessage("Progress"),
+        "exerciseStatusesDescription": MessageLookupByLibrary.simpleMessage(
+            "Your progress with each exercise is tracked through different statuses. Here\'\'s how it works:"),
+        "exerciseStatusesTitle":
+            MessageLookupByLibrary.simpleMessage("Exercise Statuses"),
+        "exerciseTitle": MessageLookupByLibrary.simpleMessage("Exercises"),
+        "favorites": MessageLookupByLibrary.simpleMessage("Favorites"),
+        "forReviews": MessageLookupByLibrary.simpleMessage("for reviews"),
         "inputBioPlaceholder": MessageLookupByLibrary.simpleMessage(
             "Let\'\'s share something about yourself"),
         "inputNamePlaceholder":
@@ -32,7 +96,11 @@ class MessageLookup extends MessageLookupByLibrary {
         "languageEn": MessageLookupByLibrary.simpleMessage("English"),
         "languageTitle": MessageLookupByLibrary.simpleMessage("Language"),
         "languageVi": MessageLookupByLibrary.simpleMessage("Vietnamese"),
+        "mastered": MessageLookupByLibrary.simpleMessage("mastered"),
         "name": MessageLookupByLibrary.simpleMessage("Name"),
+        "profileTitle": MessageLookupByLibrary.simpleMessage("Profile"),
+        "recents": MessageLookupByLibrary.simpleMessage("Recents"),
+        "reviews": MessageLookupByLibrary.simpleMessage("Reviews"),
         "settingsAccountAchievement":
             MessageLookupByLibrary.simpleMessage("Achievements"),
         "settingsAccountInformation":
@@ -86,7 +154,7 @@ class MessageLookup extends MessageLookupByLibrary {
             "Build a stronger vocabulary and communicate more effectively with consistent practice"),
         "update": MessageLookupByLibrary.simpleMessage("Update"),
         "userInvalidName": MessageLookupByLibrary.simpleMessage(
-            "Tên của bạn phải có từ 2-64 ký tự, chỉ bao gồm chữ và số"),
+            "Your name must be between 2 and 64 characters, including letters and numbers"),
         "version": MessageLookupByLibrary.simpleMessage("Version")
       };
 }
