@@ -25,6 +25,70 @@ class MessageLookup extends MessageLookupByLibrary {
         "bio": MessageLookupByLibrary.simpleMessage("Giới thiệu"),
         "cancel": MessageLookupByLibrary.simpleMessage("Hủy"),
         "email": MessageLookupByLibrary.simpleMessage("Email"),
+        "exerciseMasteredBreak": MessageLookupByLibrary.simpleMessage(
+            "Nếu bạn làm sai ở một bài tập, chuỗi hiện tại của bạn sẽ bị mất, và bạn sẽ cần bắt đầu lại từ mốc 0"),
+        "exerciseMasteredDescription": MessageLookupByLibrary.simpleMessage(
+            "Khi bạn đạt được chuỗi 5 lần hoàn thành liên tiếp thành công cho một bài tập, nó sẽ được đánh dấu là thành thạo.\nCác bài tập đã thành thạo vẫn cần được ôn tập định kỳ, nhưng khoảng thời gian ôn tập sẽ lâu hơn nhiều so với các bài tập chưa thành thạo."),
+        "exerciseMasteredTitle":
+            MessageLookupByLibrary.simpleMessage("Thành thạo"),
+        "exerciseReadyForReviewDescription": MessageLookupByLibrary.simpleMessage(
+            "Sau khi bạn hoàn thành một bài tập thành công, nó sẽ được đánh dấu là sẵn sàng để ôn tập. Điều này có nghĩa là bạn phải ôn tập nó vào 1 mốc thời gian ở tương lai để củng cố ghi nhớ."),
+        "exerciseReadyForReviewTitle":
+            MessageLookupByLibrary.simpleMessage("Sẵn sàng để ôn tập"),
+        "exerciseReviewMilestone1TimeCompletion":
+            MessageLookupByLibrary.simpleMessage("1 lần"),
+        "exerciseReviewMilestone1TimeInterval":
+            MessageLookupByLibrary.simpleMessage("6 ngày"),
+        "exerciseReviewMilestone2TimeCompletion":
+            MessageLookupByLibrary.simpleMessage("2 lần"),
+        "exerciseReviewMilestone2TimeInterval":
+            MessageLookupByLibrary.simpleMessage("1 ngày"),
+        "exerciseReviewMilestone3TimeCompletion":
+            MessageLookupByLibrary.simpleMessage("3 lần"),
+        "exerciseReviewMilestone3TimeInterval":
+            MessageLookupByLibrary.simpleMessage("3 ngày"),
+        "exerciseReviewMilestone4TimeCompletion":
+            MessageLookupByLibrary.simpleMessage("4 lần"),
+        "exerciseReviewMilestone4TimeInterval":
+            MessageLookupByLibrary.simpleMessage("7 ngày"),
+        "exerciseReviewMilestone5TimeCompletion":
+            MessageLookupByLibrary.simpleMessage("5 lần"),
+        "exerciseReviewMilestone5TimeInterval":
+            MessageLookupByLibrary.simpleMessage("14 ngày"),
+        "exerciseReviewMilestoneMasteredCompletion":
+            MessageLookupByLibrary.simpleMessage("Thành thạo"),
+        "exerciseReviewMilestoneMasteredInterval":
+            MessageLookupByLibrary.simpleMessage("Mỗi 30 ngày"),
+        "exerciseReviewMilestoneTableHeaderCompletions":
+            MessageLookupByLibrary.simpleMessage("Số lần hoàn thành"),
+        "exerciseReviewMilestoneTableHeaderInterval":
+            MessageLookupByLibrary.simpleMessage("Thời gian"),
+        "exerciseReviewMilestoneTableTitle":
+            MessageLookupByLibrary.simpleMessage("Mốc thời gian ôn tập"),
+        "exerciseSectionCollectionsSubtitle":
+            MessageLookupByLibrary.simpleMessage(
+                "Khám phá các dạng bài tập thực hành"),
+        "exerciseSectionCollectionsTitle":
+            MessageLookupByLibrary.simpleMessage("Bộ bài tập"),
+        "exerciseSectionLibrarySubtitle":
+            MessageLookupByLibrary.simpleMessage("Bài tập của bạn"),
+        "exerciseSectionLibraryTitle":
+            MessageLookupByLibrary.simpleMessage("Thư viện"),
+        "exerciseSectionPointsSubtitle": MessageLookupByLibrary.simpleMessage(
+            "Đã nhận được trong 7 ngày qua"),
+        "exerciseSectionPointsTitle":
+            MessageLookupByLibrary.simpleMessage("Điểm"),
+        "exerciseSectionProgressSubtitle":
+            MessageLookupByLibrary.simpleMessage("Đã làm trong 7 ngày qua"),
+        "exerciseSectionProgressTitle":
+            MessageLookupByLibrary.simpleMessage("Tiến độ"),
+        "exerciseStatusesDescription": MessageLookupByLibrary.simpleMessage(
+            "Tiến trình của bạn với mỗi bài tập được theo dõi thông qua các trạng thái khác nhau như dưới đây:"),
+        "exerciseStatusesTitle":
+            MessageLookupByLibrary.simpleMessage("Trạng thái bài tập"),
+        "exerciseTitle": MessageLookupByLibrary.simpleMessage("Bài tập"),
+        "favorites": MessageLookupByLibrary.simpleMessage("Yêu thích"),
+        "forReviews": MessageLookupByLibrary.simpleMessage("chờ ôn tập"),
         "inputBioPlaceholder":
             MessageLookupByLibrary.simpleMessage("Chia sẻ gì đó về bạn đi nào"),
         "inputNamePlaceholder":
@@ -32,7 +96,11 @@ class MessageLookup extends MessageLookupByLibrary {
         "languageEn": MessageLookupByLibrary.simpleMessage("Tiếng Anh"),
         "languageTitle": MessageLookupByLibrary.simpleMessage("Ngôn ngữ"),
         "languageVi": MessageLookupByLibrary.simpleMessage("Tiếng Việt"),
+        "mastered": MessageLookupByLibrary.simpleMessage("thành thạo"),
         "name": MessageLookupByLibrary.simpleMessage("Tên"),
+        "profileTitle": MessageLookupByLibrary.simpleMessage("Cá nhân"),
+        "recents": MessageLookupByLibrary.simpleMessage("Gần đây"),
+        "reviews": MessageLookupByLibrary.simpleMessage("Ôn tập"),
         "settingsAccountAchievement":
             MessageLookupByLibrary.simpleMessage("Thành tích"),
         "settingsAccountInformation":
@@ -86,7 +154,7 @@ class MessageLookup extends MessageLookupByLibrary {
             "Xây dựng vốn từ vựng mạnh mẽ và giao tiếp hiệu quả hơn với việc luyện tập thường xuyên"),
         "update": MessageLookupByLibrary.simpleMessage("Cập nhật"),
         "userInvalidName": MessageLookupByLibrary.simpleMessage(
-            "Your name must be between 2 and 64 characters, including letters and numbers"),
+            "Tên của bạn phải có từ 2-64 ký tự, chỉ bao gồm chữ và số"),
         "version": MessageLookupByLibrary.simpleMessage("Phiên bản")
       };
 }
