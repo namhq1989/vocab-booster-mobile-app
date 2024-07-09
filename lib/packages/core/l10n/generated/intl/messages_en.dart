@@ -25,6 +25,9 @@ class MessageLookup extends MessageLookupByLibrary {
         "bio": MessageLookupByLibrary.simpleMessage("Bio"),
         "cancel": MessageLookupByLibrary.simpleMessage("Cancel"),
         "email": MessageLookupByLibrary.simpleMessage("Email"),
+        "exeeciseSessionLeaveConfirmation":
+            MessageLookupByLibrary.simpleMessage(
+                "Are you sure you want to leave?"),
         "exerciseMasteredBreak": MessageLookupByLibrary.simpleMessage(
             "If you make a mistake on an exercise, your current streak will break, and you will need to start building it again from 0"),
         "exerciseMasteredDescription": MessageLookupByLibrary.simpleMessage(
@@ -82,6 +85,28 @@ class MessageLookup extends MessageLookupByLibrary {
             "Daily exercises completion over the last 7 days"),
         "exerciseSectionProgressTitle":
             MessageLookupByLibrary.simpleMessage("Progress"),
+        "exerciseSessionModeMultipleOptionsLabel":
+            MessageLookupByLibrary.simpleMessage("Multiple options"),
+        "exerciseSessionModeMultipleOptionsSublabel":
+            MessageLookupByLibrary.simpleMessage("easier"),
+        "exerciseSessionModeTextInputLabel":
+            MessageLookupByLibrary.simpleMessage("Text input"),
+        "exerciseSessionModeTextInputSublabel":
+            MessageLookupByLibrary.simpleMessage("harder (score more points)"),
+        "exerciseSessionModeValidator": MessageLookupByLibrary.simpleMessage(
+            "You need to select a mode type"),
+        "exerciseSessionSetupFor":
+            MessageLookupByLibrary.simpleMessage("Setup for"),
+        "exerciseSessionSkillListeningSublabel":
+            MessageLookupByLibrary.simpleMessage(
+                "listen to the audio and fill in the gaps"),
+        "exerciseSessionSkillSpeakingSublabel":
+            MessageLookupByLibrary.simpleMessage("speak using the mic"),
+        "exerciseSessionSkillValidator": MessageLookupByLibrary.simpleMessage(
+            "You need to select a skill type"),
+        "exerciseSessionSkillVocabularySublabel":
+            MessageLookupByLibrary.simpleMessage(
+                "fill in the gaps with the correct vocabulary"),
         "exerciseStatusesDescription": MessageLookupByLibrary.simpleMessage(
             "Your progress with each exercise is tracked through different statuses. Here\'\'s how it works:"),
         "exerciseStatusesTitle":
@@ -96,7 +121,10 @@ class MessageLookup extends MessageLookupByLibrary {
         "languageEn": MessageLookupByLibrary.simpleMessage("English"),
         "languageTitle": MessageLookupByLibrary.simpleMessage("Language"),
         "languageVi": MessageLookupByLibrary.simpleMessage("Vietnamese"),
+        "leave": MessageLookupByLibrary.simpleMessage("Leave"),
+        "listening": MessageLookupByLibrary.simpleMessage("Listening"),
         "mastered": MessageLookupByLibrary.simpleMessage("mastered"),
+        "mode": MessageLookupByLibrary.simpleMessage("Mode"),
         "name": MessageLookupByLibrary.simpleMessage("Name"),
         "profileTitle": MessageLookupByLibrary.simpleMessage("Profile"),
         "recents": MessageLookupByLibrary.simpleMessage("Recents"),
@@ -150,11 +178,15 @@ class MessageLookup extends MessageLookupByLibrary {
         "signOut": MessageLookupByLibrary.simpleMessage("Sign out"),
         "signOutTitle": MessageLookupByLibrary.simpleMessage(
             "Are you sure you want to sign out?"),
+        "skill": MessageLookupByLibrary.simpleMessage("Skill"),
         "slogan": MessageLookupByLibrary.simpleMessage(
             "Build a stronger vocabulary and communicate more effectively with consistent practice"),
+        "speaking": MessageLookupByLibrary.simpleMessage("Speaking"),
+        "start": MessageLookupByLibrary.simpleMessage("Start"),
         "update": MessageLookupByLibrary.simpleMessage("Update"),
         "userInvalidName": MessageLookupByLibrary.simpleMessage(
             "Your name must be between 2 and 64 characters, including letters and numbers"),
-        "version": MessageLookupByLibrary.simpleMessage("Version")
+        "version": MessageLookupByLibrary.simpleMessage("Version"),
+        "vocabulary": MessageLookupByLibrary.simpleMessage("Vocabulary")
       };
 }

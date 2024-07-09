@@ -241,7 +241,7 @@ class SignInScreen extends ConsumerWidget {
   Widget _buildSettingButton(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        showModalBottomSheet<void>(
+        showModalBottomSheet(
           context: context,
           isDismissible: true,
           builder: (BuildContext context) {
@@ -250,7 +250,7 @@ class SignInScreen extends ConsumerWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisSize: MainAxisSize.min,
-                children: <Widget>[
+                children: [
                   Text(
                     L10N.of(context).settingsTitle,
                     style: const TextStyle(

@@ -6,6 +6,7 @@ import 'package:vocab_booster/packages/core/l10n/generated/l10n.dart';
 import 'package:vocab_booster/packages/core/language/language.dart';
 import 'package:vocab_booster/ui/settings/constant.dart';
 import 'package:vocab_booster/ui/widget/bottomsheet.dart';
+import 'package:vocab_booster/ui/widget/style.dart';
 
 class SettingsLanguage extends ConsumerWidget {
   const SettingsLanguage({
@@ -24,7 +25,7 @@ class SettingsLanguage extends ConsumerWidget {
       ),
       decoration: BoxDecoration(
         border: Border.all(
-          color: Theme.of(context).colorScheme.onSurface.withOpacity(0.3),
+          color: AppColor.borderColor(context),
         ),
         borderRadius: BorderRadius.circular(12),
       ),
@@ -118,7 +119,7 @@ class SettingsLanguage extends ConsumerWidget {
         ),
         decoration: BoxDecoration(
           border: Border.all(
-            color: Theme.of(context).colorScheme.onSurface.withOpacity(0.3),
+            color: AppColor.borderColor(context),
           ),
           borderRadius: BorderRadius.circular(12),
         ),

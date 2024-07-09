@@ -8,6 +8,8 @@ import 'package:syncfusion_flutter_charts/charts.dart';
 import 'package:vocab_booster/packages/core/l10n/generated/l10n.dart';
 import 'package:vocab_booster/packages/core/router/router.dart';
 import 'package:vocab_booster/packages/core/router/router.gr.dart';
+import 'package:vocab_booster/packages/exercise/presentation/session_setup.dart';
+import 'package:vocab_booster/ui/widget/style.dart';
 import 'package:vocab_booster/ui/widget/screen.dart';
 import 'package:vocab_booster/ui/widget/secondary_text.dart';
 import 'package:vocab_booster/utilities/datetime/format.dart';
@@ -152,65 +154,77 @@ class ExerciseScreen extends StatelessWidget {
   ) {
     final double doneRatio = done / total;
 
-    return Container(
-      margin: const EdgeInsets.symmetric(vertical: 8),
-      width: double.infinity,
-      padding: const EdgeInsets.all(16),
-      decoration: BoxDecoration(
-        border: Border.all(
-          color: Theme.of(context).colorScheme.onSurface.withOpacity(0.3),
-        ),
-        borderRadius: BorderRadius.circular(12),
-      ),
-      child: Row(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          SizedBox(
-            width: 60,
-            height: 68,
-            child: SvgPicture.asset(
-              'assets/images/exercise/$iconName.svg',
-              fit: BoxFit.cover,
+    return Consumer(
+      builder: (context, ref, _) {
+        return ExerciseSessionSetup(
+          cb: (SessionSetupData data) async {
+            await Future.delayed(const Duration(milliseconds: 500));
+            ref.read(appRouterProvider).push(const ExerciseSessionRoute());
+          },
+          child: Container(
+            margin: const EdgeInsets.symmetric(vertical: 8),
+            width: double.infinity,
+            padding: const EdgeInsets.all(16),
+            decoration: BoxDecoration(
+              border: Border.all(
+                color: AppColor.borderColor(context),
+              ),
+              borderRadius: BorderRadius.circular(12),
             ),
-          ),
-          const SizedBox(width: 16),
-          Expanded(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.start,
-              crossAxisAlignment: CrossAxisAlignment.start,
+            child: Row(
+              crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                Text(
-                  name,
-                  style: const TextStyle(
-                    fontSize: 16,
-                    fontWeight: FontWeight.bold,
+                SizedBox(
+                  width: 60,
+                  height: 68,
+                  child: SvgPicture.asset(
+                    'assets/images/exercise/$iconName.svg',
+                    fit: BoxFit.cover,
                   ),
                 ),
-                SecondaryText(
-                    text: '${formatNumber(done)}/${formatNumber(total)}'),
-                const SizedBox(height: 10),
-                ConstrainedBox(
-                  constraints: BoxConstraints(
-                    maxWidth: MediaQuery.sizeOf(context).width * 0.45,
+                const SizedBox(width: 16),
+                Expanded(
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        name,
+                        style: TextStyle(
+                          fontSize: 16,
+                          fontWeight: FontWeight.bold,
+                          color: Theme.of(context).colorScheme.primary,
+                        ),
+                      ),
+                      SecondaryText(
+                          text: '${formatNumber(done)}/${formatNumber(total)}'),
+                      const SizedBox(height: 10),
+                      ConstrainedBox(
+                        constraints: BoxConstraints(
+                          maxWidth: MediaQuery.sizeOf(context).width * 0.45,
+                        ),
+                        child: ShadProgress(
+                          value: doneRatio,
+                          minHeight: 6,
+                        ),
+                      ),
+                    ],
                   ),
-                  child: ShadProgress(
-                    value: doneRatio,
-                    minHeight: 6,
+                ),
+                SizedBox(
+                  width: 30,
+                  height: 30,
+                  child: Icon(
+                    LucideIcons.chevronRight,
+                    size: 20,
+                    color: Theme.of(context).colorScheme.primary,
                   ),
                 ),
               ],
             ),
           ),
-          const SizedBox(
-            width: 30,
-            height: 30,
-            child: Icon(
-              LucideIcons.chevronRight,
-              size: 20,
-            ),
-          ),
-        ],
-      ),
+        );
+      },
     );
   }
 
@@ -246,7 +260,7 @@ class ExerciseScreen extends StatelessWidget {
       ),
       decoration: BoxDecoration(
         border: Border.all(
-          color: Theme.of(context).colorScheme.onSurface.withOpacity(0.3),
+          color: AppColor.borderColor(context),
         ),
         borderRadius: BorderRadius.circular(12),
       ),
@@ -296,7 +310,7 @@ class ExerciseScreen extends StatelessWidget {
         Container(
           decoration: BoxDecoration(
             border: Border.all(
-              color: Theme.of(context).colorScheme.onSurface.withOpacity(0.3),
+              color: AppColor.borderColor(context),
             ),
             borderRadius: BorderRadius.circular(12),
           ),
@@ -357,7 +371,7 @@ class ExerciseScreen extends StatelessWidget {
         Container(
           decoration: BoxDecoration(
             border: Border.all(
-              color: Theme.of(context).colorScheme.onSurface.withOpacity(0.3),
+              color: AppColor.borderColor(context),
             ),
             borderRadius: BorderRadius.circular(12),
           ),
