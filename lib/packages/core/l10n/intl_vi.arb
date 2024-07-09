@@ -5,6 +5,11 @@
   "version": "Phiên bản",
 
   "cancel": "Hủy",
+  "start": "Bắt đầu",
+  "leave": "Thoát",
+  "vocabulary": "Vocabulary",
+  "listening": "Listening",
+  "speaking": "Speaking",
 
   "languageTitle": "Ngôn ngữ",
   "languageEn": "Tiếng Anh",
@@ -53,6 +58,8 @@
   "reviews": "Ôn tập",
   "recents": "Gần đây",
   "favorites": "Yêu thích",
+  "skill": "Kỹ năng",
+  "mode": "Chế độ",
 
   "profileTitle": "Cá nhân",
 
@@ -84,7 +91,19 @@
   "exerciseSectionLibraryTitle": "Thư viện",
   "exerciseSectionLibrarySubtitle": "Bài tập của bạn",
   "exerciseSectionProgressTitle": "Tiến độ",
-  "exerciseSectionProgressSubtitle": "Đã làm trong 7 ngày qua",
+  "exerciseSectionProgressSubtitle": "Bài tập đã làm trong 7 ngày qua",
   "exerciseSectionPointsTitle": "Điểm",
-  "exerciseSectionPointsSubtitle": "Đã nhận được trong 7 ngày qua"
+  "exerciseSectionPointsSubtitle": "Đã nhận được trong 7 ngày qua",
+
+  "exerciseSessionSetupFor": "Thiết lập cho",
+  "exerciseSessionSkillVocabularySublabel": "điền vào chỗ trống với từ vựng phù hợp",
+  "exerciseSessionSkillListeningSublabel": "nghe audio và điền vào chỗ trống",
+  "exerciseSessionSkillSpeakingSublabel": "nói qua mic",
+  "exerciseSessionSkillValidator": "Bạn cần chọn một loại kỹ năng",
+  "exerciseSessionModeMultipleOptionsLabel": "Nhiều lựa chọn",
+  "exerciseSessionModeMultipleOptionsSublabel": "dễ hơn",
+  "exerciseSessionModeTextInputLabel": "Nhập từ",
+  "exerciseSessionModeTextInputSublabel": "khó hơn (được nhiều điểm hơn)",
+  "exerciseSessionModeValidator": "Bạn cần chọn một loại chế độ",
+  "exeeciseSessionLeaveConfirmation": "Bạn có chắc là muốn thoát không?"
 }

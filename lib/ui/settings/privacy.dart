@@ -3,6 +3,7 @@ import 'package:flutter_lucide/flutter_lucide.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:vocab_booster/packages/core/l10n/generated/l10n.dart';
 import 'package:vocab_booster/ui/settings/constant.dart';
+import 'package:vocab_booster/ui/widget/style.dart';
 
 class SettingsPrivacy extends ConsumerWidget {
   const SettingsPrivacy({super.key});
@@ -17,7 +18,7 @@ class SettingsPrivacy extends ConsumerWidget {
       ),
       decoration: BoxDecoration(
         border: Border.all(
-          color: Theme.of(context).colorScheme.onSurface.withOpacity(0.3),
+          color: AppColor.borderColor(context),
         ),
         borderRadius: BorderRadius.circular(12),
       ),

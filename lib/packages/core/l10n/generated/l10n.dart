@@ -80,6 +80,56 @@ class L10N {
     );
   }
 
+  /// `Start`
+  String get start {
+    return Intl.message(
+      'Start',
+      name: 'start',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Leave`
+  String get leave {
+    return Intl.message(
+      'Leave',
+      name: 'leave',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Vocabulary`
+  String get vocabulary {
+    return Intl.message(
+      'Vocabulary',
+      name: 'vocabulary',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Listening`
+  String get listening {
+    return Intl.message(
+      'Listening',
+      name: 'listening',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Speaking`
+  String get speaking {
+    return Intl.message(
+      'Speaking',
+      name: 'speaking',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Language`
   String get languageTitle {
     return Intl.message(
@@ -480,6 +530,26 @@ class L10N {
     );
   }
 
+  /// `Skill`
+  String get skill {
+    return Intl.message(
+      'Skill',
+      name: 'skill',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Mode`
+  String get mode {
+    return Intl.message(
+      'Mode',
+      name: 'mode',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Your name must be between 2 and 64 characters, including letters and numbers`
   String get userInvalidName {
     return Intl.message(
@@ -805,6 +875,116 @@ class L10N {
     return Intl.message(
       'Daily points earned over the last 7 days',
       name: 'exerciseSectionPointsSubtitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Setup for`
+  String get exerciseSessionSetupFor {
+    return Intl.message(
+      'Setup for',
+      name: 'exerciseSessionSetupFor',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `fill in the gaps with the correct vocabulary`
+  String get exerciseSessionSkillVocabularySublabel {
+    return Intl.message(
+      'fill in the gaps with the correct vocabulary',
+      name: 'exerciseSessionSkillVocabularySublabel',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `listen to the audio and fill in the gaps`
+  String get exerciseSessionSkillListeningSublabel {
+    return Intl.message(
+      'listen to the audio and fill in the gaps',
+      name: 'exerciseSessionSkillListeningSublabel',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `speak using the mic`
+  String get exerciseSessionSkillSpeakingSublabel {
+    return Intl.message(
+      'speak using the mic',
+      name: 'exerciseSessionSkillSpeakingSublabel',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `You need to select a skill type`
+  String get exerciseSessionSkillValidator {
+    return Intl.message(
+      'You need to select a skill type',
+      name: 'exerciseSessionSkillValidator',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Multiple options`
+  String get exerciseSessionModeMultipleOptionsLabel {
+    return Intl.message(
+      'Multiple options',
+      name: 'exerciseSessionModeMultipleOptionsLabel',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `easier`
+  String get exerciseSessionModeMultipleOptionsSublabel {
+    return Intl.message(
+      'easier',
+      name: 'exerciseSessionModeMultipleOptionsSublabel',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Text input`
+  String get exerciseSessionModeTextInputLabel {
+    return Intl.message(
+      'Text input',
+      name: 'exerciseSessionModeTextInputLabel',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `harder (score more points)`
+  String get exerciseSessionModeTextInputSublabel {
+    return Intl.message(
+      'harder (score more points)',
+      name: 'exerciseSessionModeTextInputSublabel',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `You need to select a mode type`
+  String get exerciseSessionModeValidator {
+    return Intl.message(
+      'You need to select a mode type',
+      name: 'exerciseSessionModeValidator',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Are you sure you want to leave?`
+  String get exeeciseSessionLeaveConfirmation {
+    return Intl.message(
+      'Are you sure you want to leave?',
+      name: 'exeeciseSessionLeaveConfirmation',
       desc: '',
       args: [],
     );

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:shadcn_ui/shadcn_ui.dart';
 import 'package:vocab_booster/packages/auth/auth.dart';
 import 'package:vocab_booster/packages/core/l10n/generated/l10n.dart';
@@ -36,10 +37,12 @@ class _AppState extends ConsumerState<App> {
       title: 'Vocab Booster',
       debugShowCheckedModeBanner: false,
       theme: ShadThemeData(
+        textTheme: ShadTextTheme.fromGoogleFont(GoogleFonts.inter),
         brightness: Brightness.light,
         colorScheme: const ShadYellowColorScheme.light(),
       ),
       darkTheme: ShadThemeData(
+        textTheme: ShadTextTheme.fromGoogleFont(GoogleFonts.inter),
         brightness: Brightness.dark,
         colorScheme: const ShadYellowColorScheme.dark(),
       ),

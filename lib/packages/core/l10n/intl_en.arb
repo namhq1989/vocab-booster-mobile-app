@@ -5,6 +5,11 @@
   "version": "Version",
 
   "cancel": "Cancel",
+  "start": "Start",
+  "leave": "Leave",
+  "vocabulary": "Vocabulary",
+  "listening": "Listening",
+  "speaking": "Speaking",
 
   "languageTitle": "Language",
   "languageEn": "English",
@@ -51,6 +56,8 @@
   "reviews": "Reviews",
   "recents": "Recents",
   "favorites": "Favorites",
+  "skill": "Skill",
+  "mode": "Mode",
 
   "userInvalidName": "Your name must be between 2 and 64 characters, including letters and numbers",
 
@@ -86,5 +93,17 @@
   "exerciseSectionProgressTitle": "Progress",
   "exerciseSectionProgressSubtitle": "Daily exercises completion over the last 7 days",
   "exerciseSectionPointsTitle": "Collections",
-  "exerciseSectionPointsSubtitle": "Daily points earned over the last 7 days"
+  "exerciseSectionPointsSubtitle": "Daily points earned over the last 7 days",
+
+  "exerciseSessionSetupFor": "Setup for",
+  "exerciseSessionSkillVocabularySublabel": "fill in the gaps with the correct vocabulary",
+  "exerciseSessionSkillListeningSublabel": "listen to the audio and fill in the gaps",
+  "exerciseSessionSkillSpeakingSublabel": "speak using the mic",
+  "exerciseSessionSkillValidator": "You need to select a skill type",
+  "exerciseSessionModeMultipleOptionsLabel": "Multiple options",
+  "exerciseSessionModeMultipleOptionsSublabel": "easier",
+  "exerciseSessionModeTextInputLabel": "Text input",
+  "exerciseSessionModeTextInputSublabel": "harder (score more points)",
+  "exerciseSessionModeValidator": "You need to select a mode type",
+  "exeeciseSessionLeaveConfirmation": "Are you sure you want to leave?"
 }

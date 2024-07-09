@@ -25,6 +25,9 @@ class MessageLookup extends MessageLookupByLibrary {
         "bio": MessageLookupByLibrary.simpleMessage("Giới thiệu"),
         "cancel": MessageLookupByLibrary.simpleMessage("Hủy"),
         "email": MessageLookupByLibrary.simpleMessage("Email"),
+        "exeeciseSessionLeaveConfirmation":
+            MessageLookupByLibrary.simpleMessage(
+                "Bạn có chắc là muốn thoát không?"),
         "exerciseMasteredBreak": MessageLookupByLibrary.simpleMessage(
             "Nếu bạn làm sai ở một bài tập, chuỗi hiện tại của bạn sẽ bị mất, và bạn sẽ cần bắt đầu lại từ mốc 0"),
         "exerciseMasteredDescription": MessageLookupByLibrary.simpleMessage(
@@ -78,10 +81,33 @@ class MessageLookup extends MessageLookupByLibrary {
             "Đã nhận được trong 7 ngày qua"),
         "exerciseSectionPointsTitle":
             MessageLookupByLibrary.simpleMessage("Điểm"),
-        "exerciseSectionProgressSubtitle":
-            MessageLookupByLibrary.simpleMessage("Đã làm trong 7 ngày qua"),
+        "exerciseSectionProgressSubtitle": MessageLookupByLibrary.simpleMessage(
+            "Bài tập đã làm trong 7 ngày qua"),
         "exerciseSectionProgressTitle":
             MessageLookupByLibrary.simpleMessage("Tiến độ"),
+        "exerciseSessionModeMultipleOptionsLabel":
+            MessageLookupByLibrary.simpleMessage("Nhiều lựa chọn"),
+        "exerciseSessionModeMultipleOptionsSublabel":
+            MessageLookupByLibrary.simpleMessage("dễ hơn"),
+        "exerciseSessionModeTextInputLabel":
+            MessageLookupByLibrary.simpleMessage("Nhập từ"),
+        "exerciseSessionModeTextInputSublabel":
+            MessageLookupByLibrary.simpleMessage(
+                "khó hơn (được nhiều điểm hơn)"),
+        "exerciseSessionModeValidator": MessageLookupByLibrary.simpleMessage(
+            "Bạn cần chọn một loại chế độ"),
+        "exerciseSessionSetupFor":
+            MessageLookupByLibrary.simpleMessage("Thiết lập cho"),
+        "exerciseSessionSkillListeningSublabel":
+            MessageLookupByLibrary.simpleMessage(
+                "nghe audio và điền vào chỗ trống"),
+        "exerciseSessionSkillSpeakingSublabel":
+            MessageLookupByLibrary.simpleMessage("nói qua mic"),
+        "exerciseSessionSkillValidator": MessageLookupByLibrary.simpleMessage(
+            "Bạn cần chọn một loại kỹ năng"),
+        "exerciseSessionSkillVocabularySublabel":
+            MessageLookupByLibrary.simpleMessage(
+                "điền vào chỗ trống với từ vựng phù hợp"),
         "exerciseStatusesDescription": MessageLookupByLibrary.simpleMessage(
             "Tiến trình của bạn với mỗi bài tập được theo dõi thông qua các trạng thái khác nhau như dưới đây:"),
         "exerciseStatusesTitle":
@@ -96,7 +122,10 @@ class MessageLookup extends MessageLookupByLibrary {
         "languageEn": MessageLookupByLibrary.simpleMessage("Tiếng Anh"),
         "languageTitle": MessageLookupByLibrary.simpleMessage("Ngôn ngữ"),
         "languageVi": MessageLookupByLibrary.simpleMessage("Tiếng Việt"),
+        "leave": MessageLookupByLibrary.simpleMessage("Thoát"),
+        "listening": MessageLookupByLibrary.simpleMessage("Listening"),
         "mastered": MessageLookupByLibrary.simpleMessage("thành thạo"),
+        "mode": MessageLookupByLibrary.simpleMessage("Chế độ"),
         "name": MessageLookupByLibrary.simpleMessage("Tên"),
         "profileTitle": MessageLookupByLibrary.simpleMessage("Cá nhân"),
         "recents": MessageLookupByLibrary.simpleMessage("Gần đây"),
@@ -150,11 +179,15 @@ class MessageLookup extends MessageLookupByLibrary {
         "signOut": MessageLookupByLibrary.simpleMessage("Đăng xuất"),
         "signOutTitle": MessageLookupByLibrary.simpleMessage(
             "Bạn có thật sự muốn đăng xuất không?"),
+        "skill": MessageLookupByLibrary.simpleMessage("Kỹ năng"),
         "slogan": MessageLookupByLibrary.simpleMessage(
             "Xây dựng vốn từ vựng mạnh mẽ và giao tiếp hiệu quả hơn với việc luyện tập thường xuyên"),
+        "speaking": MessageLookupByLibrary.simpleMessage("Speaking"),
+        "start": MessageLookupByLibrary.simpleMessage("Bắt đầu"),
         "update": MessageLookupByLibrary.simpleMessage("Cập nhật"),
         "userInvalidName": MessageLookupByLibrary.simpleMessage(
             "Tên của bạn phải có từ 2-64 ký tự, chỉ bao gồm chữ và số"),
-        "version": MessageLookupByLibrary.simpleMessage("Phiên bản")
+        "version": MessageLookupByLibrary.simpleMessage("Phiên bản"),
+        "vocabulary": MessageLookupByLibrary.simpleMessage("Vocabulary")
       };
 }

@@ -4,6 +4,7 @@ import 'package:shadcn_ui/shadcn_ui.dart';
 import 'package:vocab_booster/packages/core/l10n/generated/l10n.dart';
 import 'package:vocab_booster/packages/core/theme/theme.dart';
 import 'package:vocab_booster/ui/settings/constant.dart';
+import 'package:vocab_booster/ui/widget/style.dart';
 
 class SettingsDarkMode extends ConsumerWidget {
   const SettingsDarkMode({super.key});
@@ -20,7 +21,7 @@ class SettingsDarkMode extends ConsumerWidget {
       ),
       decoration: BoxDecoration(
         border: Border.all(
-          color: Theme.of(context).colorScheme.onSurface.withOpacity(0.3),
+          color: AppColor.borderColor(context),
         ),
         borderRadius: BorderRadius.circular(12),
       ),
