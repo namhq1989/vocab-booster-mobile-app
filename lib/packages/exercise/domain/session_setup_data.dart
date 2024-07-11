@@ -17,6 +17,19 @@ enum SessionSkill {
         return 'speaking';
     }
   }
+
+  static SessionSkill fromValue(String value) {
+    switch (value) {
+      case 'vocabulary':
+        return SessionSkill.vocabulary;
+      case 'listening':
+        return SessionSkill.listening;
+      case 'speaking':
+        return SessionSkill.speaking;
+      default:
+        throw ArgumentError('Unknown SessionSkill value: $value');
+    }
+  }
 }
 
 enum SessionMode {
@@ -34,6 +47,17 @@ enum SessionMode {
 
   bool get isMultipleOptions => this == SessionMode.multipleOptions;
   bool get isTextInput => this == SessionMode.textInput;
+
+  static SessionMode fromValue(String value) {
+    switch (value) {
+      case 'multiple_options':
+        return SessionMode.multipleOptions;
+      case 'text_input':
+        return SessionMode.textInput;
+      default:
+        throw ArgumentError('Unknown SessionMode value: $value');
+    }
+  }
 }
 
 @freezed

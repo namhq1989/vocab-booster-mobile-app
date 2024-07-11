@@ -8,6 +8,7 @@ import 'package:syncfusion_flutter_charts/charts.dart';
 import 'package:vocab_booster/packages/core/l10n/generated/l10n.dart';
 import 'package:vocab_booster/packages/core/router/router.dart';
 import 'package:vocab_booster/packages/core/router/router.gr.dart';
+import 'package:vocab_booster/packages/exercise/domain/session_setup_data.dart';
 import 'package:vocab_booster/packages/exercise/presentation/session_setup.dart';
 import 'package:vocab_booster/ui/widget/style.dart';
 import 'package:vocab_booster/ui/widget/screen.dart';
@@ -159,7 +160,9 @@ class ExerciseScreen extends StatelessWidget {
         return ExerciseSessionSetup(
           cb: (SessionSetupData data) async {
             await Future.delayed(const Duration(milliseconds: 500));
-            ref.read(appRouterProvider).push(const ExerciseSessionRoute());
+            ref
+                .read(appRouterProvider)
+                .push(ExerciseSessionRoute(setupData: data));
           },
           child: Container(
             margin: const EdgeInsets.symmetric(vertical: 8),
