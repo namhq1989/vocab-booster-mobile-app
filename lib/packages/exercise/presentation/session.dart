@@ -7,6 +7,7 @@ import 'package:shadcn_ui/shadcn_ui.dart';
 import 'package:vocab_booster/packages/core/l10n/generated/l10n.dart';
 import 'package:vocab_booster/packages/core/router/router.dart';
 import 'package:vocab_booster/packages/exercise/domain/exercise.dart';
+import 'package:vocab_booster/packages/exercise/domain/session_setup_data.dart';
 import 'package:vocab_booster/packages/exercise/presentation/slide_up_number.dart';
 import 'package:vocab_booster/packages/exercise/provider/session.dart';
 import 'package:vocab_booster/ui/widget/appbar_title.dart';
@@ -20,7 +21,9 @@ import 'package:vocab_booster/utilities/extension/string.dart';
 
 @RoutePage()
 class ExerciseSessionScreen extends ConsumerStatefulWidget {
-  const ExerciseSessionScreen({super.key});
+  const ExerciseSessionScreen({super.key, required this.setupData});
+
+  final SessionSetupData setupData;
 
   @override
   ConsumerState<ExerciseSessionScreen> createState() =>
@@ -29,11 +32,20 @@ class ExerciseSessionScreen extends ConsumerStatefulWidget {
 
 class _ExerciseSessionScreenState extends ConsumerState<ExerciseSessionScreen> {
   @override
+  void initState() {
+    super.initState();
+
+    ref
+        .read(sessionExercisesProvider.notifier)
+        .fetchExercises(widget.setupData);
+  }
+
+  @override
   Widget build(BuildContext context) {
     final exercises = ref.watch(sessionExercisesProvider);
 
     return exercises.when(
-      data: (data) {
+      data: (state) {
         return PopScope(
           canPop: false,
           onPopInvoked: (_) async {
@@ -85,61 +97,70 @@ class _ExerciseSessionScreenState extends ConsumerState<ExerciseSessionScreen> {
               ),
               leading: const AutoLeadingButton(),
             ),
-            body: SingleChildScrollView(
-              child: Column(
-                children: [
-                  !data.isCompleted
-                      ? Column(
+            body: state.isFetching
+                ? const Center(
+                    child: CircularProgressIndicator(),
+                  )
+                : state.exercises.isEmpty
+                    ? const Center(
+                        child: Text('NO EXERCISES'),
+                      )
+                    : SingleChildScrollView(
+                        child: Column(
                           children: [
-                            Padding(
-                              padding: const EdgeInsets.all(24),
-                              child: Column(
-                                children: [
-                                  _buildProgressingBar(context, data),
-                                  const SizedBox(height: 40),
-                                  _buildInformation(context, data),
-                                  const SizedBox(height: 20),
-                                ],
-                              ),
-                            ),
-                            data.isEvaluating
-                                ? const Column(
+                            !state.isCompleted
+                                ? Column(
                                     children: [
-                                      EvaluatingText(),
-                                      SizedBox(height: 40),
+                                      Padding(
+                                        padding: const EdgeInsets.all(24),
+                                        child: Column(
+                                          children: [
+                                            _buildProgressingBar(
+                                                context, state),
+                                            const SizedBox(height: 40),
+                                            _buildInformation(context, state),
+                                            const SizedBox(height: 20),
+                                          ],
+                                        ),
+                                      ),
+                                      state.isEvaluating
+                                          ? const Column(
+                                              children: [
+                                                EvaluatingText(),
+                                                SizedBox(height: 40),
+                                              ],
+                                            )
+                                          : const SizedBox.shrink(),
+                                      _buildContent(context, state),
                                     ],
                                   )
-                                : const SizedBox.shrink(),
-                            _buildContent(context, data),
-                          ],
-                        )
-                      : Column(
-                          children: [
-                            Padding(
-                              padding: const EdgeInsets.all(24),
-                              child: Stack(
-                                children: [
-                                  Lottie.asset(
-                                    'assets/images/exercise/confetti.json',
-                                    fit: BoxFit.cover,
-                                    repeat: false,
+                                : Column(
+                                    children: [
+                                      Padding(
+                                        padding: const EdgeInsets.all(24),
+                                        child: Stack(
+                                          children: [
+                                            Lottie.asset(
+                                              'assets/images/exercise/confetti.json',
+                                              fit: BoxFit.cover,
+                                              repeat: false,
+                                            ),
+                                            _buildResult(context, state),
+                                          ],
+                                        ),
+                                      ),
+                                      // _buildContent(context, data),
+                                    ],
                                   ),
-                                  _buildResult(context, data),
-                                ],
-                              ),
-                            ),
-                            // _buildContent(context, data),
                           ],
                         ),
-                ],
-              ),
-            ),
+                      ),
           ),
         );
       },
       error: (error, stackTrace) {
-        return const Center(
-          child: Text('Something went wrong'),
+        return Center(
+          child: Text('Something went wrong: ${error.toString()}'),
         );
       },
       loading: () {

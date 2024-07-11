@@ -21,6 +21,7 @@ mixin _$SessionExercisesState {
   int get points => throw _privateConstructorUsedError;
   bool get isCompleted => throw _privateConstructorUsedError;
   bool get isEvaluating => throw _privateConstructorUsedError;
+  bool get isFetching => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $SessionExercisesStateCopyWith<SessionExercisesState> get copyWith =>
@@ -38,7 +39,8 @@ abstract class $SessionExercisesStateCopyWith<$Res> {
       List<Exercise> incorrects,
       int points,
       bool isCompleted,
-      bool isEvaluating});
+      bool isEvaluating,
+      bool isFetching});
 }
 
 /// @nodoc
@@ -60,6 +62,7 @@ class _$SessionExercisesStateCopyWithImpl<$Res,
     Object? points = null,
     Object? isCompleted = null,
     Object? isEvaluating = null,
+    Object? isFetching = null,
   }) {
     return _then(_value.copyWith(
       exercises: null == exercises
@@ -82,6 +85,10 @@ class _$SessionExercisesStateCopyWithImpl<$Res,
           ? _value.isEvaluating
           : isEvaluating // ignore: cast_nullable_to_non_nullable
               as bool,
+      isFetching: null == isFetching
+          ? _value.isFetching
+          : isFetching // ignore: cast_nullable_to_non_nullable
+              as bool,
     ) as $Val);
   }
 }
@@ -100,7 +107,8 @@ abstract class _$$SessionExercisesStateImplCopyWith<$Res>
       List<Exercise> incorrects,
       int points,
       bool isCompleted,
-      bool isEvaluating});
+      bool isEvaluating,
+      bool isFetching});
 }
 
 /// @nodoc
@@ -120,6 +128,7 @@ class __$$SessionExercisesStateImplCopyWithImpl<$Res>
     Object? points = null,
     Object? isCompleted = null,
     Object? isEvaluating = null,
+    Object? isFetching = null,
   }) {
     return _then(_$SessionExercisesStateImpl(
       exercises: null == exercises
@@ -142,6 +151,10 @@ class __$$SessionExercisesStateImplCopyWithImpl<$Res>
           ? _value.isEvaluating
           : isEvaluating // ignore: cast_nullable_to_non_nullable
               as bool,
+      isFetching: null == isFetching
+          ? _value.isFetching
+          : isFetching // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -154,7 +167,8 @@ class _$SessionExercisesStateImpl implements _SessionExercisesState {
       required final List<Exercise> incorrects,
       required this.points,
       required this.isCompleted,
-      required this.isEvaluating})
+      required this.isEvaluating,
+      required this.isFetching})
       : _exercises = exercises,
         _incorrects = incorrects;
 
@@ -180,10 +194,12 @@ class _$SessionExercisesStateImpl implements _SessionExercisesState {
   final bool isCompleted;
   @override
   final bool isEvaluating;
+  @override
+  final bool isFetching;
 
   @override
   String toString() {
-    return 'SessionExercisesState(exercises: $exercises, incorrects: $incorrects, points: $points, isCompleted: $isCompleted, isEvaluating: $isEvaluating)';
+    return 'SessionExercisesState(exercises: $exercises, incorrects: $incorrects, points: $points, isCompleted: $isCompleted, isEvaluating: $isEvaluating, isFetching: $isFetching)';
   }
 
   @override
@@ -199,7 +215,9 @@ class _$SessionExercisesStateImpl implements _SessionExercisesState {
             (identical(other.isCompleted, isCompleted) ||
                 other.isCompleted == isCompleted) &&
             (identical(other.isEvaluating, isEvaluating) ||
-                other.isEvaluating == isEvaluating));
+                other.isEvaluating == isEvaluating) &&
+            (identical(other.isFetching, isFetching) ||
+                other.isFetching == isFetching));
   }
 
   @override
@@ -209,7 +227,8 @@ class _$SessionExercisesStateImpl implements _SessionExercisesState {
       const DeepCollectionEquality().hash(_incorrects),
       points,
       isCompleted,
-      isEvaluating);
+      isEvaluating,
+      isFetching);
 
   @JsonKey(ignore: true)
   @override
@@ -225,7 +244,8 @@ abstract class _SessionExercisesState implements SessionExercisesState {
       required final List<Exercise> incorrects,
       required final int points,
       required final bool isCompleted,
-      required final bool isEvaluating}) = _$SessionExercisesStateImpl;
+      required final bool isEvaluating,
+      required final bool isFetching}) = _$SessionExercisesStateImpl;
 
   @override
   List<Exercise> get exercises;
@@ -237,6 +257,8 @@ abstract class _SessionExercisesState implements SessionExercisesState {
   bool get isCompleted;
   @override
   bool get isEvaluating;
+  @override
+  bool get isFetching;
   @override
   @JsonKey(ignore: true)
   _$$SessionExercisesStateImplCopyWith<_$SessionExercisesStateImpl>

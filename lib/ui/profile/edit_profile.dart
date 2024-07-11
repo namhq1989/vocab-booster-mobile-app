@@ -149,12 +149,12 @@ class _ProfileEditScreenState extends State<ProfileEditScreen> {
                 width: double.infinity,
                 text: Text(L10N.of(context).update),
                 onPressed: () {
-                  if (_formKey.currentState!.saveAndValidate()) {
-                    print(
-                        'validation succeeded with ${_formKey.currentState!.value}');
-                  } else {
-                    print('validation failed');
-                  }
+                  // if (_formKey.currentState!.saveAndValidate()) {
+                  //   print(
+                  //       'validation succeeded with ${_formKey.currentState!.value}');
+                  // } else {
+                  //   print('validation failed');
+                  // }
                 },
               ),
             ],

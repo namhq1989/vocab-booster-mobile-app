@@ -5,13 +5,6 @@ import 'package:vocab_booster/packages/exercise/domain/session_setup_data.dart';
 import 'package:vocab_booster/ui/widget/bottomsheet.dart';
 import 'package:vocab_booster/ui/widget/radio_option.dart';
 
-class SessionSetupData {
-  SessionSetupData({required this.skill, required this.mode});
-
-  final String skill;
-  final String mode;
-}
-
 class ExerciseSessionSetup extends StatefulWidget {
   const ExerciseSessionSetup(
       {super.key, required this.child, required this.cb});
@@ -127,8 +120,10 @@ class _ExerciseSessionSetupState extends State<ExerciseSessionSetup> {
                         if (_formKey.currentState!.saveAndValidate()) {
                           Navigator.of(context).pop(true);
                           widget.cb(SessionSetupData(
-                            skill: _formKey.currentState!.value['skill'],
-                            mode: _formKey.currentState!.value['mode'],
+                            skill: SessionSkill.fromValue(
+                                _formKey.currentState!.value['skill']),
+                            mode: SessionMode.fromValue(
+                                _formKey.currentState!.value['mode']),
                           ));
                         } else {
                           ShadToaster.of(context).show(
