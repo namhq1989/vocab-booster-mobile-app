@@ -1,5 +1,6 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:vocab_booster/packages/core/database/prefs.dart';
+import 'package:intl/intl.dart';
+import 'package:vocab_booster/packages/core/database/database.dart';
 
 final silentLanguageProvider = Provider<String>(
   (ref) => throw UnimplementedError(),
@@ -14,7 +15,6 @@ class LanguageState extends StateNotifier<String> {
   final Ref ref;
 
   final _flagAssetsPath = 'assets/images/misc';
-  final String _keyLanguage = 'language';
   final Map<String, String> _languages = {
     'en': 'en',
     'vi': 'vi',
@@ -24,10 +24,9 @@ class LanguageState extends StateNotifier<String> {
     _initialize();
   }
 
-  void _initialize() async {
-    final prefs = await ref.read(prefsProvider.future);
-    final mode = prefs.getString(_keyLanguage);
-    state = _getLanguage(mode);
+  void _initialize() {
+    final lang = ref.read(appDatabaseProvider.notifier).getLanguage();
+    state = _getLanguage(lang);
   }
 
   String _getLanguage(String? lang) {
@@ -35,12 +34,11 @@ class LanguageState extends StateNotifier<String> {
   }
 
   void switchLanguage(String lang) async {
-    final prefs = await ref.read(prefsProvider.future);
-
-    final currentLang = _getLanguage(prefs.getString(_keyLanguage));
+    final currentLang =
+        _getLanguage(ref.read(appDatabaseProvider.notifier).getLanguage());
     if (currentLang == lang) return;
 
-    await prefs.setString(_keyLanguage, lang);
+    await ref.read(appDatabaseProvider.notifier).setLanguage(lang);
     state = lang;
   }
 
@@ -53,5 +51,9 @@ class LanguageState extends StateNotifier<String> {
     }
 
     return '$_flagAssetsPath/$flag.svg';
+  }
+
+  String getTranslatedString(String key) {
+    return Intl.message(key, name: key, locale: state);
   }
 }

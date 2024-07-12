@@ -11,6 +11,10 @@
   "listening": "Listening",
   "speaking": "Speaking",
 
+  "success": "Thành công!",
+  "errorCommon": "Đã có lỗi xảy ra, vui lòng thử lại",
+  "errorInvalidForm": "Dữ liệu không đúng, vui lòng thử lại",
+
   "languageTitle": "Ngôn ngữ",
   "languageEn": "Tiếng Anh",
   "languageVi": "Tiếng Việt",
@@ -40,6 +44,7 @@
   "signInFreeText": "Hoàn toàn miễn phí! Đăng nhập và bắt đầu học nào!",
   "signInWithGoogle": "Đăng nhập với Google",
   "signInWithFacebook": "Đăng nhập với Facebook",
+  "signInErrorCannotGetGoogleToken": "Lỗi đăng nhâp với Google, vui lòng thử lại",
 
   "signOut": "Đăng xuất",
   "signOutTitle": "Bạn có thật sự muốn đăng xuất không?",

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:shadcn_ui/shadcn_ui.dart';
-import 'package:vocab_booster/packages/auth/auth.dart';
+import 'package:vocab_booster/packages/auth/provider/auth.dart';
 import 'package:vocab_booster/packages/core/l10n/generated/l10n.dart';
 import 'package:vocab_booster/ui/widget/bottomsheet.dart';
 
@@ -29,8 +29,8 @@ class SettingsSignOut extends ConsumerWidget {
                   ShadButton.destructive(
                     width: double.infinity,
                     text: Text(L10N.of(context).signOut),
-                    onPressed: () {
-                      ref.read(authenticationProvider.notifier).setUserId('');
+                    onPressed: () async {
+                      await ref.read(authenticationProvider.notifier).signOut();
                     },
                   ),
                   const SizedBox(height: 8),

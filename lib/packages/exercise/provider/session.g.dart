@@ -159,7 +159,7 @@ class _GetSessionExercisesProviderElement
       (origin as GetSessionExercisesProvider).setupData;
 }
 
-String _$sessionExercisesHash() => r'f41c0b9a88f0c35394bfd7db0d1c7b4c2aa23fff';
+String _$sessionExercisesHash() => r'0f3b787d7e1678db93191871e65e44ef8fba933b';
 
 /// See also [SessionExercises].
 @ProviderFor(SessionExercises)

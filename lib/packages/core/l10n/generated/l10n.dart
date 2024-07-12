@@ -130,6 +130,36 @@ class L10N {
     );
   }
 
+  /// `Success`
+  String get success {
+    return Intl.message(
+      'Success',
+      name: 'success',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Something went wrong. Please try again later.`
+  String get errorCommon {
+    return Intl.message(
+      'Something went wrong. Please try again later.',
+      name: 'errorCommon',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Form data is invalid. Please try again.`
+  String get errorInvalidForm {
+    return Intl.message(
+      'Form data is invalid. Please try again.',
+      name: 'errorInvalidForm',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Language`
   String get languageTitle {
     return Intl.message(
@@ -395,6 +425,16 @@ class L10N {
     return Intl.message(
       'Sign in with Facebook',
       name: 'signInWithFacebook',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Cannot get Google token, please try again later`
+  String get signInErrorCannotGetGoogleToken {
+    return Intl.message(
+      'Cannot get Google token, please try again later',
+      name: 'signInErrorCannotGetGoogleToken',
       desc: '',
       args: [],
     );

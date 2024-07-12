@@ -1,0 +1,54 @@
+{
+  "project_info": {
+    "project_number": "829826821481",
+    "project_id": "vocab-booster-91wak0",
+    "storage_bucket": "vocab-booster-91wak0.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:829826821481:android:1653262a7c3422f2a261f8",
+        "android_client_info": {
+          "package_name": "vocab.booster.app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "829826821481-1dg04vv5odq3rgjtotvmtvo6ja43bids.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "vocab.booster.app",
+            "certificate_hash": "1ef9ef85912539d6c27c0a9c586d31824314bced"
+          }
+        },
+        {
+          "client_id": "829826821481-n1rgbbv7b4ns1uai2deaa2ob35dqefvf.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB0IGRLlDB_S_1JyUjbd14LubrEK6424Bw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "829826821481-14ktsa0kglum5bs3vfnkmhoq5dununjm.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "829826821481-d2nf673a37tmbhptnkmef8vci63pflq2.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "vocab.booster.app"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -4,8 +4,9 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:introduction_screen/introduction_screen.dart';
 import 'package:shadcn_ui/shadcn_ui.dart';
-import 'package:vocab_booster/packages/auth/auth.dart';
+import 'package:vocab_booster/packages/auth/provider/auth.dart';
 import 'package:vocab_booster/packages/core/l10n/generated/l10n.dart';
+import 'package:vocab_booster/packages/core/language/language.dart';
 import 'package:vocab_booster/ui/settings/language.dart';
 import 'package:vocab_booster/ui/settings/dark_mode.dart';
 import 'package:vocab_booster/ui/widget/bottomsheet.dart';
@@ -166,8 +167,21 @@ class SignInScreen extends ConsumerWidget {
             ref,
             L10N.of(context).signInWithGoogle,
             'google',
-            () {
-              ref.watch(authenticationProvider.notifier).setUserId('1');
+            () async {
+              final error = await ref
+                  .read(authenticationProvider.notifier)
+                  .signInWithGoogle();
+              if (error != null && context.mounted) {
+                ShadToaster.of(context).show(
+                  ShadToast.destructive(
+                    description: Text(
+                      ref
+                          .read(appLanguageProvider.notifier)
+                          .getTranslatedString(error.key),
+                    ),
+                  ),
+                );
+              }
             },
           ),
           _buildSocialSignInButton(
@@ -176,7 +190,7 @@ class SignInScreen extends ConsumerWidget {
             L10N.of(context).signInWithFacebook,
             'facebook',
             () {
-              ref.watch(authenticationProvider.notifier).setUserId('1');
+              // ref.watch(authenticationProvider.notifier).setUserId('1');
             },
           ),
           const SizedBox(

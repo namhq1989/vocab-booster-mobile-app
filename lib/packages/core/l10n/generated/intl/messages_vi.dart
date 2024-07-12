@@ -25,6 +25,10 @@ class MessageLookup extends MessageLookupByLibrary {
         "bio": MessageLookupByLibrary.simpleMessage("Giới thiệu"),
         "cancel": MessageLookupByLibrary.simpleMessage("Hủy"),
         "email": MessageLookupByLibrary.simpleMessage("Email"),
+        "errorCommon": MessageLookupByLibrary.simpleMessage(
+            "Đã có lỗi xảy ra, vui lòng thử lại"),
+        "errorInvalidForm": MessageLookupByLibrary.simpleMessage(
+            "Dữ liệu không đúng, vui lòng thử lại"),
         "exeeciseSessionLeaveConfirmation":
             MessageLookupByLibrary.simpleMessage(
                 "Bạn có chắc là muốn thoát không?"),
@@ -150,6 +154,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "settingsPreferenceTitle":
             MessageLookupByLibrary.simpleMessage("Thiết lập"),
         "settingsTitle": MessageLookupByLibrary.simpleMessage("Thiết lập"),
+        "signInErrorCannotGetGoogleToken": MessageLookupByLibrary.simpleMessage(
+            "Lỗi đăng nhâp với Google, vui lòng thử lại"),
         "signInFreeText": MessageLookupByLibrary.simpleMessage(
             "Hoàn toàn miễn phí! Đăng nhập và bắt đầu học nào!"),
         "signInOnboardingSlide0Content": MessageLookupByLibrary.simpleMessage(
@@ -184,6 +190,7 @@ class MessageLookup extends MessageLookupByLibrary {
             "Xây dựng vốn từ vựng mạnh mẽ và giao tiếp hiệu quả hơn với việc luyện tập thường xuyên"),
         "speaking": MessageLookupByLibrary.simpleMessage("Speaking"),
         "start": MessageLookupByLibrary.simpleMessage("Bắt đầu"),
+        "success": MessageLookupByLibrary.simpleMessage("Thành công!"),
         "update": MessageLookupByLibrary.simpleMessage("Cập nhật"),
         "userInvalidName": MessageLookupByLibrary.simpleMessage(
             "Tên của bạn phải có từ 2-64 ký tự, chỉ bao gồm chữ và số"),

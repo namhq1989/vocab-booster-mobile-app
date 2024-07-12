@@ -29,3 +29,5 @@ doc/api/
 .idea
 .vscode
 custom_lint.log
+
+firebase-debug.log

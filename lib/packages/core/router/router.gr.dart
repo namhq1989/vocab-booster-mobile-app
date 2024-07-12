@@ -10,17 +10,18 @@
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'package:auto_route/auto_route.dart' as _i10;
 import 'package:flutter/material.dart' as _i11;
+import 'package:vocab_booster/packages/auth/presentation/sign_in.dart' as _i8;
 import 'package:vocab_booster/packages/exercise/domain/session_setup_data.dart'
     as _i12;
 import 'package:vocab_booster/packages/exercise/presentation/main.dart' as _i2;
 import 'package:vocab_booster/packages/exercise/presentation/rule.dart' as _i1;
 import 'package:vocab_booster/packages/exercise/presentation/session.dart'
     as _i3;
+import 'package:vocab_booster/packages/user/presentation/edit_profile.dart'
+    as _i6;
+import 'package:vocab_booster/packages/user/presentation/view.dart' as _i7;
 import 'package:vocab_booster/ui/home/view.dart' as _i4;
 import 'package:vocab_booster/ui/navbar/navbar.dart' as _i5;
-import 'package:vocab_booster/ui/profile/edit_profile.dart' as _i6;
-import 'package:vocab_booster/ui/profile/view.dart' as _i7;
-import 'package:vocab_booster/ui/sign_in/sign_in.dart' as _i8;
 import 'package:vocab_booster/ui/vocabulary/view.dart' as _i9;
 
 abstract class $AppRouter extends _i10.RootStackRouter {

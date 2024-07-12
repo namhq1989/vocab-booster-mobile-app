@@ -2,18 +2,25 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:vocab_booster/app.dart';
+import 'package:vocab_booster/packages/auth/provider/firebase.dart';
+import 'package:vocab_booster/packages/core/config/config.dart';
+import 'package:vocab_booster/packages/core/database/database.dart';
+import 'package:vocab_booster/packages/core/http/http.dart';
 
 part 'startup.g.dart';
 
 @Riverpod(keepAlive: true)
 Future<void> appStartup(AppStartupRef ref) async {
   ref.onDispose(() {
-    // ref.invalidate(appStorageProvider);
-    // ref.invalidate(appHttpProvider);
+    ref.invalidate(appConfigProvider);
+    ref.invalidate(appDatabaseProvider);
+    ref.invalidate(appHttpProvider);
+    ref.invalidate(firebaseGateProvider);
   });
-  // await ref.watch(appConfigProvider.future);
-  // await ref.watch(appStorageProvider.future);
-  // await ref.watch(appHttpProvider.future);
+  await ref.watch(appConfigProvider.future);
+  await ref.watch(appDatabaseProvider.future);
+  await ref.watch(appHttpProvider.future);
+  await ref.watch(firebaseGateProvider.future);
 }
 
 class AppStartup extends ConsumerWidget {
@@ -44,8 +51,10 @@ class AppStartupError extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: Text(message),
+    return Scaffold(
+      body: Center(
+        child: Text(message),
+      ),
     );
   }
 }
