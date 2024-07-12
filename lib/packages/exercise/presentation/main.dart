@@ -158,11 +158,9 @@ class ExerciseScreen extends StatelessWidget {
     return Consumer(
       builder: (context, ref, _) {
         return ExerciseSessionSetup(
-          cb: (SessionSetupData data) async {
+          cb: () async {
             await Future.delayed(const Duration(milliseconds: 500));
-            ref
-                .read(appRouterProvider)
-                .push(ExerciseSessionRoute(setupData: data));
+            ref.read(appRouterProvider).push(const ExerciseSessionRoute());
           },
           child: Container(
             margin: const EdgeInsets.symmetric(vertical: 8),

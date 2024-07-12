@@ -11,7 +11,7 @@ Future<UserMe?> getMe(GetMeRef ref) async {
   final request = GetMeRequest();
   final response = await api.call(request);
 
-  if (response.success == false) {
+  if (response.success != true) {
     return null;
   }
 
