@@ -25,6 +25,10 @@ class MessageLookup extends MessageLookupByLibrary {
         "bio": MessageLookupByLibrary.simpleMessage("Bio"),
         "cancel": MessageLookupByLibrary.simpleMessage("Cancel"),
         "email": MessageLookupByLibrary.simpleMessage("Email"),
+        "errorCommon": MessageLookupByLibrary.simpleMessage(
+            "Something went wrong. Please try again later."),
+        "errorInvalidForm": MessageLookupByLibrary.simpleMessage(
+            "Form data is invalid. Please try again."),
         "exeeciseSessionLeaveConfirmation":
             MessageLookupByLibrary.simpleMessage(
                 "Are you sure you want to leave?"),
@@ -149,6 +153,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "settingsPreferenceTitle":
             MessageLookupByLibrary.simpleMessage("Preferences"),
         "settingsTitle": MessageLookupByLibrary.simpleMessage("Settings"),
+        "signInErrorCannotGetGoogleToken": MessageLookupByLibrary.simpleMessage(
+            "Cannot get Google token, please try again later"),
         "signInFreeText": MessageLookupByLibrary.simpleMessage(
             "It\'\'s totally free! Just sign in and start learning!"),
         "signInOnboardingSlide0Content": MessageLookupByLibrary.simpleMessage(
@@ -183,6 +189,7 @@ class MessageLookup extends MessageLookupByLibrary {
             "Build a stronger vocabulary and communicate more effectively with consistent practice"),
         "speaking": MessageLookupByLibrary.simpleMessage("Speaking"),
         "start": MessageLookupByLibrary.simpleMessage("Start"),
+        "success": MessageLookupByLibrary.simpleMessage("Success"),
         "update": MessageLookupByLibrary.simpleMessage("Update"),
         "userInvalidName": MessageLookupByLibrary.simpleMessage(
             "Your name must be between 2 and 64 characters, including letters and numbers"),

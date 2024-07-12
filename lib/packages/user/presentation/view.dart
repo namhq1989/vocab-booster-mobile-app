@@ -2,6 +2,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:vocab_booster/packages/core/l10n/generated/l10n.dart';
+import 'package:vocab_booster/packages/user/provider/get_me.dart';
 import 'package:vocab_booster/ui/settings/account.dart';
 import 'package:vocab_booster/ui/settings/achievement.dart';
 import 'package:vocab_booster/ui/settings/dark_mode.dart';
@@ -12,6 +13,7 @@ import 'package:vocab_booster/ui/settings/sign_out.dart';
 import 'package:vocab_booster/ui/settings/subscription.dart';
 import 'package:vocab_booster/ui/settings/tnc.dart';
 import 'package:vocab_booster/ui/settings/version.dart';
+import 'package:vocab_booster/ui/widget/loading_state.dart';
 import 'package:vocab_booster/ui/widget/screen.dart';
 import 'package:vocab_booster/ui/widget/secondary_text.dart';
 
@@ -26,7 +28,7 @@ class ProfileScreen extends ConsumerWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            _buildHeader(context),
+            _buildHeader(context, ref),
             const SizedBox(
               height: 30,
             ),
@@ -111,33 +113,42 @@ class ProfileScreen extends ConsumerWidget {
     );
   }
 
-  Widget _buildHeader(BuildContext context) {
-    return SizedBox(
-      height: 50,
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          Text(
-            L10N.of(context).profileTitle,
-            style: const TextStyle(
-              fontSize: 28,
-              fontWeight: FontWeight.bold,
-            ),
-          ),
-          ClipRRect(
-            borderRadius: BorderRadius.circular(25),
-            child: SizedBox(
-              width: 50,
-              height: 50,
-              child: Image.asset(
-                'assets/images/avatar/male-5.png',
-                fit: BoxFit.cover,
+  Widget _buildHeader(BuildContext context, WidgetRef ref) {
+    final me = ref.watch(getMeProvider);
+
+    return me.when(
+      data: (state) {
+        if (state == null) return const SizedBox.shrink();
+        return SizedBox(
+          height: 50,
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Text(
+                state.name,
+                style: const TextStyle(
+                  fontSize: 28,
+                  fontWeight: FontWeight.bold,
+                ),
               ),
-            ),
+              ClipRRect(
+                borderRadius: BorderRadius.circular(25),
+                child: SizedBox(
+                  width: 50,
+                  height: 50,
+                  child: Image.asset(
+                    'assets/images/avatar/avatar-${state.avatar}.png',
+                    fit: BoxFit.cover,
+                  ),
+                ),
+              ),
+            ],
           ),
-        ],
-      ),
+        );
+      },
+      loading: () => LoadingState.fetching(context),
+      error: (err, st) => LoadingState.error(context, err, st),
     );
   }
 

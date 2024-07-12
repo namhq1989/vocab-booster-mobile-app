@@ -1,24 +1,24 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'startup.dart';
+part of 'get_me.dart';
 
 // **************************************************************************
 // RiverpodGenerator
 // **************************************************************************
 
-String _$appStartupHash() => r'adb69b7d2440449c9ae701b4b127d5ade700a2d5';
+String _$getMeHash() => r'17436fe5fd115220c5b3a7b65cbd835d007cab8d';
 
-/// See also [appStartup].
-@ProviderFor(appStartup)
-final appStartupProvider = FutureProvider<void>.internal(
-  appStartup,
-  name: r'appStartupProvider',
+/// See also [getMe].
+@ProviderFor(getMe)
+final getMeProvider = AutoDisposeFutureProvider<UserMe?>.internal(
+  getMe,
+  name: r'getMeProvider',
   debugGetCreateSourceHash:
-      const bool.fromEnvironment('dart.vm.product') ? null : _$appStartupHash,
+      const bool.fromEnvironment('dart.vm.product') ? null : _$getMeHash,
   dependencies: null,
   allTransitiveDependencies: null,
 );
 
-typedef AppStartupRef = FutureProviderRef<void>;
+typedef GetMeRef = AutoDisposeFutureProviderRef<UserMe?>;
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member

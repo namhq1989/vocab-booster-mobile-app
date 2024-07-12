@@ -11,6 +11,10 @@
   "listening": "Listening",
   "speaking": "Speaking",
 
+  "success": "Success",
+  "errorCommon": "Something went wrong. Please try again later.",
+  "errorInvalidForm": "Form data is invalid. Please try again.",
+
   "languageTitle": "Language",
   "languageEn": "English",
   "languageVi": "Vietnamese",
@@ -40,6 +44,7 @@
   "signInFreeText": "It''s totally free! Just sign in and start learning!",
   "signInWithGoogle": "Sign in with Google",
   "signInWithFacebook": "Sign in with Facebook",
+  "signInErrorCannotGetGoogleToken": "Cannot get Google token, please try again later",
 
   "signOut": "Sign out",
   "signOutTitle": "Are you sure you want to sign out?",
