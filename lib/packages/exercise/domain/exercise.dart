@@ -22,13 +22,14 @@ class Exercise with _$Exercise {
     @Default(ExerciseStatus.notSubmitted)
     @ExerciseStatusConverter()
     ExerciseStatus? status,
-    @Default(0) int? points,
+    @Default(0) int? point,
     @Default(SessionMode.multipleOptions)
     @SessionModeConverter()
     SessionMode? mode,
     @Default(-1) int? selectedOptionIndex,
     @Default(0) int? attempts,
     @Default('') String? inputText,
+    @Default(0) int? completionTime,
   }) = _Exercise;
 
   factory Exercise.fromJson(Map<String, dynamic> json) =>
@@ -38,9 +39,13 @@ class Exercise with _$Exercise {
   bool isReadOnly() => status != ExerciseStatus.notSubmitted;
   Exercise setMode(SessionMode value) => copyWith(mode: value);
   Exercise setStatus(ExerciseStatus value) => copyWith(status: value);
-  Exercise setPoints(int value) => copyWith(points: value);
+  Exercise setPoint(int value) => copyWith(point: value);
   Exercise setIsFavorite(bool value) => copyWith(isFavorite: value);
   Exercise setIsMastered(bool value) => copyWith(isMastered: value);
+  Exercise setNextReviewAt(DateTime nextReviewAt) => copyWith(
+        nextReviewAt: nextReviewAt,
+      );
+  Exercise setCompletionTime(int value) => copyWith(completionTime: value);
   Exercise setSelectedOptionIndex(int value) =>
       copyWith(selectedOptionIndex: value);
   Exercise increaseAttempts() => copyWith(attempts: attempts! + 1);

@@ -8,11 +8,15 @@ part of 'get_exercises.dart';
 
 _$GetExercisesRequestImpl _$$GetExercisesRequestImplFromJson(
         Map<String, dynamic> json) =>
-    _$GetExercisesRequestImpl();
+    _$GetExercisesRequestImpl(
+      level: json['level'] as String?,
+    );
 
 Map<String, dynamic> _$$GetExercisesRequestImplToJson(
         _$GetExercisesRequestImpl instance) =>
-    <String, dynamic>{};
+    <String, dynamic>{
+      'level': instance.level,
+    };
 
 _$GetExercisesResponseImpl _$$GetExercisesResponseImplFromJson(
         Map<String, dynamic> json) =>

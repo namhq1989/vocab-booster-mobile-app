@@ -9,7 +9,6 @@ import 'package:vocab_booster/packages/core/router/router.dart';
 import 'package:vocab_booster/packages/exercise/domain/exercise.dart';
 import 'package:vocab_booster/packages/exercise/presentation/slide_up_number.dart';
 import 'package:vocab_booster/packages/exercise/provider/session.dart';
-import 'package:vocab_booster/packages/exercise/provider/session_setup_data.dart';
 import 'package:vocab_booster/ui/widget/appbar_title.dart';
 import 'package:vocab_booster/ui/widget/bottomsheet.dart';
 import 'package:vocab_booster/ui/widget/evaluating_text.dart';
@@ -18,6 +17,7 @@ import 'package:vocab_booster/packages/exercise/presentation/exercise_with_input
 import 'package:vocab_booster/ui/widget/secondary_text.dart';
 import 'package:vocab_booster/ui/widget/stats_item.dart';
 import 'package:vocab_booster/utilities/extension/string.dart';
+import 'package:vocab_booster/utilities/number/format.dart';
 
 @RoutePage()
 class ExerciseSessionScreen extends ConsumerStatefulWidget {
@@ -56,6 +56,9 @@ class _ExerciseSessionScreenState extends ConsumerState<ExerciseSessionScreen> {
                         width: double.infinity,
                         text: Text(L10N.of(context).leave),
                         onPressed: () {
+                          ref
+                              .read(pSessionExercisesProvider.notifier)
+                              .disposeTimer();
                           Navigator.of(context).pop(true);
                           ref.read(appRouterProvider).back();
                         },
@@ -229,6 +232,8 @@ class _ExerciseSessionScreenState extends ConsumerState<ExerciseSessionScreen> {
   }
 
   Widget _buildResult(BuildContext context, SessionExercisesState state) {
+    final completionTime =
+        ref.read(pSessionExercisesProvider.notifier).getCompletionTime();
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
@@ -259,8 +264,8 @@ class _ExerciseSessionScreenState extends ConsumerState<ExerciseSessionScreen> {
               return const FractionalSpanExtent(0.5);
             },
             children: [
-              const [
-                ShadTableCell(
+              [
+                const ShadTableCell(
                   child: Text(
                     'Time taken',
                     style: TextStyle(
@@ -272,8 +277,8 @@ class _ExerciseSessionScreenState extends ConsumerState<ExerciseSessionScreen> {
                   child: Align(
                     alignment: Alignment.centerRight,
                     child: Text(
-                      '02:17',
-                      style: TextStyle(
+                      formatSeconds(completionTime),
+                      style: const TextStyle(
                         fontSize: 18,
                         fontWeight: FontWeight.bold,
                       ),
@@ -377,6 +382,11 @@ class _ExerciseSessionScreenState extends ConsumerState<ExerciseSessionScreen> {
       itemCount: state.exercises.length,
       padEnds: true,
       controller: PageController(viewportFraction: viewportFraction),
+      onPageChanged: (int value) {
+        ref
+            .read(pSessionExercisesProvider.notifier)
+            .switchCurrentExerciseIndex(value);
+      },
       itemBuilder: (BuildContext context, int index) {
         final exercise = state.exercises[index];
         return Padding(

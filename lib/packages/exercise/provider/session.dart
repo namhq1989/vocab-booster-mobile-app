@@ -4,7 +4,9 @@ import 'package:vocab_booster/packages/core/http/http.dart';
 import 'package:vocab_booster/packages/exercise/domain/exercise.dart';
 import 'package:vocab_booster/packages/exercise/domain/exercise_status.dart';
 import 'package:vocab_booster/packages/exercise/domain/session_setup_data.dart';
+import 'package:vocab_booster/packages/exercise/provider/exercise_completion_time_counter.dart';
 import 'package:vocab_booster/packages/exercise/provider/session_setup_data.dart';
+import 'package:vocab_booster/packages/exercise/rest/answer_exercise.dart';
 import 'package:vocab_booster/packages/exercise/rest/get_exercises.dart';
 import 'package:vocab_booster/utilities/error/error.dart';
 
@@ -16,6 +18,7 @@ class SessionExercisesState with _$SessionExercisesState {
   factory SessionExercisesState({
     required List<Exercise> exercises,
     required List<Exercise> incorrects,
+    required PExerciseCompletionTimeCounter timer,
     required int points,
     required bool isCompleted,
     required bool isEvaluating,
@@ -30,12 +33,13 @@ class PSessionExercises extends _$PSessionExercises {
   Future<SessionExercisesState> build() async {
     final setupData = ref.read(pSessionSetupDataProvider).data;
     final api = GetExercisesAPI(http: await ref.read(appHttpProvider.notifier));
-    final response = await api.call(GetExercisesRequest());
+    final response = await api.call(GetExercisesRequest(level: 'intermediate'));
 
     if (response.success == false) {
       return SessionExercisesState(
         exercises: [],
         incorrects: [],
+        timer: ref.read(pExerciseCompletionTimeCounterProvider.notifier),
         points: 0,
         isCompleted: false,
         isEvaluating: false,
@@ -52,6 +56,7 @@ class PSessionExercises extends _$PSessionExercises {
     return SessionExercisesState(
       exercises: exercises,
       incorrects: [],
+      timer: ref.read(pExerciseCompletionTimeCounterProvider.notifier),
       points: 0,
       isCompleted: false,
       isEvaluating: false,
@@ -61,6 +66,22 @@ class PSessionExercises extends _$PSessionExercises {
 
   bool isProgressing() {
     return !state.value!.isEvaluating && !state.value!.isCompleted;
+  }
+
+  void switchCurrentExerciseIndex(int index) async {
+    state.value!.timer.reset();
+  }
+
+  void disposeTimer() async {
+    state.value!.timer.dispose();
+  }
+
+  int getCompletionTime() {
+    int total = 0;
+    for (final e in state.value!.exercises) {
+      total += e.completionTime!;
+    }
+    return total;
   }
 
   void switchToEasyMode(String exerciseId) async {
@@ -108,7 +129,9 @@ class PSessionExercises extends _$PSessionExercises {
     }
 
     List<Exercise> incorrects = state.value!.incorrects.toList();
-    int points = 0;
+    int point = 0;
+    final completionTime = state.value!.timer.value();
+    exercise = exercise.setCompletionTime(completionTime);
 
     final answer = optionIndex == -1 ? '' : exercise.options[optionIndex];
     final isCorrect = exercise.isCorrectAnswer(answer);
@@ -116,11 +139,11 @@ class PSessionExercises extends _$PSessionExercises {
       exercise = exercise.setStatus(ExerciseStatus.correct);
       exercise = exercise.increaseCorrectStreak();
       if (exercise.attempts! == 0) {
-        exercise = exercise.setPoints(exercise.mode!.isTextInput ? 20 : 10);
+        exercise = exercise.setPoint(exercise.mode!.isTextInput ? 20 : 10);
       } else {
-        exercise = exercise.setPoints(exercise.mode!.isTextInput ? 10 : 5);
+        exercise = exercise.setPoint(exercise.mode!.isTextInput ? 10 : 5);
       }
-      points = exercise.points!;
+      point = exercise.point!;
     } else {
       exercise = exercise.setStatus(ExerciseStatus.incorrect);
       if (exercise.attempts! == 0) {
@@ -135,6 +158,20 @@ class PSessionExercises extends _$PSessionExercises {
     }
     exercise = exercise.setSelectedOptionIndex(optionIndex);
 
+    Future.microtask(() async {
+      // call api for the submission
+      final api = AnswerExerciseAPI(
+          exerciseId: exerciseId, http: ref.read(appHttpProvider.notifier));
+      final response = await api.call(AnswerExerciseRequest(
+        isCorrect: isCorrect,
+        point: point,
+        completionTime: completionTime,
+      ));
+      if (response.success == true) {
+        exercise = exercise.setNextReviewAt(response.data!.nextReviewAt!);
+      }
+    });
+
     final exercises = state.value!.exercises.map((e) {
       return e.id == exerciseId ? exercise : e;
     }).toList();
@@ -142,7 +179,7 @@ class PSessionExercises extends _$PSessionExercises {
     state = AsyncData(
       state.value!.copyWith(
         exercises: exercises,
-        points: points + state.value!.points,
+        points: point + state.value!.points,
         incorrects: incorrects,
       ),
     );
@@ -152,6 +189,8 @@ class PSessionExercises extends _$PSessionExercises {
           exercises.where((e) => e.status!.isNotSubmitted).isEmpty;
 
       if (isCompleted) {
+        state.value!.timer.dispose();
+
         state = AsyncData(state.value!.copyWith(
           isEvaluating: true,
         ));
@@ -166,138 +205,6 @@ class PSessionExercises extends _$PSessionExercises {
       );
     });
 
-    return (isCorrect, exercise.points!);
+    return (isCorrect, exercise.point!);
   }
 }
-
-
-
-
-// Exercise(
-        //   id: '1',
-        //   vocabulary: 'apple',
-        //   content: 'An apple a day keeps the doctor away.',
-        //   translated: 'Một quả táo mỗi ngày giúp bạn tránh được bác sĩ.',
-        //   options: ['apple', 'banana', 'orange', 'grape'],
-        //   correctAnswer: 'apple',
-        //   correctStreak: 3,
-        //   isFavorite: false,
-        //   isMastered: false,
-        //   nextReviewAt: DateTime.now().add(const Duration(days: 1)),
-        // ),
-        // Exercise(
-        //   id: '2',
-        //   vocabulary: 'banana',
-        //   content: 'Monkeys love to eat bananas.',
-        //   translated: 'Khỉ thích ăn chuối.',
-        //   options: ['apple', 'bananas', 'orange', 'grape'],
-        //   correctAnswer: 'bananas',
-        //   correctStreak: 1,
-        //   isFavorite: true,
-        //   isMastered: false,
-        //   nextReviewAt: DateTime.now().add(const Duration(days: 2)),
-        // ),
-        // Exercise(
-        //   id: '3',
-        //   vocabulary: 'orange',
-        //   content: 'She likes to drink fresh orange juice.',
-        //   translated: 'Cô ấy thích uống nước ép cam tươi.',
-        //   options: ['apple', 'banana', 'orange', 'grape'],
-        //   correctAnswer: 'orange',
-        //   correctStreak: 5,
-        //   isFavorite: false,
-        //   isMastered: true,
-        //   nextReviewAt: DateTime.now().add(const Duration(days: 3)),
-        //   mode: SessionMode.textInput,
-        // ),
-        // Exercise(
-        //   id: '4',
-        //   vocabulary: 'grape',
-        //   content: 'They made wine from grapes.',
-        //   translated: 'Họ làm rượu từ nho.',
-        //   options: ['apple', 'banana', 'orange', 'grapes'],
-        //   correctAnswer: 'grapes',
-        //   correctStreak: 0,
-        //   isFavorite: false,
-        //   isMastered: false,
-        //   nextReviewAt: DateTime.now().add(const Duration(days: 4)),
-        //   mode: SessionMode.textInput,
-        // ),
-        // Exercise(
-        //   id: '5',
-        //   vocabulary: 'strawberry',
-        //   content: 'She put strawberries on her cereal.',
-        //   translated: 'Cô ấy để dâu tây lên ngũ cốc của mình.',
-        //   options: ['apple', 'banana', 'orange', 'strawberries'],
-        //   correctAnswer: 'strawberries',
-        //   correctStreak: 2,
-        //   isFavorite: true,
-        //   isMastered: false,
-        //   nextReviewAt: DateTime.now().add(const Duration(days: 5)),
-        //   mode: SessionMode.textInput,
-        // ),
-        // Exercise(
-        //   id: '6',
-        //   vocabulary: 'pineapple',
-        //   content: 'Pineapples are delicious in smoothies.',
-        //   translated: 'Dứa rất ngon trong sinh tố.',
-        //   options: ['apple', 'banana', 'pineapples', 'grape'],
-        //   correctAnswer: 'pineapples',
-        //   correctStreak: 4,
-        //   isFavorite: false,
-        //   isMastered: false,
-        //   nextReviewAt: DateTime.now().add(const Duration(days: 6)),
-        //   mode: SessionMode.textInput,
-        // ),
-        // Exercise(
-        //   id: '7',
-        //   vocabulary: 'watermelon',
-        //   content: 'Watermelon is perfect for summer.',
-        //   translated: 'Dưa hấu rất hoàn hảo cho mùa hè.',
-        //   options: ['watermelon', 'banana', 'orange', 'grape'],
-        //   correctAnswer: 'watermelon',
-        //   correctStreak: 3,
-        //   isFavorite: true,
-        //   isMastered: false,
-        //   nextReviewAt: DateTime.now().add(const Duration(days: 7)),
-        //   mode: SessionMode.textInput,
-        // ),
-        // Exercise(
-        //   id: '8',
-        //   vocabulary: 'mango',
-        //   content: 'Mangoes are sweet and juicy.',
-        //   translated: 'Xoài ngọt và nhiều nước.',
-        //   options: ['apple', 'banana', 'mangoes', 'grape'],
-        //   correctAnswer: 'mangoes',
-        //   correctStreak: 2,
-        //   isFavorite: false,
-        //   isMastered: false,
-        //   nextReviewAt: DateTime.now().add(const Duration(days: 8)),
-        //   mode: SessionMode.textInput,
-        // ),
-        // Exercise(
-        //   id: '9',
-        //   vocabulary: 'blueberry',
-        //   content: 'Blueberries are rich in antioxidants.',
-        //   translated: 'Quả việt quất giàu chất chống oxy hóa.',
-        //   options: ['apple', 'blueberries', 'orange', 'grape'],
-        //   correctAnswer: 'blueberries',
-        //   correctStreak: 5,
-        //   isFavorite: true,
-        //   isMastered: true,
-        //   nextReviewAt: DateTime.now().add(const Duration(days: 9)),
-        //   mode: SessionMode.textInput,
-        // ),
-        // Exercise(
-        //   id: '10',
-        //   vocabulary: 'kiwi',
-        //   content: 'Kiwi is high in vitamin C.',
-        //   translated: 'Quả kiwi có nhiều vitamin C.',
-        //   options: ['apple', 'banana', 'orange', 'kiwi'],
-        //   correctAnswer: 'kiwi',
-        //   correctStreak: 1,
-        //   isFavorite: false,
-        //   isMastered: false,
-        //   nextReviewAt: DateTime.now().add(const Duration(days: 10)),
-        //   mode: SessionMode.textInput,
-        // ),
