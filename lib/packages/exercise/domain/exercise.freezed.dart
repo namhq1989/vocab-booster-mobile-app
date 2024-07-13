@@ -32,12 +32,13 @@ mixin _$Exercise {
   DateTime get nextReviewAt => throw _privateConstructorUsedError;
   @ExerciseStatusConverter()
   ExerciseStatus? get status => throw _privateConstructorUsedError;
-  int? get points => throw _privateConstructorUsedError;
+  int? get point => throw _privateConstructorUsedError;
   @SessionModeConverter()
   SessionMode? get mode => throw _privateConstructorUsedError;
   int? get selectedOptionIndex => throw _privateConstructorUsedError;
   int? get attempts => throw _privateConstructorUsedError;
   String? get inputText => throw _privateConstructorUsedError;
+  int? get completionTime => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -62,11 +63,12 @@ abstract class $ExerciseCopyWith<$Res> {
       bool isMastered,
       DateTime nextReviewAt,
       @ExerciseStatusConverter() ExerciseStatus? status,
-      int? points,
+      int? point,
       @SessionModeConverter() SessionMode? mode,
       int? selectedOptionIndex,
       int? attempts,
-      String? inputText});
+      String? inputText,
+      int? completionTime});
 }
 
 /// @nodoc
@@ -93,11 +95,12 @@ class _$ExerciseCopyWithImpl<$Res, $Val extends Exercise>
     Object? isMastered = null,
     Object? nextReviewAt = null,
     Object? status = freezed,
-    Object? points = freezed,
+    Object? point = freezed,
     Object? mode = freezed,
     Object? selectedOptionIndex = freezed,
     Object? attempts = freezed,
     Object? inputText = freezed,
+    Object? completionTime = freezed,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -144,9 +147,9 @@ class _$ExerciseCopyWithImpl<$Res, $Val extends Exercise>
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
               as ExerciseStatus?,
-      points: freezed == points
-          ? _value.points
-          : points // ignore: cast_nullable_to_non_nullable
+      point: freezed == point
+          ? _value.point
+          : point // ignore: cast_nullable_to_non_nullable
               as int?,
       mode: freezed == mode
           ? _value.mode
@@ -164,6 +167,10 @@ class _$ExerciseCopyWithImpl<$Res, $Val extends Exercise>
           ? _value.inputText
           : inputText // ignore: cast_nullable_to_non_nullable
               as String?,
+      completionTime: freezed == completionTime
+          ? _value.completionTime
+          : completionTime // ignore: cast_nullable_to_non_nullable
+              as int?,
     ) as $Val);
   }
 }
@@ -188,11 +195,12 @@ abstract class _$$ExerciseImplCopyWith<$Res>
       bool isMastered,
       DateTime nextReviewAt,
       @ExerciseStatusConverter() ExerciseStatus? status,
-      int? points,
+      int? point,
       @SessionModeConverter() SessionMode? mode,
       int? selectedOptionIndex,
       int? attempts,
-      String? inputText});
+      String? inputText,
+      int? completionTime});
 }
 
 /// @nodoc
@@ -217,11 +225,12 @@ class __$$ExerciseImplCopyWithImpl<$Res>
     Object? isMastered = null,
     Object? nextReviewAt = null,
     Object? status = freezed,
-    Object? points = freezed,
+    Object? point = freezed,
     Object? mode = freezed,
     Object? selectedOptionIndex = freezed,
     Object? attempts = freezed,
     Object? inputText = freezed,
+    Object? completionTime = freezed,
   }) {
     return _then(_$ExerciseImpl(
       id: null == id
@@ -268,9 +277,9 @@ class __$$ExerciseImplCopyWithImpl<$Res>
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
               as ExerciseStatus?,
-      points: freezed == points
-          ? _value.points
-          : points // ignore: cast_nullable_to_non_nullable
+      point: freezed == point
+          ? _value.point
+          : point // ignore: cast_nullable_to_non_nullable
               as int?,
       mode: freezed == mode
           ? _value.mode
@@ -288,6 +297,10 @@ class __$$ExerciseImplCopyWithImpl<$Res>
           ? _value.inputText
           : inputText // ignore: cast_nullable_to_non_nullable
               as String?,
+      completionTime: freezed == completionTime
+          ? _value.completionTime
+          : completionTime // ignore: cast_nullable_to_non_nullable
+              as int?,
     ));
   }
 }
@@ -307,11 +320,12 @@ class _$ExerciseImpl extends _Exercise {
       required this.isMastered,
       required this.nextReviewAt,
       @ExerciseStatusConverter() this.status = ExerciseStatus.notSubmitted,
-      this.points = 0,
+      this.point = 0,
       @SessionModeConverter() this.mode = SessionMode.multipleOptions,
       this.selectedOptionIndex = -1,
       this.attempts = 0,
-      this.inputText = ''})
+      this.inputText = '',
+      this.completionTime = 0})
       : _options = options,
         super._();
 
@@ -350,7 +364,7 @@ class _$ExerciseImpl extends _Exercise {
   final ExerciseStatus? status;
   @override
   @JsonKey()
-  final int? points;
+  final int? point;
   @override
   @JsonKey()
   @SessionModeConverter()
@@ -364,10 +378,13 @@ class _$ExerciseImpl extends _Exercise {
   @override
   @JsonKey()
   final String? inputText;
+  @override
+  @JsonKey()
+  final int? completionTime;
 
   @override
   String toString() {
-    return 'Exercise(id: $id, vocabulary: $vocabulary, content: $content, translated: $translated, options: $options, correctAnswer: $correctAnswer, correctStreak: $correctStreak, isFavorite: $isFavorite, isMastered: $isMastered, nextReviewAt: $nextReviewAt, status: $status, points: $points, mode: $mode, selectedOptionIndex: $selectedOptionIndex, attempts: $attempts, inputText: $inputText)';
+    return 'Exercise(id: $id, vocabulary: $vocabulary, content: $content, translated: $translated, options: $options, correctAnswer: $correctAnswer, correctStreak: $correctStreak, isFavorite: $isFavorite, isMastered: $isMastered, nextReviewAt: $nextReviewAt, status: $status, point: $point, mode: $mode, selectedOptionIndex: $selectedOptionIndex, attempts: $attempts, inputText: $inputText, completionTime: $completionTime)';
   }
 
   @override
@@ -393,14 +410,16 @@ class _$ExerciseImpl extends _Exercise {
             (identical(other.nextReviewAt, nextReviewAt) ||
                 other.nextReviewAt == nextReviewAt) &&
             (identical(other.status, status) || other.status == status) &&
-            (identical(other.points, points) || other.points == points) &&
+            (identical(other.point, point) || other.point == point) &&
             (identical(other.mode, mode) || other.mode == mode) &&
             (identical(other.selectedOptionIndex, selectedOptionIndex) ||
                 other.selectedOptionIndex == selectedOptionIndex) &&
             (identical(other.attempts, attempts) ||
                 other.attempts == attempts) &&
             (identical(other.inputText, inputText) ||
-                other.inputText == inputText));
+                other.inputText == inputText) &&
+            (identical(other.completionTime, completionTime) ||
+                other.completionTime == completionTime));
   }
 
   @JsonKey(ignore: true)
@@ -418,11 +437,12 @@ class _$ExerciseImpl extends _Exercise {
       isMastered,
       nextReviewAt,
       status,
-      points,
+      point,
       mode,
       selectedOptionIndex,
       attempts,
-      inputText);
+      inputText,
+      completionTime);
 
   @JsonKey(ignore: true)
   @override
@@ -451,11 +471,12 @@ abstract class _Exercise extends Exercise {
       required final bool isMastered,
       required final DateTime nextReviewAt,
       @ExerciseStatusConverter() final ExerciseStatus? status,
-      final int? points,
+      final int? point,
       @SessionModeConverter() final SessionMode? mode,
       final int? selectedOptionIndex,
       final int? attempts,
-      final String? inputText}) = _$ExerciseImpl;
+      final String? inputText,
+      final int? completionTime}) = _$ExerciseImpl;
   _Exercise._() : super._();
 
   factory _Exercise.fromJson(Map<String, dynamic> json) =
@@ -485,7 +506,7 @@ abstract class _Exercise extends Exercise {
   @ExerciseStatusConverter()
   ExerciseStatus? get status;
   @override
-  int? get points;
+  int? get point;
   @override
   @SessionModeConverter()
   SessionMode? get mode;
@@ -495,6 +516,8 @@ abstract class _Exercise extends Exercise {
   int? get attempts;
   @override
   String? get inputText;
+  @override
+  int? get completionTime;
   @override
   @JsonKey(ignore: true)
   _$$ExerciseImplCopyWith<_$ExerciseImpl> get copyWith =>

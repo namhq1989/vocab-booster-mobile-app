@@ -22,13 +22,14 @@ _$ExerciseImpl _$$ExerciseImplFromJson(Map<String, dynamic> json) =>
       status: _$JsonConverterFromJson<String, ExerciseStatus>(
               json['status'], const ExerciseStatusConverter().fromJson) ??
           ExerciseStatus.notSubmitted,
-      points: (json['points'] as num?)?.toInt() ?? 0,
+      point: (json['point'] as num?)?.toInt() ?? 0,
       mode: _$JsonConverterFromJson<String, SessionMode>(
               json['mode'], const SessionModeConverter().fromJson) ??
           SessionMode.multipleOptions,
       selectedOptionIndex: (json['selectedOptionIndex'] as num?)?.toInt() ?? -1,
       attempts: (json['attempts'] as num?)?.toInt() ?? 0,
       inputText: json['inputText'] as String? ?? '',
+      completionTime: (json['completionTime'] as num?)?.toInt() ?? 0,
     );
 
 Map<String, dynamic> _$$ExerciseImplToJson(_$ExerciseImpl instance) =>
@@ -45,12 +46,13 @@ Map<String, dynamic> _$$ExerciseImplToJson(_$ExerciseImpl instance) =>
       'nextReviewAt': instance.nextReviewAt.toIso8601String(),
       'status': _$JsonConverterToJson<String, ExerciseStatus>(
           instance.status, const ExerciseStatusConverter().toJson),
-      'points': instance.points,
+      'point': instance.point,
       'mode': _$JsonConverterToJson<String, SessionMode>(
           instance.mode, const SessionModeConverter().toJson),
       'selectedOptionIndex': instance.selectedOptionIndex,
       'attempts': instance.attempts,
       'inputText': instance.inputText,
+      'completionTime': instance.completionTime,
     };
 
 Value? _$JsonConverterFromJson<Json, Value>(

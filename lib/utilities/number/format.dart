@@ -4,3 +4,14 @@ String formatNumber(int number) {
         (Match match) => '${match[1]},',
       );
 }
+
+String formatSeconds(int totalSeconds) {
+  int minutes = totalSeconds ~/ 60;
+  int seconds = totalSeconds % 60;
+
+  // Format minutes and seconds to ensure they are two digits
+  String minutesStr = minutes.toString().padLeft(2, '0');
+  String secondsStr = seconds.toString().padLeft(2, '0');
+
+  return '$minutesStr:$secondsStr';
+}

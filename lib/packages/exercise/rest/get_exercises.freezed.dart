@@ -20,7 +20,13 @@ GetExercisesRequest _$GetExercisesRequestFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$GetExercisesRequest {
+  @JsonKey(name: 'level')
+  String? get level => throw _privateConstructorUsedError;
+
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $GetExercisesRequestCopyWith<GetExercisesRequest> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -28,6 +34,8 @@ abstract class $GetExercisesRequestCopyWith<$Res> {
   factory $GetExercisesRequestCopyWith(
           GetExercisesRequest value, $Res Function(GetExercisesRequest) then) =
       _$GetExercisesRequestCopyWithImpl<$Res, GetExercisesRequest>;
+  @useResult
+  $Res call({@JsonKey(name: 'level') String? level});
 }
 
 /// @nodoc
@@ -39,13 +47,30 @@ class _$GetExercisesRequestCopyWithImpl<$Res, $Val extends GetExercisesRequest>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? level = freezed,
+  }) {
+    return _then(_value.copyWith(
+      level: freezed == level
+          ? _value.level
+          : level // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ) as $Val);
+  }
 }
 
 /// @nodoc
-abstract class _$$GetExercisesRequestImplCopyWith<$Res> {
+abstract class _$$GetExercisesRequestImplCopyWith<$Res>
+    implements $GetExercisesRequestCopyWith<$Res> {
   factory _$$GetExercisesRequestImplCopyWith(_$GetExercisesRequestImpl value,
           $Res Function(_$GetExercisesRequestImpl) then) =
       __$$GetExercisesRequestImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({@JsonKey(name: 'level') String? level});
 }
 
 /// @nodoc
@@ -55,31 +80,56 @@ class __$$GetExercisesRequestImplCopyWithImpl<$Res>
   __$$GetExercisesRequestImplCopyWithImpl(_$GetExercisesRequestImpl _value,
       $Res Function(_$GetExercisesRequestImpl) _then)
       : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? level = freezed,
+  }) {
+    return _then(_$GetExercisesRequestImpl(
+      level: freezed == level
+          ? _value.level
+          : level // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ));
+  }
 }
 
 /// @nodoc
 @JsonSerializable()
 class _$GetExercisesRequestImpl implements _GetExercisesRequest {
-  _$GetExercisesRequestImpl();
+  _$GetExercisesRequestImpl({@JsonKey(name: 'level') this.level});
 
   factory _$GetExercisesRequestImpl.fromJson(Map<String, dynamic> json) =>
       _$$GetExercisesRequestImplFromJson(json);
 
   @override
+  @JsonKey(name: 'level')
+  final String? level;
+
+  @override
   String toString() {
-    return 'GetExercisesRequest()';
+    return 'GetExercisesRequest(level: $level)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$GetExercisesRequestImpl);
+            other is _$GetExercisesRequestImpl &&
+            (identical(other.level, level) || other.level == level));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(runtimeType, level);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$GetExercisesRequestImplCopyWith<_$GetExercisesRequestImpl> get copyWith =>
+      __$$GetExercisesRequestImplCopyWithImpl<_$GetExercisesRequestImpl>(
+          this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
@@ -90,10 +140,19 @@ class _$GetExercisesRequestImpl implements _GetExercisesRequest {
 }
 
 abstract class _GetExercisesRequest implements GetExercisesRequest {
-  factory _GetExercisesRequest() = _$GetExercisesRequestImpl;
+  factory _GetExercisesRequest({@JsonKey(name: 'level') final String? level}) =
+      _$GetExercisesRequestImpl;
 
   factory _GetExercisesRequest.fromJson(Map<String, dynamic> json) =
       _$GetExercisesRequestImpl.fromJson;
+
+  @override
+  @JsonKey(name: 'level')
+  String? get level;
+  @override
+  @JsonKey(ignore: true)
+  _$$GetExercisesRequestImplCopyWith<_$GetExercisesRequestImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 GetExercisesResponse _$GetExercisesResponseFromJson(Map<String, dynamic> json) {
