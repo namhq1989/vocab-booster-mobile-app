@@ -31,10 +31,6 @@ class Authentication extends _$Authentication {
     }
 
     final me = await ref.read(getMeProvider.future);
-    if (me == null) {
-      await signOut();
-    }
-
     return AuthenticationState(
       isAuthenticated: accessToken.isNotEmpty,
       me: me,
@@ -44,7 +40,10 @@ class Authentication extends _$Authentication {
   Future<void> signOut() async {
     ref.read(appHttpProvider.notifier).unsetAccessToken();
     await ref.read(appDatabaseProvider.notifier).deleteAccessToken();
-    state = AsyncData(state.value!.copyWith(isAuthenticated: false, me: null));
+    if (state.value != null) {
+      state =
+          AsyncData(state.value!.copyWith(isAuthenticated: false, me: null));
+    }
   }
 
   Future<AppError?> signInWithGoogle() async {

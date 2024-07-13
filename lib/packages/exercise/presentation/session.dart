@@ -7,23 +7,21 @@ import 'package:shadcn_ui/shadcn_ui.dart';
 import 'package:vocab_booster/packages/core/l10n/generated/l10n.dart';
 import 'package:vocab_booster/packages/core/router/router.dart';
 import 'package:vocab_booster/packages/exercise/domain/exercise.dart';
-import 'package:vocab_booster/packages/exercise/domain/session_setup_data.dart';
 import 'package:vocab_booster/packages/exercise/presentation/slide_up_number.dart';
 import 'package:vocab_booster/packages/exercise/provider/session.dart';
+import 'package:vocab_booster/packages/exercise/provider/session_setup_data.dart';
 import 'package:vocab_booster/ui/widget/appbar_title.dart';
 import 'package:vocab_booster/ui/widget/bottomsheet.dart';
 import 'package:vocab_booster/ui/widget/evaluating_text.dart';
 import 'package:vocab_booster/ui/widget/style.dart';
-import 'package:vocab_booster/ui/widget/exercise_with_input.dart';
+import 'package:vocab_booster/packages/exercise/presentation/exercise_with_input.dart';
 import 'package:vocab_booster/ui/widget/secondary_text.dart';
 import 'package:vocab_booster/ui/widget/stats_item.dart';
 import 'package:vocab_booster/utilities/extension/string.dart';
 
 @RoutePage()
 class ExerciseSessionScreen extends ConsumerStatefulWidget {
-  const ExerciseSessionScreen({super.key, required this.setupData});
-
-  final SessionSetupData setupData;
+  const ExerciseSessionScreen({super.key});
 
   @override
   ConsumerState<ExerciseSessionScreen> createState() =>
@@ -32,17 +30,8 @@ class ExerciseSessionScreen extends ConsumerStatefulWidget {
 
 class _ExerciseSessionScreenState extends ConsumerState<ExerciseSessionScreen> {
   @override
-  void initState() {
-    super.initState();
-
-    ref
-        .read(sessionExercisesProvider.notifier)
-        .fetchExercises(widget.setupData);
-  }
-
-  @override
   Widget build(BuildContext context) {
-    final exercises = ref.watch(sessionExercisesProvider);
+    final exercises = ref.watch(pSessionExercisesProvider);
 
     return exercises.when(
       data: (state) {
@@ -415,18 +404,19 @@ class _ExerciseSessionScreenState extends ConsumerState<ExerciseSessionScreen> {
                             .ensurePeriod(),
                         fontSize: 16,
                       ),
+                      _buildShowCorrectAnswer(context, exercise),
                       const SizedBox(height: 40),
                       if (exercise.mode!.isMultipleOptions)
                         _buildMultipleOptions(context, exercise)
                       else
-                        _buildNextButton(context, exercise)
+                        _buildSubmitButton(context, exercise)
                     ],
                   ),
                 ),
               ),
               Positioned(
                 top: -20,
-                left: (screenWidth * viewportFraction) / 2 - 69,
+                left: (screenWidth * viewportFraction) / 2 - 62,
                 child: Container(
                   width: 100,
                   height: 40,
@@ -463,6 +453,35 @@ class _ExerciseSessionScreenState extends ConsumerState<ExerciseSessionScreen> {
     );
   }
 
+  Widget _buildShowCorrectAnswer(BuildContext contex, Exercise exercise) {
+    if (exercise.status!.isNotSubmitted || exercise.status!.isCorrect) {
+      return const SizedBox.shrink();
+    }
+    return Column(
+      children: [
+        const SizedBox(height: 10),
+        RichText(
+          text: TextSpan(
+            text: 'Correct answer: ',
+            style: const TextStyle(
+              fontSize: 16,
+            ),
+            children: <TextSpan>[
+              TextSpan(
+                text: exercise.correctAnswer,
+                style: TextStyle(
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold,
+                  color: Theme.of(context).colorScheme.primary,
+                ),
+              ),
+            ],
+          ),
+        ),
+      ],
+    );
+  }
+
   Widget _buildMultipleOptions(BuildContext contex, Exercise exercise) {
     return GridView.count(
       crossAxisCount: 1,
@@ -482,7 +501,7 @@ class _ExerciseSessionScreenState extends ConsumerState<ExerciseSessionScreen> {
             }
 
             final (isCorrect, point) = await ref
-                .read(sessionExercisesProvider.notifier)
+                .read(pSessionExercisesProvider.notifier)
                 .answerAnExercise(exercise.id, exercise.options[index]);
 
             if (isCorrect) {
@@ -521,7 +540,7 @@ class _ExerciseSessionScreenState extends ConsumerState<ExerciseSessionScreen> {
     );
   }
 
-  Widget _buildNextButton(BuildContext context, Exercise exercise) {
+  Widget _buildSubmitButton(BuildContext context, Exercise exercise) {
     return !exercise.isReadOnly()
         ? Column(
             children: [
@@ -532,23 +551,23 @@ class _ExerciseSessionScreenState extends ConsumerState<ExerciseSessionScreen> {
                 text: const Text('Submit'),
                 onPressed: () async {
                   final (isCorrect, point) = await ref
-                      .read(sessionExercisesProvider.notifier)
+                      .read(pSessionExercisesProvider.notifier)
                       .answerAnExercise(exercise.id, exercise.inputText!);
 
                   if (isCorrect) {
                     if (context.mounted) {
                       showSlideUpNumber(context, point);
                     }
-                  }
+                  } else {}
                 },
               ),
               const SizedBox(height: 10),
               ShadButton.ghost(
                 width: double.infinity,
-                text: const Text('Tôi không biết câu này'),
+                text: const Text('Nhiều lựa chọn'),
                 onPressed: () {
                   ref
-                      .read(sessionExercisesProvider.notifier)
+                      .read(pSessionExercisesProvider.notifier)
                       .switchToEasyMode(exercise.id);
                 },
               ),

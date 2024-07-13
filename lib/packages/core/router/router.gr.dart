@@ -9,10 +9,7 @@
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'package:auto_route/auto_route.dart' as _i10;
-import 'package:flutter/material.dart' as _i11;
 import 'package:vocab_booster/packages/auth/presentation/sign_in.dart' as _i8;
-import 'package:vocab_booster/packages/exercise/domain/session_setup_data.dart'
-    as _i12;
 import 'package:vocab_booster/packages/exercise/presentation/main.dart' as _i2;
 import 'package:vocab_booster/packages/exercise/presentation/rule.dart' as _i1;
 import 'package:vocab_booster/packages/exercise/presentation/session.dart'
@@ -42,13 +39,9 @@ abstract class $AppRouter extends _i10.RootStackRouter {
       );
     },
     ExerciseSessionRoute.name: (routeData) {
-      final args = routeData.argsAs<ExerciseSessionRouteArgs>();
       return _i10.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: _i3.ExerciseSessionScreen(
-          key: args.key,
-          setupData: args.setupData,
-        ),
+        child: const _i3.ExerciseSessionScreen(),
       );
     },
     HomeRoute.name: (routeData) {
@@ -120,41 +113,16 @@ class ExerciseRoute extends _i10.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i3.ExerciseSessionScreen]
-class ExerciseSessionRoute
-    extends _i10.PageRouteInfo<ExerciseSessionRouteArgs> {
-  ExerciseSessionRoute({
-    _i11.Key? key,
-    required _i12.SessionSetupData setupData,
-    List<_i10.PageRouteInfo>? children,
-  }) : super(
+class ExerciseSessionRoute extends _i10.PageRouteInfo<void> {
+  const ExerciseSessionRoute({List<_i10.PageRouteInfo>? children})
+      : super(
           ExerciseSessionRoute.name,
-          args: ExerciseSessionRouteArgs(
-            key: key,
-            setupData: setupData,
-          ),
           initialChildren: children,
         );
 
   static const String name = 'ExerciseSessionRoute';
 
-  static const _i10.PageInfo<ExerciseSessionRouteArgs> page =
-      _i10.PageInfo<ExerciseSessionRouteArgs>(name);
-}
-
-class ExerciseSessionRouteArgs {
-  const ExerciseSessionRouteArgs({
-    this.key,
-    required this.setupData,
-  });
-
-  final _i11.Key? key;
-
-  final _i12.SessionSetupData setupData;
-
-  @override
-  String toString() {
-    return 'ExerciseSessionRouteArgs{key: $key, setupData: $setupData}';
-  }
+  static const _i10.PageInfo<void> page = _i10.PageInfo<void>(name);
 }
 
 /// generated route for

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:vocab_booster/packages/exercise/domain/exercise.dart';
 import 'package:vocab_booster/packages/exercise/provider/session.dart';
+import 'package:vocab_booster/ui/widget/style.dart';
 import 'package:vocab_booster/utilities/extension/string.dart';
 
 class ExerciseWithInput extends StatefulWidget {
@@ -77,7 +78,7 @@ class _ExerciseWithInputState extends State<ExerciseWithInput> {
                   textAlign: TextAlign.center,
                   onChanged: (value) {
                     ref
-                        .read(sessionExercisesProvider.notifier)
+                        .read(pSessionExercisesProvider.notifier)
                         .setExerciseInputText(widget.exercise.id, value);
                   },
                   decoration: InputDecoration(
@@ -95,12 +96,16 @@ class _ExerciseWithInputState extends State<ExerciseWithInput> {
                       primaryColor,
                       Theme.of(context).colorScheme.error,
                     ),
+                    decoration: widget.exercise.status!.isInCorrect
+                        ? TextDecoration.lineThrough
+                        : null,
+                    decorationColor: AppColor.borderColor(context),
                   ),
                 );
               }),
             ),
           ),
-          TextSpan(text: part2),
+          TextSpan(text: part2.ensurePeriod()),
         ],
       ),
     );

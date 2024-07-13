@@ -1,44 +1,15 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
+import 'package:vocab_booster/packages/core/http/http.dart';
 import 'package:vocab_booster/packages/exercise/domain/exercise.dart';
 import 'package:vocab_booster/packages/exercise/domain/exercise_status.dart';
 import 'package:vocab_booster/packages/exercise/domain/session_setup_data.dart';
+import 'package:vocab_booster/packages/exercise/provider/session_setup_data.dart';
+import 'package:vocab_booster/packages/exercise/rest/get_exercises.dart';
+import 'package:vocab_booster/utilities/error/error.dart';
 
 part 'session.freezed.dart';
 part 'session.g.dart';
-
-@riverpod
-Future<List<Exercise>> getSessionExercises(
-    GetSessionExercisesRef ref, SessionSetupData setupData) async {
-  return [
-    Exercise(
-      id: '1',
-      vocabulary: 'apple',
-      content: 'An apple a day keeps the doctor away.',
-      translated: 'Một quả táo mỗi ngày giúp bạn tránh được bác sĩ.',
-      options: ['apple', 'banana', 'orange', 'grape'],
-      correctAnswer: 'apple',
-      correctStreak: 3,
-      isFavorite: false,
-      isMastered: false,
-      nextReviewAt: DateTime.now().add(const Duration(days: 1)),
-      mode: setupData.mode,
-    ),
-    Exercise(
-      id: '2',
-      vocabulary: 'banana',
-      content: 'Monkeys love to eat bananas.',
-      translated: 'Khỉ thích ăn chuối.',
-      options: ['apple', 'bananas', 'orange', 'grape'],
-      correctAnswer: 'bananas',
-      correctStreak: 1,
-      isFavorite: true,
-      isMastered: false,
-      nextReviewAt: DateTime.now().add(const Duration(days: 2)),
-      mode: setupData.mode,
-    ),
-  ];
-}
 
 @freezed
 class SessionExercisesState with _$SessionExercisesState {
@@ -49,61 +20,43 @@ class SessionExercisesState with _$SessionExercisesState {
     required bool isCompleted,
     required bool isEvaluating,
     required bool isFetching,
+    AppError? error,
   }) = _SessionExercisesState;
 }
 
 @riverpod
-class SessionExercises extends _$SessionExercises {
+class PSessionExercises extends _$PSessionExercises {
   @override
   Future<SessionExercisesState> build() async {
+    final setupData = ref.read(pSessionSetupDataProvider).data;
+    final api = GetExercisesAPI(http: await ref.read(appHttpProvider.notifier));
+    final response = await api.call(GetExercisesRequest());
+
+    if (response.success == false) {
+      return SessionExercisesState(
+        exercises: [],
+        incorrects: [],
+        points: 0,
+        isCompleted: false,
+        isEvaluating: false,
+        isFetching: false,
+        error: AppError.apiFailed(response.message!),
+      );
+    }
+
+    final List<Exercise> exercises = [];
+    for (final e in response.data!.exercises) {
+      exercises.add(e.toExercise().setMode(setupData.mode));
+    }
+
     return SessionExercisesState(
-      exercises: [],
+      exercises: exercises,
       incorrects: [],
       points: 0,
       isCompleted: false,
       isEvaluating: false,
       isFetching: false,
     );
-  }
-
-  Future<void> fetchExercises(SessionSetupData setupData) async {
-    state = await AsyncValue.guard(() async {
-      await Future.delayed(const Duration(seconds: 2));
-
-      final data = state.value!;
-
-      return data.copyWith(
-        isFetching: false,
-        exercises: [
-          Exercise(
-            id: '1',
-            vocabulary: 'apple',
-            content: 'An apple a day keeps the doctor away.',
-            translated: 'Một quả táo mỗi ngày giúp bạn tránh được bác sĩ.',
-            options: ['apple', 'banana', 'orange', 'grape'],
-            correctAnswer: 'apple',
-            correctStreak: 3,
-            isFavorite: false,
-            isMastered: false,
-            nextReviewAt: DateTime.now().add(const Duration(days: 1)),
-            mode: setupData.mode,
-          ),
-          Exercise(
-            id: '2',
-            vocabulary: 'banana',
-            content: 'Monkeys love to eat bananas.',
-            translated: 'Khỉ thích ăn chuối.',
-            options: ['apple', 'bananas', 'orange', 'grape'],
-            correctAnswer: 'bananas',
-            correctStreak: 1,
-            isFavorite: true,
-            isMastered: false,
-            nextReviewAt: DateTime.now().add(const Duration(days: 2)),
-            mode: setupData.mode,
-          ),
-        ],
-      );
-    });
   }
 
   bool isProgressing() {
@@ -213,7 +166,7 @@ class SessionExercises extends _$SessionExercises {
       );
     });
 
-    return (true, exercise.points!);
+    return (isCorrect, exercise.points!);
   }
 }
 

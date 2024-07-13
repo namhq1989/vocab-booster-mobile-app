@@ -1,26 +1,29 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:shadcn_ui/shadcn_ui.dart';
 import 'package:vocab_booster/packages/core/l10n/generated/l10n.dart';
 import 'package:vocab_booster/packages/exercise/domain/session_setup_data.dart';
+import 'package:vocab_booster/packages/exercise/provider/session_setup_data.dart';
 import 'package:vocab_booster/ui/widget/bottomsheet.dart';
 import 'package:vocab_booster/ui/widget/radio_option.dart';
 
-class ExerciseSessionSetup extends StatefulWidget {
+class ExerciseSessionSetup extends ConsumerStatefulWidget {
   const ExerciseSessionSetup(
       {super.key, required this.child, required this.cb});
 
   final Widget child;
-  final Function(SessionSetupData data) cb;
+  final Function() cb;
 
   @override
-  State<ExerciseSessionSetup> createState() => _ExerciseSessionSetupState();
+  ConsumerState<ExerciseSessionSetup> createState() =>
+      _ExerciseSessionSetupState();
 }
 
-class _ExerciseSessionSetupState extends State<ExerciseSessionSetup> {
-  final _formKey = GlobalKey<ShadFormState>();
-
+class _ExerciseSessionSetupState extends ConsumerState<ExerciseSessionSetup> {
   @override
   Widget build(BuildContext context) {
+    final state = ref.watch(pSessionSetupDataProvider);
+
     return InkWell(
       splashColor: Colors.transparent,
       highlightColor: Colors.transparent,
@@ -33,7 +36,7 @@ class _ExerciseSessionSetupState extends State<ExerciseSessionSetup> {
             return AppBottomSheet(
               // height: 550,
               child: ShadForm(
-                key: _formKey,
+                key: state.formState,
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisSize: MainAxisSize.min,
@@ -117,23 +120,11 @@ class _ExerciseSessionSetupState extends State<ExerciseSessionSetup> {
                       width: double.infinity,
                       text: Text(L10N.of(context).start),
                       onPressed: () {
-                        if (_formKey.currentState!.saveAndValidate()) {
-                          Navigator.of(context).pop(true);
-                          widget.cb(SessionSetupData(
-                            skill: SessionSkill.fromValue(
-                                _formKey.currentState!.value['skill']),
-                            mode: SessionMode.fromValue(
-                                _formKey.currentState!.value['mode']),
-                          ));
-                        } else {
-                          ShadToaster.of(context).show(
-                            const ShadToast.destructive(
-                              title: Text('Uh oh! Something went wrong'),
-                              description:
-                                  Text('There was a problem with your request'),
-                            ),
-                          );
-                        }
+                        ref
+                            .read(pSessionSetupDataProvider.notifier)
+                            .setupCompleted();
+                        Navigator.of(context).pop(true);
+                        widget.cb();
                       },
                     ),
                   ],
