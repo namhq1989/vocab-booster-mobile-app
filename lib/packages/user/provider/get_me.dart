@@ -1,6 +1,7 @@
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:vocab_booster/packages/core/http/http.dart';
 import 'package:vocab_booster/packages/user/domain/user.dart';
+import 'package:vocab_booster/packages/user/provider/get_me_stats.dart';
 import 'package:vocab_booster/packages/user/rest/get_me.dart';
 
 part 'get_me.g.dart';
@@ -15,5 +16,7 @@ Future<UserMe?> getMe(GetMeRef ref) async {
     return null;
   }
 
-  return response.data!.user!.toDomain();
+  ref.read(getMeStatsProvider.future);
+
+  return response.data!.user!.toMe();
 }

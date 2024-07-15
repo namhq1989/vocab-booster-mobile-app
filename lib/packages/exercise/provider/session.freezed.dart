@@ -21,6 +21,7 @@ mixin _$SessionExercisesState {
   PExerciseCompletionTimeCounter get timer =>
       throw _privateConstructorUsedError;
   int get points => throw _privateConstructorUsedError;
+  bool get isProgressing => throw _privateConstructorUsedError;
   bool get isCompleted => throw _privateConstructorUsedError;
   bool get isEvaluating => throw _privateConstructorUsedError;
   bool get isFetching => throw _privateConstructorUsedError;
@@ -42,6 +43,7 @@ abstract class $SessionExercisesStateCopyWith<$Res> {
       List<Exercise> incorrects,
       PExerciseCompletionTimeCounter timer,
       int points,
+      bool isProgressing,
       bool isCompleted,
       bool isEvaluating,
       bool isFetching,
@@ -66,6 +68,7 @@ class _$SessionExercisesStateCopyWithImpl<$Res,
     Object? incorrects = null,
     Object? timer = null,
     Object? points = null,
+    Object? isProgressing = null,
     Object? isCompleted = null,
     Object? isEvaluating = null,
     Object? isFetching = null,
@@ -88,6 +91,10 @@ class _$SessionExercisesStateCopyWithImpl<$Res,
           ? _value.points
           : points // ignore: cast_nullable_to_non_nullable
               as int,
+      isProgressing: null == isProgressing
+          ? _value.isProgressing
+          : isProgressing // ignore: cast_nullable_to_non_nullable
+              as bool,
       isCompleted: null == isCompleted
           ? _value.isCompleted
           : isCompleted // ignore: cast_nullable_to_non_nullable
@@ -122,6 +129,7 @@ abstract class _$$SessionExercisesStateImplCopyWith<$Res>
       List<Exercise> incorrects,
       PExerciseCompletionTimeCounter timer,
       int points,
+      bool isProgressing,
       bool isCompleted,
       bool isEvaluating,
       bool isFetching,
@@ -144,6 +152,7 @@ class __$$SessionExercisesStateImplCopyWithImpl<$Res>
     Object? incorrects = null,
     Object? timer = null,
     Object? points = null,
+    Object? isProgressing = null,
     Object? isCompleted = null,
     Object? isEvaluating = null,
     Object? isFetching = null,
@@ -166,6 +175,10 @@ class __$$SessionExercisesStateImplCopyWithImpl<$Res>
           ? _value.points
           : points // ignore: cast_nullable_to_non_nullable
               as int,
+      isProgressing: null == isProgressing
+          ? _value.isProgressing
+          : isProgressing // ignore: cast_nullable_to_non_nullable
+              as bool,
       isCompleted: null == isCompleted
           ? _value.isCompleted
           : isCompleted // ignore: cast_nullable_to_non_nullable
@@ -194,6 +207,7 @@ class _$SessionExercisesStateImpl implements _SessionExercisesState {
       required final List<Exercise> incorrects,
       required this.timer,
       required this.points,
+      required this.isProgressing,
       required this.isCompleted,
       required this.isEvaluating,
       required this.isFetching,
@@ -222,6 +236,8 @@ class _$SessionExercisesStateImpl implements _SessionExercisesState {
   @override
   final int points;
   @override
+  final bool isProgressing;
+  @override
   final bool isCompleted;
   @override
   final bool isEvaluating;
@@ -232,7 +248,7 @@ class _$SessionExercisesStateImpl implements _SessionExercisesState {
 
   @override
   String toString() {
-    return 'SessionExercisesState(exercises: $exercises, incorrects: $incorrects, timer: $timer, points: $points, isCompleted: $isCompleted, isEvaluating: $isEvaluating, isFetching: $isFetching, error: $error)';
+    return 'SessionExercisesState(exercises: $exercises, incorrects: $incorrects, timer: $timer, points: $points, isProgressing: $isProgressing, isCompleted: $isCompleted, isEvaluating: $isEvaluating, isFetching: $isFetching, error: $error)';
   }
 
   @override
@@ -246,6 +262,8 @@ class _$SessionExercisesStateImpl implements _SessionExercisesState {
                 .equals(other._incorrects, _incorrects) &&
             (identical(other.timer, timer) || other.timer == timer) &&
             (identical(other.points, points) || other.points == points) &&
+            (identical(other.isProgressing, isProgressing) ||
+                other.isProgressing == isProgressing) &&
             (identical(other.isCompleted, isCompleted) ||
                 other.isCompleted == isCompleted) &&
             (identical(other.isEvaluating, isEvaluating) ||
@@ -262,6 +280,7 @@ class _$SessionExercisesStateImpl implements _SessionExercisesState {
       const DeepCollectionEquality().hash(_incorrects),
       timer,
       points,
+      isProgressing,
       isCompleted,
       isEvaluating,
       isFetching,
@@ -281,6 +300,7 @@ abstract class _SessionExercisesState implements SessionExercisesState {
       required final List<Exercise> incorrects,
       required final PExerciseCompletionTimeCounter timer,
       required final int points,
+      required final bool isProgressing,
       required final bool isCompleted,
       required final bool isEvaluating,
       required final bool isFetching,
@@ -294,6 +314,8 @@ abstract class _SessionExercisesState implements SessionExercisesState {
   PExerciseCompletionTimeCounter get timer;
   @override
   int get points;
+  @override
+  bool get isProgressing;
   @override
   bool get isCompleted;
   @override

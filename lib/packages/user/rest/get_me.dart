@@ -66,7 +66,7 @@ class GetMeResponseUser with _$GetMeResponseUser {
   factory GetMeResponseUser.fromJson(Map<String, dynamic> json) =>
       _$GetMeResponseUserFromJson(json);
 
-  UserMe toDomain() => UserMe(
+  UserMe toMe() => UserMe(
         id: id!,
         name: name!,
         email: email!,

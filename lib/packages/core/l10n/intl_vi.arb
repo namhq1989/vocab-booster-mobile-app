@@ -58,8 +58,8 @@
 
   "userInvalidName": "Tên của bạn phải có từ 2-64 ký tự, chỉ bao gồm chữ và số",
 
-  "mastered": "thành thạo",
-  "forReviews": "chờ ôn tập",
+  "mastered": "Thành thạo",
+  "forReviews": "Chờ ôn tập",
   "reviews": "Ôn tập",
   "recents": "Gần đây",
   "favorites": "Yêu thích",
@@ -67,6 +67,8 @@
   "mode": "Chế độ",
 
   "profileTitle": "Cá nhân",
+  "profileStatsCompletionTime": "Thời gian học",
+  "profileStatsPoints": "Điểm",
 
   "exerciseTitle": "Bài tập",
   "exerciseStatusesTitle": "Trạng thái bài tập",
@@ -91,6 +93,7 @@
   "exerciseReviewMilestone5TimeInterval": "14 ngày",
   "exerciseReviewMilestoneMasteredCompletion": "Thành thạo",
   "exerciseReviewMilestoneMasteredInterval": "Mỗi 30 ngày",
+
   "exerciseSectionCollectionsTitle": "Bộ bài tập",
   "exerciseSectionCollectionsSubtitle": "Khám phá các dạng bài tập thực hành",
   "exerciseSectionLibraryTitle": "Thư viện",

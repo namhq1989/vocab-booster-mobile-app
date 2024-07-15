@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:vocab_booster/packages/core/l10n/generated/l10n.dart';
 import 'package:vocab_booster/packages/user/provider/get_me.dart';
+import 'package:vocab_booster/packages/user/provider/get_me_stats.dart';
 import 'package:vocab_booster/ui/settings/account.dart';
 import 'package:vocab_booster/ui/settings/achievement.dart';
 import 'package:vocab_booster/ui/settings/dark_mode.dart';
@@ -16,6 +17,7 @@ import 'package:vocab_booster/ui/settings/version.dart';
 import 'package:vocab_booster/ui/widget/loading_state.dart';
 import 'package:vocab_booster/ui/widget/screen.dart';
 import 'package:vocab_booster/ui/widget/secondary_text.dart';
+import 'package:vocab_booster/utilities/number/format.dart';
 
 @RoutePage()
 class ProfileScreen extends ConsumerWidget {
@@ -153,71 +155,70 @@ class ProfileScreen extends ConsumerWidget {
   }
 
   Widget _buildStats(BuildContext context) {
-    return const Column(
-      children: [
-        Divider(),
-        SizedBox(height: 20),
-        IntrinsicHeight(
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            mainAxisSize: MainAxisSize.max,
-            children: [
-              Expanded(
-                child: Column(
-                  children: [
-                    Text(
-                      '23',
-                      style: TextStyle(
-                        fontSize: 28,
-                        fontWeight: FontWeight.bold,
-                      ),
+    return Consumer(
+      builder: (context, ref, child) {
+        final stats = ref.watch(getMeStatsProvider);
+        return stats.when(
+            data: (state) {
+              return Column(
+                children: [
+                  const Divider(),
+                  const SizedBox(height: 20),
+                  IntrinsicHeight(
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      mainAxisSize: MainAxisSize.max,
+                      children: [
+                        Expanded(
+                          child: Column(
+                            children: [
+                              Text(
+                                formatDuration(state!.completionTime),
+                                style: const TextStyle(
+                                  fontSize: 28,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                              SecondaryText(
+                                  text: L10N
+                                      .of(context)
+                                      .profileStatsCompletionTime
+                                      .toLowerCase()),
+                            ],
+                          ),
+                        ),
+                        const VerticalDivider(
+                          width: 1,
+                        ),
+                        Expanded(
+                          child: Column(
+                            children: [
+                              Text(
+                                formatNumber(state.point),
+                                style: const TextStyle(
+                                  fontSize: 28,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                              SecondaryText(
+                                  text: L10N
+                                      .of(context)
+                                      .profileStatsPoints
+                                      .toLowerCase()),
+                            ],
+                          ),
+                        ),
+                      ],
                     ),
-                    SecondaryText(text: 'vocab'),
-                  ],
-                ),
-              ),
-              VerticalDivider(
-                width: 1,
-                // indent: 4,
-                // endIndent: 4,
-              ),
-              Expanded(
-                child: Column(
-                  children: [
-                    Text(
-                      '87',
-                      style: TextStyle(
-                        fontSize: 28,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                    SecondaryText(text: 'exercises'),
-                  ],
-                ),
-              ),
-              VerticalDivider(
-                width: 1,
-              ),
-              Expanded(
-                child: Column(
-                  children: [
-                    Text(
-                      '1,249',
-                      style: TextStyle(
-                        fontSize: 28,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                    SecondaryText(text: 'points'),
-                  ],
-                ),
-              ),
-            ],
-          ),
-        ),
-        SizedBox(height: 20),
-        Divider(),
-      ],
+                  ),
+                  const SizedBox(height: 20),
+                  const Divider(),
+                ],
+              );
+            },
+            error: (err, stack) => LoadingState.error(context, err, stack),
+            loading: LoadingState.loading);
+      },
     );
   }
 }
