@@ -1,6 +1,7 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:vocab_booster/packages/core/http/http.dart';
+import 'package:vocab_booster/packages/core/router/router.dart';
 import 'package:vocab_booster/packages/exercise/domain/exercise.dart';
 import 'package:vocab_booster/packages/exercise/domain/exercise_status.dart';
 import 'package:vocab_booster/packages/exercise/domain/session_setup_data.dart';
@@ -8,6 +9,7 @@ import 'package:vocab_booster/packages/exercise/provider/exercise_completion_tim
 import 'package:vocab_booster/packages/exercise/provider/session_setup_data.dart';
 import 'package:vocab_booster/packages/exercise/rest/answer_exercise.dart';
 import 'package:vocab_booster/packages/exercise/rest/get_exercises.dart';
+import 'package:vocab_booster/packages/user/provider/get_me_stats.dart';
 import 'package:vocab_booster/utilities/error/error.dart';
 
 part 'session.freezed.dart';
@@ -20,6 +22,7 @@ class SessionExercisesState with _$SessionExercisesState {
     required List<Exercise> incorrects,
     required PExerciseCompletionTimeCounter timer,
     required int points,
+    required bool isProgressing,
     required bool isCompleted,
     required bool isEvaluating,
     required bool isFetching,
@@ -41,6 +44,7 @@ class PSessionExercises extends _$PSessionExercises {
         incorrects: [],
         timer: ref.read(pExerciseCompletionTimeCounterProvider.notifier),
         points: 0,
+        isProgressing: false,
         isCompleted: false,
         isEvaluating: false,
         isFetching: false,
@@ -58,6 +62,7 @@ class PSessionExercises extends _$PSessionExercises {
       incorrects: [],
       timer: ref.read(pExerciseCompletionTimeCounterProvider.notifier),
       points: 0,
+      isProgressing: false,
       isCompleted: false,
       isEvaluating: false,
       isFetching: false,
@@ -74,6 +79,16 @@ class PSessionExercises extends _$PSessionExercises {
 
   void disposeTimer() async {
     state.value!.timer.dispose();
+  }
+
+  void exit() async {
+    disposeTimer();
+
+    if (state.value!.isProgressing) {
+      ref.read(getMeStatsProvider.future);
+    }
+
+    ref.read(appRouterProvider).back();
   }
 
   int getCompletionTime() {
@@ -181,6 +196,7 @@ class PSessionExercises extends _$PSessionExercises {
         exercises: exercises,
         points: point + state.value!.points,
         incorrects: incorrects,
+        isProgressing: true,
       ),
     );
 
@@ -193,6 +209,7 @@ class PSessionExercises extends _$PSessionExercises {
 
         state = AsyncData(state.value!.copyWith(
           isEvaluating: true,
+          isProgressing: false,
         ));
         await Future.delayed(const Duration(seconds: 3));
       }

@@ -56,8 +56,8 @@
   "inputBioPlaceholder": "Let''s share something about yourself",
   "update": "Update",
 
-  "mastered": "mastered",
-  "forReviews": "for reviews",
+  "mastered": "Mastered",
+  "forReviews": "For reviews",
   "reviews": "Reviews",
   "recents": "Recents",
   "favorites": "Favorites",
@@ -67,6 +67,8 @@
   "userInvalidName": "Your name must be between 2 and 64 characters, including letters and numbers",
 
   "profileTitle": "Profile",
+  "profileStatsCompletionTime": "Learning duration",
+  "profileStatsPoints": "Points",
 
   "exerciseTitle": "Exercises",
   "exerciseStatusesTitle": "Exercise Statuses",
@@ -91,13 +93,14 @@
   "exerciseReviewMilestone5TimeInterval": "14 days",
   "exerciseReviewMilestoneMasteredCompletion": "Mastered",
   "exerciseReviewMilestoneMasteredInterval": "Every 30 days",
+
   "exerciseSectionCollectionsTitle": "Collections",
   "exerciseSectionCollectionsSubtitle": "Explore collections of practice sentences",
   "exerciseSectionLibraryTitle": "Library",
   "exerciseSectionLibrarySubtitle": "Your learning exercises",
   "exerciseSectionProgressTitle": "Progress",
   "exerciseSectionProgressSubtitle": "Daily exercises completion over the last 7 days",
-  "exerciseSectionPointsTitle": "Collections",
+  "exerciseSectionPointsTitle": "Points",
   "exerciseSectionPointsSubtitle": "Daily points earned over the last 7 days",
 
   "exerciseSessionSetupFor": "Setup for",

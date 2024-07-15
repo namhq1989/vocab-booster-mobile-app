@@ -9,6 +9,8 @@ import 'package:vocab_booster/packages/core/l10n/generated/l10n.dart';
 import 'package:vocab_booster/packages/core/router/router.dart';
 import 'package:vocab_booster/packages/core/router/router.gr.dart';
 import 'package:vocab_booster/packages/exercise/presentation/session_setup.dart';
+import 'package:vocab_booster/packages/user/provider/get_me_stats.dart';
+import 'package:vocab_booster/ui/widget/loading_state.dart';
 import 'package:vocab_booster/ui/widget/style.dart';
 import 'package:vocab_booster/ui/widget/screen.dart';
 import 'package:vocab_booster/ui/widget/secondary_text.dart';
@@ -76,54 +78,67 @@ class ExerciseScreen extends StatelessWidget {
   }
 
   Widget _buildStats(BuildContext context) {
-    return Column(
-      children: [
-        const Divider(),
-        const SizedBox(height: 20),
-        IntrinsicHeight(
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            mainAxisSize: MainAxisSize.max,
-            children: [
-              Expanded(
-                child: Column(
-                  children: [
-                    const Text(
-                      '86',
-                      style: TextStyle(
-                        fontSize: 28,
-                        fontWeight: FontWeight.bold,
+    return Consumer(
+      builder: (context, ref, _) {
+        final stats = ref.watch(getMeStatsProvider);
+
+        return stats.when(
+          loading: () => LoadingState.fetching(context),
+          error: (error, st) => LoadingState.error(context, error, st),
+          data: (state) {
+            return Column(
+              children: [
+                const Divider(),
+                const SizedBox(height: 20),
+                IntrinsicHeight(
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    mainAxisSize: MainAxisSize.max,
+                    children: [
+                      Expanded(
+                        child: Column(
+                          children: [
+                            Text(
+                              formatNumber(state!.masteredExercises),
+                              style: const TextStyle(
+                                fontSize: 28,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                            SecondaryText(
+                                text: L10N.of(context).mastered.toLowerCase()),
+                          ],
+                        ),
                       ),
-                    ),
-                    SecondaryText(text: L10N.of(context).mastered),
-                  ],
-                ),
-              ),
-              const VerticalDivider(
-                width: 1,
-                // indent: 4,
-                // endIndent: 4,
-              ),
-              Expanded(
-                child: Column(
-                  children: [
-                    const Text(
-                      '195',
-                      style: TextStyle(
-                        fontSize: 28,
-                        fontWeight: FontWeight.bold,
+                      const VerticalDivider(
+                        width: 1,
                       ),
-                    ),
-                    SecondaryText(text: L10N.of(context).forReviews),
-                  ],
+                      Expanded(
+                        child: Column(
+                          children: [
+                            Text(
+                              formatNumber(state.waitingForReviewExercises),
+                              style: const TextStyle(
+                                fontSize: 28,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                            SecondaryText(
+                                text:
+                                    L10N.of(context).forReviews.toLowerCase()),
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
-              ),
-            ],
-          ),
-        ),
-        const SizedBox(height: 20),
-        const Divider(),
-      ],
+                const SizedBox(height: 20),
+                const Divider(),
+              ],
+            );
+          },
+        );
+      },
     );
   }
 
@@ -242,7 +257,7 @@ class ExerciseScreen extends StatelessWidget {
             context, L10N.of(context).reviews, LucideIcons.circleDotDashed),
         const SizedBox(height: 16),
         _buildLibraryItem(
-            context, L10N.of(context).recents, LucideIcons.history),
+            context, L10N.of(context).mastered, LucideIcons.graduationCap),
         const SizedBox(height: 16),
         _buildLibraryItem(
             context, L10N.of(context).favorites, LucideIcons.star),

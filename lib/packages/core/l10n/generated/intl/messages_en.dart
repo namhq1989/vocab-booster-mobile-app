@@ -84,7 +84,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "exerciseSectionPointsSubtitle": MessageLookupByLibrary.simpleMessage(
             "Daily points earned over the last 7 days"),
         "exerciseSectionPointsTitle":
-            MessageLookupByLibrary.simpleMessage("Collections"),
+            MessageLookupByLibrary.simpleMessage("Points"),
         "exerciseSectionProgressSubtitle": MessageLookupByLibrary.simpleMessage(
             "Daily exercises completion over the last 7 days"),
         "exerciseSectionProgressTitle":
@@ -117,7 +117,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Exercise Statuses"),
         "exerciseTitle": MessageLookupByLibrary.simpleMessage("Exercises"),
         "favorites": MessageLookupByLibrary.simpleMessage("Favorites"),
-        "forReviews": MessageLookupByLibrary.simpleMessage("for reviews"),
+        "forReviews": MessageLookupByLibrary.simpleMessage("For reviews"),
         "inputBioPlaceholder": MessageLookupByLibrary.simpleMessage(
             "Let\'\'s share something about yourself"),
         "inputNamePlaceholder":
@@ -127,9 +127,12 @@ class MessageLookup extends MessageLookupByLibrary {
         "languageVi": MessageLookupByLibrary.simpleMessage("Vietnamese"),
         "leave": MessageLookupByLibrary.simpleMessage("Leave"),
         "listening": MessageLookupByLibrary.simpleMessage("Listening"),
-        "mastered": MessageLookupByLibrary.simpleMessage("mastered"),
+        "mastered": MessageLookupByLibrary.simpleMessage("Mastered"),
         "mode": MessageLookupByLibrary.simpleMessage("Mode"),
         "name": MessageLookupByLibrary.simpleMessage("Name"),
+        "profileStatsCompletionTime":
+            MessageLookupByLibrary.simpleMessage("Learning duration"),
+        "profileStatsPoints": MessageLookupByLibrary.simpleMessage("Points"),
         "profileTitle": MessageLookupByLibrary.simpleMessage("Profile"),
         "recents": MessageLookupByLibrary.simpleMessage("Recents"),
         "reviews": MessageLookupByLibrary.simpleMessage("Reviews"),

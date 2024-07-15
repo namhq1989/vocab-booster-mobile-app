@@ -6,7 +6,7 @@ part of 'get_me.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$getMeHash() => r'c1209abe94f7bdbb2a2ab16a0fa7a06213da809d';
+String _$getMeHash() => r'fd1fc61e838c0ec61434e892f37ee3f880e648c3';
 
 /// See also [getMe].
 @ProviderFor(getMe)

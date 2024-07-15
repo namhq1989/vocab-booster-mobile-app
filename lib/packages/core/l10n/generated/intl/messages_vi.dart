@@ -118,7 +118,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Trạng thái bài tập"),
         "exerciseTitle": MessageLookupByLibrary.simpleMessage("Bài tập"),
         "favorites": MessageLookupByLibrary.simpleMessage("Yêu thích"),
-        "forReviews": MessageLookupByLibrary.simpleMessage("chờ ôn tập"),
+        "forReviews": MessageLookupByLibrary.simpleMessage("Chờ ôn tập"),
         "inputBioPlaceholder":
             MessageLookupByLibrary.simpleMessage("Chia sẻ gì đó về bạn đi nào"),
         "inputNamePlaceholder":
@@ -128,9 +128,12 @@ class MessageLookup extends MessageLookupByLibrary {
         "languageVi": MessageLookupByLibrary.simpleMessage("Tiếng Việt"),
         "leave": MessageLookupByLibrary.simpleMessage("Thoát"),
         "listening": MessageLookupByLibrary.simpleMessage("Listening"),
-        "mastered": MessageLookupByLibrary.simpleMessage("thành thạo"),
+        "mastered": MessageLookupByLibrary.simpleMessage("Thành thạo"),
         "mode": MessageLookupByLibrary.simpleMessage("Chế độ"),
         "name": MessageLookupByLibrary.simpleMessage("Tên"),
+        "profileStatsCompletionTime":
+            MessageLookupByLibrary.simpleMessage("Thời gian học"),
+        "profileStatsPoints": MessageLookupByLibrary.simpleMessage("Điểm"),
         "profileTitle": MessageLookupByLibrary.simpleMessage("Cá nhân"),
         "recents": MessageLookupByLibrary.simpleMessage("Gần đây"),
         "reviews": MessageLookupByLibrary.simpleMessage("Ôn tập"),

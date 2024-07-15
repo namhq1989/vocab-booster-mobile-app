@@ -24,7 +24,9 @@ class PExerciseCompletionTimeCounter extends _$PExerciseCompletionTimeCounter {
   }
 
   void dispose() {
-    _timer!.cancel();
-    _timer = null;
+    if (_timer != null) {
+      _timer!.cancel();
+      _timer = null;
+    }
   }
 }

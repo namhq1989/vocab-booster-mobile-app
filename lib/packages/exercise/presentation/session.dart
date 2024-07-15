@@ -5,7 +5,6 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:lottie/lottie.dart';
 import 'package:shadcn_ui/shadcn_ui.dart';
 import 'package:vocab_booster/packages/core/l10n/generated/l10n.dart';
-import 'package:vocab_booster/packages/core/router/router.dart';
 import 'package:vocab_booster/packages/exercise/domain/exercise.dart';
 import 'package:vocab_booster/packages/exercise/presentation/slide_up_number.dart';
 import 'package:vocab_booster/packages/exercise/provider/session.dart';
@@ -56,11 +55,8 @@ class _ExerciseSessionScreenState extends ConsumerState<ExerciseSessionScreen> {
                         width: double.infinity,
                         text: Text(L10N.of(context).leave),
                         onPressed: () {
-                          ref
-                              .read(pSessionExercisesProvider.notifier)
-                              .disposeTimer();
                           Navigator.of(context).pop(true);
-                          ref.read(appRouterProvider).back();
+                          ref.read(pSessionExercisesProvider.notifier).exit();
                         },
                       ),
                       const SizedBox(height: 8),

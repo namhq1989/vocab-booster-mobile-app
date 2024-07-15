@@ -520,20 +520,20 @@ class L10N {
     );
   }
 
-  /// `mastered`
+  /// `Mastered`
   String get mastered {
     return Intl.message(
-      'mastered',
+      'Mastered',
       name: 'mastered',
       desc: '',
       args: [],
     );
   }
 
-  /// `for reviews`
+  /// `For reviews`
   String get forReviews {
     return Intl.message(
-      'for reviews',
+      'For reviews',
       name: 'forReviews',
       desc: '',
       args: [],
@@ -605,6 +605,26 @@ class L10N {
     return Intl.message(
       'Profile',
       name: 'profileTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Learning duration`
+  String get profileStatsCompletionTime {
+    return Intl.message(
+      'Learning duration',
+      name: 'profileStatsCompletionTime',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Points`
+  String get profileStatsPoints {
+    return Intl.message(
+      'Points',
+      name: 'profileStatsPoints',
       desc: '',
       args: [],
     );
@@ -900,10 +920,10 @@ class L10N {
     );
   }
 
-  /// `Collections`
+  /// `Points`
   String get exerciseSectionPointsTitle {
     return Intl.message(
-      'Collections',
+      'Points',
       name: 'exerciseSectionPointsTitle',
       desc: '',
       args: [],
