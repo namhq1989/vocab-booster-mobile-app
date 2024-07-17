@@ -7,7 +7,7 @@ part of 'exercise_completion_time_counter.dart';
 // **************************************************************************
 
 String _$pExerciseCompletionTimeCounterHash() =>
-    r'bdf354e85988fb5cac47ae8f80e2db9fdcea1f5b';
+    r'79b38e0ea68843e43f69cd4ab2bad8714b430b09';
 
 /// See also [PExerciseCompletionTimeCounter].
 @ProviderFor(PExerciseCompletionTimeCounter)
