@@ -9,6 +9,7 @@ import 'package:vocab_booster/packages/core/l10n/generated/l10n.dart';
 import 'package:vocab_booster/packages/core/router/router.dart';
 import 'package:vocab_booster/packages/core/router/router.gr.dart';
 import 'package:vocab_booster/packages/exercise/presentation/session_setup.dart';
+import 'package:vocab_booster/packages/exercise/provider/exercise_collections.dart';
 import 'package:vocab_booster/packages/user/provider/get_me_stats.dart';
 import 'package:vocab_booster/ui/widget/loading_state.dart';
 import 'package:vocab_booster/ui/widget/style.dart';
@@ -143,31 +144,51 @@ class ExerciseScreen extends StatelessWidget {
   }
 
   Widget _buildCollections(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Text(
-          L10N.of(context).exerciseSectionCollectionsTitle,
-          style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-        ),
-        SecondaryText(
-            text: L10N.of(context).exerciseSectionCollectionsSubtitle),
-        const SizedBox(height: 16),
-        _buildCollection(context, 'Beginner', 'beginner', 872, 1259),
-        _buildCollection(context, 'Intermediate', 'intermediate', 524, 2784),
-        _buildCollection(context, 'Advanced', 'advanced', 52, 321),
-      ],
+    return Consumer(
+      builder: (context, ref, _) {
+        final collections = ref.watch(pExerciseCollectionsProvider);
+        return collections.when(
+          data: (state) {
+            return Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  L10N.of(context).exerciseSectionCollectionsTitle,
+                  style: const TextStyle(
+                      fontSize: 20, fontWeight: FontWeight.bold),
+                ),
+                SecondaryText(
+                    text: L10N.of(context).exerciseSectionCollectionsSubtitle),
+                const SizedBox(height: 16),
+                Column(
+                  children: state.map((collection) {
+                    return _buildCollection(context, collection.name,
+                        collection.image, 0, collection.statsExercises);
+                  }).toList(),
+                ),
+
+                // _buildCollection(context, 'Beginner', 'beginner', 872, 1259),
+                // _buildCollection(
+                //     context, 'Intermediate', 'intermediate', 524, 2784),
+                // _buildCollection(context, 'Advanced', 'advanced', 52, 321),
+              ],
+            );
+          },
+          loading: () => LoadingState.fetching(context),
+          error: (error, st) => LoadingState.error(context, error, st),
+        );
+      },
     );
   }
 
   Widget _buildCollection(
     BuildContext context,
     String name,
-    String iconName,
+    String image,
     int done,
     int total,
   ) {
-    final double doneRatio = done / total;
+    final double doneRatio = total == 0 ? 0 : done / total;
 
     return Consumer(
       builder: (context, ref, _) {
@@ -192,8 +213,8 @@ class ExerciseScreen extends StatelessWidget {
                 SizedBox(
                   width: 60,
                   height: 68,
-                  child: SvgPicture.asset(
-                    'assets/images/exercise/$iconName.svg',
+                  child: SvgPicture.network(
+                    image,
                     fit: BoxFit.cover,
                   ),
                 ),

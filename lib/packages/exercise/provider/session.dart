@@ -36,7 +36,7 @@ class PSessionExercises extends _$PSessionExercises {
   Future<SessionExercisesState> build() async {
     final setupData = ref.read(pSessionSetupDataProvider).data;
     final api = GetExercisesAPI(http: await ref.read(appHttpProvider.notifier));
-    final response = await api.call(GetExercisesRequest(level: 'intermediate'));
+    final response = await api.call(GetExercisesRequest());
 
     if (response.success == false) {
       return SessionExercisesState(
@@ -85,7 +85,7 @@ class PSessionExercises extends _$PSessionExercises {
     disposeTimer();
 
     if (state.value!.isProgressing) {
-      ref.read(getMeStatsProvider.future);
+      ref.refresh(getMeStatsProvider.future);
     }
 
     ref.read(appRouterProvider).back();

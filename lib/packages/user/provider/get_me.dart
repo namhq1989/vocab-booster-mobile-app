@@ -6,7 +6,7 @@ import 'package:vocab_booster/packages/user/rest/get_me.dart';
 
 part 'get_me.g.dart';
 
-@riverpod
+@Riverpod(keepAlive: true)
 Future<UserMe?> getMe(GetMeRef ref) async {
   final api = GetMeAPI(http: await ref.read(appHttpProvider.notifier));
   final request = GetMeRequest();
