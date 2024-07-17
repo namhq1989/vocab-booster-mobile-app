@@ -25,17 +25,27 @@ class PSessionSetupData extends _$PSessionSetupData {
       data: SessionSetupData(
         skill: SessionSkill.vocabulary,
         mode: SessionMode.multipleOptions,
+        collectionId: '',
       ),
     );
   }
 
-  void setupCompleted() {
+  void setCollectionId(String collectionId) {
+    state = state.copyWith(
+      data: state.data.copyWith(
+        collectionId: collectionId,
+      ),
+    );
+  }
+
+  void setupCompleted(String collectionId) {
     final form = state.formState;
 
     state = state.copyWith(
-      data: SessionSetupData(
+      data: state.data.copyWith(
         skill: SessionSkill.fromValue(form.currentState!.value['skill']),
         mode: SessionMode.fromValue(form.currentState!.value['mode']),
+        collectionId: collectionId,
       ),
     );
 

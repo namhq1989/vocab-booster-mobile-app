@@ -15,6 +15,7 @@ _$ExerciseCollectionImpl _$$ExerciseCollectionImplFromJson(
       translated: json['translated'] as String,
       image: json['image'] as String,
       statsExercises: (json['statsExercises'] as num).toInt(),
+      statsInteracted: (json['statsInteracted'] as num).toInt(),
     );
 
 Map<String, dynamic> _$$ExerciseCollectionImplToJson(
@@ -26,4 +27,5 @@ Map<String, dynamic> _$$ExerciseCollectionImplToJson(
       'translated': instance.translated,
       'image': instance.image,
       'statsExercises': instance.statsExercises,
+      'statsInteracted': instance.statsInteracted,
     };

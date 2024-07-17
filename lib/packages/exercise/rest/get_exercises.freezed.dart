@@ -20,8 +20,8 @@ GetExercisesRequest _$GetExercisesRequestFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$GetExercisesRequest {
-  @JsonKey(name: 'level')
-  String? get level => throw _privateConstructorUsedError;
+  @JsonKey(name: 'collectionId')
+  String get collectionId => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -35,7 +35,7 @@ abstract class $GetExercisesRequestCopyWith<$Res> {
           GetExercisesRequest value, $Res Function(GetExercisesRequest) then) =
       _$GetExercisesRequestCopyWithImpl<$Res, GetExercisesRequest>;
   @useResult
-  $Res call({@JsonKey(name: 'level') String? level});
+  $Res call({@JsonKey(name: 'collectionId') String collectionId});
 }
 
 /// @nodoc
@@ -51,13 +51,13 @@ class _$GetExercisesRequestCopyWithImpl<$Res, $Val extends GetExercisesRequest>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? level = freezed,
+    Object? collectionId = null,
   }) {
     return _then(_value.copyWith(
-      level: freezed == level
-          ? _value.level
-          : level // ignore: cast_nullable_to_non_nullable
-              as String?,
+      collectionId: null == collectionId
+          ? _value.collectionId
+          : collectionId // ignore: cast_nullable_to_non_nullable
+              as String,
     ) as $Val);
   }
 }
@@ -70,7 +70,7 @@ abstract class _$$GetExercisesRequestImplCopyWith<$Res>
       __$$GetExercisesRequestImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({@JsonKey(name: 'level') String? level});
+  $Res call({@JsonKey(name: 'collectionId') String collectionId});
 }
 
 /// @nodoc
@@ -84,13 +84,13 @@ class __$$GetExercisesRequestImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? level = freezed,
+    Object? collectionId = null,
   }) {
     return _then(_$GetExercisesRequestImpl(
-      level: freezed == level
-          ? _value.level
-          : level // ignore: cast_nullable_to_non_nullable
-              as String?,
+      collectionId: null == collectionId
+          ? _value.collectionId
+          : collectionId // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -98,18 +98,19 @@ class __$$GetExercisesRequestImplCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$GetExercisesRequestImpl implements _GetExercisesRequest {
-  _$GetExercisesRequestImpl({@JsonKey(name: 'level') this.level});
+  _$GetExercisesRequestImpl(
+      {@JsonKey(name: 'collectionId') required this.collectionId});
 
   factory _$GetExercisesRequestImpl.fromJson(Map<String, dynamic> json) =>
       _$$GetExercisesRequestImplFromJson(json);
 
   @override
-  @JsonKey(name: 'level')
-  final String? level;
+  @JsonKey(name: 'collectionId')
+  final String collectionId;
 
   @override
   String toString() {
-    return 'GetExercisesRequest(level: $level)';
+    return 'GetExercisesRequest(collectionId: $collectionId)';
   }
 
   @override
@@ -117,12 +118,13 @@ class _$GetExercisesRequestImpl implements _GetExercisesRequest {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$GetExercisesRequestImpl &&
-            (identical(other.level, level) || other.level == level));
+            (identical(other.collectionId, collectionId) ||
+                other.collectionId == collectionId));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, level);
+  int get hashCode => Object.hash(runtimeType, collectionId);
 
   @JsonKey(ignore: true)
   @override
@@ -140,15 +142,16 @@ class _$GetExercisesRequestImpl implements _GetExercisesRequest {
 }
 
 abstract class _GetExercisesRequest implements GetExercisesRequest {
-  factory _GetExercisesRequest({@JsonKey(name: 'level') final String? level}) =
+  factory _GetExercisesRequest(
+          {@JsonKey(name: 'collectionId') required final String collectionId}) =
       _$GetExercisesRequestImpl;
 
   factory _GetExercisesRequest.fromJson(Map<String, dynamic> json) =
       _$GetExercisesRequestImpl.fromJson;
 
   @override
-  @JsonKey(name: 'level')
-  String? get level;
+  @JsonKey(name: 'collectionId')
+  String get collectionId;
   @override
   @JsonKey(ignore: true)
   _$$GetExercisesRequestImplCopyWith<_$GetExercisesRequestImpl> get copyWith =>

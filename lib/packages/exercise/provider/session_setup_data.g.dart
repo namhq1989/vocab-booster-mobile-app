@@ -6,7 +6,7 @@ part of 'session_setup_data.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$pSessionSetupDataHash() => r'80e7b0fa8ecfa40e2c13aca0fa677182474603c2';
+String _$pSessionSetupDataHash() => r'fd3b91d8f2536c655104bc5ade000869f3320969';
 
 /// See also [PSessionSetupData].
 @ProviderFor(PSessionSetupData)

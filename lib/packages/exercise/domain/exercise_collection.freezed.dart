@@ -26,6 +26,7 @@ mixin _$ExerciseCollection {
   String get translated => throw _privateConstructorUsedError;
   String get image => throw _privateConstructorUsedError;
   int get statsExercises => throw _privateConstructorUsedError;
+  int get statsInteracted => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -45,7 +46,8 @@ abstract class $ExerciseCollectionCopyWith<$Res> {
       String slug,
       String translated,
       String image,
-      int statsExercises});
+      int statsExercises,
+      int statsInteracted});
 }
 
 /// @nodoc
@@ -67,6 +69,7 @@ class _$ExerciseCollectionCopyWithImpl<$Res, $Val extends ExerciseCollection>
     Object? translated = null,
     Object? image = null,
     Object? statsExercises = null,
+    Object? statsInteracted = null,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -93,6 +96,10 @@ class _$ExerciseCollectionCopyWithImpl<$Res, $Val extends ExerciseCollection>
           ? _value.statsExercises
           : statsExercises // ignore: cast_nullable_to_non_nullable
               as int,
+      statsInteracted: null == statsInteracted
+          ? _value.statsInteracted
+          : statsInteracted // ignore: cast_nullable_to_non_nullable
+              as int,
     ) as $Val);
   }
 }
@@ -111,7 +118,8 @@ abstract class _$$ExerciseCollectionImplCopyWith<$Res>
       String slug,
       String translated,
       String image,
-      int statsExercises});
+      int statsExercises,
+      int statsInteracted});
 }
 
 /// @nodoc
@@ -131,6 +139,7 @@ class __$$ExerciseCollectionImplCopyWithImpl<$Res>
     Object? translated = null,
     Object? image = null,
     Object? statsExercises = null,
+    Object? statsInteracted = null,
   }) {
     return _then(_$ExerciseCollectionImpl(
       id: null == id
@@ -157,6 +166,10 @@ class __$$ExerciseCollectionImplCopyWithImpl<$Res>
           ? _value.statsExercises
           : statsExercises // ignore: cast_nullable_to_non_nullable
               as int,
+      statsInteracted: null == statsInteracted
+          ? _value.statsInteracted
+          : statsInteracted // ignore: cast_nullable_to_non_nullable
+              as int,
     ));
   }
 }
@@ -170,7 +183,8 @@ class _$ExerciseCollectionImpl implements _ExerciseCollection {
       required this.slug,
       required this.translated,
       required this.image,
-      required this.statsExercises});
+      required this.statsExercises,
+      required this.statsInteracted});
 
   factory _$ExerciseCollectionImpl.fromJson(Map<String, dynamic> json) =>
       _$$ExerciseCollectionImplFromJson(json);
@@ -187,10 +201,12 @@ class _$ExerciseCollectionImpl implements _ExerciseCollection {
   final String image;
   @override
   final int statsExercises;
+  @override
+  final int statsInteracted;
 
   @override
   String toString() {
-    return 'ExerciseCollection(id: $id, name: $name, slug: $slug, translated: $translated, image: $image, statsExercises: $statsExercises)';
+    return 'ExerciseCollection(id: $id, name: $name, slug: $slug, translated: $translated, image: $image, statsExercises: $statsExercises, statsInteracted: $statsInteracted)';
   }
 
   @override
@@ -205,13 +221,15 @@ class _$ExerciseCollectionImpl implements _ExerciseCollection {
                 other.translated == translated) &&
             (identical(other.image, image) || other.image == image) &&
             (identical(other.statsExercises, statsExercises) ||
-                other.statsExercises == statsExercises));
+                other.statsExercises == statsExercises) &&
+            (identical(other.statsInteracted, statsInteracted) ||
+                other.statsInteracted == statsInteracted));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType, id, name, slug, translated, image, statsExercises);
+  int get hashCode => Object.hash(runtimeType, id, name, slug, translated,
+      image, statsExercises, statsInteracted);
 
   @JsonKey(ignore: true)
   @override
@@ -235,7 +253,8 @@ abstract class _ExerciseCollection implements ExerciseCollection {
       required final String slug,
       required final String translated,
       required final String image,
-      required final int statsExercises}) = _$ExerciseCollectionImpl;
+      required final int statsExercises,
+      required final int statsInteracted}) = _$ExerciseCollectionImpl;
 
   factory _ExerciseCollection.fromJson(Map<String, dynamic> json) =
       _$ExerciseCollectionImpl.fromJson;
@@ -252,6 +271,8 @@ abstract class _ExerciseCollection implements ExerciseCollection {
   String get image;
   @override
   int get statsExercises;
+  @override
+  int get statsInteracted;
   @override
   @JsonKey(ignore: true)
   _$$ExerciseCollectionImplCopyWith<_$ExerciseCollectionImpl> get copyWith =>

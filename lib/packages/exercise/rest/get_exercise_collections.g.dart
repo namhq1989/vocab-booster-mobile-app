@@ -62,6 +62,7 @@ _$GetExerciseCollectionsResponseCollectionImpl
           image: _$JsonConverterFromJson<String, String>(
               json['image'], const AppAssestUrlSerializer().fromJson),
           statsExercises: (json['statsExercises'] as num?)?.toInt(),
+          statsInteracted: (json['statsInteracted'] as num?)?.toInt(),
         );
 
 Map<String, dynamic> _$$GetExerciseCollectionsResponseCollectionImplToJson(
@@ -74,6 +75,7 @@ Map<String, dynamic> _$$GetExerciseCollectionsResponseCollectionImplToJson(
       'image': _$JsonConverterToJson<String, String>(
           instance.image, const AppAssestUrlSerializer().toJson),
       'statsExercises': instance.statsExercises,
+      'statsInteracted': instance.statsInteracted,
     };
 
 Value? _$JsonConverterFromJson<Json, Value>(

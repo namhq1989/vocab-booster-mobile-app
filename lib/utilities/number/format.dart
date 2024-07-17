@@ -19,7 +19,7 @@ String formatSeconds(int totalSeconds) {
 String formatDuration(int totalSeconds) {
   if (totalSeconds < 60) {
     return '${totalSeconds}s';
-  } else if (totalSeconds < 360) {
+  } else if (totalSeconds < 3600) {
     int minutes = totalSeconds ~/ 60; // Calculate minutes
     int seconds = totalSeconds % 60; // Calculate remaining seconds
     return '${minutes}m${seconds}s';

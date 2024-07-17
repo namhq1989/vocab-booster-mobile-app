@@ -2,16 +2,22 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:shadcn_ui/shadcn_ui.dart';
 import 'package:vocab_booster/packages/core/l10n/generated/l10n.dart';
+import 'package:vocab_booster/packages/exercise/domain/exercise_collection.dart';
 import 'package:vocab_booster/packages/exercise/domain/session_setup_data.dart';
 import 'package:vocab_booster/packages/exercise/provider/session_setup_data.dart';
 import 'package:vocab_booster/ui/widget/bottomsheet.dart';
 import 'package:vocab_booster/ui/widget/radio_option.dart';
 
 class ExerciseSessionSetup extends ConsumerStatefulWidget {
-  const ExerciseSessionSetup(
-      {super.key, required this.child, required this.cb});
+  const ExerciseSessionSetup({
+    super.key,
+    required this.child,
+    required this.cb,
+    required this.collection,
+  });
 
   final Widget child;
+  final ExerciseCollection collection;
   final Function() cb;
 
   @override
@@ -41,6 +47,16 @@ class _ExerciseSessionSetupState extends ConsumerState<ExerciseSessionSetup> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisSize: MainAxisSize.min,
                   children: [
+                    Text(
+                      widget.collection.name,
+                      style: const TextStyle(
+                        fontSize: 24,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    const SizedBox(height: 10),
+                    const Divider(),
+                    const SizedBox(height: 10),
                     ShadRadioGroupFormField<String>(
                       id: 'skill',
                       label: Text(
@@ -122,7 +138,7 @@ class _ExerciseSessionSetupState extends ConsumerState<ExerciseSessionSetup> {
                       onPressed: () {
                         ref
                             .read(pSessionSetupDataProvider.notifier)
-                            .setupCompleted();
+                            .setupCompleted(widget.collection.id);
                         Navigator.of(context).pop(true);
                         widget.cb();
                       },

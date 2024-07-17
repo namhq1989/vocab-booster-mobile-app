@@ -23,7 +23,7 @@ class GetExercisesAPI {
 @freezed
 class GetExercisesRequest with _$GetExercisesRequest {
   factory GetExercisesRequest({
-    @JsonKey(name: 'level') String? level,
+    @JsonKey(name: 'collectionId') required String collectionId,
   }) = _GetExercisesRequest;
 
   factory GetExercisesRequest.fromJson(Map<String, dynamic> json) =>
