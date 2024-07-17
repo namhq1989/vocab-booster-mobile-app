@@ -8,8 +8,11 @@ import 'package:syncfusion_flutter_charts/charts.dart';
 import 'package:vocab_booster/packages/core/l10n/generated/l10n.dart';
 import 'package:vocab_booster/packages/core/router/router.dart';
 import 'package:vocab_booster/packages/core/router/router.gr.dart';
+import 'package:vocab_booster/packages/exercise/domain/exercise_collection.dart';
+import 'package:vocab_booster/packages/exercise/domain/user_aggregated_point.dart';
 import 'package:vocab_booster/packages/exercise/presentation/session_setup.dart';
 import 'package:vocab_booster/packages/exercise/provider/exercise_collections.dart';
+import 'package:vocab_booster/packages/exercise/provider/recent_points_chart.dart';
 import 'package:vocab_booster/packages/user/provider/get_me_stats.dart';
 import 'package:vocab_booster/ui/widget/loading_state.dart';
 import 'package:vocab_booster/ui/widget/style.dart';
@@ -162,15 +165,12 @@ class ExerciseScreen extends StatelessWidget {
                 const SizedBox(height: 16),
                 Column(
                   children: state.map((collection) {
-                    return _buildCollection(context, collection.name,
-                        collection.image, 0, collection.statsExercises);
+                    return _buildCollection(
+                      context,
+                      collection,
+                    );
                   }).toList(),
                 ),
-
-                // _buildCollection(context, 'Beginner', 'beginner', 872, 1259),
-                // _buildCollection(
-                //     context, 'Intermediate', 'intermediate', 524, 2784),
-                // _buildCollection(context, 'Advanced', 'advanced', 52, 321),
               ],
             );
           },
@@ -183,16 +183,16 @@ class ExerciseScreen extends StatelessWidget {
 
   Widget _buildCollection(
     BuildContext context,
-    String name,
-    String image,
-    int done,
-    int total,
+    ExerciseCollection collection,
   ) {
-    final double doneRatio = total == 0 ? 0 : done / total;
+    final double doneRatio = collection.statsExercises == 0
+        ? 0
+        : collection.statsInteracted / collection.statsExercises;
 
     return Consumer(
       builder: (context, ref, _) {
         return ExerciseSessionSetup(
+          collection: collection,
           cb: () async {
             await Future.delayed(const Duration(milliseconds: 500));
             ref.read(appRouterProvider).push(const ExerciseSessionRoute());
@@ -214,7 +214,7 @@ class ExerciseScreen extends StatelessWidget {
                   width: 60,
                   height: 68,
                   child: SvgPicture.network(
-                    image,
+                    collection.image,
                     fit: BoxFit.cover,
                   ),
                 ),
@@ -225,7 +225,7 @@ class ExerciseScreen extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        name,
+                        collection.name,
                         style: TextStyle(
                           fontSize: 16,
                           fontWeight: FontWeight.bold,
@@ -233,7 +233,8 @@ class ExerciseScreen extends StatelessWidget {
                         ),
                       ),
                       SecondaryText(
-                          text: '${formatNumber(done)}/${formatNumber(total)}'),
+                          text:
+                              '${formatNumber(collection.statsInteracted)}/${formatNumber(collection.statsExercises)}'),
                       const SizedBox(height: 10),
                       ConstrainedBox(
                         constraints: BoxConstraints(
@@ -388,63 +389,70 @@ class ExerciseScreen extends StatelessWidget {
   }
 
   Widget _buildPointsChart(BuildContext context) {
-    final List<_DailySentence> last7DaysRecords = List.generate(7, (index) {
-      final date = DateTime.now().subtract(Duration(days: index));
-      final sentences = random.nextInt(
-          30); // Generates a random number of sentences between 0 and 99
-      return _DailySentence(date, sentences);
-    });
-
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Text(
-          L10N.of(context).exerciseSectionPointsTitle,
-          style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-        ),
-        SecondaryText(text: L10N.of(context).exerciseSectionPointsSubtitle),
-        const SizedBox(height: 16),
-        Container(
-          decoration: BoxDecoration(
-            border: Border.all(
-              color: AppColor.borderColor(context),
-            ),
-            borderRadius: BorderRadius.circular(12),
-          ),
-          padding: const EdgeInsets.all(16),
-          child: Stack(
-            children: [
-              SizedBox(
-                height: 150,
-                child: SfCartesianChart(
-                  primaryXAxis: const CategoryAxis(),
-                  primaryYAxis: const CategoryAxis(
-                    labelStyle: TextStyle(fontSize: 0),
-                    maximumLabelWidth: 0,
-                  ),
-                  legend: const Legend(
-                    isVisible: false,
-                  ),
-                  series: <CartesianSeries<_DailySentence, String>>[
-                    SplineSeries<_DailySentence, String>(
-                      color: Theme.of(context).colorScheme.primary,
-                      splineType: SplineType.natural,
-                      dataSource: last7DaysRecords.reversed.toList(),
-                      xValueMapper: (_DailySentence stats, _) =>
-                          formatDDMM(stats.date),
-                      yValueMapper: (_DailySentence stats, _) =>
-                          stats.sentences,
-                      dataLabelSettings:
-                          const DataLabelSettings(isVisible: true),
-                    ),
-                  ],
+    return Consumer(
+      builder: (context, ref, _) {
+        final points = ref.watch(pExerciseRecentPointsChartProvider);
+        return points.when(
+          data: (state) {
+            return Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  L10N.of(context).exerciseSectionPointsTitle,
+                  style: const TextStyle(
+                      fontSize: 20, fontWeight: FontWeight.bold),
                 ),
-              ),
-              Container(height: 150, color: Colors.transparent),
-            ],
-          ),
-        ),
-      ],
+                SecondaryText(
+                    text: L10N.of(context).exerciseSectionPointsSubtitle),
+                const SizedBox(height: 16),
+                Container(
+                  decoration: BoxDecoration(
+                    border: Border.all(
+                      color: AppColor.borderColor(context),
+                    ),
+                    borderRadius: BorderRadius.circular(12),
+                  ),
+                  padding: const EdgeInsets.all(16),
+                  child: Stack(
+                    children: [
+                      SizedBox(
+                        height: 150,
+                        child: SfCartesianChart(
+                          primaryXAxis: const CategoryAxis(),
+                          primaryYAxis: const CategoryAxis(
+                            labelStyle: TextStyle(fontSize: 0),
+                            maximumLabelWidth: 0,
+                          ),
+                          legend: const Legend(
+                            isVisible: false,
+                          ),
+                          series: <CartesianSeries<UserAggregatedPoint,
+                              String>>[
+                            SplineSeries<UserAggregatedPoint, String>(
+                              color: Theme.of(context).colorScheme.primary,
+                              splineType: SplineType.monotonic,
+                              dataSource: state.toList(),
+                              xValueMapper: (UserAggregatedPoint point, _) =>
+                                  point.date,
+                              yValueMapper: (UserAggregatedPoint point, _) =>
+                                  point.point,
+                              dataLabelSettings:
+                                  const DataLabelSettings(isVisible: true),
+                            ),
+                          ],
+                        ),
+                      ),
+                      Container(height: 150, color: Colors.transparent),
+                    ],
+                  ),
+                ),
+              ],
+            );
+          },
+          error: (error, st) => LoadingState.error(context, error, st),
+          loading: () => LoadingState.fetching(context),
+        );
+      },
     );
   }
 }

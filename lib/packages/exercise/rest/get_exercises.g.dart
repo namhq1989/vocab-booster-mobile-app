@@ -9,13 +9,13 @@ part of 'get_exercises.dart';
 _$GetExercisesRequestImpl _$$GetExercisesRequestImplFromJson(
         Map<String, dynamic> json) =>
     _$GetExercisesRequestImpl(
-      level: json['level'] as String?,
+      collectionId: json['collectionId'] as String,
     );
 
 Map<String, dynamic> _$$GetExercisesRequestImplToJson(
         _$GetExercisesRequestImpl instance) =>
     <String, dynamic>{
-      'level': instance.level,
+      'collectionId': instance.collectionId,
     };
 
 _$GetExercisesResponseImpl _$$GetExercisesResponseImplFromJson(

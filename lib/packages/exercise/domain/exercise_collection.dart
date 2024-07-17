@@ -12,6 +12,7 @@ class ExerciseCollection with _$ExerciseCollection {
     required String translated,
     required String image,
     required int statsExercises,
+    required int statsInteracted,
   }) = _ExerciseCollection;
 
   factory ExerciseCollection.fromJson(Map<String, dynamic> json) =>

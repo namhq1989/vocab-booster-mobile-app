@@ -546,6 +546,8 @@ mixin _$GetExerciseCollectionsResponseCollection {
   String? get image => throw _privateConstructorUsedError;
   @JsonKey(name: 'statsExercises')
   int? get statsExercises => throw _privateConstructorUsedError;
+  @JsonKey(name: 'statsInteracted')
+  int? get statsInteracted => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -568,7 +570,8 @@ abstract class $GetExerciseCollectionsResponseCollectionCopyWith<$Res> {
       @JsonKey(name: 'slug') String? slug,
       @JsonKey(name: 'translated') String? translated,
       @AppAssestUrlSerializer() @JsonKey(name: 'image') String? image,
-      @JsonKey(name: 'statsExercises') int? statsExercises});
+      @JsonKey(name: 'statsExercises') int? statsExercises,
+      @JsonKey(name: 'statsInteracted') int? statsInteracted});
 }
 
 /// @nodoc
@@ -592,6 +595,7 @@ class _$GetExerciseCollectionsResponseCollectionCopyWithImpl<$Res,
     Object? translated = freezed,
     Object? image = freezed,
     Object? statsExercises = freezed,
+    Object? statsInteracted = freezed,
   }) {
     return _then(_value.copyWith(
       id: freezed == id
@@ -618,6 +622,10 @@ class _$GetExerciseCollectionsResponseCollectionCopyWithImpl<$Res,
           ? _value.statsExercises
           : statsExercises // ignore: cast_nullable_to_non_nullable
               as int?,
+      statsInteracted: freezed == statsInteracted
+          ? _value.statsInteracted
+          : statsInteracted // ignore: cast_nullable_to_non_nullable
+              as int?,
     ) as $Val);
   }
 }
@@ -637,7 +645,8 @@ abstract class _$$GetExerciseCollectionsResponseCollectionImplCopyWith<$Res>
       @JsonKey(name: 'slug') String? slug,
       @JsonKey(name: 'translated') String? translated,
       @AppAssestUrlSerializer() @JsonKey(name: 'image') String? image,
-      @JsonKey(name: 'statsExercises') int? statsExercises});
+      @JsonKey(name: 'statsExercises') int? statsExercises,
+      @JsonKey(name: 'statsInteracted') int? statsInteracted});
 }
 
 /// @nodoc
@@ -659,6 +668,7 @@ class __$$GetExerciseCollectionsResponseCollectionImplCopyWithImpl<$Res>
     Object? translated = freezed,
     Object? image = freezed,
     Object? statsExercises = freezed,
+    Object? statsInteracted = freezed,
   }) {
     return _then(_$GetExerciseCollectionsResponseCollectionImpl(
       id: freezed == id
@@ -685,6 +695,10 @@ class __$$GetExerciseCollectionsResponseCollectionImplCopyWithImpl<$Res>
           ? _value.statsExercises
           : statsExercises // ignore: cast_nullable_to_non_nullable
               as int?,
+      statsInteracted: freezed == statsInteracted
+          ? _value.statsInteracted
+          : statsInteracted // ignore: cast_nullable_to_non_nullable
+              as int?,
     ));
   }
 }
@@ -699,7 +713,8 @@ class _$GetExerciseCollectionsResponseCollectionImpl
       @JsonKey(name: 'slug') this.slug,
       @JsonKey(name: 'translated') this.translated,
       @AppAssestUrlSerializer() @JsonKey(name: 'image') this.image,
-      @JsonKey(name: 'statsExercises') this.statsExercises})
+      @JsonKey(name: 'statsExercises') this.statsExercises,
+      @JsonKey(name: 'statsInteracted') this.statsInteracted})
       : super._();
 
   factory _$GetExerciseCollectionsResponseCollectionImpl.fromJson(
@@ -725,10 +740,13 @@ class _$GetExerciseCollectionsResponseCollectionImpl
   @override
   @JsonKey(name: 'statsExercises')
   final int? statsExercises;
+  @override
+  @JsonKey(name: 'statsInteracted')
+  final int? statsInteracted;
 
   @override
   String toString() {
-    return 'GetExerciseCollectionsResponseCollection(id: $id, name: $name, slug: $slug, translated: $translated, image: $image, statsExercises: $statsExercises)';
+    return 'GetExerciseCollectionsResponseCollection(id: $id, name: $name, slug: $slug, translated: $translated, image: $image, statsExercises: $statsExercises, statsInteracted: $statsInteracted)';
   }
 
   @override
@@ -743,13 +761,15 @@ class _$GetExerciseCollectionsResponseCollectionImpl
                 other.translated == translated) &&
             (identical(other.image, image) || other.image == image) &&
             (identical(other.statsExercises, statsExercises) ||
-                other.statsExercises == statsExercises));
+                other.statsExercises == statsExercises) &&
+            (identical(other.statsInteracted, statsInteracted) ||
+                other.statsInteracted == statsInteracted));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType, id, name, slug, translated, image, statsExercises);
+  int get hashCode => Object.hash(runtimeType, id, name, slug, translated,
+      image, statsExercises, statsInteracted);
 
   @JsonKey(ignore: true)
   @override
@@ -776,7 +796,8 @@ abstract class _GetExerciseCollectionsResponseCollection
           @JsonKey(name: 'slug') final String? slug,
           @JsonKey(name: 'translated') final String? translated,
           @AppAssestUrlSerializer() @JsonKey(name: 'image') final String? image,
-          @JsonKey(name: 'statsExercises') final int? statsExercises}) =
+          @JsonKey(name: 'statsExercises') final int? statsExercises,
+          @JsonKey(name: 'statsInteracted') final int? statsInteracted}) =
       _$GetExerciseCollectionsResponseCollectionImpl;
   _GetExerciseCollectionsResponseCollection._() : super._();
 
@@ -803,6 +824,9 @@ abstract class _GetExerciseCollectionsResponseCollection
   @override
   @JsonKey(name: 'statsExercises')
   int? get statsExercises;
+  @override
+  @JsonKey(name: 'statsInteracted')
+  int? get statsInteracted;
   @override
   @JsonKey(ignore: true)
   _$$GetExerciseCollectionsResponseCollectionImplCopyWith<

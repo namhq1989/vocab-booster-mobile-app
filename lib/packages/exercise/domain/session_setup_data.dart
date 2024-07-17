@@ -65,6 +65,7 @@ class SessionSetupData with _$SessionSetupData {
   factory SessionSetupData({
     required final SessionSkill skill,
     required final SessionMode mode,
+    required final String collectionId,
   }) = _SessionSetupData;
 }
 

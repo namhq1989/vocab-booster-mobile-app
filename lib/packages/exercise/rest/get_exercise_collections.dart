@@ -67,6 +67,7 @@ class GetExerciseCollectionsResponseCollection
     @JsonKey(name: 'translated') String? translated,
     @AppAssestUrlSerializer() @JsonKey(name: 'image') String? image,
     @JsonKey(name: 'statsExercises') int? statsExercises,
+    @JsonKey(name: 'statsInteracted') int? statsInteracted,
   }) = _GetExerciseCollectionsResponseCollection;
 
   factory GetExerciseCollectionsResponseCollection.fromJson(

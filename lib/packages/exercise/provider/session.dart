@@ -5,6 +5,7 @@ import 'package:vocab_booster/packages/core/router/router.dart';
 import 'package:vocab_booster/packages/exercise/domain/exercise.dart';
 import 'package:vocab_booster/packages/exercise/domain/exercise_status.dart';
 import 'package:vocab_booster/packages/exercise/domain/session_setup_data.dart';
+import 'package:vocab_booster/packages/exercise/provider/exercise_collections.dart';
 import 'package:vocab_booster/packages/exercise/provider/exercise_completion_time_counter.dart';
 import 'package:vocab_booster/packages/exercise/provider/session_setup_data.dart';
 import 'package:vocab_booster/packages/exercise/rest/answer_exercise.dart';
@@ -36,7 +37,8 @@ class PSessionExercises extends _$PSessionExercises {
   Future<SessionExercisesState> build() async {
     final setupData = ref.read(pSessionSetupDataProvider).data;
     final api = GetExercisesAPI(http: await ref.read(appHttpProvider.notifier));
-    final response = await api.call(GetExercisesRequest());
+    final response = await api
+        .call(GetExercisesRequest(collectionId: setupData.collectionId));
 
     if (response.success == false) {
       return SessionExercisesState(
@@ -84,8 +86,9 @@ class PSessionExercises extends _$PSessionExercises {
   void exit() async {
     disposeTimer();
 
-    if (state.value!.isProgressing) {
-      ref.refresh(getMeStatsProvider.future);
+    if (state.value!.isProgressing || state.value!.isCompleted) {
+      ref.invalidate(getMeStatsProvider);
+      ref.invalidate(pExerciseCollectionsProvider);
     }
 
     ref.read(appRouterProvider).back();
