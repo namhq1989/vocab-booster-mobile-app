@@ -22,6 +22,14 @@
           }
         },
         {
+          "client_id": "829826821481-24acnjtcd5ob942vjr3mmkvl0it8p08d.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "vocab.booster.app",
+            "certificate_hash": "57da57289f0ff3b83307909bf1a1fce55376c0e6"
+          }
+        },
+        {
           "client_id": "829826821481-n1rgbbv7b4ns1uai2deaa2ob35dqefvf.apps.googleusercontent.com",
           "client_type": 3
         }
