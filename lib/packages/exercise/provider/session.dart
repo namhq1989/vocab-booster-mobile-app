@@ -7,6 +7,8 @@ import 'package:vocab_booster/packages/exercise/domain/exercise_status.dart';
 import 'package:vocab_booster/packages/exercise/domain/session_setup_data.dart';
 import 'package:vocab_booster/packages/exercise/provider/exercise_collections.dart';
 import 'package:vocab_booster/packages/exercise/provider/exercise_completion_time_counter.dart';
+import 'package:vocab_booster/packages/exercise/provider/recent_exercises_chart.dart';
+import 'package:vocab_booster/packages/exercise/provider/recent_points_chart.dart';
 import 'package:vocab_booster/packages/exercise/provider/session_setup_data.dart';
 import 'package:vocab_booster/packages/exercise/rest/answer_exercise.dart';
 import 'package:vocab_booster/packages/exercise/rest/get_exercises.dart';
@@ -89,6 +91,8 @@ class PSessionExercises extends _$PSessionExercises {
     if (state.value!.isProgressing || state.value!.isCompleted) {
       ref.invalidate(getMeStatsProvider);
       ref.invalidate(pExerciseCollectionsProvider);
+      ref.invalidate(pExerciseRecentPointsChartProvider);
+      ref.invalidate(pExerciseRecentExercisesChartProvider);
     }
 
     ref.read(appRouterProvider).back();
