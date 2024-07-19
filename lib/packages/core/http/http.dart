@@ -1,8 +1,11 @@
+import 'dart:io';
+
 import 'package:dio/dio.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:talker/talker.dart';
 import 'package:talker_dio_logger/talker_dio_logger_interceptor.dart';
 import 'package:talker_dio_logger/talker_dio_logger_settings.dart';
+import 'package:vocab_booster/packages/auth/provider/auth.dart';
 import 'package:vocab_booster/packages/core/config/config.dart';
 import 'package:vocab_booster/packages/core/database/database.dart';
 
@@ -29,24 +32,54 @@ class AppHttp extends _$AppHttp {
   }
 
   Future<Response> get(String path, Map<String, dynamic>? query,
-      {Map<String, dynamic>? headers}) {
-    return _svc.request('GET', path, query, null, headers);
+      {Map<String, dynamic>? headers}) async {
+    final (statusCode, response) =
+        await _svc.request('GET', path, query, null, headers);
+    if (statusCode == HttpStatus.unauthorized) {
+      ref.read(authenticationProvider.notifier).signOut();
+    }
+
+    return response;
   }
 
-  Future<Response> post(String path, Object? data) {
-    return _svc.request('POST', path, null, data, null);
+  Future<Response> post(String path, Object? data) async {
+    final (statusCode, response) =
+        await _svc.request('POST', path, null, data, null);
+    if (statusCode == HttpStatus.unauthorized) {
+      ref.read(authenticationProvider.notifier).signOut();
+    }
+
+    return response;
   }
 
-  Future<Response> put(String path, Object? data) {
-    return _svc.request('PUT', path, null, data, null);
+  Future<Response> put(String path, Object? data) async {
+    final (statusCode, response) =
+        await _svc.request('PUT', path, null, data, null);
+    if (statusCode == HttpStatus.unauthorized) {
+      ref.read(authenticationProvider.notifier).signOut();
+    }
+
+    return response;
   }
 
-  Future<Response> patch(String path, Object? data) {
-    return _svc.request('PATCH', path, null, data, null);
+  Future<Response> patch(String path, Object? data) async {
+    final (statusCode, response) =
+        await _svc.request('PATCH', path, null, data, null);
+    if (statusCode == HttpStatus.unauthorized) {
+      ref.read(authenticationProvider.notifier).signOut();
+    }
+
+    return response;
   }
 
-  Future<Response> delete(String path, Object? data) {
-    return _svc.request('DELETE', path, null, data, null);
+  Future<Response> delete(String path, Object? data) async {
+    final (statusCode, response) =
+        await _svc.request('DELETE', path, null, data, null);
+    if (statusCode == HttpStatus.unauthorized) {
+      ref.read(authenticationProvider.notifier).signOut();
+    }
+
+    return response;
   }
 }
 
@@ -97,7 +130,7 @@ class _AppHttpService {
     _dio.options.headers.remove('Authorization');
   }
 
-  Future<Response> request(
+  Future<(int, Response)> request(
     String method,
     String path,
     Map<String, dynamic>? query,
@@ -124,15 +157,18 @@ class _AppHttpService {
           response.statusCode! >= 200 && response.statusCode! < 300;
 
       // return
-      return response;
+      return (response.statusCode!, response);
     } on DioException catch (err) {
-      return Response(
-        requestOptions: err.requestOptions,
-        data: <String, dynamic>{
-          'code': '',
-          'data': null,
-          'message': 'Server error!',
-        },
+      return (
+        HttpStatus.serviceUnavailable,
+        Response(
+          requestOptions: err.requestOptions,
+          data: <String, dynamic>{
+            'code': '',
+            'data': null,
+            'message': 'Server error!',
+          },
+        )
       );
     }
   }

@@ -58,6 +58,8 @@ _$GetExercisesResponseExerciseImpl _$$GetExercisesResponseExerciseImplFromJson(
         Map<String, dynamic> json) =>
     _$GetExercisesResponseExerciseImpl(
       id: json['id'] as String?,
+      audio: _$JsonConverterFromJson<String, String>(
+          json['audio'], const AppAssestUrlSerializer().fromJson),
       vocabulary: json['vocabulary'] as String?,
       content: json['content'] as String?,
       translated: json['translated'] as String?,
@@ -74,6 +76,8 @@ Map<String, dynamic> _$$GetExercisesResponseExerciseImplToJson(
         _$GetExercisesResponseExerciseImpl instance) =>
     <String, dynamic>{
       'id': instance.id,
+      'audio': _$JsonConverterToJson<String, String>(
+          instance.audio, const AppAssestUrlSerializer().toJson),
       'vocabulary': instance.vocabulary,
       'content': instance.content,
       'translated': instance.translated,
@@ -85,6 +89,12 @@ Map<String, dynamic> _$$GetExercisesResponseExerciseImplToJson(
       'nextReviewAt': _$JsonConverterToJson<dynamic, DateTime>(
           instance.nextReviewAt, const TimestampSerializer().toJson),
     };
+
+Value? _$JsonConverterFromJson<Json, Value>(
+  Object? json,
+  Value? Function(Json json) fromJson,
+) =>
+    json == null ? null : fromJson(json as Json);
 
 Json? _$JsonConverterToJson<Json, Value>(
   Value? value,

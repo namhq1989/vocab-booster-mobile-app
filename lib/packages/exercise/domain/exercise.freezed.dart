@@ -21,6 +21,7 @@ Exercise _$ExerciseFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$Exercise {
   String get id => throw _privateConstructorUsedError;
+  String get audio => throw _privateConstructorUsedError;
   String get vocabulary => throw _privateConstructorUsedError;
   String get content => throw _privateConstructorUsedError;
   String get translated => throw _privateConstructorUsedError;
@@ -53,6 +54,7 @@ abstract class $ExerciseCopyWith<$Res> {
   @useResult
   $Res call(
       {String id,
+      String audio,
       String vocabulary,
       String content,
       String translated,
@@ -85,6 +87,7 @@ class _$ExerciseCopyWithImpl<$Res, $Val extends Exercise>
   @override
   $Res call({
     Object? id = null,
+    Object? audio = null,
     Object? vocabulary = null,
     Object? content = null,
     Object? translated = null,
@@ -106,6 +109,10 @@ class _$ExerciseCopyWithImpl<$Res, $Val extends Exercise>
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
+              as String,
+      audio: null == audio
+          ? _value.audio
+          : audio // ignore: cast_nullable_to_non_nullable
               as String,
       vocabulary: null == vocabulary
           ? _value.vocabulary
@@ -185,6 +192,7 @@ abstract class _$$ExerciseImplCopyWith<$Res>
   @useResult
   $Res call(
       {String id,
+      String audio,
       String vocabulary,
       String content,
       String translated,
@@ -215,6 +223,7 @@ class __$$ExerciseImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? id = null,
+    Object? audio = null,
     Object? vocabulary = null,
     Object? content = null,
     Object? translated = null,
@@ -236,6 +245,10 @@ class __$$ExerciseImplCopyWithImpl<$Res>
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
+              as String,
+      audio: null == audio
+          ? _value.audio
+          : audio // ignore: cast_nullable_to_non_nullable
               as String,
       vocabulary: null == vocabulary
           ? _value.vocabulary
@@ -310,6 +323,7 @@ class __$$ExerciseImplCopyWithImpl<$Res>
 class _$ExerciseImpl extends _Exercise {
   _$ExerciseImpl(
       {required this.id,
+      required this.audio,
       required this.vocabulary,
       required this.content,
       required this.translated,
@@ -334,6 +348,8 @@ class _$ExerciseImpl extends _Exercise {
 
   @override
   final String id;
+  @override
+  final String audio;
   @override
   final String vocabulary;
   @override
@@ -384,7 +400,7 @@ class _$ExerciseImpl extends _Exercise {
 
   @override
   String toString() {
-    return 'Exercise(id: $id, vocabulary: $vocabulary, content: $content, translated: $translated, options: $options, correctAnswer: $correctAnswer, correctStreak: $correctStreak, isFavorite: $isFavorite, isMastered: $isMastered, nextReviewAt: $nextReviewAt, status: $status, point: $point, mode: $mode, selectedOptionIndex: $selectedOptionIndex, attempts: $attempts, inputText: $inputText, completionTime: $completionTime)';
+    return 'Exercise(id: $id, audio: $audio, vocabulary: $vocabulary, content: $content, translated: $translated, options: $options, correctAnswer: $correctAnswer, correctStreak: $correctStreak, isFavorite: $isFavorite, isMastered: $isMastered, nextReviewAt: $nextReviewAt, status: $status, point: $point, mode: $mode, selectedOptionIndex: $selectedOptionIndex, attempts: $attempts, inputText: $inputText, completionTime: $completionTime)';
   }
 
   @override
@@ -393,6 +409,7 @@ class _$ExerciseImpl extends _Exercise {
         (other.runtimeType == runtimeType &&
             other is _$ExerciseImpl &&
             (identical(other.id, id) || other.id == id) &&
+            (identical(other.audio, audio) || other.audio == audio) &&
             (identical(other.vocabulary, vocabulary) ||
                 other.vocabulary == vocabulary) &&
             (identical(other.content, content) || other.content == content) &&
@@ -427,6 +444,7 @@ class _$ExerciseImpl extends _Exercise {
   int get hashCode => Object.hash(
       runtimeType,
       id,
+      audio,
       vocabulary,
       content,
       translated,
@@ -461,6 +479,7 @@ class _$ExerciseImpl extends _Exercise {
 abstract class _Exercise extends Exercise {
   factory _Exercise(
       {required final String id,
+      required final String audio,
       required final String vocabulary,
       required final String content,
       required final String translated,
@@ -484,6 +503,8 @@ abstract class _Exercise extends Exercise {
 
   @override
   String get id;
+  @override
+  String get audio;
   @override
   String get vocabulary;
   @override

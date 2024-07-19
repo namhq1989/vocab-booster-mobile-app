@@ -10,6 +10,7 @@ class Exercise with _$Exercise {
   const Exercise._();
   factory Exercise({
     required final String id,
+    required final String audio,
     required final String vocabulary,
     required final String content,
     required final String translated,
@@ -37,6 +38,7 @@ class Exercise with _$Exercise {
 
   bool isCorrectAnswer(String answer) => correctAnswer == answer;
   bool isReadOnly() => status != ExerciseStatus.notSubmitted;
+  Exercise shuffleOptions() => copyWith(options: options.toList()..shuffle());
   Exercise setMode(SessionMode value) => copyWith(mode: value);
   Exercise setStatus(ExerciseStatus value) => copyWith(status: value);
   Exercise setPoint(int value) => copyWith(point: value);

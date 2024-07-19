@@ -138,7 +138,7 @@ class _ExerciseSessionSetupState extends ConsumerState<ExerciseSessionSetup> {
                       onPressed: () {
                         ref
                             .read(pSessionSetupDataProvider.notifier)
-                            .setupCompleted(widget.collection.id);
+                            .setupCompleted(widget.collection);
                         Navigator.of(context).pop(true);
                         widget.cb();
                       },

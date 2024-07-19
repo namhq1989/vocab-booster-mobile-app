@@ -9,6 +9,7 @@ part of 'exercise.dart';
 _$ExerciseImpl _$$ExerciseImplFromJson(Map<String, dynamic> json) =>
     _$ExerciseImpl(
       id: json['id'] as String,
+      audio: json['audio'] as String,
       vocabulary: json['vocabulary'] as String,
       content: json['content'] as String,
       translated: json['translated'] as String,
@@ -35,6 +36,7 @@ _$ExerciseImpl _$$ExerciseImplFromJson(Map<String, dynamic> json) =>
 Map<String, dynamic> _$$ExerciseImplToJson(_$ExerciseImpl instance) =>
     <String, dynamic>{
       'id': instance.id,
+      'audio': instance.audio,
       'vocabulary': instance.vocabulary,
       'content': instance.content,
       'translated': instance.translated,

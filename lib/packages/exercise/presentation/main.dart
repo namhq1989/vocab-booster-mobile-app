@@ -1,4 +1,3 @@
-import 'dart:math';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -20,7 +19,6 @@ import 'package:vocab_booster/ui/widget/loading_state.dart';
 import 'package:vocab_booster/ui/widget/style.dart';
 import 'package:vocab_booster/ui/widget/screen.dart';
 import 'package:vocab_booster/ui/widget/secondary_text.dart';
-import 'package:vocab_booster/utilities/datetime/format.dart';
 import 'package:vocab_booster/utilities/number/format.dart';
 
 @RoutePage()
@@ -467,12 +465,3 @@ class ExerciseScreen extends StatelessWidget {
     );
   }
 }
-
-class _DailySentence {
-  _DailySentence(this.date, this.sentences);
-
-  final DateTime date;
-  final int sentences;
-}
-
-final random = Random();

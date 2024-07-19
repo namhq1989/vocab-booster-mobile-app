@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:shadcn_ui/shadcn_ui.dart';
+import 'package:vocab_booster/packages/exercise/domain/exercise_collection.dart';
 import 'package:vocab_booster/packages/exercise/domain/session_setup_data.dart';
 import 'package:vocab_booster/utilities/extension/ref.dart';
 
@@ -25,27 +26,19 @@ class PSessionSetupData extends _$PSessionSetupData {
       data: SessionSetupData(
         skill: SessionSkill.vocabulary,
         mode: SessionMode.multipleOptions,
-        collectionId: '',
+        collection: null,
       ),
     );
   }
 
-  void setCollectionId(String collectionId) {
-    state = state.copyWith(
-      data: state.data.copyWith(
-        collectionId: collectionId,
-      ),
-    );
-  }
-
-  void setupCompleted(String collectionId) {
+  void setupCompleted(ExerciseCollection collection) {
     final form = state.formState;
 
     state = state.copyWith(
       data: state.data.copyWith(
         skill: SessionSkill.fromValue(form.currentState!.value['skill']),
         mode: SessionMode.fromValue(form.currentState!.value['mode']),
-        collectionId: collectionId,
+        collection: collection,
       ),
     );
 

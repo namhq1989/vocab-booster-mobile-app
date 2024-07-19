@@ -563,6 +563,9 @@ GetExercisesResponseExercise _$GetExercisesResponseExerciseFromJson(
 mixin _$GetExercisesResponseExercise {
   @JsonKey(name: 'id')
   String? get id => throw _privateConstructorUsedError;
+  @AppAssestUrlSerializer()
+  @JsonKey(name: 'audio')
+  String? get audio => throw _privateConstructorUsedError;
   @JsonKey(name: 'vocabulary')
   String? get vocabulary => throw _privateConstructorUsedError;
   @JsonKey(name: 'content')
@@ -599,6 +602,7 @@ abstract class $GetExercisesResponseExerciseCopyWith<$Res> {
   @useResult
   $Res call(
       {@JsonKey(name: 'id') String? id,
+      @AppAssestUrlSerializer() @JsonKey(name: 'audio') String? audio,
       @JsonKey(name: 'vocabulary') String? vocabulary,
       @JsonKey(name: 'content') String? content,
       @JsonKey(name: 'translated') String? translated,
@@ -627,6 +631,7 @@ class _$GetExercisesResponseExerciseCopyWithImpl<$Res,
   @override
   $Res call({
     Object? id = freezed,
+    Object? audio = freezed,
     Object? vocabulary = freezed,
     Object? content = freezed,
     Object? translated = freezed,
@@ -641,6 +646,10 @@ class _$GetExercisesResponseExerciseCopyWithImpl<$Res,
       id: freezed == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
+              as String?,
+      audio: freezed == audio
+          ? _value.audio
+          : audio // ignore: cast_nullable_to_non_nullable
               as String?,
       vocabulary: freezed == vocabulary
           ? _value.vocabulary
@@ -693,6 +702,7 @@ abstract class _$$GetExercisesResponseExerciseImplCopyWith<$Res>
   @useResult
   $Res call(
       {@JsonKey(name: 'id') String? id,
+      @AppAssestUrlSerializer() @JsonKey(name: 'audio') String? audio,
       @JsonKey(name: 'vocabulary') String? vocabulary,
       @JsonKey(name: 'content') String? content,
       @JsonKey(name: 'translated') String? translated,
@@ -720,6 +730,7 @@ class __$$GetExercisesResponseExerciseImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? id = freezed,
+    Object? audio = freezed,
     Object? vocabulary = freezed,
     Object? content = freezed,
     Object? translated = freezed,
@@ -734,6 +745,10 @@ class __$$GetExercisesResponseExerciseImplCopyWithImpl<$Res>
       id: freezed == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
+              as String?,
+      audio: freezed == audio
+          ? _value.audio
+          : audio // ignore: cast_nullable_to_non_nullable
               as String?,
       vocabulary: freezed == vocabulary
           ? _value.vocabulary
@@ -780,6 +795,7 @@ class __$$GetExercisesResponseExerciseImplCopyWithImpl<$Res>
 class _$GetExercisesResponseExerciseImpl extends _GetExercisesResponseExercise {
   _$GetExercisesResponseExerciseImpl(
       {@JsonKey(name: 'id') this.id,
+      @AppAssestUrlSerializer() @JsonKey(name: 'audio') this.audio,
       @JsonKey(name: 'vocabulary') this.vocabulary,
       @JsonKey(name: 'content') this.content,
       @JsonKey(name: 'translated') this.translated,
@@ -799,6 +815,10 @@ class _$GetExercisesResponseExerciseImpl extends _GetExercisesResponseExercise {
   @override
   @JsonKey(name: 'id')
   final String? id;
+  @override
+  @AppAssestUrlSerializer()
+  @JsonKey(name: 'audio')
+  final String? audio;
   @override
   @JsonKey(name: 'vocabulary')
   final String? vocabulary;
@@ -836,7 +856,7 @@ class _$GetExercisesResponseExerciseImpl extends _GetExercisesResponseExercise {
 
   @override
   String toString() {
-    return 'GetExercisesResponseExercise(id: $id, vocabulary: $vocabulary, content: $content, translated: $translated, options: $options, correctAnswer: $correctAnswer, correctStreak: $correctStreak, isFavorite: $isFavorite, isMastered: $isMastered, nextReviewAt: $nextReviewAt)';
+    return 'GetExercisesResponseExercise(id: $id, audio: $audio, vocabulary: $vocabulary, content: $content, translated: $translated, options: $options, correctAnswer: $correctAnswer, correctStreak: $correctStreak, isFavorite: $isFavorite, isMastered: $isMastered, nextReviewAt: $nextReviewAt)';
   }
 
   @override
@@ -845,6 +865,7 @@ class _$GetExercisesResponseExerciseImpl extends _GetExercisesResponseExercise {
         (other.runtimeType == runtimeType &&
             other is _$GetExercisesResponseExerciseImpl &&
             (identical(other.id, id) || other.id == id) &&
+            (identical(other.audio, audio) || other.audio == audio) &&
             (identical(other.vocabulary, vocabulary) ||
                 other.vocabulary == vocabulary) &&
             (identical(other.content, content) || other.content == content) &&
@@ -868,6 +889,7 @@ class _$GetExercisesResponseExerciseImpl extends _GetExercisesResponseExercise {
   int get hashCode => Object.hash(
       runtimeType,
       id,
+      audio,
       vocabulary,
       content,
       translated,
@@ -898,6 +920,7 @@ abstract class _GetExercisesResponseExercise
     extends GetExercisesResponseExercise {
   factory _GetExercisesResponseExercise(
       {@JsonKey(name: 'id') final String? id,
+      @AppAssestUrlSerializer() @JsonKey(name: 'audio') final String? audio,
       @JsonKey(name: 'vocabulary') final String? vocabulary,
       @JsonKey(name: 'content') final String? content,
       @JsonKey(name: 'translated') final String? translated,
@@ -917,6 +940,10 @@ abstract class _GetExercisesResponseExercise
   @override
   @JsonKey(name: 'id')
   String? get id;
+  @override
+  @AppAssestUrlSerializer()
+  @JsonKey(name: 'audio')
+  String? get audio;
   @override
   @JsonKey(name: 'vocabulary')
   String? get vocabulary;
