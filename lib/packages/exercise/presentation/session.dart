@@ -16,6 +16,7 @@ import 'package:vocab_booster/ui/widget/loading_state.dart';
 import 'package:vocab_booster/ui/widget/style.dart';
 import 'package:vocab_booster/packages/exercise/presentation/exercise_with_input.dart';
 import 'package:vocab_booster/ui/widget/secondary_text.dart';
+import 'package:vocab_booster/ui/widget/toast.dart';
 import 'package:vocab_booster/utilities/extension/string.dart';
 import 'package:vocab_booster/utilities/number/format.dart';
 
@@ -386,7 +387,8 @@ class _ExerciseSessionScreenState extends ConsumerState<ExerciseSessionScreen> {
                               _buildAudio(context, exercise),
                             if (exercise.isReadOnly())
                               _buildAudioHalfSpeed(context, exercise),
-                            _buildFavorite(context, exercise),
+                            if (exercise.isReadOnly())
+                              _buildFavorite(context, exercise),
                             _buildMasteredProgress(context, exercise),
                           ],
                         ),
@@ -485,7 +487,9 @@ class _ExerciseSessionScreenState extends ConsumerState<ExerciseSessionScreen> {
 
             if (isCorrect) {
               if (context.mounted) {
-                showSlideUpNumber(context, point);
+                AppToast.success(context, 'Correct! +$point');
+
+                // showSlideUpNumber(context, point);
               }
             }
           },
@@ -535,7 +539,8 @@ class _ExerciseSessionScreenState extends ConsumerState<ExerciseSessionScreen> {
 
                   if (isCorrect) {
                     if (context.mounted) {
-                      showSlideUpNumber(context, point);
+                      AppToast.success(context, 'Correct! +$point');
+                      // showSlideUpNumber(context, point);
                     }
                   } else {}
                 },
@@ -622,7 +627,11 @@ class _ExerciseSessionScreenState extends ConsumerState<ExerciseSessionScreen> {
 
   Widget _buildFavorite(BuildContext context, Exercise exercise) {
     return GestureDetector(
-      onTap: () async {},
+      onTap: () async {
+        ref
+            .read(pSessionExercisesProvider.notifier)
+            .changeExerciseFavorite(exercise.id, !exercise.isFavorite);
+      },
       child: Container(
         width: _groupButtonSize,
         height: _groupButtonSize,
