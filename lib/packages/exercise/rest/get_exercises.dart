@@ -2,6 +2,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:vocab_booster/packages/core/http/http.dart';
 import 'package:vocab_booster/packages/exercise/domain/exercise.dart';
 import 'package:vocab_booster/utilities/datetime/converter.dart';
+import 'package:vocab_booster/utilities/url/converter.dart';
 
 part 'get_exercises.g.dart';
 part 'get_exercises.freezed.dart';
@@ -60,6 +61,7 @@ class GetExercisesResponseExercise with _$GetExercisesResponseExercise {
 
   factory GetExercisesResponseExercise({
     @JsonKey(name: 'id') String? id,
+    @AppAssestUrlSerializer() @JsonKey(name: 'audio') String? audio,
     @JsonKey(name: 'vocabulary') String? vocabulary,
     @JsonKey(name: 'content') String? content,
     @JsonKey(name: 'translated') String? translated,

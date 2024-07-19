@@ -1,4 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:vocab_booster/packages/exercise/domain/exercise_collection.dart';
 
 part 'session_setup_data.freezed.dart';
 
@@ -65,7 +66,7 @@ class SessionSetupData with _$SessionSetupData {
   factory SessionSetupData({
     required final SessionSkill skill,
     required final SessionMode mode,
-    required final String collectionId,
+    required final ExerciseCollection? collection,
   }) = _SessionSetupData;
 }
 

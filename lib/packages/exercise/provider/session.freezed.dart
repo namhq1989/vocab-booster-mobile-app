@@ -16,6 +16,7 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$SessionExercisesState {
+  ExerciseCollection get collection => throw _privateConstructorUsedError;
   List<Exercise> get exercises => throw _privateConstructorUsedError;
   List<Exercise> get incorrects => throw _privateConstructorUsedError;
   PExerciseCompletionTimeCounter get timer =>
@@ -25,6 +26,7 @@ mixin _$SessionExercisesState {
   bool get isCompleted => throw _privateConstructorUsedError;
   bool get isEvaluating => throw _privateConstructorUsedError;
   bool get isFetching => throw _privateConstructorUsedError;
+  int get currentExerciseIndex => throw _privateConstructorUsedError;
   AppError? get error => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -39,7 +41,8 @@ abstract class $SessionExercisesStateCopyWith<$Res> {
       _$SessionExercisesStateCopyWithImpl<$Res, SessionExercisesState>;
   @useResult
   $Res call(
-      {List<Exercise> exercises,
+      {ExerciseCollection collection,
+      List<Exercise> exercises,
       List<Exercise> incorrects,
       PExerciseCompletionTimeCounter timer,
       int points,
@@ -47,7 +50,10 @@ abstract class $SessionExercisesStateCopyWith<$Res> {
       bool isCompleted,
       bool isEvaluating,
       bool isFetching,
+      int currentExerciseIndex,
       AppError? error});
+
+  $ExerciseCollectionCopyWith<$Res> get collection;
 }
 
 /// @nodoc
@@ -64,6 +70,7 @@ class _$SessionExercisesStateCopyWithImpl<$Res,
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? collection = null,
     Object? exercises = null,
     Object? incorrects = null,
     Object? timer = null,
@@ -72,9 +79,14 @@ class _$SessionExercisesStateCopyWithImpl<$Res,
     Object? isCompleted = null,
     Object? isEvaluating = null,
     Object? isFetching = null,
+    Object? currentExerciseIndex = null,
     Object? error = freezed,
   }) {
     return _then(_value.copyWith(
+      collection: null == collection
+          ? _value.collection
+          : collection // ignore: cast_nullable_to_non_nullable
+              as ExerciseCollection,
       exercises: null == exercises
           ? _value.exercises
           : exercises // ignore: cast_nullable_to_non_nullable
@@ -107,11 +119,23 @@ class _$SessionExercisesStateCopyWithImpl<$Res,
           ? _value.isFetching
           : isFetching // ignore: cast_nullable_to_non_nullable
               as bool,
+      currentExerciseIndex: null == currentExerciseIndex
+          ? _value.currentExerciseIndex
+          : currentExerciseIndex // ignore: cast_nullable_to_non_nullable
+              as int,
       error: freezed == error
           ? _value.error
           : error // ignore: cast_nullable_to_non_nullable
               as AppError?,
     ) as $Val);
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $ExerciseCollectionCopyWith<$Res> get collection {
+    return $ExerciseCollectionCopyWith<$Res>(_value.collection, (value) {
+      return _then(_value.copyWith(collection: value) as $Val);
+    });
   }
 }
 
@@ -125,7 +149,8 @@ abstract class _$$SessionExercisesStateImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {List<Exercise> exercises,
+      {ExerciseCollection collection,
+      List<Exercise> exercises,
       List<Exercise> incorrects,
       PExerciseCompletionTimeCounter timer,
       int points,
@@ -133,7 +158,11 @@ abstract class _$$SessionExercisesStateImplCopyWith<$Res>
       bool isCompleted,
       bool isEvaluating,
       bool isFetching,
+      int currentExerciseIndex,
       AppError? error});
+
+  @override
+  $ExerciseCollectionCopyWith<$Res> get collection;
 }
 
 /// @nodoc
@@ -148,6 +177,7 @@ class __$$SessionExercisesStateImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? collection = null,
     Object? exercises = null,
     Object? incorrects = null,
     Object? timer = null,
@@ -156,9 +186,14 @@ class __$$SessionExercisesStateImplCopyWithImpl<$Res>
     Object? isCompleted = null,
     Object? isEvaluating = null,
     Object? isFetching = null,
+    Object? currentExerciseIndex = null,
     Object? error = freezed,
   }) {
     return _then(_$SessionExercisesStateImpl(
+      collection: null == collection
+          ? _value.collection
+          : collection // ignore: cast_nullable_to_non_nullable
+              as ExerciseCollection,
       exercises: null == exercises
           ? _value._exercises
           : exercises // ignore: cast_nullable_to_non_nullable
@@ -191,6 +226,10 @@ class __$$SessionExercisesStateImplCopyWithImpl<$Res>
           ? _value.isFetching
           : isFetching // ignore: cast_nullable_to_non_nullable
               as bool,
+      currentExerciseIndex: null == currentExerciseIndex
+          ? _value.currentExerciseIndex
+          : currentExerciseIndex // ignore: cast_nullable_to_non_nullable
+              as int,
       error: freezed == error
           ? _value.error
           : error // ignore: cast_nullable_to_non_nullable
@@ -203,7 +242,8 @@ class __$$SessionExercisesStateImplCopyWithImpl<$Res>
 
 class _$SessionExercisesStateImpl implements _SessionExercisesState {
   _$SessionExercisesStateImpl(
-      {required final List<Exercise> exercises,
+      {required this.collection,
+      required final List<Exercise> exercises,
       required final List<Exercise> incorrects,
       required this.timer,
       required this.points,
@@ -211,10 +251,13 @@ class _$SessionExercisesStateImpl implements _SessionExercisesState {
       required this.isCompleted,
       required this.isEvaluating,
       required this.isFetching,
+      required this.currentExerciseIndex,
       this.error})
       : _exercises = exercises,
         _incorrects = incorrects;
 
+  @override
+  final ExerciseCollection collection;
   final List<Exercise> _exercises;
   @override
   List<Exercise> get exercises {
@@ -244,11 +287,13 @@ class _$SessionExercisesStateImpl implements _SessionExercisesState {
   @override
   final bool isFetching;
   @override
+  final int currentExerciseIndex;
+  @override
   final AppError? error;
 
   @override
   String toString() {
-    return 'SessionExercisesState(exercises: $exercises, incorrects: $incorrects, timer: $timer, points: $points, isProgressing: $isProgressing, isCompleted: $isCompleted, isEvaluating: $isEvaluating, isFetching: $isFetching, error: $error)';
+    return 'SessionExercisesState(collection: $collection, exercises: $exercises, incorrects: $incorrects, timer: $timer, points: $points, isProgressing: $isProgressing, isCompleted: $isCompleted, isEvaluating: $isEvaluating, isFetching: $isFetching, currentExerciseIndex: $currentExerciseIndex, error: $error)';
   }
 
   @override
@@ -256,6 +301,8 @@ class _$SessionExercisesStateImpl implements _SessionExercisesState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$SessionExercisesStateImpl &&
+            (identical(other.collection, collection) ||
+                other.collection == collection) &&
             const DeepCollectionEquality()
                 .equals(other._exercises, _exercises) &&
             const DeepCollectionEquality()
@@ -270,12 +317,15 @@ class _$SessionExercisesStateImpl implements _SessionExercisesState {
                 other.isEvaluating == isEvaluating) &&
             (identical(other.isFetching, isFetching) ||
                 other.isFetching == isFetching) &&
+            (identical(other.currentExerciseIndex, currentExerciseIndex) ||
+                other.currentExerciseIndex == currentExerciseIndex) &&
             (identical(other.error, error) || other.error == error));
   }
 
   @override
   int get hashCode => Object.hash(
       runtimeType,
+      collection,
       const DeepCollectionEquality().hash(_exercises),
       const DeepCollectionEquality().hash(_incorrects),
       timer,
@@ -284,6 +334,7 @@ class _$SessionExercisesStateImpl implements _SessionExercisesState {
       isCompleted,
       isEvaluating,
       isFetching,
+      currentExerciseIndex,
       error);
 
   @JsonKey(ignore: true)
@@ -296,7 +347,8 @@ class _$SessionExercisesStateImpl implements _SessionExercisesState {
 
 abstract class _SessionExercisesState implements SessionExercisesState {
   factory _SessionExercisesState(
-      {required final List<Exercise> exercises,
+      {required final ExerciseCollection collection,
+      required final List<Exercise> exercises,
       required final List<Exercise> incorrects,
       required final PExerciseCompletionTimeCounter timer,
       required final int points,
@@ -304,8 +356,11 @@ abstract class _SessionExercisesState implements SessionExercisesState {
       required final bool isCompleted,
       required final bool isEvaluating,
       required final bool isFetching,
+      required final int currentExerciseIndex,
       final AppError? error}) = _$SessionExercisesStateImpl;
 
+  @override
+  ExerciseCollection get collection;
   @override
   List<Exercise> get exercises;
   @override
@@ -322,6 +377,8 @@ abstract class _SessionExercisesState implements SessionExercisesState {
   bool get isEvaluating;
   @override
   bool get isFetching;
+  @override
+  int get currentExerciseIndex;
   @override
   AppError? get error;
   @override

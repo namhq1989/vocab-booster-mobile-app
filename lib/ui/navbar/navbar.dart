@@ -15,7 +15,7 @@ class NavBar extends ConsumerStatefulWidget {
 
 class _NavBarState extends ConsumerState<NavBar> {
   final iconList = <IconData>[
-    LucideIcons.house,
+    LucideIcons.home,
     LucideIcons.swords,
     LucideIcons.bookOpenCheck,
     LucideIcons.userRound,

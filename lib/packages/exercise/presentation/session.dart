@@ -1,3 +1,4 @@
+import 'package:audioplayers/audioplayers.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:expandable_page_view/expandable_page_view.dart';
 import 'package:flutter/material.dart';
@@ -11,10 +12,10 @@ import 'package:vocab_booster/packages/exercise/provider/session.dart';
 import 'package:vocab_booster/ui/widget/appbar_title.dart';
 import 'package:vocab_booster/ui/widget/bottomsheet.dart';
 import 'package:vocab_booster/ui/widget/evaluating_text.dart';
+import 'package:vocab_booster/ui/widget/loading_state.dart';
 import 'package:vocab_booster/ui/widget/style.dart';
 import 'package:vocab_booster/packages/exercise/presentation/exercise_with_input.dart';
 import 'package:vocab_booster/ui/widget/secondary_text.dart';
-import 'package:vocab_booster/ui/widget/stats_item.dart';
 import 'package:vocab_booster/utilities/extension/string.dart';
 import 'package:vocab_booster/utilities/number/format.dart';
 
@@ -28,6 +29,17 @@ class ExerciseSessionScreen extends ConsumerStatefulWidget {
 }
 
 class _ExerciseSessionScreenState extends ConsumerState<ExerciseSessionScreen> {
+  final _audioPlayer = AudioPlayer();
+
+  final double _groupButtonSize = 50;
+
+  @override
+  void dispose() {
+    _audioPlayer.dispose();
+
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     final exercises = ref.watch(pSessionExercisesProvider);
@@ -80,8 +92,8 @@ class _ExerciseSessionScreenState extends ConsumerState<ExerciseSessionScreen> {
           },
           child: Scaffold(
             appBar: AppBar(
-              title: const AppBarTitle(
-                text: 'Beginner',
+              title: AppBarTitle(
+                text: state.collection.name,
               ),
               leading: const AutoLeadingButton(),
             ),
@@ -104,10 +116,9 @@ class _ExerciseSessionScreenState extends ConsumerState<ExerciseSessionScreen> {
                                         child: Column(
                                           children: [
                                             _buildProgressingBar(
-                                                context, state),
-                                            const SizedBox(height: 40),
-                                            _buildInformation(context, state),
-                                            const SizedBox(height: 20),
+                                              context,
+                                              state,
+                                            ),
                                           ],
                                         ),
                                       ),
@@ -120,6 +131,7 @@ class _ExerciseSessionScreenState extends ConsumerState<ExerciseSessionScreen> {
                                             )
                                           : const SizedBox.shrink(),
                                       _buildContent(context, state),
+                                      const SizedBox(height: 20),
                                     ],
                                   )
                                 : Column(
@@ -146,21 +158,15 @@ class _ExerciseSessionScreenState extends ConsumerState<ExerciseSessionScreen> {
           ),
         );
       },
-      error: (error, stackTrace) {
-        return Center(
-          child: Text('Something went wrong: ${error.toString()}'),
-        );
-      },
-      loading: () {
-        return const Center(
-          child: CircularProgressIndicator(),
-        );
-      },
+      error: (error, st) => LoadingState.error(context, error, st),
+      loading: () => LoadingState.fetching(context),
     );
   }
 
   Widget _buildProgressingBar(
-      BuildContext context, SessionExercisesState state) {
+    BuildContext context,
+    SessionExercisesState state,
+  ) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: List.generate(
@@ -169,10 +175,11 @@ class _ExerciseSessionScreenState extends ConsumerState<ExerciseSessionScreen> {
           final exercise = state.exercises[index];
           return Expanded(
             child: Container(
-              margin: const EdgeInsets.symmetric(horizontal: 4),
-              height: 8,
+              margin: const EdgeInsets.symmetric(horizontal: 2),
+              height: 6,
               decoration: BoxDecoration(
-                color: exercise.status!.color(context),
+                color: exercise.status!
+                    .color(context, index == state.currentExerciseIndex),
                 borderRadius: const BorderRadius.all(Radius.circular(12)),
                 // shape: BoxShape.circle,
               ),
@@ -180,50 +187,6 @@ class _ExerciseSessionScreenState extends ConsumerState<ExerciseSessionScreen> {
           );
         },
       ),
-    );
-  }
-
-  Widget _buildInformation(
-    BuildContext context,
-    SessionExercisesState state,
-  ) {
-    return Column(
-      children: [
-        IntrinsicHeight(
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            mainAxisSize: MainAxisSize.max,
-            children: [
-              StatsItem(
-                value: '${state.incorrects.length}',
-                title: 'incorrect',
-                color: Theme.of(context).colorScheme.error,
-                // isOnPrimary: true,
-              ),
-              const VerticalDivider(width: 1),
-              StatsItem(
-                value: '${state.points}',
-                title: 'points',
-                color: Theme.of(context).colorScheme.primary,
-                // isOnPrimary: true,
-              ),
-              const VerticalDivider(width: 1),
-              Expanded(
-                child: Center(
-                  child: SizedBox(
-                    width: 70,
-                    height: 70,
-                    child: Lottie.asset(
-                      'assets/images/exercise/progressing.json',
-                      fit: BoxFit.cover,
-                    ),
-                  ),
-                ),
-              ),
-            ],
-          ),
-        ),
-      ],
     );
   }
 
@@ -372,7 +335,7 @@ class _ExerciseSessionScreenState extends ConsumerState<ExerciseSessionScreen> {
   Widget _buildContent(BuildContext context, SessionExercisesState state) {
     final screenWidth = MediaQuery.of(context).size.width;
     final minHeight = screenWidth * 1.3;
-    const viewportFraction = 0.88;
+    const viewportFraction = 1.0;
 
     return ExpandablePageView.builder(
       itemCount: state.exercises.length,
@@ -386,7 +349,7 @@ class _ExerciseSessionScreenState extends ConsumerState<ExerciseSessionScreen> {
       itemBuilder: (BuildContext context, int index) {
         final exercise = state.exercises[index];
         return Padding(
-          padding: const EdgeInsets.symmetric(vertical: 24, horizontal: 12),
+          padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 12),
           child: Stack(
             clipBehavior: Clip.none,
             children: [
@@ -394,21 +357,63 @@ class _ExerciseSessionScreenState extends ConsumerState<ExerciseSessionScreen> {
                 constraints: BoxConstraints(minHeight: minHeight),
                 child: Container(
                   padding:
-                      const EdgeInsets.symmetric(horizontal: 24, vertical: 48),
-                  decoration: AppDecoration.container(context),
+                      const EdgeInsets.symmetric(vertical: 0, horizontal: 12),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      ExerciseWithInput(
-                        exercise: exercise,
-                        fontSize: 18,
+                      Text(
+                        'Exercise ${index + 1}',
+                        style: TextStyle(
+                          fontSize: 20,
+                          fontWeight: FontWeight.bold,
+                          color: exercise.status!.isCorrect
+                              ? Theme.of(context).colorScheme.primary
+                              : exercise.status!.isInCorrect
+                                  ? Theme.of(context).colorScheme.error
+                                  : Theme.of(context).colorScheme.onSurface,
+                        ),
                       ),
-                      const SizedBox(height: 10),
-                      SecondaryText(
-                        text: exercise.translated
-                            .capitalizeFirstLetter()
-                            .ensurePeriod(),
-                        fontSize: 16,
+                      const SizedBox(height: 20),
+                      // if (exercise.isReadOnly())
+                      Container(
+                        // color: Colors.red,
+                        margin: const EdgeInsets.only(bottom: 20),
+                        child: Wrap(
+                          spacing: 16, // Horizontal spacing
+                          runSpacing: 16, // Vertical spacing
+                          children: [
+                            if (exercise.isReadOnly())
+                              _buildAudio(context, exercise),
+                            if (exercise.isReadOnly())
+                              _buildAudioHalfSpeed(context, exercise),
+                            _buildFavorite(context, exercise),
+                            _buildMasteredProgress(context, exercise),
+                          ],
+                        ),
+                      ),
+                      Container(
+                        width: double.infinity,
+                        padding: const EdgeInsets.all(24),
+                        decoration: BoxDecoration(
+                          color: Theme.of(context).colorScheme.secondary,
+                          borderRadius: BorderRadius.circular(12),
+                        ),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            ExerciseWithInput(
+                              exercise: exercise,
+                              fontSize: 18,
+                            ),
+                            const SizedBox(height: 10),
+                            SecondaryText(
+                              text: exercise.translated
+                                  .capitalizeFirstLetter()
+                                  .ensurePeriod(),
+                              fontSize: 16,
+                            ),
+                          ],
+                        ),
                       ),
                       _buildShowCorrectAnswer(context, exercise),
                       const SizedBox(height: 40),
@@ -420,38 +425,6 @@ class _ExerciseSessionScreenState extends ConsumerState<ExerciseSessionScreen> {
                   ),
                 ),
               ),
-              Positioned(
-                top: -20,
-                left: (screenWidth * viewportFraction) / 2 - 62,
-                child: Container(
-                  width: 100,
-                  height: 40,
-                  decoration: BoxDecoration(
-                    color: Theme.of(context).colorScheme.surface,
-                    border: Border.all(
-                      color: exercise.status!.isCorrect
-                          ? Theme.of(context).colorScheme.primary
-                          : exercise.status!.isInCorrect
-                              ? Theme.of(context).colorScheme.error
-                              : AppColor.borderColor(context),
-                    ),
-                    borderRadius: BorderRadius.circular(12),
-                  ),
-                  child: Center(
-                    child: Text(
-                      'E.${index + 1}',
-                      style: TextStyle(
-                        fontSize: 18,
-                        color: exercise.status!.isCorrect
-                            ? Theme.of(context).colorScheme.primary
-                            : exercise.status!.isInCorrect
-                                ? Theme.of(context).colorScheme.error
-                                : Theme.of(context).colorScheme.onSurface,
-                      ),
-                    ),
-                  ),
-                ),
-              )
             ],
           ),
         );
@@ -584,5 +557,112 @@ class _ExerciseSessionScreenState extends ConsumerState<ExerciseSessionScreen> {
 
   String _getAlphabetOrder(int index) {
     return String.fromCharCode(index + 97);
+  }
+
+  Widget _buildAudio(BuildContext context, Exercise exercise) {
+    return GestureDetector(
+      onTap: () async {
+        await _audioPlayer.setPlaybackRate(1);
+        await _audioPlayer.play(UrlSource(exercise.audio));
+      },
+      child: Container(
+        width: _groupButtonSize,
+        height: _groupButtonSize,
+        decoration: AppDecoration.container(context),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            const Icon(
+              LucideIcons.volume2,
+              size: 24,
+              // color: AppColor.borderColor(context),
+            ),
+            Text(
+              '1x',
+              style:
+                  TextStyle(color: AppColor.borderColor(context), fontSize: 12),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget _buildAudioHalfSpeed(BuildContext context, Exercise exercise) {
+    return GestureDetector(
+      onTap: () async {
+        await _audioPlayer.setSourceUrl(exercise.audio);
+        await _audioPlayer.setPlaybackRate(0.6);
+        await _audioPlayer.resume();
+      },
+      child: Container(
+        width: _groupButtonSize,
+        height: _groupButtonSize,
+        decoration: AppDecoration.container(context),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            const Icon(
+              LucideIcons.volume2,
+              size: 24,
+              // color: AppColor.borderColor(context),
+            ),
+            Text(
+              '0.5x',
+              style:
+                  TextStyle(color: AppColor.borderColor(context), fontSize: 12),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget _buildFavorite(BuildContext context, Exercise exercise) {
+    return GestureDetector(
+      onTap: () async {},
+      child: Container(
+        width: _groupButtonSize,
+        height: _groupButtonSize,
+        decoration: AppDecoration.container(context),
+        child: Center(
+          child: Icon(
+            LucideIcons.star,
+            size: 24,
+            color: exercise.isFavorite
+                ? Theme.of(context).colorScheme.primary
+                : null,
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget _buildMasteredProgress(BuildContext context, Exercise exercise) {
+    return Container(
+      width: _groupButtonSize,
+      height: _groupButtonSize,
+      decoration: AppDecoration.container(context),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          Icon(
+            LucideIcons.graduationCap,
+            size: 24,
+            color: exercise.isMastered
+                ? Theme.of(context).colorScheme.primary
+                : AppColor.borderColor(context),
+          ),
+          Text(
+            '${exercise.correctStreak}/5',
+            style:
+                TextStyle(color: AppColor.borderColor(context), fontSize: 12),
+          ),
+        ],
+      ),
+    );
   }
 }

@@ -21,10 +21,14 @@ enum ExerciseStatus {
   bool get isNotSubmitted => this == ExerciseStatus.notSubmitted;
   bool get isCorrect => this == ExerciseStatus.correct;
   bool get isInCorrect => this == ExerciseStatus.incorrect;
-  Color color(BuildContext context) {
+  Color color(BuildContext context, bool isSelected) {
+    if (isSelected) {
+      return AppColor.borderColor(context);
+    }
+
     switch (this) {
       case ExerciseStatus.notSubmitted:
-        return AppColor.borderColor(context);
+        return AppColor.borderColor(context).withOpacity(0.3);
       case ExerciseStatus.correct:
         return Theme.of(context).colorScheme.primary;
       case ExerciseStatus.incorrect:

@@ -18,7 +18,7 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$SessionSetupData {
   SessionSkill get skill => throw _privateConstructorUsedError;
   SessionMode get mode => throw _privateConstructorUsedError;
-  String get collectionId => throw _privateConstructorUsedError;
+  ExerciseCollection? get collection => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $SessionSetupDataCopyWith<SessionSetupData> get copyWith =>
@@ -31,7 +31,10 @@ abstract class $SessionSetupDataCopyWith<$Res> {
           SessionSetupData value, $Res Function(SessionSetupData) then) =
       _$SessionSetupDataCopyWithImpl<$Res, SessionSetupData>;
   @useResult
-  $Res call({SessionSkill skill, SessionMode mode, String collectionId});
+  $Res call(
+      {SessionSkill skill, SessionMode mode, ExerciseCollection? collection});
+
+  $ExerciseCollectionCopyWith<$Res>? get collection;
 }
 
 /// @nodoc
@@ -49,7 +52,7 @@ class _$SessionSetupDataCopyWithImpl<$Res, $Val extends SessionSetupData>
   $Res call({
     Object? skill = null,
     Object? mode = null,
-    Object? collectionId = null,
+    Object? collection = freezed,
   }) {
     return _then(_value.copyWith(
       skill: null == skill
@@ -60,11 +63,23 @@ class _$SessionSetupDataCopyWithImpl<$Res, $Val extends SessionSetupData>
           ? _value.mode
           : mode // ignore: cast_nullable_to_non_nullable
               as SessionMode,
-      collectionId: null == collectionId
-          ? _value.collectionId
-          : collectionId // ignore: cast_nullable_to_non_nullable
-              as String,
+      collection: freezed == collection
+          ? _value.collection
+          : collection // ignore: cast_nullable_to_non_nullable
+              as ExerciseCollection?,
     ) as $Val);
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $ExerciseCollectionCopyWith<$Res>? get collection {
+    if (_value.collection == null) {
+      return null;
+    }
+
+    return $ExerciseCollectionCopyWith<$Res>(_value.collection!, (value) {
+      return _then(_value.copyWith(collection: value) as $Val);
+    });
   }
 }
 
@@ -76,7 +91,11 @@ abstract class _$$SessionSetupDataImplCopyWith<$Res>
       __$$SessionSetupDataImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({SessionSkill skill, SessionMode mode, String collectionId});
+  $Res call(
+      {SessionSkill skill, SessionMode mode, ExerciseCollection? collection});
+
+  @override
+  $ExerciseCollectionCopyWith<$Res>? get collection;
 }
 
 /// @nodoc
@@ -92,7 +111,7 @@ class __$$SessionSetupDataImplCopyWithImpl<$Res>
   $Res call({
     Object? skill = null,
     Object? mode = null,
-    Object? collectionId = null,
+    Object? collection = freezed,
   }) {
     return _then(_$SessionSetupDataImpl(
       skill: null == skill
@@ -103,10 +122,10 @@ class __$$SessionSetupDataImplCopyWithImpl<$Res>
           ? _value.mode
           : mode // ignore: cast_nullable_to_non_nullable
               as SessionMode,
-      collectionId: null == collectionId
-          ? _value.collectionId
-          : collectionId // ignore: cast_nullable_to_non_nullable
-              as String,
+      collection: freezed == collection
+          ? _value.collection
+          : collection // ignore: cast_nullable_to_non_nullable
+              as ExerciseCollection?,
     ));
   }
 }
@@ -115,18 +134,18 @@ class __$$SessionSetupDataImplCopyWithImpl<$Res>
 
 class _$SessionSetupDataImpl implements _SessionSetupData {
   _$SessionSetupDataImpl(
-      {required this.skill, required this.mode, required this.collectionId});
+      {required this.skill, required this.mode, required this.collection});
 
   @override
   final SessionSkill skill;
   @override
   final SessionMode mode;
   @override
-  final String collectionId;
+  final ExerciseCollection? collection;
 
   @override
   String toString() {
-    return 'SessionSetupData(skill: $skill, mode: $mode, collectionId: $collectionId)';
+    return 'SessionSetupData(skill: $skill, mode: $mode, collection: $collection)';
   }
 
   @override
@@ -136,12 +155,12 @@ class _$SessionSetupDataImpl implements _SessionSetupData {
             other is _$SessionSetupDataImpl &&
             (identical(other.skill, skill) || other.skill == skill) &&
             (identical(other.mode, mode) || other.mode == mode) &&
-            (identical(other.collectionId, collectionId) ||
-                other.collectionId == collectionId));
+            (identical(other.collection, collection) ||
+                other.collection == collection));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, skill, mode, collectionId);
+  int get hashCode => Object.hash(runtimeType, skill, mode, collection);
 
   @JsonKey(ignore: true)
   @override
@@ -155,14 +174,14 @@ abstract class _SessionSetupData implements SessionSetupData {
   factory _SessionSetupData(
       {required final SessionSkill skill,
       required final SessionMode mode,
-      required final String collectionId}) = _$SessionSetupDataImpl;
+      required final ExerciseCollection? collection}) = _$SessionSetupDataImpl;
 
   @override
   SessionSkill get skill;
   @override
   SessionMode get mode;
   @override
-  String get collectionId;
+  ExerciseCollection? get collection;
   @override
   @JsonKey(ignore: true)
   _$$SessionSetupDataImplCopyWith<_$SessionSetupDataImpl> get copyWith =>

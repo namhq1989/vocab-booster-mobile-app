@@ -3,6 +3,7 @@ import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:vocab_booster/packages/core/http/http.dart';
 import 'package:vocab_booster/packages/core/router/router.dart';
 import 'package:vocab_booster/packages/exercise/domain/exercise.dart';
+import 'package:vocab_booster/packages/exercise/domain/exercise_collection.dart';
 import 'package:vocab_booster/packages/exercise/domain/exercise_status.dart';
 import 'package:vocab_booster/packages/exercise/domain/session_setup_data.dart';
 import 'package:vocab_booster/packages/exercise/provider/exercise_collections.dart';
@@ -21,6 +22,7 @@ part 'session.g.dart';
 @freezed
 class SessionExercisesState with _$SessionExercisesState {
   factory SessionExercisesState({
+    required ExerciseCollection collection,
     required List<Exercise> exercises,
     required List<Exercise> incorrects,
     required PExerciseCompletionTimeCounter timer,
@@ -29,6 +31,7 @@ class SessionExercisesState with _$SessionExercisesState {
     required bool isCompleted,
     required bool isEvaluating,
     required bool isFetching,
+    required int currentExerciseIndex,
     AppError? error,
   }) = _SessionExercisesState;
 }
@@ -40,10 +43,11 @@ class PSessionExercises extends _$PSessionExercises {
     final setupData = ref.read(pSessionSetupDataProvider).data;
     final api = GetExercisesAPI(http: await ref.read(appHttpProvider.notifier));
     final response = await api
-        .call(GetExercisesRequest(collectionId: setupData.collectionId));
+        .call(GetExercisesRequest(collectionId: setupData.collection!.id));
 
     if (response.success == false) {
       return SessionExercisesState(
+        collection: setupData.collection!,
         exercises: [],
         incorrects: [],
         timer: ref.read(pExerciseCompletionTimeCounterProvider.notifier),
@@ -52,16 +56,18 @@ class PSessionExercises extends _$PSessionExercises {
         isCompleted: false,
         isEvaluating: false,
         isFetching: false,
+        currentExerciseIndex: 0,
         error: AppError.apiFailed(response.message!),
       );
     }
 
     final List<Exercise> exercises = [];
     for (final e in response.data!.exercises) {
-      exercises.add(e.toExercise().setMode(setupData.mode));
+      exercises.add(e.toExercise().setMode(setupData.mode).shuffleOptions());
     }
 
     return SessionExercisesState(
+      collection: setupData.collection!,
       exercises: exercises,
       incorrects: [],
       timer: ref.read(pExerciseCompletionTimeCounterProvider.notifier),
@@ -70,6 +76,7 @@ class PSessionExercises extends _$PSessionExercises {
       isCompleted: false,
       isEvaluating: false,
       isFetching: false,
+      currentExerciseIndex: 0,
     );
   }
 
@@ -78,6 +85,7 @@ class PSessionExercises extends _$PSessionExercises {
   }
 
   void switchCurrentExerciseIndex(int index) async {
+    state = AsyncData(state.value!.copyWith(currentExerciseIndex: index));
     state.value!.timer.reset();
   }
 
