@@ -12,6 +12,7 @@ import 'package:vocab_booster/packages/exercise/provider/recent_exercises_chart.
 import 'package:vocab_booster/packages/exercise/provider/recent_points_chart.dart';
 import 'package:vocab_booster/packages/exercise/provider/session_setup_data.dart';
 import 'package:vocab_booster/packages/exercise/rest/answer_exercise.dart';
+import 'package:vocab_booster/packages/exercise/rest/change_exercise_favorite.dart';
 import 'package:vocab_booster/packages/exercise/rest/get_exercises.dart';
 import 'package:vocab_booster/packages/user/provider/get_me_stats.dart';
 import 'package:vocab_booster/utilities/error/error.dart';
@@ -139,6 +140,30 @@ class PSessionExercises extends _$PSessionExercises {
       return e.id == exerciseId ? exercise : e;
     }).toList();
     state = AsyncData(state.value!.copyWith(exercises: exercises));
+  }
+
+  Future<void> changeExerciseFavorite(
+      String exerciseId, bool isFavorite) async {
+    Exercise exercise =
+        state.value!.exercises.where((e) => e.id == exerciseId).first;
+
+    final api = ChangeExerciseFavoriteAPI(
+        exerciseId: exerciseId, http: ref.read(appHttpProvider.notifier));
+    final response = await api.call(ChangeExerciseFavoriteRequest(
+      isFavorite: isFavorite,
+    ));
+    if (response.success == true) {
+      exercise = exercise.setIsFavorite(response.data!.isFavorite!);
+      final exercises = state.value!.exercises.map((e) {
+        return e.id == exerciseId ? exercise : e;
+      }).toList();
+
+      state = AsyncData(
+        state.value!.copyWith(
+          exercises: exercises,
+        ),
+      );
+    }
   }
 
   Future<(bool, int)> answerAnExercise(String exerciseId, String option) async {
