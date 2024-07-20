@@ -6,6 +6,10 @@ String formatNumber(int number) {
 }
 
 String formatSeconds(int totalSeconds) {
+  if (totalSeconds < 60) {
+    return '00:$totalSeconds';
+  }
+
   int minutes = totalSeconds ~/ 60;
   int seconds = totalSeconds % 60;
 

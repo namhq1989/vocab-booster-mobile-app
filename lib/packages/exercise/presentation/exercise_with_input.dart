@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:vocab_booster/packages/exercise/domain/exercise.dart';
 import 'package:vocab_booster/packages/exercise/provider/session.dart';
-import 'package:vocab_booster/ui/widget/style.dart';
+import 'package:vocab_booster/packages/ui/widget/style.dart';
 import 'package:vocab_booster/utilities/extension/string.dart';
 
 class ExerciseWithInput extends StatefulWidget {
@@ -21,6 +21,8 @@ class ExerciseWithInput extends StatefulWidget {
 
 class _ExerciseWithInputState extends State<ExerciseWithInput> {
   late double inputWidth;
+  final TextEditingController _controller = TextEditingController(text: '');
+
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
@@ -44,6 +46,13 @@ class _ExerciseWithInputState extends State<ExerciseWithInput> {
   }
 
   @override
+  void dispose() {
+    _controller.dispose();
+
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     int index = widget.exercise.content
         .toLowerCase()
@@ -57,13 +66,16 @@ class _ExerciseWithInputState extends State<ExerciseWithInput> {
         .substring(index + widget.exercise.correctAnswer.length);
     final primaryColor = Theme.of(context).colorScheme.primary;
 
+    if (widget.exercise.isReadOnly()) {
+      _controller.text = widget.exercise.inputText!;
+    }
+
     return RichText(
       // textAlign: TextAlign.center,
       text: TextSpan(
         style: TextStyle(
             height: 1.6,
             fontSize: widget.fontSize,
-            // fontWeight: FontWeight.bold,
             color: Theme.of(context).colorScheme.onSurface),
         children: [
           TextSpan(text: part1.capitalizeFirstLetter()),
@@ -73,6 +85,7 @@ class _ExerciseWithInputState extends State<ExerciseWithInput> {
               margin: const EdgeInsets.symmetric(horizontal: 8.0),
               child: Consumer(builder: (context, ref, _) {
                 return TextField(
+                  controller: _controller,
                   enabled: widget.exercise.mode!.isTextInput &&
                       widget.exercise.status!.isNotSubmitted,
                   textAlign: TextAlign.center,
@@ -91,14 +104,11 @@ class _ExerciseWithInputState extends State<ExerciseWithInput> {
                   style: TextStyle(
                     fontSize: widget.fontSize,
                     color: _getTextColor(
-                      widget.exercise.inputText!,
-                      widget.exercise.correctAnswer,
+                      widget.exercise.inputText!.toLowerCase(),
+                      widget.exercise.correctAnswer.toLowerCase(),
                       primaryColor,
                       Theme.of(context).colorScheme.error,
                     ),
-                    decoration: widget.exercise.status!.isInCorrect
-                        ? TextDecoration.lineThrough
-                        : null,
                     decorationColor: AppColor.borderColor(context),
                   ),
                 );

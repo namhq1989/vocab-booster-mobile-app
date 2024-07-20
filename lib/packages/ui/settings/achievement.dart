@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_lucide/flutter_lucide.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:vocab_booster/packages/core/l10n/generated/l10n.dart';
-import 'package:vocab_booster/ui/settings/constant.dart';
-import 'package:vocab_booster/ui/widget/style.dart';
+import 'package:vocab_booster/packages/ui/settings/constant.dart';
+import 'package:vocab_booster/packages/ui/widget/style.dart';
 
-class SettingsNotification extends ConsumerWidget {
-  const SettingsNotification({super.key});
+class SettingsAchievement extends ConsumerWidget {
+  const SettingsAchievement({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -28,12 +28,12 @@ class SettingsNotification extends ConsumerWidget {
           Container(
             alignment: Alignment.centerLeft,
             width: 30,
-            child: const Icon(LucideIcons.bell_ring, size: 18),
+            child: const Icon(LucideIcons.award, size: 18),
           ),
           const SizedBox(width: itemHorizontalSpacing),
           Expanded(
             child: Text(
-              L10N.of(context).settingsPreferenceNotification,
+              L10N.of(context).settingsAccountAchievement,
               textAlign: TextAlign.start,
             ),
           ),

@@ -14,12 +14,12 @@ import 'package:vocab_booster/packages/exercise/presentation/main.dart' as _i2;
 import 'package:vocab_booster/packages/exercise/presentation/rule.dart' as _i1;
 import 'package:vocab_booster/packages/exercise/presentation/session.dart'
     as _i3;
+import 'package:vocab_booster/packages/ui/home/view.dart' as _i4;
+import 'package:vocab_booster/packages/ui/navbar/navbar.dart' as _i5;
+import 'package:vocab_booster/packages/ui/vocabulary/view.dart' as _i9;
 import 'package:vocab_booster/packages/user/presentation/edit_profile.dart'
     as _i6;
 import 'package:vocab_booster/packages/user/presentation/view.dart' as _i7;
-import 'package:vocab_booster/ui/home/view.dart' as _i4;
-import 'package:vocab_booster/ui/navbar/navbar.dart' as _i5;
-import 'package:vocab_booster/ui/vocabulary/view.dart' as _i9;
 
 abstract class $AppRouter extends _i10.RootStackRouter {
   $AppRouter({super.navigatorKey});

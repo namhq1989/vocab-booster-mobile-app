@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:json_annotation/json_annotation.dart';
-import 'package:vocab_booster/ui/widget/style.dart';
+import 'package:vocab_booster/packages/ui/widget/style.dart';
 
 enum ExerciseStatus {
   notSubmitted,

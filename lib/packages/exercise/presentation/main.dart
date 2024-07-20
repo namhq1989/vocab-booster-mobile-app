@@ -2,6 +2,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:intl/intl.dart';
 import 'package:shadcn_ui/shadcn_ui.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
 import 'package:vocab_booster/packages/core/l10n/generated/l10n.dart';
@@ -15,10 +16,10 @@ import 'package:vocab_booster/packages/exercise/provider/exercise_collections.da
 import 'package:vocab_booster/packages/exercise/provider/recent_exercises_chart.dart';
 import 'package:vocab_booster/packages/exercise/provider/recent_points_chart.dart';
 import 'package:vocab_booster/packages/user/provider/get_me_stats.dart';
-import 'package:vocab_booster/ui/widget/loading_state.dart';
-import 'package:vocab_booster/ui/widget/style.dart';
-import 'package:vocab_booster/ui/widget/screen.dart';
-import 'package:vocab_booster/ui/widget/secondary_text.dart';
+import 'package:vocab_booster/packages/ui/widget/loading_state.dart';
+import 'package:vocab_booster/packages/ui/widget/style.dart';
+import 'package:vocab_booster/packages/ui/widget/screen.dart';
+import 'package:vocab_booster/packages/ui/widget/secondary_text.dart';
 import 'package:vocab_booster/utilities/number/format.dart';
 
 @RoutePage()
@@ -344,48 +345,50 @@ class ExerciseScreen extends StatelessWidget {
                 SecondaryText(
                     text: L10N.of(context).exerciseSectionProgressSubtitle),
                 const SizedBox(height: 16),
-                Container(
-                  decoration: BoxDecoration(
-                    border: Border.all(
-                      color: AppColor.borderColor(context),
-                    ),
-                    borderRadius: BorderRadius.circular(12),
-                  ),
-                  padding: const EdgeInsets.all(16),
-                  child: Stack(
-                    children: [
-                      SizedBox(
-                        height: 150,
-                        child: SfCartesianChart(
-                          primaryXAxis: const CategoryAxis(),
-                          primaryYAxis: const CategoryAxis(
-                            labelStyle: TextStyle(fontSize: 0),
-                            maximumLabelWidth: 0,
-                          ),
-                          legend: const Legend(
-                            isVisible: false,
-                          ),
-                          series: <CartesianSeries<UserAggregatedExercise,
-                              String>>[
-                            SplineSeries<UserAggregatedExercise, String>(
-                              color: Theme.of(context).colorScheme.primary,
-                              splineType: SplineType.monotonic,
-                              dataSource: state.toList(),
-                              xValueMapper:
-                                  (UserAggregatedExercise exercise, _) =>
-                                      exercise.date,
-                              yValueMapper:
-                                  (UserAggregatedExercise exercise, _) =>
-                                      exercise.exercise,
-                              dataLabelSettings:
-                                  const DataLabelSettings(isVisible: true),
-                            ),
-                          ],
+                Stack(
+                  children: [
+                    SizedBox(
+                      height: 150,
+                      child: SfCartesianChart(
+                        primaryXAxis: const CategoryAxis(
+                          majorGridLines: MajorGridLines(width: 0),
+                          majorTickLines: MajorTickLines(width: 0),
                         ),
+                        primaryYAxis: NumericAxis(
+                          majorTickLines: const MajorTickLines(width: 0),
+                          majorGridLines: const MajorGridLines(width: 0),
+                          numberFormat: NumberFormat.compact(),
+                          maximumLabels: 4,
+                        ),
+                        legend: const Legend(
+                          isVisible: false,
+                        ),
+                        series: <CartesianSeries<UserAggregatedExercise,
+                            String>>[
+                          SplineAreaSeries<UserAggregatedExercise, String>(
+                            gradient: LinearGradient(
+                              colors: [
+                                Theme.of(context).colorScheme.primary,
+                                Theme.of(context).colorScheme.surface,
+                              ],
+                              stops: const [0.0, 1.0],
+                              begin: Alignment.topCenter,
+                              end: Alignment.bottomCenter,
+                            ),
+                            splineType: SplineType.monotonic,
+                            dataSource: state.toList(),
+                            xValueMapper:
+                                (UserAggregatedExercise exercise, _) =>
+                                    exercise.date,
+                            yValueMapper:
+                                (UserAggregatedExercise exercise, _) =>
+                                    exercise.exercise,
+                          ),
+                        ],
                       ),
-                      Container(height: 150, color: Colors.transparent),
-                    ],
-                  ),
+                    ),
+                    Container(height: 150, color: Colors.transparent),
+                  ],
                 ),
               ],
             );
@@ -414,46 +417,47 @@ class ExerciseScreen extends StatelessWidget {
                 SecondaryText(
                     text: L10N.of(context).exerciseSectionPointsSubtitle),
                 const SizedBox(height: 16),
-                Container(
-                  decoration: BoxDecoration(
-                    border: Border.all(
-                      color: AppColor.borderColor(context),
-                    ),
-                    borderRadius: BorderRadius.circular(12),
-                  ),
-                  padding: const EdgeInsets.all(16),
-                  child: Stack(
-                    children: [
-                      SizedBox(
-                        height: 150,
-                        child: SfCartesianChart(
-                          primaryXAxis: const CategoryAxis(),
-                          primaryYAxis: const CategoryAxis(
-                            labelStyle: TextStyle(fontSize: 0),
-                            maximumLabelWidth: 0,
-                          ),
-                          legend: const Legend(
-                            isVisible: false,
-                          ),
-                          series: <CartesianSeries<UserAggregatedPoint,
-                              String>>[
-                            SplineSeries<UserAggregatedPoint, String>(
-                              color: Theme.of(context).colorScheme.primary,
-                              splineType: SplineType.monotonic,
-                              dataSource: state.toList(),
-                              xValueMapper: (UserAggregatedPoint point, _) =>
-                                  point.date,
-                              yValueMapper: (UserAggregatedPoint point, _) =>
-                                  point.point,
-                              dataLabelSettings:
-                                  const DataLabelSettings(isVisible: true),
-                            ),
-                          ],
+                Stack(
+                  children: [
+                    SizedBox(
+                      height: 150,
+                      child: SfCartesianChart(
+                        primaryXAxis: const CategoryAxis(
+                          majorGridLines: MajorGridLines(width: 0),
+                          majorTickLines: MajorTickLines(width: 0),
                         ),
+                        primaryYAxis: NumericAxis(
+                          majorTickLines: const MajorTickLines(width: 0),
+                          majorGridLines: const MajorGridLines(width: 0),
+                          numberFormat: NumberFormat.compact(),
+                          maximumLabels: 4,
+                        ),
+                        legend: const Legend(
+                          isVisible: false,
+                        ),
+                        series: <CartesianSeries<UserAggregatedPoint, String>>[
+                          SplineAreaSeries<UserAggregatedPoint, String>(
+                            gradient: LinearGradient(
+                              colors: [
+                                Theme.of(context).colorScheme.primary,
+                                Theme.of(context).colorScheme.surface
+                              ],
+                              stops: const [0.0, 1.0],
+                              begin: Alignment.topCenter,
+                              end: Alignment.bottomCenter,
+                            ),
+                            splineType: SplineType.monotonic,
+                            dataSource: state.toList(),
+                            xValueMapper: (UserAggregatedPoint point, _) =>
+                                point.date,
+                            yValueMapper: (UserAggregatedPoint point, _) =>
+                                point.point,
+                          ),
+                        ],
                       ),
-                      Container(height: 150, color: Colors.transparent),
-                    ],
-                  ),
+                    ),
+                    Container(height: 150, color: Colors.transparent),
+                  ],
                 ),
               ],
             );

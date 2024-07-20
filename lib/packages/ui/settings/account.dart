@@ -4,8 +4,8 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:vocab_booster/packages/core/l10n/generated/l10n.dart';
 import 'package:vocab_booster/packages/core/router/router.dart';
 import 'package:vocab_booster/packages/core/router/router.gr.dart';
-import 'package:vocab_booster/ui/settings/constant.dart';
-import 'package:vocab_booster/ui/widget/style.dart';
+import 'package:vocab_booster/packages/ui/settings/constant.dart';
+import 'package:vocab_booster/packages/ui/widget/style.dart';
 
 class SettingsAccount extends ConsumerWidget {
   const SettingsAccount({super.key, required this.parentContext});

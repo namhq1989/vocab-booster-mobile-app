@@ -25,6 +25,156 @@ class MessageLookup extends MessageLookupByLibrary {
         "bio": MessageLookupByLibrary.simpleMessage("Bio"),
         "cancel": MessageLookupByLibrary.simpleMessage("Cancel"),
         "email": MessageLookupByLibrary.simpleMessage("Email"),
+        "er_00_19_accuracy_1_encouragement":
+            MessageLookupByLibrary.simpleMessage(
+                "Practice makes perfect, keep going"),
+        "er_00_19_accuracy_1_summary":
+            MessageLookupByLibrary.simpleMessage("Try again!"),
+        "er_00_19_accuracy_2_encouragement":
+            MessageLookupByLibrary.simpleMessage(
+                "Every attempt helps you learn, keep at it"),
+        "er_00_19_accuracy_2_summary":
+            MessageLookupByLibrary.simpleMessage("Give it another go!"),
+        "er_00_19_accuracy_3_encouragement":
+            MessageLookupByLibrary.simpleMessage(
+                "Stay positive, practice will improve your skills"),
+        "er_00_19_accuracy_3_summary":
+            MessageLookupByLibrary.simpleMessage("Don\'\'t worry!"),
+        "er_00_19_accuracy_4_encouragement":
+            MessageLookupByLibrary.simpleMessage(
+                "Keep practicing, progress will come"),
+        "er_00_19_accuracy_4_summary":
+            MessageLookupByLibrary.simpleMessage("Fresh start!"),
+        "er_00_19_accuracy_5_encouragement":
+            MessageLookupByLibrary.simpleMessage(
+                "Focus on learning and keep trying your best"),
+        "er_00_19_accuracy_5_summary":
+            MessageLookupByLibrary.simpleMessage("New beginning!"),
+        "er_20_39_accuracy_1_encouragement":
+            MessageLookupByLibrary.simpleMessage(
+                "Don\'\'t give up, persistence leads to success"),
+        "er_20_39_accuracy_1_summary":
+            MessageLookupByLibrary.simpleMessage("Keep trying!"),
+        "er_20_39_accuracy_2_encouragement":
+            MessageLookupByLibrary.simpleMessage(
+                "Practice more and you\'\'ll see improvement soon"),
+        "er_20_39_accuracy_2_summary":
+            MessageLookupByLibrary.simpleMessage("Keep going!"),
+        "er_20_39_accuracy_3_encouragement":
+            MessageLookupByLibrary.simpleMessage(
+                "Every effort counts, keep pushing yourself"),
+        "er_20_39_accuracy_3_summary":
+            MessageLookupByLibrary.simpleMessage("Don\'\'t quit!"),
+        "er_20_39_accuracy_4_encouragement":
+            MessageLookupByLibrary.simpleMessage(
+                "You can do it, just keep practicing"),
+        "er_20_39_accuracy_4_summary":
+            MessageLookupByLibrary.simpleMessage("Stay focused!"),
+        "er_20_39_accuracy_5_encouragement":
+            MessageLookupByLibrary.simpleMessage(
+                "Consistent effort will lead to better results"),
+        "er_20_39_accuracy_5_summary":
+            MessageLookupByLibrary.simpleMessage("Keep practicing!"),
+        "er_40_59_accuracy_1_encouragement":
+            MessageLookupByLibrary.simpleMessage(
+                "Review your mistakes and try again"),
+        "er_40_59_accuracy_1_summary":
+            MessageLookupByLibrary.simpleMessage("Needs work!"),
+        "er_40_59_accuracy_2_encouragement":
+            MessageLookupByLibrary.simpleMessage(
+                "Focus on your weak spots and practice more"),
+        "er_40_59_accuracy_2_summary":
+            MessageLookupByLibrary.simpleMessage("Keep trying!"),
+        "er_40_59_accuracy_3_encouragement":
+            MessageLookupByLibrary.simpleMessage(
+                "Practice makes perfect, keep going"),
+        "er_40_59_accuracy_3_summary":
+            MessageLookupByLibrary.simpleMessage("Almost there!"),
+        "er_40_59_accuracy_4_encouragement":
+            MessageLookupByLibrary.simpleMessage(
+                "Don\'t give up, you\'re making progress"),
+        "er_40_59_accuracy_4_summary":
+            MessageLookupByLibrary.simpleMessage("Can improve!"),
+        "er_40_59_accuracy_5_encouragement":
+            MessageLookupByLibrary.simpleMessage(
+                "Keep practicing and review your errors"),
+        "er_40_59_accuracy_5_summary":
+            MessageLookupByLibrary.simpleMessage("Getting better!"),
+        "er_60_74_accuracy_1_encouragement":
+            MessageLookupByLibrary.simpleMessage(
+                "Keep practicing and you\'\'ll get better"),
+        "er_60_74_accuracy_1_summary":
+            MessageLookupByLibrary.simpleMessage("Nice try!"),
+        "er_60_74_accuracy_2_encouragement":
+            MessageLookupByLibrary.simpleMessage(
+                "Review your mistakes and learn from them"),
+        "er_60_74_accuracy_2_summary":
+            MessageLookupByLibrary.simpleMessage("Good effort!"),
+        "er_60_74_accuracy_3_encouragement":
+            MessageLookupByLibrary.simpleMessage(
+                "Stay focused and keep practicing"),
+        "er_60_74_accuracy_3_summary":
+            MessageLookupByLibrary.simpleMessage("Not bad!"),
+        "er_60_74_accuracy_4_encouragement":
+            MessageLookupByLibrary.simpleMessage(
+                "Keep at it, you\'\'ll improve more"),
+        "er_60_74_accuracy_4_summary":
+            MessageLookupByLibrary.simpleMessage("Pretty good!"),
+        "er_60_74_accuracy_5_encouragement":
+            MessageLookupByLibrary.simpleMessage(
+                "Keep going, practice will bring improvement"),
+        "er_60_74_accuracy_5_summary":
+            MessageLookupByLibrary.simpleMessage("Decent job!"),
+        "er_75_89_accuracy_1_encouragement":
+            MessageLookupByLibrary.simpleMessage(
+                "You\'\'re almost there, keep practicing a bit more"),
+        "er_75_89_accuracy_1_summary":
+            MessageLookupByLibrary.simpleMessage("Great job!"),
+        "er_75_89_accuracy_2_encouragement":
+            MessageLookupByLibrary.simpleMessage(
+                "Excellent effort, keep sharpening your skills"),
+        "er_75_89_accuracy_2_summary":
+            MessageLookupByLibrary.simpleMessage("Nice work!"),
+        "er_75_89_accuracy_3_encouragement":
+            MessageLookupByLibrary.simpleMessage(
+                "You\'\'re on the right track, stay focused"),
+        "er_75_89_accuracy_3_summary":
+            MessageLookupByLibrary.simpleMessage("Impressive!"),
+        "er_75_89_accuracy_4_encouragement":
+            MessageLookupByLibrary.simpleMessage(
+                "Keep practicing, you\'\'ll hit the top soon"),
+        "er_75_89_accuracy_4_summary":
+            MessageLookupByLibrary.simpleMessage("Doing well!"),
+        "er_75_89_accuracy_5_encouragement":
+            MessageLookupByLibrary.simpleMessage(
+                "You\'\'re doing really well, aim for perfection"),
+        "er_75_89_accuracy_5_summary":
+            MessageLookupByLibrary.simpleMessage("Great effort!"),
+        "er_90_100_accuracy_1_encouragement":
+            MessageLookupByLibrary.simpleMessage(
+                "Keep it up and stay consistent"),
+        "er_90_100_accuracy_1_summary":
+            MessageLookupByLibrary.simpleMessage("Awesome!"),
+        "er_90_100_accuracy_2_encouragement":
+            MessageLookupByLibrary.simpleMessage(
+                "You\'\'re doing fantastic, keep going"),
+        "er_90_100_accuracy_2_summary":
+            MessageLookupByLibrary.simpleMessage("Great job!"),
+        "er_90_100_accuracy_3_encouragement":
+            MessageLookupByLibrary.simpleMessage(
+                "Your hard work is showing, keep it up"),
+        "er_90_100_accuracy_3_summary":
+            MessageLookupByLibrary.simpleMessage("You\'\'re a star!"),
+        "er_90_100_accuracy_4_encouragement":
+            MessageLookupByLibrary.simpleMessage(
+                "Keep this up and aim even higher"),
+        "er_90_100_accuracy_4_summary":
+            MessageLookupByLibrary.simpleMessage("Fantastic results!"),
+        "er_90_100_accuracy_5_encouragement":
+            MessageLookupByLibrary.simpleMessage(
+                "You\'\'re really great, keep pushing forward"),
+        "er_90_100_accuracy_5_summary":
+            MessageLookupByLibrary.simpleMessage("Well done!"),
         "errorCommon": MessageLookupByLibrary.simpleMessage(
             "Something went wrong. Please try again later."),
         "errorInvalidForm": MessageLookupByLibrary.simpleMessage(

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:vocab_booster/ui/widget/secondary_text.dart';
+import 'package:vocab_booster/packages/ui/widget/secondary_text.dart';
 
 class StatsItem extends StatelessWidget {
   const StatsItem({
