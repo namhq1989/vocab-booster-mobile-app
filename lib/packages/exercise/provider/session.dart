@@ -1,6 +1,9 @@
+import 'dart:math';
+
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:vocab_booster/packages/core/http/http.dart';
+import 'package:vocab_booster/packages/core/l10n/generated/l10n.dart';
 import 'package:vocab_booster/packages/core/router/router.dart';
 import 'package:vocab_booster/packages/exercise/domain/exercise.dart';
 import 'package:vocab_booster/packages/exercise/domain/exercise_collection.dart';
@@ -33,6 +36,7 @@ class SessionExercisesState with _$SessionExercisesState {
     required bool isEvaluating,
     required bool isFetching,
     required int currentExerciseIndex,
+    RandomSummaryPair? randomSummaryPair,
     AppError? error,
   }) = _SessionExercisesState;
 }
@@ -247,10 +251,18 @@ class PSessionExercises extends _$PSessionExercises {
       if (isCompleted) {
         state.value!.timer.dispose();
 
-        state = AsyncData(state.value!.copyWith(
-          isEvaluating: true,
-          isProgressing: false,
-        ));
+        final accuracyPercent = (1 -
+                (state.value!.incorrects.length /
+                    state.value!.exercises.length)) *
+            100;
+
+        state = AsyncData(
+          state.value!.copyWith(
+            isEvaluating: true,
+            isProgressing: false,
+            randomSummaryPair: _getRandomSummaryPair(accuracyPercent),
+          ),
+        );
         await Future.delayed(const Duration(seconds: 3));
       }
 
@@ -264,4 +276,105 @@ class PSessionExercises extends _$PSessionExercises {
 
     return (isCorrect, exercise.point!);
   }
+}
+
+class RandomSummaryPair {
+  final String summary;
+  final String encouragement;
+  RandomSummaryPair(this.summary, this.encouragement);
+}
+
+final List<RandomSummaryPair> pairsOf90100 = [
+  RandomSummaryPair(L10N.current.er_90_100_accuracy_1_summary,
+      L10N.current.er_90_100_accuracy_1_encouragement),
+  RandomSummaryPair(L10N.current.er_90_100_accuracy_2_summary,
+      L10N.current.er_90_100_accuracy_2_encouragement),
+  RandomSummaryPair(L10N.current.er_90_100_accuracy_3_summary,
+      L10N.current.er_90_100_accuracy_3_encouragement),
+  RandomSummaryPair(L10N.current.er_90_100_accuracy_4_summary,
+      L10N.current.er_90_100_accuracy_4_encouragement),
+  RandomSummaryPair(L10N.current.er_90_100_accuracy_5_summary,
+      L10N.current.er_90_100_accuracy_5_encouragement),
+];
+
+final List<RandomSummaryPair> pairsOf7589 = [
+  RandomSummaryPair(L10N.current.er_75_89_accuracy_1_summary,
+      L10N.current.er_75_89_accuracy_1_encouragement),
+  RandomSummaryPair(L10N.current.er_75_89_accuracy_2_summary,
+      L10N.current.er_75_89_accuracy_2_encouragement),
+  RandomSummaryPair(L10N.current.er_75_89_accuracy_3_summary,
+      L10N.current.er_75_89_accuracy_3_encouragement),
+  RandomSummaryPair(L10N.current.er_75_89_accuracy_4_summary,
+      L10N.current.er_75_89_accuracy_4_encouragement),
+  RandomSummaryPair(L10N.current.er_75_89_accuracy_5_summary,
+      L10N.current.er_75_89_accuracy_5_encouragement),
+];
+
+final List<RandomSummaryPair> pairsOf6074 = [
+  RandomSummaryPair(L10N.current.er_60_74_accuracy_1_summary,
+      L10N.current.er_60_74_accuracy_1_encouragement),
+  RandomSummaryPair(L10N.current.er_60_74_accuracy_2_summary,
+      L10N.current.er_60_74_accuracy_2_encouragement),
+  RandomSummaryPair(L10N.current.er_60_74_accuracy_3_summary,
+      L10N.current.er_60_74_accuracy_3_encouragement),
+  RandomSummaryPair(L10N.current.er_60_74_accuracy_4_summary,
+      L10N.current.er_60_74_accuracy_4_encouragement),
+  RandomSummaryPair(L10N.current.er_60_74_accuracy_5_summary,
+      L10N.current.er_60_74_accuracy_5_encouragement),
+];
+
+final List<RandomSummaryPair> pairsOf4059 = [
+  RandomSummaryPair(L10N.current.er_40_59_accuracy_1_summary,
+      L10N.current.er_40_59_accuracy_1_encouragement),
+  RandomSummaryPair(L10N.current.er_40_59_accuracy_2_summary,
+      L10N.current.er_40_59_accuracy_2_encouragement),
+  RandomSummaryPair(L10N.current.er_40_59_accuracy_3_summary,
+      L10N.current.er_40_59_accuracy_3_encouragement),
+  RandomSummaryPair(L10N.current.er_40_59_accuracy_4_summary,
+      L10N.current.er_40_59_accuracy_4_encouragement),
+  RandomSummaryPair(L10N.current.er_40_59_accuracy_5_summary,
+      L10N.current.er_40_59_accuracy_5_encouragement),
+];
+
+final List<RandomSummaryPair> pairsOf2039 = [
+  RandomSummaryPair(L10N.current.er_20_39_accuracy_1_summary,
+      L10N.current.er_20_39_accuracy_1_encouragement),
+  RandomSummaryPair(L10N.current.er_20_39_accuracy_2_summary,
+      L10N.current.er_20_39_accuracy_2_encouragement),
+  RandomSummaryPair(L10N.current.er_20_39_accuracy_3_summary,
+      L10N.current.er_20_39_accuracy_3_encouragement),
+  RandomSummaryPair(L10N.current.er_20_39_accuracy_4_summary,
+      L10N.current.er_20_39_accuracy_4_encouragement),
+  RandomSummaryPair(L10N.current.er_20_39_accuracy_5_summary,
+      L10N.current.er_20_39_accuracy_5_encouragement),
+];
+
+final List<RandomSummaryPair> pairsOf0019 = [
+  RandomSummaryPair(L10N.current.er_00_19_accuracy_1_summary,
+      L10N.current.er_00_19_accuracy_1_encouragement),
+  RandomSummaryPair(L10N.current.er_00_19_accuracy_2_summary,
+      L10N.current.er_00_19_accuracy_2_encouragement),
+  RandomSummaryPair(L10N.current.er_00_19_accuracy_3_summary,
+      L10N.current.er_00_19_accuracy_3_encouragement),
+  RandomSummaryPair(L10N.current.er_00_19_accuracy_4_summary,
+      L10N.current.er_00_19_accuracy_4_encouragement),
+  RandomSummaryPair(L10N.current.er_00_19_accuracy_5_summary,
+      L10N.current.er_00_19_accuracy_5_encouragement),
+];
+
+RandomSummaryPair _getRandomSummaryPair(double accuracyPercent) {
+  final random = Random();
+
+  if (accuracyPercent >= 90) {
+    return pairsOf90100[random.nextInt(pairsOf90100.length)];
+  } else if (accuracyPercent >= 75) {
+    return pairsOf7589[random.nextInt(pairsOf7589.length)];
+  } else if (accuracyPercent >= 60) {
+    return pairsOf6074[random.nextInt(pairsOf6074.length)];
+  } else if (accuracyPercent >= 40) {
+    return pairsOf4059[random.nextInt(pairsOf4059.length)];
+  } else if (accuracyPercent >= 20) {
+    return pairsOf2039[random.nextInt(pairsOf2039.length)];
+  }
+  return pairsOf0019[random.nextInt(pairsOf0019.length)];
 }

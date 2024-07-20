@@ -4,9 +4,9 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:shadcn_ui/shadcn_ui.dart';
 import 'package:vocab_booster/packages/core/l10n/generated/l10n.dart';
 import 'package:vocab_booster/packages/core/language/language.dart';
-import 'package:vocab_booster/ui/settings/constant.dart';
-import 'package:vocab_booster/ui/widget/bottomsheet.dart';
-import 'package:vocab_booster/ui/widget/style.dart';
+import 'package:vocab_booster/packages/ui/settings/constant.dart';
+import 'package:vocab_booster/packages/ui/widget/bottomsheet.dart';
+import 'package:vocab_booster/packages/ui/widget/style.dart';
 
 class SettingsLanguage extends ConsumerWidget {
   const SettingsLanguage({

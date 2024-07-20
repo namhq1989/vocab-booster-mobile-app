@@ -3,20 +3,21 @@ import 'package:auto_route/auto_route.dart';
 import 'package:expandable_page_view/expandable_page_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:intl/intl.dart';
 import 'package:lottie/lottie.dart';
 import 'package:shadcn_ui/shadcn_ui.dart';
 import 'package:vocab_booster/packages/core/l10n/generated/l10n.dart';
 import 'package:vocab_booster/packages/exercise/domain/exercise.dart';
 import 'package:vocab_booster/packages/exercise/presentation/slide_up_number.dart';
 import 'package:vocab_booster/packages/exercise/provider/session.dart';
-import 'package:vocab_booster/ui/widget/appbar_title.dart';
-import 'package:vocab_booster/ui/widget/bottomsheet.dart';
-import 'package:vocab_booster/ui/widget/evaluating_text.dart';
-import 'package:vocab_booster/ui/widget/loading_state.dart';
-import 'package:vocab_booster/ui/widget/style.dart';
+import 'package:vocab_booster/packages/ui/widget/appbar_title.dart';
+import 'package:vocab_booster/packages/ui/widget/bottomsheet.dart';
+import 'package:vocab_booster/packages/ui/widget/evaluating_text.dart';
+import 'package:vocab_booster/packages/ui/widget/loading_state.dart';
+import 'package:vocab_booster/packages/ui/widget/style.dart';
 import 'package:vocab_booster/packages/exercise/presentation/exercise_with_input.dart';
-import 'package:vocab_booster/ui/widget/secondary_text.dart';
-import 'package:vocab_booster/ui/widget/toast.dart';
+import 'package:vocab_booster/packages/ui/widget/secondary_text.dart';
 import 'package:vocab_booster/utilities/extension/string.dart';
 import 'package:vocab_booster/utilities/number/format.dart';
 
@@ -127,7 +128,7 @@ class _ExerciseSessionScreenState extends ConsumerState<ExerciseSessionScreen> {
                                           ? const Column(
                                               children: [
                                                 EvaluatingText(),
-                                                SizedBox(height: 40),
+                                                // SizedBox(height: 40),
                                               ],
                                             )
                                           : const SizedBox.shrink(),
@@ -194,131 +195,55 @@ class _ExerciseSessionScreenState extends ConsumerState<ExerciseSessionScreen> {
   Widget _buildResult(BuildContext context, SessionExercisesState state) {
     final completionTime =
         ref.read(pSessionExercisesProvider.notifier).getCompletionTime();
+    final accuracyPercent =
+        (1 - (state.incorrects.length / state.exercises.length)) * 100;
     return Column(
-      mainAxisAlignment: MainAxisAlignment.center,
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const SizedBox(height: 100),
-        const Text(
-          'Amazing!',
-          style: TextStyle(
-            fontSize: 32,
+        const SizedBox(height: 40),
+        SvgPicture.asset(
+          'assets/images/exercise/confetti.svg',
+          width: 60,
+          height: 60,
+        ),
+        const SizedBox(height: 20),
+        Text(
+          Intl.message(state.randomSummaryPair!.summary),
+          style: const TextStyle(
+            fontSize: 24,
             fontWeight: FontWeight.bold,
           ),
         ),
-        const Text(
-          'You are making progress!',
-          style: TextStyle(
-            fontSize: 18,
-          ),
+        const SizedBox(height: 4),
+        Text(Intl.message(state.randomSummaryPair!.encouragement)),
+        const SizedBox(height: 40),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            _buildResultStatsItem(
+              context: context,
+              title: 'Points',
+              value: formatNumber(state.points),
+              icon: LucideIcons.coins,
+            ),
+            const SizedBox(width: 8),
+            _buildResultStatsItem(
+              context: context,
+              title: 'Time',
+              value: formatSeconds(completionTime),
+              icon: LucideIcons.alarmClock,
+            ),
+            const SizedBox(width: 8),
+            _buildResultStatsItem(
+              context: context,
+              title: 'Accuracy',
+              value: '${accuracyPercent.toStringAsFixed(0)}%',
+              icon: LucideIcons.goal,
+            ),
+          ],
         ),
-        const SizedBox(height: 60),
-        ConstrainedBox(
-          constraints: const BoxConstraints(
-            maxWidth: double.infinity,
-            maxHeight: 180,
-          ),
-          child: ShadTable.list(
-            horizontalScrollPhysics: const NeverScrollableScrollPhysics(),
-            verticalScrollPhysics: const NeverScrollableScrollPhysics(),
-            columnSpanExtent: (index) {
-              return const FractionalSpanExtent(0.5);
-            },
-            children: [
-              [
-                const ShadTableCell(
-                  child: Text(
-                    'Time taken',
-                    style: TextStyle(
-                      fontSize: 14,
-                    ),
-                  ),
-                ),
-                ShadTableCell(
-                  child: Align(
-                    alignment: Alignment.centerRight,
-                    child: Text(
-                      formatSeconds(completionTime),
-                      style: const TextStyle(
-                        fontSize: 18,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                  ),
-                ),
-              ],
-              [
-                const ShadTableCell(
-                  child: Text(
-                    'Total exercises',
-                    style: TextStyle(
-                      fontSize: 14,
-                    ),
-                  ),
-                ),
-                ShadTableCell(
-                  child: Align(
-                    alignment: Alignment.centerRight,
-                    child: Text(
-                      '${state.exercises.length}',
-                      style: const TextStyle(
-                        fontSize: 18,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                  ),
-                ),
-              ],
-              [
-                const ShadTableCell(
-                  child: Text(
-                    'Incorrect exercises',
-                    style: TextStyle(
-                      fontSize: 14,
-                    ),
-                  ),
-                ),
-                ShadTableCell(
-                  child: Align(
-                    alignment: Alignment.centerRight,
-                    child: Text(
-                      '${state.incorrects.length}',
-                      style: TextStyle(
-                        fontSize: 18,
-                        fontWeight: FontWeight.bold,
-                        color: Theme.of(context).colorScheme.error,
-                      ),
-                    ),
-                  ),
-                ),
-              ],
-              [
-                const ShadTableCell(
-                  child: Text(
-                    'Point collected',
-                    style: TextStyle(
-                      fontSize: 14,
-                    ),
-                  ),
-                ),
-                ShadTableCell(
-                  child: Align(
-                    alignment: Alignment.centerRight,
-                    child: Text(
-                      '${state.points}',
-                      style: TextStyle(
-                        fontSize: 18,
-                        fontWeight: FontWeight.bold,
-                        color: Theme.of(context).colorScheme.primary,
-                      ),
-                    ),
-                  ),
-                ),
-              ]
-            ],
-          ),
-        ),
-        const SizedBox(height: 60),
-        ShadButton(
+        const SizedBox(height: 40),
+        ShadButton.outline(
           width: double.infinity,
           text: const Text('Continue'),
           onPressed: () {},
@@ -330,6 +255,56 @@ class _ExerciseSessionScreenState extends ConsumerState<ExerciseSessionScreen> {
           onPressed: () {},
         )
       ],
+    );
+  }
+
+  Widget _buildResultStatsItem({
+    required BuildContext context,
+    required String title,
+    required String value,
+    required IconData icon,
+  }) {
+    return Flexible(
+      flex: 1,
+      child: Container(
+        decoration: BoxDecoration(
+          color: Theme.of(context).colorScheme.primary,
+          border: Border.all(
+            color: AppColor.borderColor(context),
+          ),
+          borderRadius: BorderRadius.circular(12),
+        ),
+        padding: const EdgeInsets.all(8),
+        height: 100,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          children: [
+            Text(
+              title,
+              style: TextStyle(
+                fontSize: 12.0,
+                fontWeight: FontWeight.bold,
+                color: Theme.of(context).colorScheme.onPrimary,
+              ),
+            ),
+            Container(
+              height: 50,
+              decoration: AppDecoration.container(context),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Icon(
+                    icon,
+                    size: 18,
+                  ),
+                  const SizedBox(width: 8),
+                  Text(value),
+                ],
+              ),
+            ),
+          ],
+        ),
+      ),
     );
   }
 
@@ -375,7 +350,6 @@ class _ExerciseSessionScreenState extends ConsumerState<ExerciseSessionScreen> {
                         ),
                       ),
                       const SizedBox(height: 20),
-                      // if (exercise.isReadOnly())
                       Container(
                         // color: Colors.red,
                         margin: const EdgeInsets.only(bottom: 20),
@@ -390,9 +364,11 @@ class _ExerciseSessionScreenState extends ConsumerState<ExerciseSessionScreen> {
                             if (exercise.isReadOnly())
                               _buildFavorite(context, exercise),
                             _buildMasteredProgress(context, exercise),
+                            _buildHelper(context, exercise),
                           ],
                         ),
                       ),
+                      const SizedBox(height: 20),
                       Container(
                         width: double.infinity,
                         padding: const EdgeInsets.all(24),
@@ -487,9 +463,7 @@ class _ExerciseSessionScreenState extends ConsumerState<ExerciseSessionScreen> {
 
             if (isCorrect) {
               if (context.mounted) {
-                AppToast.success(context, 'Correct! +$point');
-
-                // showSlideUpNumber(context, point);
+                showSlideUpNumber(context, point);
               }
             }
           },
@@ -539,8 +513,7 @@ class _ExerciseSessionScreenState extends ConsumerState<ExerciseSessionScreen> {
 
                   if (isCorrect) {
                     if (context.mounted) {
-                      AppToast.success(context, 'Correct! +$point');
-                      // showSlideUpNumber(context, point);
+                      showSlideUpNumber(context, point);
                     }
                   } else {}
                 },
@@ -635,7 +608,15 @@ class _ExerciseSessionScreenState extends ConsumerState<ExerciseSessionScreen> {
       child: Container(
         width: _groupButtonSize,
         height: _groupButtonSize,
-        decoration: AppDecoration.container(context),
+        decoration: BoxDecoration(
+          color: Theme.of(context).colorScheme.surface,
+          border: Border.all(
+            color: exercise.isFavorite
+                ? Theme.of(context).colorScheme.primary
+                : AppColor.borderColor(context),
+          ),
+          borderRadius: BorderRadius.circular(12),
+        ),
         child: Center(
           child: Icon(
             LucideIcons.star,
@@ -653,7 +634,15 @@ class _ExerciseSessionScreenState extends ConsumerState<ExerciseSessionScreen> {
     return Container(
       width: _groupButtonSize,
       height: _groupButtonSize,
-      decoration: AppDecoration.container(context),
+      decoration: BoxDecoration(
+        color: Theme.of(context).colorScheme.surface,
+        border: Border.all(
+          color: exercise.isMastered
+              ? Theme.of(context).colorScheme.primary
+              : AppColor.borderColor(context),
+        ),
+        borderRadius: BorderRadius.circular(12),
+      ),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,
@@ -667,10 +656,32 @@ class _ExerciseSessionScreenState extends ConsumerState<ExerciseSessionScreen> {
           ),
           Text(
             '${exercise.correctStreak}/5',
-            style:
-                TextStyle(color: AppColor.borderColor(context), fontSize: 12),
+            style: TextStyle(
+                color: exercise.isMastered
+                    ? Theme.of(context).colorScheme.primary
+                    : AppColor.borderColor(context),
+                fontSize: 12),
           ),
         ],
+      ),
+    );
+  }
+
+  Widget _buildHelper(BuildContext context, Exercise exercise) {
+    return Container(
+      width: _groupButtonSize,
+      height: _groupButtonSize,
+      decoration: BoxDecoration(
+        color: Theme.of(context).colorScheme.surface,
+        border: Border.all(
+          color: AppColor.borderColor(context),
+        ),
+        borderRadius: BorderRadius.circular(12),
+      ),
+      child: Icon(
+        LucideIcons.searchCode,
+        size: 24,
+        color: AppColor.borderColor(context),
       ),
     );
   }

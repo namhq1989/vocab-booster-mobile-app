@@ -5,8 +5,8 @@ import 'package:vocab_booster/packages/core/l10n/generated/l10n.dart';
 import 'package:vocab_booster/packages/exercise/domain/exercise_collection.dart';
 import 'package:vocab_booster/packages/exercise/domain/session_setup_data.dart';
 import 'package:vocab_booster/packages/exercise/provider/session_setup_data.dart';
-import 'package:vocab_booster/ui/widget/bottomsheet.dart';
-import 'package:vocab_booster/ui/widget/radio_option.dart';
+import 'package:vocab_booster/packages/ui/widget/bottomsheet.dart';
+import 'package:vocab_booster/packages/ui/widget/radio_option.dart';
 
 class ExerciseSessionSetup extends ConsumerStatefulWidget {
   const ExerciseSessionSetup({

@@ -27,6 +27,8 @@ mixin _$SessionExercisesState {
   bool get isEvaluating => throw _privateConstructorUsedError;
   bool get isFetching => throw _privateConstructorUsedError;
   int get currentExerciseIndex => throw _privateConstructorUsedError;
+  RandomSummaryPair? get randomSummaryPair =>
+      throw _privateConstructorUsedError;
   AppError? get error => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -51,6 +53,7 @@ abstract class $SessionExercisesStateCopyWith<$Res> {
       bool isEvaluating,
       bool isFetching,
       int currentExerciseIndex,
+      RandomSummaryPair? randomSummaryPair,
       AppError? error});
 
   $ExerciseCollectionCopyWith<$Res> get collection;
@@ -80,6 +83,7 @@ class _$SessionExercisesStateCopyWithImpl<$Res,
     Object? isEvaluating = null,
     Object? isFetching = null,
     Object? currentExerciseIndex = null,
+    Object? randomSummaryPair = freezed,
     Object? error = freezed,
   }) {
     return _then(_value.copyWith(
@@ -123,6 +127,10 @@ class _$SessionExercisesStateCopyWithImpl<$Res,
           ? _value.currentExerciseIndex
           : currentExerciseIndex // ignore: cast_nullable_to_non_nullable
               as int,
+      randomSummaryPair: freezed == randomSummaryPair
+          ? _value.randomSummaryPair
+          : randomSummaryPair // ignore: cast_nullable_to_non_nullable
+              as RandomSummaryPair?,
       error: freezed == error
           ? _value.error
           : error // ignore: cast_nullable_to_non_nullable
@@ -159,6 +167,7 @@ abstract class _$$SessionExercisesStateImplCopyWith<$Res>
       bool isEvaluating,
       bool isFetching,
       int currentExerciseIndex,
+      RandomSummaryPair? randomSummaryPair,
       AppError? error});
 
   @override
@@ -187,6 +196,7 @@ class __$$SessionExercisesStateImplCopyWithImpl<$Res>
     Object? isEvaluating = null,
     Object? isFetching = null,
     Object? currentExerciseIndex = null,
+    Object? randomSummaryPair = freezed,
     Object? error = freezed,
   }) {
     return _then(_$SessionExercisesStateImpl(
@@ -230,6 +240,10 @@ class __$$SessionExercisesStateImplCopyWithImpl<$Res>
           ? _value.currentExerciseIndex
           : currentExerciseIndex // ignore: cast_nullable_to_non_nullable
               as int,
+      randomSummaryPair: freezed == randomSummaryPair
+          ? _value.randomSummaryPair
+          : randomSummaryPair // ignore: cast_nullable_to_non_nullable
+              as RandomSummaryPair?,
       error: freezed == error
           ? _value.error
           : error // ignore: cast_nullable_to_non_nullable
@@ -252,6 +266,7 @@ class _$SessionExercisesStateImpl implements _SessionExercisesState {
       required this.isEvaluating,
       required this.isFetching,
       required this.currentExerciseIndex,
+      this.randomSummaryPair,
       this.error})
       : _exercises = exercises,
         _incorrects = incorrects;
@@ -289,11 +304,13 @@ class _$SessionExercisesStateImpl implements _SessionExercisesState {
   @override
   final int currentExerciseIndex;
   @override
+  final RandomSummaryPair? randomSummaryPair;
+  @override
   final AppError? error;
 
   @override
   String toString() {
-    return 'SessionExercisesState(collection: $collection, exercises: $exercises, incorrects: $incorrects, timer: $timer, points: $points, isProgressing: $isProgressing, isCompleted: $isCompleted, isEvaluating: $isEvaluating, isFetching: $isFetching, currentExerciseIndex: $currentExerciseIndex, error: $error)';
+    return 'SessionExercisesState(collection: $collection, exercises: $exercises, incorrects: $incorrects, timer: $timer, points: $points, isProgressing: $isProgressing, isCompleted: $isCompleted, isEvaluating: $isEvaluating, isFetching: $isFetching, currentExerciseIndex: $currentExerciseIndex, randomSummaryPair: $randomSummaryPair, error: $error)';
   }
 
   @override
@@ -319,6 +336,8 @@ class _$SessionExercisesStateImpl implements _SessionExercisesState {
                 other.isFetching == isFetching) &&
             (identical(other.currentExerciseIndex, currentExerciseIndex) ||
                 other.currentExerciseIndex == currentExerciseIndex) &&
+            (identical(other.randomSummaryPair, randomSummaryPair) ||
+                other.randomSummaryPair == randomSummaryPair) &&
             (identical(other.error, error) || other.error == error));
   }
 
@@ -335,6 +354,7 @@ class _$SessionExercisesStateImpl implements _SessionExercisesState {
       isEvaluating,
       isFetching,
       currentExerciseIndex,
+      randomSummaryPair,
       error);
 
   @JsonKey(ignore: true)
@@ -357,6 +377,7 @@ abstract class _SessionExercisesState implements SessionExercisesState {
       required final bool isEvaluating,
       required final bool isFetching,
       required final int currentExerciseIndex,
+      final RandomSummaryPair? randomSummaryPair,
       final AppError? error}) = _$SessionExercisesStateImpl;
 
   @override
@@ -379,6 +400,8 @@ abstract class _SessionExercisesState implements SessionExercisesState {
   bool get isFetching;
   @override
   int get currentExerciseIndex;
+  @override
+  RandomSummaryPair? get randomSummaryPair;
   @override
   AppError? get error;
   @override

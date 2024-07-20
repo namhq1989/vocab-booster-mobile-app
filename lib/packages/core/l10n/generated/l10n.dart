@@ -1049,6 +1049,606 @@ class L10N {
       args: [],
     );
   }
+
+  /// `Awesome!`
+  String get er_90_100_accuracy_1_summary {
+    return Intl.message(
+      'Awesome!',
+      name: 'er_90_100_accuracy_1_summary',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Keep it up and stay consistent`
+  String get er_90_100_accuracy_1_encouragement {
+    return Intl.message(
+      'Keep it up and stay consistent',
+      name: 'er_90_100_accuracy_1_encouragement',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Great job!`
+  String get er_90_100_accuracy_2_summary {
+    return Intl.message(
+      'Great job!',
+      name: 'er_90_100_accuracy_2_summary',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `You''re doing fantastic, keep going`
+  String get er_90_100_accuracy_2_encouragement {
+    return Intl.message(
+      'You\'\'re doing fantastic, keep going',
+      name: 'er_90_100_accuracy_2_encouragement',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `You''re a star!`
+  String get er_90_100_accuracy_3_summary {
+    return Intl.message(
+      'You\'\'re a star!',
+      name: 'er_90_100_accuracy_3_summary',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Your hard work is showing, keep it up`
+  String get er_90_100_accuracy_3_encouragement {
+    return Intl.message(
+      'Your hard work is showing, keep it up',
+      name: 'er_90_100_accuracy_3_encouragement',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Fantastic results!`
+  String get er_90_100_accuracy_4_summary {
+    return Intl.message(
+      'Fantastic results!',
+      name: 'er_90_100_accuracy_4_summary',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Keep this up and aim even higher`
+  String get er_90_100_accuracy_4_encouragement {
+    return Intl.message(
+      'Keep this up and aim even higher',
+      name: 'er_90_100_accuracy_4_encouragement',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Well done!`
+  String get er_90_100_accuracy_5_summary {
+    return Intl.message(
+      'Well done!',
+      name: 'er_90_100_accuracy_5_summary',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `You''re really great, keep pushing forward`
+  String get er_90_100_accuracy_5_encouragement {
+    return Intl.message(
+      'You\'\'re really great, keep pushing forward',
+      name: 'er_90_100_accuracy_5_encouragement',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Great job!`
+  String get er_75_89_accuracy_1_summary {
+    return Intl.message(
+      'Great job!',
+      name: 'er_75_89_accuracy_1_summary',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `You''re almost there, keep practicing a bit more`
+  String get er_75_89_accuracy_1_encouragement {
+    return Intl.message(
+      'You\'\'re almost there, keep practicing a bit more',
+      name: 'er_75_89_accuracy_1_encouragement',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Nice work!`
+  String get er_75_89_accuracy_2_summary {
+    return Intl.message(
+      'Nice work!',
+      name: 'er_75_89_accuracy_2_summary',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Excellent effort, keep sharpening your skills`
+  String get er_75_89_accuracy_2_encouragement {
+    return Intl.message(
+      'Excellent effort, keep sharpening your skills',
+      name: 'er_75_89_accuracy_2_encouragement',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Impressive!`
+  String get er_75_89_accuracy_3_summary {
+    return Intl.message(
+      'Impressive!',
+      name: 'er_75_89_accuracy_3_summary',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `You''re on the right track, stay focused`
+  String get er_75_89_accuracy_3_encouragement {
+    return Intl.message(
+      'You\'\'re on the right track, stay focused',
+      name: 'er_75_89_accuracy_3_encouragement',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Doing well!`
+  String get er_75_89_accuracy_4_summary {
+    return Intl.message(
+      'Doing well!',
+      name: 'er_75_89_accuracy_4_summary',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Keep practicing, you''ll hit the top soon`
+  String get er_75_89_accuracy_4_encouragement {
+    return Intl.message(
+      'Keep practicing, you\'\'ll hit the top soon',
+      name: 'er_75_89_accuracy_4_encouragement',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Great effort!`
+  String get er_75_89_accuracy_5_summary {
+    return Intl.message(
+      'Great effort!',
+      name: 'er_75_89_accuracy_5_summary',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `You''re doing really well, aim for perfection`
+  String get er_75_89_accuracy_5_encouragement {
+    return Intl.message(
+      'You\'\'re doing really well, aim for perfection',
+      name: 'er_75_89_accuracy_5_encouragement',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Nice try!`
+  String get er_60_74_accuracy_1_summary {
+    return Intl.message(
+      'Nice try!',
+      name: 'er_60_74_accuracy_1_summary',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Keep practicing and you''ll get better`
+  String get er_60_74_accuracy_1_encouragement {
+    return Intl.message(
+      'Keep practicing and you\'\'ll get better',
+      name: 'er_60_74_accuracy_1_encouragement',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Good effort!`
+  String get er_60_74_accuracy_2_summary {
+    return Intl.message(
+      'Good effort!',
+      name: 'er_60_74_accuracy_2_summary',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Review your mistakes and learn from them`
+  String get er_60_74_accuracy_2_encouragement {
+    return Intl.message(
+      'Review your mistakes and learn from them',
+      name: 'er_60_74_accuracy_2_encouragement',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Not bad!`
+  String get er_60_74_accuracy_3_summary {
+    return Intl.message(
+      'Not bad!',
+      name: 'er_60_74_accuracy_3_summary',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Stay focused and keep practicing`
+  String get er_60_74_accuracy_3_encouragement {
+    return Intl.message(
+      'Stay focused and keep practicing',
+      name: 'er_60_74_accuracy_3_encouragement',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Pretty good!`
+  String get er_60_74_accuracy_4_summary {
+    return Intl.message(
+      'Pretty good!',
+      name: 'er_60_74_accuracy_4_summary',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Keep at it, you''ll improve more`
+  String get er_60_74_accuracy_4_encouragement {
+    return Intl.message(
+      'Keep at it, you\'\'ll improve more',
+      name: 'er_60_74_accuracy_4_encouragement',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Decent job!`
+  String get er_60_74_accuracy_5_summary {
+    return Intl.message(
+      'Decent job!',
+      name: 'er_60_74_accuracy_5_summary',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Keep going, practice will bring improvement`
+  String get er_60_74_accuracy_5_encouragement {
+    return Intl.message(
+      'Keep going, practice will bring improvement',
+      name: 'er_60_74_accuracy_5_encouragement',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Needs work!`
+  String get er_40_59_accuracy_1_summary {
+    return Intl.message(
+      'Needs work!',
+      name: 'er_40_59_accuracy_1_summary',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Review your mistakes and try again`
+  String get er_40_59_accuracy_1_encouragement {
+    return Intl.message(
+      'Review your mistakes and try again',
+      name: 'er_40_59_accuracy_1_encouragement',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Keep trying!`
+  String get er_40_59_accuracy_2_summary {
+    return Intl.message(
+      'Keep trying!',
+      name: 'er_40_59_accuracy_2_summary',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Focus on your weak spots and practice more`
+  String get er_40_59_accuracy_2_encouragement {
+    return Intl.message(
+      'Focus on your weak spots and practice more',
+      name: 'er_40_59_accuracy_2_encouragement',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Almost there!`
+  String get er_40_59_accuracy_3_summary {
+    return Intl.message(
+      'Almost there!',
+      name: 'er_40_59_accuracy_3_summary',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Practice makes perfect, keep going`
+  String get er_40_59_accuracy_3_encouragement {
+    return Intl.message(
+      'Practice makes perfect, keep going',
+      name: 'er_40_59_accuracy_3_encouragement',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Can improve!`
+  String get er_40_59_accuracy_4_summary {
+    return Intl.message(
+      'Can improve!',
+      name: 'er_40_59_accuracy_4_summary',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Don't give up, you're making progress`
+  String get er_40_59_accuracy_4_encouragement {
+    return Intl.message(
+      'Don\'t give up, you\'re making progress',
+      name: 'er_40_59_accuracy_4_encouragement',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Getting better!`
+  String get er_40_59_accuracy_5_summary {
+    return Intl.message(
+      'Getting better!',
+      name: 'er_40_59_accuracy_5_summary',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Keep practicing and review your errors`
+  String get er_40_59_accuracy_5_encouragement {
+    return Intl.message(
+      'Keep practicing and review your errors',
+      name: 'er_40_59_accuracy_5_encouragement',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Keep trying!`
+  String get er_20_39_accuracy_1_summary {
+    return Intl.message(
+      'Keep trying!',
+      name: 'er_20_39_accuracy_1_summary',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Don''t give up, persistence leads to success`
+  String get er_20_39_accuracy_1_encouragement {
+    return Intl.message(
+      'Don\'\'t give up, persistence leads to success',
+      name: 'er_20_39_accuracy_1_encouragement',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Keep going!`
+  String get er_20_39_accuracy_2_summary {
+    return Intl.message(
+      'Keep going!',
+      name: 'er_20_39_accuracy_2_summary',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Practice more and you''ll see improvement soon`
+  String get er_20_39_accuracy_2_encouragement {
+    return Intl.message(
+      'Practice more and you\'\'ll see improvement soon',
+      name: 'er_20_39_accuracy_2_encouragement',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Don''t quit!`
+  String get er_20_39_accuracy_3_summary {
+    return Intl.message(
+      'Don\'\'t quit!',
+      name: 'er_20_39_accuracy_3_summary',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Every effort counts, keep pushing yourself`
+  String get er_20_39_accuracy_3_encouragement {
+    return Intl.message(
+      'Every effort counts, keep pushing yourself',
+      name: 'er_20_39_accuracy_3_encouragement',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Stay focused!`
+  String get er_20_39_accuracy_4_summary {
+    return Intl.message(
+      'Stay focused!',
+      name: 'er_20_39_accuracy_4_summary',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `You can do it, just keep practicing`
+  String get er_20_39_accuracy_4_encouragement {
+    return Intl.message(
+      'You can do it, just keep practicing',
+      name: 'er_20_39_accuracy_4_encouragement',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Keep practicing!`
+  String get er_20_39_accuracy_5_summary {
+    return Intl.message(
+      'Keep practicing!',
+      name: 'er_20_39_accuracy_5_summary',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Consistent effort will lead to better results`
+  String get er_20_39_accuracy_5_encouragement {
+    return Intl.message(
+      'Consistent effort will lead to better results',
+      name: 'er_20_39_accuracy_5_encouragement',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Try again!`
+  String get er_00_19_accuracy_1_summary {
+    return Intl.message(
+      'Try again!',
+      name: 'er_00_19_accuracy_1_summary',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Practice makes perfect, keep going`
+  String get er_00_19_accuracy_1_encouragement {
+    return Intl.message(
+      'Practice makes perfect, keep going',
+      name: 'er_00_19_accuracy_1_encouragement',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Give it another go!`
+  String get er_00_19_accuracy_2_summary {
+    return Intl.message(
+      'Give it another go!',
+      name: 'er_00_19_accuracy_2_summary',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Every attempt helps you learn, keep at it`
+  String get er_00_19_accuracy_2_encouragement {
+    return Intl.message(
+      'Every attempt helps you learn, keep at it',
+      name: 'er_00_19_accuracy_2_encouragement',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Don''t worry!`
+  String get er_00_19_accuracy_3_summary {
+    return Intl.message(
+      'Don\'\'t worry!',
+      name: 'er_00_19_accuracy_3_summary',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Stay positive, practice will improve your skills`
+  String get er_00_19_accuracy_3_encouragement {
+    return Intl.message(
+      'Stay positive, practice will improve your skills',
+      name: 'er_00_19_accuracy_3_encouragement',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Fresh start!`
+  String get er_00_19_accuracy_4_summary {
+    return Intl.message(
+      'Fresh start!',
+      name: 'er_00_19_accuracy_4_summary',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Keep practicing, progress will come`
+  String get er_00_19_accuracy_4_encouragement {
+    return Intl.message(
+      'Keep practicing, progress will come',
+      name: 'er_00_19_accuracy_4_encouragement',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `New beginning!`
+  String get er_00_19_accuracy_5_summary {
+    return Intl.message(
+      'New beginning!',
+      name: 'er_00_19_accuracy_5_summary',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Focus on learning and keep trying your best`
+  String get er_00_19_accuracy_5_encouragement {
+    return Intl.message(
+      'Focus on learning and keep trying your best',
+      name: 'er_00_19_accuracy_5_encouragement',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<L10N> {

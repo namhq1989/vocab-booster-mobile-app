@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:shadcn_ui/shadcn_ui.dart';
 import 'package:vocab_booster/packages/core/l10n/generated/l10n.dart';
-import 'package:vocab_booster/ui/widget/appbar_title.dart';
-import 'package:vocab_booster/ui/widget/screen.dart';
+import 'package:vocab_booster/packages/ui/widget/appbar_title.dart';
+import 'package:vocab_booster/packages/ui/widget/screen.dart';
 
 @RoutePage()
 class ExerciseRuleScreen extends StatelessWidget {

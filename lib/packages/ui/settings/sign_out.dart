@@ -3,7 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:shadcn_ui/shadcn_ui.dart';
 import 'package:vocab_booster/packages/auth/provider/auth.dart';
 import 'package:vocab_booster/packages/core/l10n/generated/l10n.dart';
-import 'package:vocab_booster/ui/widget/bottomsheet.dart';
+import 'package:vocab_booster/packages/ui/widget/bottomsheet.dart';
 
 class SettingsSignOut extends ConsumerWidget {
   const SettingsSignOut({super.key});

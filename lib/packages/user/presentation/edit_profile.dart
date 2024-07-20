@@ -4,11 +4,11 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:shadcn_ui/shadcn_ui.dart';
 import 'package:vocab_booster/packages/core/l10n/generated/l10n.dart';
 import 'package:vocab_booster/packages/user/provider/update_me.dart';
-import 'package:vocab_booster/ui/widget/appbar_title.dart';
-import 'package:vocab_booster/ui/widget/bottomsheet.dart';
-import 'package:vocab_booster/ui/widget/loading_state.dart';
-import 'package:vocab_booster/ui/widget/screen.dart';
-import 'package:vocab_booster/ui/widget/toast.dart';
+import 'package:vocab_booster/packages/ui/widget/appbar_title.dart';
+import 'package:vocab_booster/packages/ui/widget/bottomsheet.dart';
+import 'package:vocab_booster/packages/ui/widget/loading_state.dart';
+import 'package:vocab_booster/packages/ui/widget/screen.dart';
+import 'package:vocab_booster/packages/ui/widget/toast.dart';
 
 const _totalAvatars = 26;
 final _avatars = List.generate(_totalAvatars, (index) {

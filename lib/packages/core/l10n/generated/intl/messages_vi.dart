@@ -25,6 +25,156 @@ class MessageLookup extends MessageLookupByLibrary {
         "bio": MessageLookupByLibrary.simpleMessage("Giới thiệu"),
         "cancel": MessageLookupByLibrary.simpleMessage("Hủy"),
         "email": MessageLookupByLibrary.simpleMessage("Email"),
+        "er_00_19_accuracy_1_encouragement":
+            MessageLookupByLibrary.simpleMessage(
+                "Luyện tập nhiều sẽ hoàn thiện, cứ cố gắng nhé"),
+        "er_00_19_accuracy_1_summary":
+            MessageLookupByLibrary.simpleMessage("Bắt đầu lại"),
+        "er_00_19_accuracy_2_encouragement":
+            MessageLookupByLibrary.simpleMessage(
+                "Mỗi lần thử là một lần học, tiếp tục nào"),
+        "er_00_19_accuracy_2_summary":
+            MessageLookupByLibrary.simpleMessage("Thử lại nhé"),
+        "er_00_19_accuracy_3_encouragement":
+            MessageLookupByLibrary.simpleMessage(
+                "Hãy lạc quan, luyện tập sẽ cải thiện kỹ năng"),
+        "er_00_19_accuracy_3_summary":
+            MessageLookupByLibrary.simpleMessage("Đừng lo"),
+        "er_00_19_accuracy_4_encouragement":
+            MessageLookupByLibrary.simpleMessage(
+                "Tiếp tục luyện tập, tiến bộ sẽ đến thôi"),
+        "er_00_19_accuracy_4_summary":
+            MessageLookupByLibrary.simpleMessage("Khởi đầu mới"),
+        "er_00_19_accuracy_5_encouragement":
+            MessageLookupByLibrary.simpleMessage(
+                "Tập trung học hỏi và tiếp tục cố gắng hết mình"),
+        "er_00_19_accuracy_5_summary":
+            MessageLookupByLibrary.simpleMessage("Bắt đầu mới"),
+        "er_20_39_accuracy_1_encouragement":
+            MessageLookupByLibrary.simpleMessage(
+                "Đừng bỏ cuộc, kiên trì sẽ dẫn đến thành công"),
+        "er_20_39_accuracy_1_summary":
+            MessageLookupByLibrary.simpleMessage("Cố lên!"),
+        "er_20_39_accuracy_2_encouragement":
+            MessageLookupByLibrary.simpleMessage(
+                "Luyện tập thêm và bạn sẽ thấy tiến bộ"),
+        "er_20_39_accuracy_2_summary":
+            MessageLookupByLibrary.simpleMessage("Tiếp tục nào"),
+        "er_20_39_accuracy_3_encouragement":
+            MessageLookupByLibrary.simpleMessage(
+                "Mỗi nỗ lực đều đáng giá, cứ tiếp tục nhé"),
+        "er_20_39_accuracy_3_summary":
+            MessageLookupByLibrary.simpleMessage("Đừng bỏ cuộc"),
+        "er_20_39_accuracy_4_encouragement":
+            MessageLookupByLibrary.simpleMessage(
+                "Bạn làm được mà, cứ luyện tập tiếp nhé"),
+        "er_20_39_accuracy_4_summary":
+            MessageLookupByLibrary.simpleMessage("Giữ vững tinh thần"),
+        "er_20_39_accuracy_5_encouragement":
+            MessageLookupByLibrary.simpleMessage(
+                "Nỗ lực liên tục sẽ mang lại kết quả tốt"),
+        "er_20_39_accuracy_5_summary":
+            MessageLookupByLibrary.simpleMessage("Luyện tập thêm"),
+        "er_40_59_accuracy_1_encouragement":
+            MessageLookupByLibrary.simpleMessage(
+                "Xem lại lỗi và thử lại nhé, kết quả sẽ tốt hơn"),
+        "er_40_59_accuracy_1_summary":
+            MessageLookupByLibrary.simpleMessage("Cần cải thiện"),
+        "er_40_59_accuracy_2_encouragement":
+            MessageLookupByLibrary.simpleMessage(
+                "Tập trung vào điểm yếu và luyện tập thêm"),
+        "er_40_59_accuracy_2_summary":
+            MessageLookupByLibrary.simpleMessage("Tiếp tục cố gắng!"),
+        "er_40_59_accuracy_3_encouragement":
+            MessageLookupByLibrary.simpleMessage(
+                "Luyện tập nhiều sẽ tốt hơn, tiếp tục nào"),
+        "er_40_59_accuracy_3_summary":
+            MessageLookupByLibrary.simpleMessage("Sắp đạt rồi"),
+        "er_40_59_accuracy_4_encouragement":
+            MessageLookupByLibrary.simpleMessage(
+                "Đừng bỏ cuộc, bạn đang tiến bộ mà"),
+        "er_40_59_accuracy_4_summary":
+            MessageLookupByLibrary.simpleMessage("Có thể cải thiện"),
+        "er_40_59_accuracy_5_encouragement":
+            MessageLookupByLibrary.simpleMessage(
+                "Cứ luyện tập thêm và xem lại lỗi nhé"),
+        "er_40_59_accuracy_5_summary":
+            MessageLookupByLibrary.simpleMessage("Đang khá lên"),
+        "er_60_74_accuracy_1_encouragement":
+            MessageLookupByLibrary.simpleMessage(
+                "Cứ luyện tập thêm và bạn sẽ cải thiện"),
+        "er_60_74_accuracy_1_summary":
+            MessageLookupByLibrary.simpleMessage("Nỗ lực tốt!"),
+        "er_60_74_accuracy_2_encouragement":
+            MessageLookupByLibrary.simpleMessage(
+                "Xem lại lỗi và học hỏi từ đó"),
+        "er_60_74_accuracy_2_summary":
+            MessageLookupByLibrary.simpleMessage("Cố gắng khá!"),
+        "er_60_74_accuracy_3_encouragement":
+            MessageLookupByLibrary.simpleMessage(
+                "Tập trung và tiếp tục luyện tập nhé"),
+        "er_60_74_accuracy_3_summary":
+            MessageLookupByLibrary.simpleMessage("Tạm ổn!"),
+        "er_60_74_accuracy_4_encouragement":
+            MessageLookupByLibrary.simpleMessage(
+                "Cứ luyện tập thêm, bạn sẽ tốt hơn"),
+        "er_60_74_accuracy_4_summary":
+            MessageLookupByLibrary.simpleMessage("Khá đấy!"),
+        "er_60_74_accuracy_5_encouragement":
+            MessageLookupByLibrary.simpleMessage(
+                "Cứ tiếp tục, luyện tập sẽ mang lại kết quả"),
+        "er_60_74_accuracy_5_summary":
+            MessageLookupByLibrary.simpleMessage("Không tệ đâu!"),
+        "er_75_89_accuracy_1_encouragement":
+            MessageLookupByLibrary.simpleMessage(
+                "Bạn gần đạt đỉnh rồi, cố thêm chút nữa"),
+        "er_75_89_accuracy_1_summary":
+            MessageLookupByLibrary.simpleMessage("Tốt lắm!"),
+        "er_75_89_accuracy_2_encouragement":
+            MessageLookupByLibrary.simpleMessage(
+                "Nỗ lực rất tốt, tiếp tục hoàn thiện kỹ năng"),
+        "er_75_89_accuracy_2_summary":
+            MessageLookupByLibrary.simpleMessage("Giỏi lắm!"),
+        "er_75_89_accuracy_3_encouragement":
+            MessageLookupByLibrary.simpleMessage(
+                "Bạn đang đi đúng hướng, tiếp tục tập trung"),
+        "er_75_89_accuracy_3_summary":
+            MessageLookupByLibrary.simpleMessage("Ấn tượng đấy!"),
+        "er_75_89_accuracy_4_encouragement":
+            MessageLookupByLibrary.simpleMessage(
+                "Cứ luyện tập thêm, bạn sẽ đạt đỉnh cao"),
+        "er_75_89_accuracy_4_summary":
+            MessageLookupByLibrary.simpleMessage("Làm khá tốt!"),
+        "er_75_89_accuracy_5_encouragement":
+            MessageLookupByLibrary.simpleMessage(
+                "Bạn làm rất tốt, cố đạt hoàn hảo nhé"),
+        "er_75_89_accuracy_5_summary":
+            MessageLookupByLibrary.simpleMessage("Nỗ lực đáng khen!"),
+        "er_90_100_accuracy_1_encouragement":
+            MessageLookupByLibrary.simpleMessage(
+                "Tiếp tục giữ phong độ và cố lên"),
+        "er_90_100_accuracy_1_summary":
+            MessageLookupByLibrary.simpleMessage("Xuất sắc!"),
+        "er_90_100_accuracy_2_encouragement":
+            MessageLookupByLibrary.simpleMessage(
+                "Bạn đang làm rất tốt, cứ tiếp tục nhé"),
+        "er_90_100_accuracy_2_summary":
+            MessageLookupByLibrary.simpleMessage("Thành công rực rỡ!"),
+        "er_90_100_accuracy_3_encouragement":
+            MessageLookupByLibrary.simpleMessage(
+                "Sự nỗ lực của bạn rất rõ ràng, tiếp tục nào"),
+        "er_90_100_accuracy_3_summary":
+            MessageLookupByLibrary.simpleMessage("Quá đỉnh!"),
+        "er_90_100_accuracy_4_encouragement":
+            MessageLookupByLibrary.simpleMessage(
+                "Duy trì phong độ này và nhắm cao hơn"),
+        "er_90_100_accuracy_4_summary":
+            MessageLookupByLibrary.simpleMessage("Kết quả tuyệt vời!"),
+        "er_90_100_accuracy_5_encouragement":
+            MessageLookupByLibrary.simpleMessage(
+                "Bạn thật sự xuất sắc, cứ tiến lên nhé"),
+        "er_90_100_accuracy_5_summary":
+            MessageLookupByLibrary.simpleMessage("Làm tốt lắm!"),
         "errorCommon": MessageLookupByLibrary.simpleMessage(
             "Đã có lỗi xảy ra, vui lòng thử lại"),
         "errorInvalidForm": MessageLookupByLibrary.simpleMessage(
