@@ -24,7 +24,7 @@ class AnswerExerciseAPI {
 
 @freezed
 class AnswerExerciseRequest with _$AnswerExerciseRequest {
-  factory AnswerExerciseRequest({
+  const factory AnswerExerciseRequest({
     @JsonKey(name: 'isCorrect') required bool isCorrect,
     @JsonKey(name: 'completionTime') required int completionTime,
     @JsonKey(name: 'point') required int point,
@@ -36,7 +36,7 @@ class AnswerExerciseRequest with _$AnswerExerciseRequest {
 
 @freezed
 class AnswerExerciseResponse with _$AnswerExerciseResponse {
-  factory AnswerExerciseResponse({
+  const factory AnswerExerciseResponse({
     @JsonKey(name: 'success') bool? success,
     @JsonKey(name: 'code') String? code,
     @JsonKey(name: 'data') AnswerExerciseResponseData? data,
@@ -49,7 +49,7 @@ class AnswerExerciseResponse with _$AnswerExerciseResponse {
 
 @freezed
 class AnswerExerciseResponseData with _$AnswerExerciseResponseData {
-  factory AnswerExerciseResponseData({
+  const factory AnswerExerciseResponseData({
     @TimestampSerializer()
     @JsonKey(name: 'nextReviewAt')
     DateTime? nextReviewAt,

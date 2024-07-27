@@ -68,7 +68,7 @@ class __$$GetRecentExercisesChartRequestImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$GetRecentExercisesChartRequestImpl
     implements _GetRecentExercisesChartRequest {
-  _$GetRecentExercisesChartRequestImpl();
+  const _$GetRecentExercisesChartRequestImpl();
 
   factory _$GetRecentExercisesChartRequestImpl.fromJson(
           Map<String, dynamic> json) =>
@@ -100,7 +100,7 @@ class _$GetRecentExercisesChartRequestImpl
 
 abstract class _GetRecentExercisesChartRequest
     implements GetRecentExercisesChartRequest {
-  factory _GetRecentExercisesChartRequest() =
+  const factory _GetRecentExercisesChartRequest() =
       _$GetRecentExercisesChartRequestImpl;
 
   factory _GetRecentExercisesChartRequest.fromJson(Map<String, dynamic> json) =
@@ -262,7 +262,7 @@ class __$$GetRecentExercisesChartResponseImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$GetRecentExercisesChartResponseImpl
     implements _GetRecentExercisesChartResponse {
-  _$GetRecentExercisesChartResponseImpl(
+  const _$GetRecentExercisesChartResponseImpl(
       {@JsonKey(name: 'success') this.success,
       @JsonKey(name: 'code') this.code,
       @JsonKey(name: 'data') this.data,
@@ -323,7 +323,7 @@ class _$GetRecentExercisesChartResponseImpl
 
 abstract class _GetRecentExercisesChartResponse
     implements GetRecentExercisesChartResponse {
-  factory _GetRecentExercisesChartResponse(
+  const factory _GetRecentExercisesChartResponse(
       {@JsonKey(name: 'success') final bool? success,
       @JsonKey(name: 'code') final String? code,
       @JsonKey(name: 'data') final GetRecentExercisesChartResponseData? data,
@@ -450,7 +450,7 @@ class __$$GetRecentExercisesChartResponseDataImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$GetRecentExercisesChartResponseDataImpl
     implements _GetRecentExercisesChartResponseData {
-  _$GetRecentExercisesChartResponseDataImpl(
+  const _$GetRecentExercisesChartResponseDataImpl(
       {@JsonKey(name: 'exercises')
       required final List<GetRecentExercisesChartResponseExercise> exercises})
       : _exercises = exercises;
@@ -505,7 +505,7 @@ class _$GetRecentExercisesChartResponseDataImpl
 
 abstract class _GetRecentExercisesChartResponseData
     implements GetRecentExercisesChartResponseData {
-  factory _GetRecentExercisesChartResponseData(
+  const factory _GetRecentExercisesChartResponseData(
       {@JsonKey(name: 'exercises')
       required final List<GetRecentExercisesChartResponseExercise>
           exercises}) = _$GetRecentExercisesChartResponseDataImpl;
@@ -635,7 +635,7 @@ class __$$GetRecentExercisesChartResponseExerciseImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$GetRecentExercisesChartResponseExerciseImpl
     extends _GetRecentExercisesChartResponseExercise {
-  _$GetRecentExercisesChartResponseExerciseImpl(
+  const _$GetRecentExercisesChartResponseExerciseImpl(
       {@JsonKey(name: 'date') this.date,
       @JsonKey(name: 'exercise') this.exercise})
       : super._();
@@ -689,11 +689,11 @@ class _$GetRecentExercisesChartResponseExerciseImpl
 
 abstract class _GetRecentExercisesChartResponseExercise
     extends GetRecentExercisesChartResponseExercise {
-  factory _GetRecentExercisesChartResponseExercise(
+  const factory _GetRecentExercisesChartResponseExercise(
           {@JsonKey(name: 'date') final String? date,
           @JsonKey(name: 'exercise') final int? exercise}) =
       _$GetRecentExercisesChartResponseExerciseImpl;
-  _GetRecentExercisesChartResponseExercise._() : super._();
+  const _GetRecentExercisesChartResponseExercise._() : super._();
 
   factory _GetRecentExercisesChartResponseExercise.fromJson(
           Map<String, dynamic> json) =

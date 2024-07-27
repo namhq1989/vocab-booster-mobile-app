@@ -98,7 +98,7 @@ class __$$GetExercisesRequestImplCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$GetExercisesRequestImpl implements _GetExercisesRequest {
-  _$GetExercisesRequestImpl(
+  const _$GetExercisesRequestImpl(
       {@JsonKey(name: 'collectionId') required this.collectionId});
 
   factory _$GetExercisesRequestImpl.fromJson(Map<String, dynamic> json) =>
@@ -142,7 +142,7 @@ class _$GetExercisesRequestImpl implements _GetExercisesRequest {
 }
 
 abstract class _GetExercisesRequest implements GetExercisesRequest {
-  factory _GetExercisesRequest(
+  const factory _GetExercisesRequest(
           {@JsonKey(name: 'collectionId') required final String collectionId}) =
       _$GetExercisesRequestImpl;
 
@@ -304,7 +304,7 @@ class __$$GetExercisesResponseImplCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$GetExercisesResponseImpl implements _GetExercisesResponse {
-  _$GetExercisesResponseImpl(
+  const _$GetExercisesResponseImpl(
       {@JsonKey(name: 'success') this.success,
       @JsonKey(name: 'code') this.code,
       @JsonKey(name: 'data') this.data,
@@ -363,7 +363,7 @@ class _$GetExercisesResponseImpl implements _GetExercisesResponse {
 }
 
 abstract class _GetExercisesResponse implements GetExercisesResponse {
-  factory _GetExercisesResponse(
+  const factory _GetExercisesResponse(
           {@JsonKey(name: 'success') final bool? success,
           @JsonKey(name: 'code') final String? code,
           @JsonKey(name: 'data') final GetExercisesResponseData? data,
@@ -485,7 +485,7 @@ class __$$GetExercisesResponseDataImplCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$GetExercisesResponseDataImpl implements _GetExercisesResponseData {
-  _$GetExercisesResponseDataImpl(
+  const _$GetExercisesResponseDataImpl(
       {@JsonKey(name: 'exercises')
       required final List<GetExercisesResponseExercise> exercises})
       : _exercises = exercises;
@@ -537,7 +537,7 @@ class _$GetExercisesResponseDataImpl implements _GetExercisesResponseData {
 }
 
 abstract class _GetExercisesResponseData implements GetExercisesResponseData {
-  factory _GetExercisesResponseData(
+  const factory _GetExercisesResponseData(
           {@JsonKey(name: 'exercises')
           required final List<GetExercisesResponseExercise> exercises}) =
       _$GetExercisesResponseDataImpl;
@@ -569,9 +569,7 @@ mixin _$GetExercisesResponseExercise {
   @JsonKey(name: 'vocabulary')
   String? get vocabulary => throw _privateConstructorUsedError;
   @JsonKey(name: 'content')
-  String? get content => throw _privateConstructorUsedError;
-  @JsonKey(name: 'translated')
-  String? get translated => throw _privateConstructorUsedError;
+  Multilingual? get content => throw _privateConstructorUsedError;
   @JsonKey(name: 'options')
   List<String> get options => throw _privateConstructorUsedError;
   @JsonKey(name: 'correctAnswer')
@@ -604,8 +602,7 @@ abstract class $GetExercisesResponseExerciseCopyWith<$Res> {
       {@JsonKey(name: 'id') String? id,
       @AppAssestUrlSerializer() @JsonKey(name: 'audio') String? audio,
       @JsonKey(name: 'vocabulary') String? vocabulary,
-      @JsonKey(name: 'content') String? content,
-      @JsonKey(name: 'translated') String? translated,
+      @JsonKey(name: 'content') Multilingual? content,
       @JsonKey(name: 'options') List<String> options,
       @JsonKey(name: 'correctAnswer') String? correctAnswer,
       @JsonKey(name: 'correctStreak') int? correctStreak,
@@ -614,6 +611,8 @@ abstract class $GetExercisesResponseExerciseCopyWith<$Res> {
       @TimestampSerializer()
       @JsonKey(name: 'nextReviewAt')
       DateTime? nextReviewAt});
+
+  $MultilingualCopyWith<$Res>? get content;
 }
 
 /// @nodoc
@@ -634,7 +633,6 @@ class _$GetExercisesResponseExerciseCopyWithImpl<$Res,
     Object? audio = freezed,
     Object? vocabulary = freezed,
     Object? content = freezed,
-    Object? translated = freezed,
     Object? options = null,
     Object? correctAnswer = freezed,
     Object? correctStreak = freezed,
@@ -658,11 +656,7 @@ class _$GetExercisesResponseExerciseCopyWithImpl<$Res,
       content: freezed == content
           ? _value.content
           : content // ignore: cast_nullable_to_non_nullable
-              as String?,
-      translated: freezed == translated
-          ? _value.translated
-          : translated // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as Multilingual?,
       options: null == options
           ? _value.options
           : options // ignore: cast_nullable_to_non_nullable
@@ -689,6 +683,18 @@ class _$GetExercisesResponseExerciseCopyWithImpl<$Res,
               as DateTime?,
     ) as $Val);
   }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $MultilingualCopyWith<$Res>? get content {
+    if (_value.content == null) {
+      return null;
+    }
+
+    return $MultilingualCopyWith<$Res>(_value.content!, (value) {
+      return _then(_value.copyWith(content: value) as $Val);
+    });
+  }
 }
 
 /// @nodoc
@@ -704,8 +710,7 @@ abstract class _$$GetExercisesResponseExerciseImplCopyWith<$Res>
       {@JsonKey(name: 'id') String? id,
       @AppAssestUrlSerializer() @JsonKey(name: 'audio') String? audio,
       @JsonKey(name: 'vocabulary') String? vocabulary,
-      @JsonKey(name: 'content') String? content,
-      @JsonKey(name: 'translated') String? translated,
+      @JsonKey(name: 'content') Multilingual? content,
       @JsonKey(name: 'options') List<String> options,
       @JsonKey(name: 'correctAnswer') String? correctAnswer,
       @JsonKey(name: 'correctStreak') int? correctStreak,
@@ -714,6 +719,9 @@ abstract class _$$GetExercisesResponseExerciseImplCopyWith<$Res>
       @TimestampSerializer()
       @JsonKey(name: 'nextReviewAt')
       DateTime? nextReviewAt});
+
+  @override
+  $MultilingualCopyWith<$Res>? get content;
 }
 
 /// @nodoc
@@ -733,7 +741,6 @@ class __$$GetExercisesResponseExerciseImplCopyWithImpl<$Res>
     Object? audio = freezed,
     Object? vocabulary = freezed,
     Object? content = freezed,
-    Object? translated = freezed,
     Object? options = null,
     Object? correctAnswer = freezed,
     Object? correctStreak = freezed,
@@ -757,11 +764,7 @@ class __$$GetExercisesResponseExerciseImplCopyWithImpl<$Res>
       content: freezed == content
           ? _value.content
           : content // ignore: cast_nullable_to_non_nullable
-              as String?,
-      translated: freezed == translated
-          ? _value.translated
-          : translated // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as Multilingual?,
       options: null == options
           ? _value._options
           : options // ignore: cast_nullable_to_non_nullable
@@ -791,14 +794,14 @@ class __$$GetExercisesResponseExerciseImplCopyWithImpl<$Res>
 }
 
 /// @nodoc
-@JsonSerializable()
+
+@JsonSerializable(explicitToJson: true)
 class _$GetExercisesResponseExerciseImpl extends _GetExercisesResponseExercise {
-  _$GetExercisesResponseExerciseImpl(
+  const _$GetExercisesResponseExerciseImpl(
       {@JsonKey(name: 'id') this.id,
       @AppAssestUrlSerializer() @JsonKey(name: 'audio') this.audio,
       @JsonKey(name: 'vocabulary') this.vocabulary,
       @JsonKey(name: 'content') this.content,
-      @JsonKey(name: 'translated') this.translated,
       @JsonKey(name: 'options') required final List<String> options,
       @JsonKey(name: 'correctAnswer') this.correctAnswer,
       @JsonKey(name: 'correctStreak') this.correctStreak,
@@ -824,10 +827,7 @@ class _$GetExercisesResponseExerciseImpl extends _GetExercisesResponseExercise {
   final String? vocabulary;
   @override
   @JsonKey(name: 'content')
-  final String? content;
-  @override
-  @JsonKey(name: 'translated')
-  final String? translated;
+  final Multilingual? content;
   final List<String> _options;
   @override
   @JsonKey(name: 'options')
@@ -856,7 +856,7 @@ class _$GetExercisesResponseExerciseImpl extends _GetExercisesResponseExercise {
 
   @override
   String toString() {
-    return 'GetExercisesResponseExercise(id: $id, audio: $audio, vocabulary: $vocabulary, content: $content, translated: $translated, options: $options, correctAnswer: $correctAnswer, correctStreak: $correctStreak, isFavorite: $isFavorite, isMastered: $isMastered, nextReviewAt: $nextReviewAt)';
+    return 'GetExercisesResponseExercise(id: $id, audio: $audio, vocabulary: $vocabulary, content: $content, options: $options, correctAnswer: $correctAnswer, correctStreak: $correctStreak, isFavorite: $isFavorite, isMastered: $isMastered, nextReviewAt: $nextReviewAt)';
   }
 
   @override
@@ -869,8 +869,6 @@ class _$GetExercisesResponseExerciseImpl extends _GetExercisesResponseExercise {
             (identical(other.vocabulary, vocabulary) ||
                 other.vocabulary == vocabulary) &&
             (identical(other.content, content) || other.content == content) &&
-            (identical(other.translated, translated) ||
-                other.translated == translated) &&
             const DeepCollectionEquality().equals(other._options, _options) &&
             (identical(other.correctAnswer, correctAnswer) ||
                 other.correctAnswer == correctAnswer) &&
@@ -892,7 +890,6 @@ class _$GetExercisesResponseExerciseImpl extends _GetExercisesResponseExercise {
       audio,
       vocabulary,
       content,
-      translated,
       const DeepCollectionEquality().hash(_options),
       correctAnswer,
       correctStreak,
@@ -918,12 +915,11 @@ class _$GetExercisesResponseExerciseImpl extends _GetExercisesResponseExercise {
 
 abstract class _GetExercisesResponseExercise
     extends GetExercisesResponseExercise {
-  factory _GetExercisesResponseExercise(
+  const factory _GetExercisesResponseExercise(
       {@JsonKey(name: 'id') final String? id,
       @AppAssestUrlSerializer() @JsonKey(name: 'audio') final String? audio,
       @JsonKey(name: 'vocabulary') final String? vocabulary,
-      @JsonKey(name: 'content') final String? content,
-      @JsonKey(name: 'translated') final String? translated,
+      @JsonKey(name: 'content') final Multilingual? content,
       @JsonKey(name: 'options') required final List<String> options,
       @JsonKey(name: 'correctAnswer') final String? correctAnswer,
       @JsonKey(name: 'correctStreak') final int? correctStreak,
@@ -932,7 +928,7 @@ abstract class _GetExercisesResponseExercise
       @TimestampSerializer()
       @JsonKey(name: 'nextReviewAt')
       final DateTime? nextReviewAt}) = _$GetExercisesResponseExerciseImpl;
-  _GetExercisesResponseExercise._() : super._();
+  const _GetExercisesResponseExercise._() : super._();
 
   factory _GetExercisesResponseExercise.fromJson(Map<String, dynamic> json) =
       _$GetExercisesResponseExerciseImpl.fromJson;
@@ -949,10 +945,7 @@ abstract class _GetExercisesResponseExercise
   String? get vocabulary;
   @override
   @JsonKey(name: 'content')
-  String? get content;
-  @override
-  @JsonKey(name: 'translated')
-  String? get translated;
+  Multilingual? get content;
   @override
   @JsonKey(name: 'options')
   List<String> get options;

@@ -11,8 +11,7 @@ _$ExerciseImpl _$$ExerciseImplFromJson(Map<String, dynamic> json) =>
       id: json['id'] as String,
       audio: json['audio'] as String,
       vocabulary: json['vocabulary'] as String,
-      content: json['content'] as String,
-      translated: json['translated'] as String,
+      content: Multilingual.fromJson(json['content'] as Map<String, dynamic>),
       options:
           (json['options'] as List<dynamic>).map((e) => e as String).toList(),
       correctAnswer: json['correctAnswer'] as String,
@@ -39,7 +38,6 @@ Map<String, dynamic> _$$ExerciseImplToJson(_$ExerciseImpl instance) =>
       'audio': instance.audio,
       'vocabulary': instance.vocabulary,
       'content': instance.content,
-      'translated': instance.translated,
       'options': instance.options,
       'correctAnswer': instance.correctAnswer,
       'correctStreak': instance.correctStreak,

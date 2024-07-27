@@ -6,7 +6,7 @@ part of 'session.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$pSessionExercisesHash() => r'e9afa2dd17163a777b3d8bcc308e2f37083ec680';
+String _$pSessionExercisesHash() => r'978da8b24463cdb7b427d1254f202bc1ee130e60';
 
 /// See also [PSessionExercises].
 @ProviderFor(PSessionExercises)

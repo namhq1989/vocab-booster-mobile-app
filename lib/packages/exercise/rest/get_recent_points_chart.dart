@@ -22,7 +22,7 @@ class GetRecentPointsChartAPI {
 
 @freezed
 class GetRecentPointsChartRequest with _$GetRecentPointsChartRequest {
-  factory GetRecentPointsChartRequest() = _GetRecentPointsChartRequest;
+  const factory GetRecentPointsChartRequest() = _GetRecentPointsChartRequest;
 
   factory GetRecentPointsChartRequest.fromJson(Map<String, dynamic> json) =>
       _$GetRecentPointsChartRequestFromJson(json);
@@ -30,7 +30,7 @@ class GetRecentPointsChartRequest with _$GetRecentPointsChartRequest {
 
 @freezed
 class GetRecentPointsChartResponse with _$GetRecentPointsChartResponse {
-  factory GetRecentPointsChartResponse({
+  const factory GetRecentPointsChartResponse({
     @JsonKey(name: 'success') bool? success,
     @JsonKey(name: 'code') String? code,
     @JsonKey(name: 'data') GetRecentPointsChartResponseData? data,
@@ -43,7 +43,7 @@ class GetRecentPointsChartResponse with _$GetRecentPointsChartResponse {
 
 @freezed
 class GetRecentPointsChartResponseData with _$GetRecentPointsChartResponseData {
-  factory GetRecentPointsChartResponseData({
+  const factory GetRecentPointsChartResponseData({
     @JsonKey(name: 'points')
     required List<GetRecentPointsChartResponsePoint> points,
   }) = _GetRecentPointsChartResponseData;
@@ -58,7 +58,7 @@ class GetRecentPointsChartResponsePoint
     with _$GetRecentPointsChartResponsePoint {
   const GetRecentPointsChartResponsePoint._();
 
-  factory GetRecentPointsChartResponsePoint({
+  const factory GetRecentPointsChartResponsePoint({
     @JsonKey(name: 'date') String? date,
     @JsonKey(name: 'point') int? point,
   }) = _GetRecentPointsChartResponsePoint;

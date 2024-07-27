@@ -108,7 +108,7 @@ class __$$UserAggregatedPointImplCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$UserAggregatedPointImpl implements _UserAggregatedPoint {
-  _$UserAggregatedPointImpl({required this.date, required this.point});
+  const _$UserAggregatedPointImpl({required this.date, required this.point});
 
   factory _$UserAggregatedPointImpl.fromJson(Map<String, dynamic> json) =>
       _$$UserAggregatedPointImplFromJson(json);
@@ -152,7 +152,7 @@ class _$UserAggregatedPointImpl implements _UserAggregatedPoint {
 }
 
 abstract class _UserAggregatedPoint implements UserAggregatedPoint {
-  factory _UserAggregatedPoint(
+  const factory _UserAggregatedPoint(
       {required final String date,
       required final int point}) = _$UserAggregatedPointImpl;
 

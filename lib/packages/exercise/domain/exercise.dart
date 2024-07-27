@@ -1,4 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:vocab_booster/packages/core/language/multilingual.dart';
 import 'package:vocab_booster/packages/exercise/domain/exercise_status.dart';
 import 'package:vocab_booster/packages/exercise/domain/session_setup_data.dart';
 
@@ -8,12 +9,11 @@ part 'exercise.g.dart';
 @freezed
 class Exercise with _$Exercise {
   const Exercise._();
-  factory Exercise({
+  const factory Exercise({
     required final String id,
     required final String audio,
     required final String vocabulary,
-    required final String content,
-    required final String translated,
+    required final Multilingual content,
     required final List<String> options,
     required final String correctAnswer,
     required final int correctStreak,

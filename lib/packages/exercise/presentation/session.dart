@@ -8,6 +8,7 @@ import 'package:intl/intl.dart';
 import 'package:lottie/lottie.dart';
 import 'package:shadcn_ui/shadcn_ui.dart';
 import 'package:vocab_booster/packages/core/l10n/generated/l10n.dart';
+import 'package:vocab_booster/packages/core/language/language.dart';
 import 'package:vocab_booster/packages/exercise/domain/exercise.dart';
 import 'package:vocab_booster/packages/exercise/presentation/slide_up_number.dart';
 import 'package:vocab_booster/packages/exercise/provider/session.dart';
@@ -44,6 +45,7 @@ class _ExerciseSessionScreenState extends ConsumerState<ExerciseSessionScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final lang = ref.watch(appLanguageProvider);
     final exercises = ref.watch(pSessionExercisesProvider);
 
     return exercises.when(
@@ -95,7 +97,7 @@ class _ExerciseSessionScreenState extends ConsumerState<ExerciseSessionScreen> {
           child: Scaffold(
             appBar: AppBar(
               title: AppBarTitle(
-                text: state.collection.name,
+                text: state.collection.name.getLocalized(lang),
               ),
               leading: const AutoLeadingButton(),
             ),
@@ -132,7 +134,7 @@ class _ExerciseSessionScreenState extends ConsumerState<ExerciseSessionScreen> {
                                               ],
                                             )
                                           : const SizedBox.shrink(),
-                                      _buildContent(context, state),
+                                      _buildContent(context, state, lang),
                                       const SizedBox(height: 20),
                                     ],
                                   )
@@ -308,7 +310,8 @@ class _ExerciseSessionScreenState extends ConsumerState<ExerciseSessionScreen> {
     );
   }
 
-  Widget _buildContent(BuildContext context, SessionExercisesState state) {
+  Widget _buildContent(
+      BuildContext context, SessionExercisesState state, String lang) {
     final screenWidth = MediaQuery.of(context).size.width;
     final minHeight = screenWidth * 1.3;
     const viewportFraction = 1.0;
@@ -384,12 +387,16 @@ class _ExerciseSessionScreenState extends ConsumerState<ExerciseSessionScreen> {
                               fontSize: 18,
                             ),
                             const SizedBox(height: 10),
-                            SecondaryText(
-                              text: exercise.translated
-                                  .capitalizeFirstLetter()
-                                  .ensurePeriod(),
-                              fontSize: 16,
-                            ),
+                            if (lang == 'en')
+                              const SizedBox.shrink()
+                            else
+                              SecondaryText(
+                                text: exercise.content
+                                    .getLocalized(lang)
+                                    .capitalizeFirstLetter()
+                                    .ensurePeriod(),
+                                fontSize: 16,
+                              ),
                           ],
                         ),
                       ),

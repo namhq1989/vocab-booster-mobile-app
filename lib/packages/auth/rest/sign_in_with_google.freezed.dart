@@ -23,6 +23,8 @@ SignInWithGoogleRequest _$SignInWithGoogleRequestFromJson(
 mixin _$SignInWithGoogleRequest {
   @JsonKey(name: 'token')
   String get token => throw _privateConstructorUsedError;
+  @JsonKey(name: 'timezone')
+  String get timezone => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -36,7 +38,9 @@ abstract class $SignInWithGoogleRequestCopyWith<$Res> {
           $Res Function(SignInWithGoogleRequest) then) =
       _$SignInWithGoogleRequestCopyWithImpl<$Res, SignInWithGoogleRequest>;
   @useResult
-  $Res call({@JsonKey(name: 'token') String token});
+  $Res call(
+      {@JsonKey(name: 'token') String token,
+      @JsonKey(name: 'timezone') String timezone});
 }
 
 /// @nodoc
@@ -54,11 +58,16 @@ class _$SignInWithGoogleRequestCopyWithImpl<$Res,
   @override
   $Res call({
     Object? token = null,
+    Object? timezone = null,
   }) {
     return _then(_value.copyWith(
       token: null == token
           ? _value.token
           : token // ignore: cast_nullable_to_non_nullable
+              as String,
+      timezone: null == timezone
+          ? _value.timezone
+          : timezone // ignore: cast_nullable_to_non_nullable
               as String,
     ) as $Val);
   }
@@ -73,7 +82,9 @@ abstract class _$$SignInWithGoogleRequestImplCopyWith<$Res>
       __$$SignInWithGoogleRequestImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({@JsonKey(name: 'token') String token});
+  $Res call(
+      {@JsonKey(name: 'token') String token,
+      @JsonKey(name: 'timezone') String timezone});
 }
 
 /// @nodoc
@@ -90,11 +101,16 @@ class __$$SignInWithGoogleRequestImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? token = null,
+    Object? timezone = null,
   }) {
     return _then(_$SignInWithGoogleRequestImpl(
       token: null == token
           ? _value.token
           : token // ignore: cast_nullable_to_non_nullable
+              as String,
+      timezone: null == timezone
+          ? _value.timezone
+          : timezone // ignore: cast_nullable_to_non_nullable
               as String,
     ));
   }
@@ -103,7 +119,9 @@ class __$$SignInWithGoogleRequestImplCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$SignInWithGoogleRequestImpl implements _SignInWithGoogleRequest {
-  _$SignInWithGoogleRequestImpl({@JsonKey(name: 'token') required this.token});
+  _$SignInWithGoogleRequestImpl(
+      {@JsonKey(name: 'token') required this.token,
+      @JsonKey(name: 'timezone') required this.timezone});
 
   factory _$SignInWithGoogleRequestImpl.fromJson(Map<String, dynamic> json) =>
       _$$SignInWithGoogleRequestImplFromJson(json);
@@ -111,10 +129,13 @@ class _$SignInWithGoogleRequestImpl implements _SignInWithGoogleRequest {
   @override
   @JsonKey(name: 'token')
   final String token;
+  @override
+  @JsonKey(name: 'timezone')
+  final String timezone;
 
   @override
   String toString() {
-    return 'SignInWithGoogleRequest(token: $token)';
+    return 'SignInWithGoogleRequest(token: $token, timezone: $timezone)';
   }
 
   @override
@@ -122,12 +143,14 @@ class _$SignInWithGoogleRequestImpl implements _SignInWithGoogleRequest {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$SignInWithGoogleRequestImpl &&
-            (identical(other.token, token) || other.token == token));
+            (identical(other.token, token) || other.token == token) &&
+            (identical(other.timezone, timezone) ||
+                other.timezone == timezone));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, token);
+  int get hashCode => Object.hash(runtimeType, token, timezone);
 
   @JsonKey(ignore: true)
   @override
@@ -146,7 +169,8 @@ class _$SignInWithGoogleRequestImpl implements _SignInWithGoogleRequest {
 
 abstract class _SignInWithGoogleRequest implements SignInWithGoogleRequest {
   factory _SignInWithGoogleRequest(
-          {@JsonKey(name: 'token') required final String token}) =
+          {@JsonKey(name: 'token') required final String token,
+          @JsonKey(name: 'timezone') required final String timezone}) =
       _$SignInWithGoogleRequestImpl;
 
   factory _SignInWithGoogleRequest.fromJson(Map<String, dynamic> json) =
@@ -155,6 +179,9 @@ abstract class _SignInWithGoogleRequest implements SignInWithGoogleRequest {
   @override
   @JsonKey(name: 'token')
   String get token;
+  @override
+  @JsonKey(name: 'timezone')
+  String get timezone;
   @override
   @JsonKey(ignore: true)
   _$$SignInWithGoogleRequestImplCopyWith<_$SignInWithGoogleRequestImpl>

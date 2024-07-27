@@ -10,12 +10,14 @@ _$SignInWithGoogleRequestImpl _$$SignInWithGoogleRequestImplFromJson(
         Map<String, dynamic> json) =>
     _$SignInWithGoogleRequestImpl(
       token: json['token'] as String,
+      timezone: json['timezone'] as String,
     );
 
 Map<String, dynamic> _$$SignInWithGoogleRequestImplToJson(
         _$SignInWithGoogleRequestImpl instance) =>
     <String, dynamic>{
       'token': instance.token,
+      'timezone': instance.timezone,
     };
 
 _$SignInWithGoogleResponseImpl _$$SignInWithGoogleResponseImplFromJson(

@@ -54,16 +54,17 @@ class _ExerciseWithInputState extends State<ExerciseWithInput> {
 
   @override
   Widget build(BuildContext context) {
-    int index = widget.exercise.content
+    final content = widget.exercise.content.getLocalized('en');
+    int index = content
         .toLowerCase()
         .indexOf(widget.exercise.correctAnswer.toLowerCase());
     if (index == -1) {
       return const Center(child: Text('Invalid exercise'));
     }
 
-    String part1 = widget.exercise.content.substring(0, index);
-    String part2 = widget.exercise.content
-        .substring(index + widget.exercise.correctAnswer.length);
+    String part1 = content.substring(0, index);
+    String part2 =
+        content.substring(index + widget.exercise.correctAnswer.length);
     final primaryColor = Theme.of(context).colorScheme.primary;
 
     if (widget.exercise.isReadOnly()) {

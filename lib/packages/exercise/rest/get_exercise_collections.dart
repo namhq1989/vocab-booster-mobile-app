@@ -1,5 +1,6 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:vocab_booster/packages/core/http/http.dart';
+import 'package:vocab_booster/packages/core/language/multilingual.dart';
 import 'package:vocab_booster/packages/exercise/domain/exercise_collection.dart';
 import 'package:vocab_booster/utilities/url/converter.dart';
 
@@ -60,11 +61,11 @@ class GetExerciseCollectionsResponseCollection
     with _$GetExerciseCollectionsResponseCollection {
   const GetExerciseCollectionsResponseCollection._();
 
+  @JsonSerializable(explicitToJson: true)
   factory GetExerciseCollectionsResponseCollection({
     @JsonKey(name: 'id') String? id,
-    @JsonKey(name: 'name') String? name,
+    @JsonKey(name: 'name') Multilingual? name,
     @JsonKey(name: 'slug') String? slug,
-    @JsonKey(name: 'translated') String? translated,
     @AppAssestUrlSerializer() @JsonKey(name: 'image') String? image,
     @JsonKey(name: 'statsExercises') int? statsExercises,
     @JsonKey(name: 'statsInteracted') int? statsInteracted,

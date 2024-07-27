@@ -25,7 +25,7 @@ class ChangeExerciseFavoriteAPI {
 
 @freezed
 class ChangeExerciseFavoriteRequest with _$ChangeExerciseFavoriteRequest {
-  factory ChangeExerciseFavoriteRequest({
+  const factory ChangeExerciseFavoriteRequest({
     @JsonKey(name: 'isFavorite') required bool isFavorite,
   }) = _ChangeExerciseFavoriteRequest;
 
@@ -35,7 +35,7 @@ class ChangeExerciseFavoriteRequest with _$ChangeExerciseFavoriteRequest {
 
 @freezed
 class ChangeExerciseFavoriteResponse with _$ChangeExerciseFavoriteResponse {
-  factory ChangeExerciseFavoriteResponse({
+  const factory ChangeExerciseFavoriteResponse({
     @JsonKey(name: 'success') bool? success,
     @JsonKey(name: 'code') String? code,
     @JsonKey(name: 'data') ChangeExerciseFavoriteResponseData? data,
@@ -49,7 +49,7 @@ class ChangeExerciseFavoriteResponse with _$ChangeExerciseFavoriteResponse {
 @freezed
 class ChangeExerciseFavoriteResponseData
     with _$ChangeExerciseFavoriteResponseData {
-  factory ChangeExerciseFavoriteResponseData({
+  const factory ChangeExerciseFavoriteResponseData({
     @JsonKey(name: 'isFavorite') bool? isFavorite,
   }) = _ChangeExerciseFavoriteResponseData;
 

@@ -1,5 +1,6 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:vocab_booster/packages/core/http/http.dart';
+import 'package:vocab_booster/packages/core/language/multilingual.dart';
 import 'package:vocab_booster/packages/exercise/domain/exercise.dart';
 import 'package:vocab_booster/utilities/datetime/converter.dart';
 import 'package:vocab_booster/utilities/url/converter.dart';
@@ -23,7 +24,7 @@ class GetExercisesAPI {
 
 @freezed
 class GetExercisesRequest with _$GetExercisesRequest {
-  factory GetExercisesRequest({
+  const factory GetExercisesRequest({
     @JsonKey(name: 'collectionId') required String collectionId,
   }) = _GetExercisesRequest;
 
@@ -33,7 +34,7 @@ class GetExercisesRequest with _$GetExercisesRequest {
 
 @freezed
 class GetExercisesResponse with _$GetExercisesResponse {
-  factory GetExercisesResponse({
+  const factory GetExercisesResponse({
     @JsonKey(name: 'success') bool? success,
     @JsonKey(name: 'code') String? code,
     @JsonKey(name: 'data') GetExercisesResponseData? data,
@@ -46,7 +47,7 @@ class GetExercisesResponse with _$GetExercisesResponse {
 
 @freezed
 class GetExercisesResponseData with _$GetExercisesResponseData {
-  factory GetExercisesResponseData({
+  const factory GetExercisesResponseData({
     @JsonKey(name: 'exercises')
     required List<GetExercisesResponseExercise> exercises,
   }) = _GetExercisesResponseData;
@@ -59,12 +60,12 @@ class GetExercisesResponseData with _$GetExercisesResponseData {
 class GetExercisesResponseExercise with _$GetExercisesResponseExercise {
   const GetExercisesResponseExercise._();
 
-  factory GetExercisesResponseExercise({
+  @JsonSerializable(explicitToJson: true)
+  const factory GetExercisesResponseExercise({
     @JsonKey(name: 'id') String? id,
     @AppAssestUrlSerializer() @JsonKey(name: 'audio') String? audio,
     @JsonKey(name: 'vocabulary') String? vocabulary,
-    @JsonKey(name: 'content') String? content,
-    @JsonKey(name: 'translated') String? translated,
+    @JsonKey(name: 'content') Multilingual? content,
     @JsonKey(name: 'options') required List<String> options,
     @JsonKey(name: 'correctAnswer') String? correctAnswer,
     @JsonKey(name: 'correctStreak') int? correctStreak,

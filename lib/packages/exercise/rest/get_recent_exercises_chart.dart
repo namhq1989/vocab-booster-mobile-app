@@ -22,7 +22,8 @@ class GetRecentExercisesChartAPI {
 
 @freezed
 class GetRecentExercisesChartRequest with _$GetRecentExercisesChartRequest {
-  factory GetRecentExercisesChartRequest() = _GetRecentExercisesChartRequest;
+  const factory GetRecentExercisesChartRequest() =
+      _GetRecentExercisesChartRequest;
 
   factory GetRecentExercisesChartRequest.fromJson(Map<String, dynamic> json) =>
       _$GetRecentExercisesChartRequestFromJson(json);
@@ -30,7 +31,7 @@ class GetRecentExercisesChartRequest with _$GetRecentExercisesChartRequest {
 
 @freezed
 class GetRecentExercisesChartResponse with _$GetRecentExercisesChartResponse {
-  factory GetRecentExercisesChartResponse({
+  const factory GetRecentExercisesChartResponse({
     @JsonKey(name: 'success') bool? success,
     @JsonKey(name: 'code') String? code,
     @JsonKey(name: 'data') GetRecentExercisesChartResponseData? data,
@@ -44,7 +45,7 @@ class GetRecentExercisesChartResponse with _$GetRecentExercisesChartResponse {
 @freezed
 class GetRecentExercisesChartResponseData
     with _$GetRecentExercisesChartResponseData {
-  factory GetRecentExercisesChartResponseData({
+  const factory GetRecentExercisesChartResponseData({
     @JsonKey(name: 'exercises')
     required List<GetRecentExercisesChartResponseExercise> exercises,
   }) = _GetRecentExercisesChartResponseData;
@@ -59,7 +60,7 @@ class GetRecentExercisesChartResponseExercise
     with _$GetRecentExercisesChartResponseExercise {
   const GetRecentExercisesChartResponseExercise._();
 
-  factory GetRecentExercisesChartResponseExercise({
+  const factory GetRecentExercisesChartResponseExercise({
     @JsonKey(name: 'date') String? date,
     @JsonKey(name: 'exercise') int? exercise,
   }) = _GetRecentExercisesChartResponseExercise;

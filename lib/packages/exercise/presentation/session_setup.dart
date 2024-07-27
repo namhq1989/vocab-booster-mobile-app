@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:shadcn_ui/shadcn_ui.dart';
 import 'package:vocab_booster/packages/core/l10n/generated/l10n.dart';
+import 'package:vocab_booster/packages/core/language/language.dart';
 import 'package:vocab_booster/packages/exercise/domain/exercise_collection.dart';
 import 'package:vocab_booster/packages/exercise/domain/session_setup_data.dart';
 import 'package:vocab_booster/packages/exercise/provider/session_setup_data.dart';
@@ -28,6 +29,7 @@ class ExerciseSessionSetup extends ConsumerStatefulWidget {
 class _ExerciseSessionSetupState extends ConsumerState<ExerciseSessionSetup> {
   @override
   Widget build(BuildContext context) {
+    final lang = ref.read(appLanguageProvider);
     final state = ref.watch(pSessionSetupDataProvider);
 
     return InkWell(
@@ -48,7 +50,7 @@ class _ExerciseSessionSetupState extends ConsumerState<ExerciseSessionSetup> {
                   mainAxisSize: MainAxisSize.min,
                   children: [
                     Text(
-                      widget.collection.name,
+                      widget.collection.name.getLocalized(lang),
                       style: const TextStyle(
                         fontSize: 24,
                         fontWeight: FontWeight.bold,

@@ -21,9 +21,8 @@ ExerciseCollection _$ExerciseCollectionFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$ExerciseCollection {
   String get id => throw _privateConstructorUsedError;
-  String get name => throw _privateConstructorUsedError;
+  Multilingual get name => throw _privateConstructorUsedError;
   String get slug => throw _privateConstructorUsedError;
-  String get translated => throw _privateConstructorUsedError;
   String get image => throw _privateConstructorUsedError;
   int get statsExercises => throw _privateConstructorUsedError;
   int get statsInteracted => throw _privateConstructorUsedError;
@@ -42,12 +41,13 @@ abstract class $ExerciseCollectionCopyWith<$Res> {
   @useResult
   $Res call(
       {String id,
-      String name,
+      Multilingual name,
       String slug,
-      String translated,
       String image,
       int statsExercises,
       int statsInteracted});
+
+  $MultilingualCopyWith<$Res> get name;
 }
 
 /// @nodoc
@@ -66,7 +66,6 @@ class _$ExerciseCollectionCopyWithImpl<$Res, $Val extends ExerciseCollection>
     Object? id = null,
     Object? name = null,
     Object? slug = null,
-    Object? translated = null,
     Object? image = null,
     Object? statsExercises = null,
     Object? statsInteracted = null,
@@ -79,14 +78,10 @@ class _$ExerciseCollectionCopyWithImpl<$Res, $Val extends ExerciseCollection>
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
-              as String,
+              as Multilingual,
       slug: null == slug
           ? _value.slug
           : slug // ignore: cast_nullable_to_non_nullable
-              as String,
-      translated: null == translated
-          ? _value.translated
-          : translated // ignore: cast_nullable_to_non_nullable
               as String,
       image: null == image
           ? _value.image
@@ -102,6 +97,14 @@ class _$ExerciseCollectionCopyWithImpl<$Res, $Val extends ExerciseCollection>
               as int,
     ) as $Val);
   }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $MultilingualCopyWith<$Res> get name {
+    return $MultilingualCopyWith<$Res>(_value.name, (value) {
+      return _then(_value.copyWith(name: value) as $Val);
+    });
+  }
 }
 
 /// @nodoc
@@ -114,12 +117,14 @@ abstract class _$$ExerciseCollectionImplCopyWith<$Res>
   @useResult
   $Res call(
       {String id,
-      String name,
+      Multilingual name,
       String slug,
-      String translated,
       String image,
       int statsExercises,
       int statsInteracted});
+
+  @override
+  $MultilingualCopyWith<$Res> get name;
 }
 
 /// @nodoc
@@ -136,7 +141,6 @@ class __$$ExerciseCollectionImplCopyWithImpl<$Res>
     Object? id = null,
     Object? name = null,
     Object? slug = null,
-    Object? translated = null,
     Object? image = null,
     Object? statsExercises = null,
     Object? statsInteracted = null,
@@ -149,14 +153,10 @@ class __$$ExerciseCollectionImplCopyWithImpl<$Res>
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
-              as String,
+              as Multilingual,
       slug: null == slug
           ? _value.slug
           : slug // ignore: cast_nullable_to_non_nullable
-              as String,
-      translated: null == translated
-          ? _value.translated
-          : translated // ignore: cast_nullable_to_non_nullable
               as String,
       image: null == image
           ? _value.image
@@ -177,11 +177,10 @@ class __$$ExerciseCollectionImplCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$ExerciseCollectionImpl implements _ExerciseCollection {
-  _$ExerciseCollectionImpl(
+  const _$ExerciseCollectionImpl(
       {required this.id,
       required this.name,
       required this.slug,
-      required this.translated,
       required this.image,
       required this.statsExercises,
       required this.statsInteracted});
@@ -192,11 +191,9 @@ class _$ExerciseCollectionImpl implements _ExerciseCollection {
   @override
   final String id;
   @override
-  final String name;
+  final Multilingual name;
   @override
   final String slug;
-  @override
-  final String translated;
   @override
   final String image;
   @override
@@ -206,7 +203,7 @@ class _$ExerciseCollectionImpl implements _ExerciseCollection {
 
   @override
   String toString() {
-    return 'ExerciseCollection(id: $id, name: $name, slug: $slug, translated: $translated, image: $image, statsExercises: $statsExercises, statsInteracted: $statsInteracted)';
+    return 'ExerciseCollection(id: $id, name: $name, slug: $slug, image: $image, statsExercises: $statsExercises, statsInteracted: $statsInteracted)';
   }
 
   @override
@@ -217,8 +214,6 @@ class _$ExerciseCollectionImpl implements _ExerciseCollection {
             (identical(other.id, id) || other.id == id) &&
             (identical(other.name, name) || other.name == name) &&
             (identical(other.slug, slug) || other.slug == slug) &&
-            (identical(other.translated, translated) ||
-                other.translated == translated) &&
             (identical(other.image, image) || other.image == image) &&
             (identical(other.statsExercises, statsExercises) ||
                 other.statsExercises == statsExercises) &&
@@ -228,8 +223,8 @@ class _$ExerciseCollectionImpl implements _ExerciseCollection {
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, id, name, slug, translated,
-      image, statsExercises, statsInteracted);
+  int get hashCode => Object.hash(
+      runtimeType, id, name, slug, image, statsExercises, statsInteracted);
 
   @JsonKey(ignore: true)
   @override
@@ -247,11 +242,10 @@ class _$ExerciseCollectionImpl implements _ExerciseCollection {
 }
 
 abstract class _ExerciseCollection implements ExerciseCollection {
-  factory _ExerciseCollection(
+  const factory _ExerciseCollection(
       {required final String id,
-      required final String name,
+      required final Multilingual name,
       required final String slug,
-      required final String translated,
       required final String image,
       required final int statsExercises,
       required final int statsInteracted}) = _$ExerciseCollectionImpl;
@@ -262,11 +256,9 @@ abstract class _ExerciseCollection implements ExerciseCollection {
   @override
   String get id;
   @override
-  String get name;
+  Multilingual get name;
   @override
   String get slug;
-  @override
-  String get translated;
   @override
   String get image;
   @override

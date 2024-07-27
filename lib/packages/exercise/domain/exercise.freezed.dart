@@ -23,8 +23,7 @@ mixin _$Exercise {
   String get id => throw _privateConstructorUsedError;
   String get audio => throw _privateConstructorUsedError;
   String get vocabulary => throw _privateConstructorUsedError;
-  String get content => throw _privateConstructorUsedError;
-  String get translated => throw _privateConstructorUsedError;
+  Multilingual get content => throw _privateConstructorUsedError;
   List<String> get options => throw _privateConstructorUsedError;
   String get correctAnswer => throw _privateConstructorUsedError;
   int get correctStreak => throw _privateConstructorUsedError;
@@ -56,8 +55,7 @@ abstract class $ExerciseCopyWith<$Res> {
       {String id,
       String audio,
       String vocabulary,
-      String content,
-      String translated,
+      Multilingual content,
       List<String> options,
       String correctAnswer,
       int correctStreak,
@@ -71,6 +69,8 @@ abstract class $ExerciseCopyWith<$Res> {
       int? attempts,
       String? inputText,
       int? completionTime});
+
+  $MultilingualCopyWith<$Res> get content;
 }
 
 /// @nodoc
@@ -90,7 +90,6 @@ class _$ExerciseCopyWithImpl<$Res, $Val extends Exercise>
     Object? audio = null,
     Object? vocabulary = null,
     Object? content = null,
-    Object? translated = null,
     Object? options = null,
     Object? correctAnswer = null,
     Object? correctStreak = null,
@@ -121,11 +120,7 @@ class _$ExerciseCopyWithImpl<$Res, $Val extends Exercise>
       content: null == content
           ? _value.content
           : content // ignore: cast_nullable_to_non_nullable
-              as String,
-      translated: null == translated
-          ? _value.translated
-          : translated // ignore: cast_nullable_to_non_nullable
-              as String,
+              as Multilingual,
       options: null == options
           ? _value.options
           : options // ignore: cast_nullable_to_non_nullable
@@ -180,6 +175,14 @@ class _$ExerciseCopyWithImpl<$Res, $Val extends Exercise>
               as int?,
     ) as $Val);
   }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $MultilingualCopyWith<$Res> get content {
+    return $MultilingualCopyWith<$Res>(_value.content, (value) {
+      return _then(_value.copyWith(content: value) as $Val);
+    });
+  }
 }
 
 /// @nodoc
@@ -194,8 +197,7 @@ abstract class _$$ExerciseImplCopyWith<$Res>
       {String id,
       String audio,
       String vocabulary,
-      String content,
-      String translated,
+      Multilingual content,
       List<String> options,
       String correctAnswer,
       int correctStreak,
@@ -209,6 +211,9 @@ abstract class _$$ExerciseImplCopyWith<$Res>
       int? attempts,
       String? inputText,
       int? completionTime});
+
+  @override
+  $MultilingualCopyWith<$Res> get content;
 }
 
 /// @nodoc
@@ -226,7 +231,6 @@ class __$$ExerciseImplCopyWithImpl<$Res>
     Object? audio = null,
     Object? vocabulary = null,
     Object? content = null,
-    Object? translated = null,
     Object? options = null,
     Object? correctAnswer = null,
     Object? correctStreak = null,
@@ -257,11 +261,7 @@ class __$$ExerciseImplCopyWithImpl<$Res>
       content: null == content
           ? _value.content
           : content // ignore: cast_nullable_to_non_nullable
-              as String,
-      translated: null == translated
-          ? _value.translated
-          : translated // ignore: cast_nullable_to_non_nullable
-              as String,
+              as Multilingual,
       options: null == options
           ? _value._options
           : options // ignore: cast_nullable_to_non_nullable
@@ -321,12 +321,11 @@ class __$$ExerciseImplCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$ExerciseImpl extends _Exercise {
-  _$ExerciseImpl(
+  const _$ExerciseImpl(
       {required this.id,
       required this.audio,
       required this.vocabulary,
       required this.content,
-      required this.translated,
       required final List<String> options,
       required this.correctAnswer,
       required this.correctStreak,
@@ -353,9 +352,7 @@ class _$ExerciseImpl extends _Exercise {
   @override
   final String vocabulary;
   @override
-  final String content;
-  @override
-  final String translated;
+  final Multilingual content;
   final List<String> _options;
   @override
   List<String> get options {
@@ -400,7 +397,7 @@ class _$ExerciseImpl extends _Exercise {
 
   @override
   String toString() {
-    return 'Exercise(id: $id, audio: $audio, vocabulary: $vocabulary, content: $content, translated: $translated, options: $options, correctAnswer: $correctAnswer, correctStreak: $correctStreak, isFavorite: $isFavorite, isMastered: $isMastered, nextReviewAt: $nextReviewAt, status: $status, point: $point, mode: $mode, selectedOptionIndex: $selectedOptionIndex, attempts: $attempts, inputText: $inputText, completionTime: $completionTime)';
+    return 'Exercise(id: $id, audio: $audio, vocabulary: $vocabulary, content: $content, options: $options, correctAnswer: $correctAnswer, correctStreak: $correctStreak, isFavorite: $isFavorite, isMastered: $isMastered, nextReviewAt: $nextReviewAt, status: $status, point: $point, mode: $mode, selectedOptionIndex: $selectedOptionIndex, attempts: $attempts, inputText: $inputText, completionTime: $completionTime)';
   }
 
   @override
@@ -413,8 +410,6 @@ class _$ExerciseImpl extends _Exercise {
             (identical(other.vocabulary, vocabulary) ||
                 other.vocabulary == vocabulary) &&
             (identical(other.content, content) || other.content == content) &&
-            (identical(other.translated, translated) ||
-                other.translated == translated) &&
             const DeepCollectionEquality().equals(other._options, _options) &&
             (identical(other.correctAnswer, correctAnswer) ||
                 other.correctAnswer == correctAnswer) &&
@@ -447,7 +442,6 @@ class _$ExerciseImpl extends _Exercise {
       audio,
       vocabulary,
       content,
-      translated,
       const DeepCollectionEquality().hash(_options),
       correctAnswer,
       correctStreak,
@@ -477,12 +471,11 @@ class _$ExerciseImpl extends _Exercise {
 }
 
 abstract class _Exercise extends Exercise {
-  factory _Exercise(
+  const factory _Exercise(
       {required final String id,
       required final String audio,
       required final String vocabulary,
-      required final String content,
-      required final String translated,
+      required final Multilingual content,
       required final List<String> options,
       required final String correctAnswer,
       required final int correctStreak,
@@ -496,7 +489,7 @@ abstract class _Exercise extends Exercise {
       final int? attempts,
       final String? inputText,
       final int? completionTime}) = _$ExerciseImpl;
-  _Exercise._() : super._();
+  const _Exercise._() : super._();
 
   factory _Exercise.fromJson(Map<String, dynamic> json) =
       _$ExerciseImpl.fromJson;
@@ -508,9 +501,7 @@ abstract class _Exercise extends Exercise {
   @override
   String get vocabulary;
   @override
-  String get content;
-  @override
-  String get translated;
+  Multilingual get content;
   @override
   List<String> get options;
   @override
