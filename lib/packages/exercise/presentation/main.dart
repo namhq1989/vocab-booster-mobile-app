@@ -6,6 +6,7 @@ import 'package:intl/intl.dart';
 import 'package:shadcn_ui/shadcn_ui.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
 import 'package:vocab_booster/packages/core/l10n/generated/l10n.dart';
+import 'package:vocab_booster/packages/core/language/language.dart';
 import 'package:vocab_booster/packages/core/router/router.dart';
 import 'package:vocab_booster/packages/core/router/router.gr.dart';
 import 'package:vocab_booster/packages/exercise/domain/exercise_collection.dart';
@@ -90,7 +91,7 @@ class ExerciseScreen extends StatelessWidget {
         return stats.when(
           loading: () => LoadingState.fetching(context),
           error: (error, st) => LoadingState.error(context, error, st),
-          data: (state) {
+          data: (value) {
             return Column(
               children: [
                 const Divider(),
@@ -104,7 +105,7 @@ class ExerciseScreen extends StatelessWidget {
                         child: Column(
                           children: [
                             Text(
-                              formatNumber(state!.masteredExercises),
+                              formatNumber(value!.masteredExercises),
                               style: const TextStyle(
                                 fontSize: 28,
                                 fontWeight: FontWeight.bold,
@@ -122,7 +123,7 @@ class ExerciseScreen extends StatelessWidget {
                         child: Column(
                           children: [
                             Text(
-                              formatNumber(state.waitingForReviewExercises),
+                              formatNumber(value.waitingForReviewExercises),
                               style: const TextStyle(
                                 fontSize: 28,
                                 fontWeight: FontWeight.bold,
@@ -150,25 +151,31 @@ class ExerciseScreen extends StatelessWidget {
   Widget _buildCollections(BuildContext context) {
     return Consumer(
       builder: (context, ref, _) {
+        final lang = ref.read(appLanguageProvider);
         final collections = ref.watch(pExerciseCollectionsProvider);
         return collections.when(
-          data: (state) {
+          data: (value) {
             return Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
                   L10N.of(context).exerciseSectionCollectionsTitle,
                   style: const TextStyle(
-                      fontSize: 20, fontWeight: FontWeight.bold),
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold,
+                  ),
                 ),
                 SecondaryText(
-                    text: L10N.of(context).exerciseSectionCollectionsSubtitle),
+                  text: L10N.of(context).exerciseSectionCollectionsSubtitle,
+                ),
                 const SizedBox(height: 16),
                 Column(
-                  children: state.map((collection) {
+                  children: value.map((collection) {
                     return _buildCollection(
                       context,
+                      ref,
                       collection,
+                      lang,
                     );
                   }).toList(),
                 ),
@@ -184,85 +191,83 @@ class ExerciseScreen extends StatelessWidget {
 
   Widget _buildCollection(
     BuildContext context,
+    WidgetRef ref,
     ExerciseCollection collection,
+    String lang,
   ) {
     final double doneRatio = collection.statsExercises == 0
         ? 0
         : collection.statsInteracted / collection.statsExercises;
 
-    return Consumer(
-      builder: (context, ref, _) {
-        return ExerciseSessionSetup(
-          collection: collection,
-          cb: () async {
-            await Future.delayed(const Duration(milliseconds: 500));
-            ref.read(appRouterProvider).push(const ExerciseSessionRoute());
-          },
-          child: Container(
-            margin: const EdgeInsets.symmetric(vertical: 8),
-            width: double.infinity,
-            padding: const EdgeInsets.all(16),
-            decoration: BoxDecoration(
-              border: Border.all(
-                color: AppColor.borderColor(context),
-              ),
-              borderRadius: BorderRadius.circular(12),
-            ),
-            child: Row(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                SizedBox(
-                  width: 60,
-                  height: 68,
-                  child: SvgPicture.network(
-                    collection.image,
-                    fit: BoxFit.cover,
-                  ),
-                ),
-                const SizedBox(width: 16),
-                Expanded(
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        collection.name,
-                        style: TextStyle(
-                          fontSize: 16,
-                          fontWeight: FontWeight.bold,
-                          color: Theme.of(context).colorScheme.primary,
-                        ),
-                      ),
-                      SecondaryText(
-                          text:
-                              '${formatNumber(collection.statsInteracted)}/${formatNumber(collection.statsExercises)}'),
-                      const SizedBox(height: 10),
-                      ConstrainedBox(
-                        constraints: BoxConstraints(
-                          maxWidth: MediaQuery.sizeOf(context).width * 0.45,
-                        ),
-                        child: ShadProgress(
-                          value: doneRatio,
-                          minHeight: 6,
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-                SizedBox(
-                  width: 30,
-                  height: 30,
-                  child: Icon(
-                    LucideIcons.chevronRight,
-                    size: 20,
-                    color: Theme.of(context).colorScheme.primary,
-                  ),
-                ),
-              ],
-            ),
-          ),
-        );
+    return ExerciseSessionSetup(
+      collection: collection,
+      cb: () async {
+        await Future.delayed(const Duration(milliseconds: 500));
+        ref.read(appRouterProvider).push(const ExerciseSessionRoute());
       },
+      child: Container(
+        margin: const EdgeInsets.symmetric(vertical: 8),
+        width: double.infinity,
+        padding: const EdgeInsets.all(16),
+        decoration: BoxDecoration(
+          border: Border.all(
+            color: AppColor.borderColor(context),
+          ),
+          borderRadius: BorderRadius.circular(12),
+        ),
+        child: Row(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            SizedBox(
+              width: 60,
+              height: 68,
+              child: SvgPicture.network(
+                collection.image,
+                fit: BoxFit.cover,
+              ),
+            ),
+            const SizedBox(width: 16),
+            Expanded(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    collection.name.getLocalized(lang),
+                    style: TextStyle(
+                      fontSize: 16,
+                      fontWeight: FontWeight.bold,
+                      color: Theme.of(context).colorScheme.primary,
+                    ),
+                  ),
+                  SecondaryText(
+                      text:
+                          '${formatNumber(collection.statsInteracted)}/${formatNumber(collection.statsExercises)}'),
+                  const SizedBox(height: 10),
+                  ConstrainedBox(
+                    constraints: BoxConstraints(
+                      maxWidth: MediaQuery.sizeOf(context).width * 0.45,
+                    ),
+                    child: ShadProgress(
+                      value: doneRatio,
+                      minHeight: 6,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            SizedBox(
+              width: 30,
+              height: 30,
+              child: Icon(
+                LucideIcons.chevronRight,
+                size: 20,
+                color: Theme.of(context).colorScheme.primary,
+              ),
+            ),
+          ],
+        ),
+      ),
     );
   }
 
@@ -333,7 +338,7 @@ class ExerciseScreen extends StatelessWidget {
       builder: (context, ref, _) {
         final exercises = ref.watch(pExerciseRecentExercisesChartProvider);
         return exercises.when(
-          data: (state) {
+          data: (value) {
             return Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -376,7 +381,7 @@ class ExerciseScreen extends StatelessWidget {
                               end: Alignment.bottomCenter,
                             ),
                             splineType: SplineType.monotonic,
-                            dataSource: state.toList(),
+                            dataSource: value.toList(),
                             xValueMapper:
                                 (UserAggregatedExercise exercise, _) =>
                                     exercise.date,
@@ -405,7 +410,7 @@ class ExerciseScreen extends StatelessWidget {
       builder: (context, ref, _) {
         final points = ref.watch(pExerciseRecentPointsChartProvider);
         return points.when(
-          data: (state) {
+          data: (value) {
             return Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -447,7 +452,7 @@ class ExerciseScreen extends StatelessWidget {
                               end: Alignment.bottomCenter,
                             ),
                             splineType: SplineType.monotonic,
-                            dataSource: state.toList(),
+                            dataSource: value.toList(),
                             xValueMapper: (UserAggregatedPoint point, _) =>
                                 point.date,
                             yValueMapper: (UserAggregatedPoint point, _) =>

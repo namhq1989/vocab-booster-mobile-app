@@ -56,9 +56,10 @@ _$GetExerciseCollectionsResponseCollectionImpl
             Map<String, dynamic> json) =>
         _$GetExerciseCollectionsResponseCollectionImpl(
           id: json['id'] as String?,
-          name: json['name'] as String?,
+          name: json['name'] == null
+              ? null
+              : Multilingual.fromJson(json['name'] as Map<String, dynamic>),
           slug: json['slug'] as String?,
-          translated: json['translated'] as String?,
           image: _$JsonConverterFromJson<String, String>(
               json['image'], const AppAssestUrlSerializer().fromJson),
           statsExercises: (json['statsExercises'] as num?)?.toInt(),
@@ -69,9 +70,8 @@ Map<String, dynamic> _$$GetExerciseCollectionsResponseCollectionImplToJson(
         _$GetExerciseCollectionsResponseCollectionImpl instance) =>
     <String, dynamic>{
       'id': instance.id,
-      'name': instance.name,
+      'name': instance.name?.toJson(),
       'slug': instance.slug,
-      'translated': instance.translated,
       'image': _$JsonConverterToJson<String, String>(
           instance.image, const AppAssestUrlSerializer().toJson),
       'statsExercises': instance.statsExercises,

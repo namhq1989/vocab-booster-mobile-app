@@ -22,6 +22,7 @@ class SignInWithGoogleAPI {
 class SignInWithGoogleRequest with _$SignInWithGoogleRequest {
   factory SignInWithGoogleRequest({
     @JsonKey(name: 'token') required String token,
+    @JsonKey(name: 'timezone') required String timezone,
   }) = _SignInWithGoogleRequest;
 
   factory SignInWithGoogleRequest.fromJson(Map<String, dynamic> json) =>

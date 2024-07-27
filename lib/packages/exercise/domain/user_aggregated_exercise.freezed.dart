@@ -113,7 +113,8 @@ class __$$UserAggregatedExerciseImplCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$UserAggregatedExerciseImpl implements _UserAggregatedExercise {
-  _$UserAggregatedExerciseImpl({required this.date, required this.exercise});
+  const _$UserAggregatedExerciseImpl(
+      {required this.date, required this.exercise});
 
   factory _$UserAggregatedExerciseImpl.fromJson(Map<String, dynamic> json) =>
       _$$UserAggregatedExerciseImplFromJson(json);
@@ -158,7 +159,7 @@ class _$UserAggregatedExerciseImpl implements _UserAggregatedExercise {
 }
 
 abstract class _UserAggregatedExercise implements UserAggregatedExercise {
-  factory _UserAggregatedExercise(
+  const factory _UserAggregatedExercise(
       {required final String date,
       required final int exercise}) = _$UserAggregatedExerciseImpl;
 

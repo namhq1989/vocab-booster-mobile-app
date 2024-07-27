@@ -1,3 +1,4 @@
+import 'package:flutter_timezone/flutter_timezone.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:vocab_booster/packages/auth/provider/firebase.dart';
@@ -54,9 +55,10 @@ class Authentication extends _$Authentication {
       return error;
     }
 
+    final String tz = await FlutterTimezone.getLocalTimezone();
     final api =
         SignInWithGoogleAPI(http: await ref.read(appHttpProvider.notifier));
-    final request = SignInWithGoogleRequest(token: token);
+    final request = SignInWithGoogleRequest(token: token, timezone: tz);
     final response = await api.call(request);
 
     if (response.success == null || response.success == false) {

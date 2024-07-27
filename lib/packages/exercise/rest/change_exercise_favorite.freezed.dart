@@ -106,7 +106,7 @@ class __$$ChangeExerciseFavoriteRequestImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$ChangeExerciseFavoriteRequestImpl
     implements _ChangeExerciseFavoriteRequest {
-  _$ChangeExerciseFavoriteRequestImpl(
+  const _$ChangeExerciseFavoriteRequestImpl(
       {@JsonKey(name: 'isFavorite') required this.isFavorite});
 
   factory _$ChangeExerciseFavoriteRequestImpl.fromJson(
@@ -153,7 +153,7 @@ class _$ChangeExerciseFavoriteRequestImpl
 
 abstract class _ChangeExerciseFavoriteRequest
     implements ChangeExerciseFavoriteRequest {
-  factory _ChangeExerciseFavoriteRequest(
+  const factory _ChangeExerciseFavoriteRequest(
           {@JsonKey(name: 'isFavorite') required final bool isFavorite}) =
       _$ChangeExerciseFavoriteRequestImpl;
 
@@ -325,7 +325,7 @@ class __$$ChangeExerciseFavoriteResponseImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$ChangeExerciseFavoriteResponseImpl
     implements _ChangeExerciseFavoriteResponse {
-  _$ChangeExerciseFavoriteResponseImpl(
+  const _$ChangeExerciseFavoriteResponseImpl(
       {@JsonKey(name: 'success') this.success,
       @JsonKey(name: 'code') this.code,
       @JsonKey(name: 'data') this.data,
@@ -386,7 +386,7 @@ class _$ChangeExerciseFavoriteResponseImpl
 
 abstract class _ChangeExerciseFavoriteResponse
     implements ChangeExerciseFavoriteResponse {
-  factory _ChangeExerciseFavoriteResponse(
+  const factory _ChangeExerciseFavoriteResponse(
           {@JsonKey(name: 'success') final bool? success,
           @JsonKey(name: 'code') final String? code,
           @JsonKey(name: 'data') final ChangeExerciseFavoriteResponseData? data,
@@ -508,7 +508,7 @@ class __$$ChangeExerciseFavoriteResponseDataImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$ChangeExerciseFavoriteResponseDataImpl
     implements _ChangeExerciseFavoriteResponseData {
-  _$ChangeExerciseFavoriteResponseDataImpl(
+  const _$ChangeExerciseFavoriteResponseDataImpl(
       {@JsonKey(name: 'isFavorite') this.isFavorite});
 
   factory _$ChangeExerciseFavoriteResponseDataImpl.fromJson(
@@ -555,7 +555,7 @@ class _$ChangeExerciseFavoriteResponseDataImpl
 
 abstract class _ChangeExerciseFavoriteResponseData
     implements ChangeExerciseFavoriteResponseData {
-  factory _ChangeExerciseFavoriteResponseData(
+  const factory _ChangeExerciseFavoriteResponseData(
           {@JsonKey(name: 'isFavorite') final bool? isFavorite}) =
       _$ChangeExerciseFavoriteResponseDataImpl;
 

@@ -68,7 +68,7 @@ class __$$GetRecentPointsChartRequestImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$GetRecentPointsChartRequestImpl
     implements _GetRecentPointsChartRequest {
-  _$GetRecentPointsChartRequestImpl();
+  const _$GetRecentPointsChartRequestImpl();
 
   factory _$GetRecentPointsChartRequestImpl.fromJson(
           Map<String, dynamic> json) =>
@@ -100,7 +100,8 @@ class _$GetRecentPointsChartRequestImpl
 
 abstract class _GetRecentPointsChartRequest
     implements GetRecentPointsChartRequest {
-  factory _GetRecentPointsChartRequest() = _$GetRecentPointsChartRequestImpl;
+  const factory _GetRecentPointsChartRequest() =
+      _$GetRecentPointsChartRequestImpl;
 
   factory _GetRecentPointsChartRequest.fromJson(Map<String, dynamic> json) =
       _$GetRecentPointsChartRequestImpl.fromJson;
@@ -261,7 +262,7 @@ class __$$GetRecentPointsChartResponseImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$GetRecentPointsChartResponseImpl
     implements _GetRecentPointsChartResponse {
-  _$GetRecentPointsChartResponseImpl(
+  const _$GetRecentPointsChartResponseImpl(
       {@JsonKey(name: 'success') this.success,
       @JsonKey(name: 'code') this.code,
       @JsonKey(name: 'data') this.data,
@@ -322,7 +323,7 @@ class _$GetRecentPointsChartResponseImpl
 
 abstract class _GetRecentPointsChartResponse
     implements GetRecentPointsChartResponse {
-  factory _GetRecentPointsChartResponse(
+  const factory _GetRecentPointsChartResponse(
           {@JsonKey(name: 'success') final bool? success,
           @JsonKey(name: 'code') final String? code,
           @JsonKey(name: 'data') final GetRecentPointsChartResponseData? data,
@@ -448,7 +449,7 @@ class __$$GetRecentPointsChartResponseDataImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$GetRecentPointsChartResponseDataImpl
     implements _GetRecentPointsChartResponseData {
-  _$GetRecentPointsChartResponseDataImpl(
+  const _$GetRecentPointsChartResponseDataImpl(
       {@JsonKey(name: 'points')
       required final List<GetRecentPointsChartResponsePoint> points})
       : _points = points;
@@ -502,7 +503,7 @@ class _$GetRecentPointsChartResponseDataImpl
 
 abstract class _GetRecentPointsChartResponseData
     implements GetRecentPointsChartResponseData {
-  factory _GetRecentPointsChartResponseData(
+  const factory _GetRecentPointsChartResponseData(
           {@JsonKey(name: 'points')
           required final List<GetRecentPointsChartResponsePoint> points}) =
       _$GetRecentPointsChartResponseDataImpl;
@@ -629,7 +630,7 @@ class __$$GetRecentPointsChartResponsePointImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$GetRecentPointsChartResponsePointImpl
     extends _GetRecentPointsChartResponsePoint {
-  _$GetRecentPointsChartResponsePointImpl(
+  const _$GetRecentPointsChartResponsePointImpl(
       {@JsonKey(name: 'date') this.date, @JsonKey(name: 'point') this.point})
       : super._();
 
@@ -680,11 +681,11 @@ class _$GetRecentPointsChartResponsePointImpl
 
 abstract class _GetRecentPointsChartResponsePoint
     extends GetRecentPointsChartResponsePoint {
-  factory _GetRecentPointsChartResponsePoint(
+  const factory _GetRecentPointsChartResponsePoint(
           {@JsonKey(name: 'date') final String? date,
           @JsonKey(name: 'point') final int? point}) =
       _$GetRecentPointsChartResponsePointImpl;
-  _GetRecentPointsChartResponsePoint._() : super._();
+  const _GetRecentPointsChartResponsePoint._() : super._();
 
   factory _GetRecentPointsChartResponsePoint.fromJson(
           Map<String, dynamic> json) =

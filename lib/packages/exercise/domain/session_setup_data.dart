@@ -63,7 +63,7 @@ enum SessionMode {
 
 @freezed
 class SessionSetupData with _$SessionSetupData {
-  factory SessionSetupData({
+  const factory SessionSetupData({
     required final SessionSkill skill,
     required final SessionMode mode,
     required final ExerciseCollection? collection,

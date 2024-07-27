@@ -536,11 +536,9 @@ mixin _$GetExerciseCollectionsResponseCollection {
   @JsonKey(name: 'id')
   String? get id => throw _privateConstructorUsedError;
   @JsonKey(name: 'name')
-  String? get name => throw _privateConstructorUsedError;
+  Multilingual? get name => throw _privateConstructorUsedError;
   @JsonKey(name: 'slug')
   String? get slug => throw _privateConstructorUsedError;
-  @JsonKey(name: 'translated')
-  String? get translated => throw _privateConstructorUsedError;
   @AppAssestUrlSerializer()
   @JsonKey(name: 'image')
   String? get image => throw _privateConstructorUsedError;
@@ -566,12 +564,13 @@ abstract class $GetExerciseCollectionsResponseCollectionCopyWith<$Res> {
   @useResult
   $Res call(
       {@JsonKey(name: 'id') String? id,
-      @JsonKey(name: 'name') String? name,
+      @JsonKey(name: 'name') Multilingual? name,
       @JsonKey(name: 'slug') String? slug,
-      @JsonKey(name: 'translated') String? translated,
       @AppAssestUrlSerializer() @JsonKey(name: 'image') String? image,
       @JsonKey(name: 'statsExercises') int? statsExercises,
       @JsonKey(name: 'statsInteracted') int? statsInteracted});
+
+  $MultilingualCopyWith<$Res>? get name;
 }
 
 /// @nodoc
@@ -592,7 +591,6 @@ class _$GetExerciseCollectionsResponseCollectionCopyWithImpl<$Res,
     Object? id = freezed,
     Object? name = freezed,
     Object? slug = freezed,
-    Object? translated = freezed,
     Object? image = freezed,
     Object? statsExercises = freezed,
     Object? statsInteracted = freezed,
@@ -605,14 +603,10 @@ class _$GetExerciseCollectionsResponseCollectionCopyWithImpl<$Res,
       name: freezed == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as Multilingual?,
       slug: freezed == slug
           ? _value.slug
           : slug // ignore: cast_nullable_to_non_nullable
-              as String?,
-      translated: freezed == translated
-          ? _value.translated
-          : translated // ignore: cast_nullable_to_non_nullable
               as String?,
       image: freezed == image
           ? _value.image
@@ -628,6 +622,18 @@ class _$GetExerciseCollectionsResponseCollectionCopyWithImpl<$Res,
               as int?,
     ) as $Val);
   }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $MultilingualCopyWith<$Res>? get name {
+    if (_value.name == null) {
+      return null;
+    }
+
+    return $MultilingualCopyWith<$Res>(_value.name!, (value) {
+      return _then(_value.copyWith(name: value) as $Val);
+    });
+  }
 }
 
 /// @nodoc
@@ -641,12 +647,14 @@ abstract class _$$GetExerciseCollectionsResponseCollectionImplCopyWith<$Res>
   @useResult
   $Res call(
       {@JsonKey(name: 'id') String? id,
-      @JsonKey(name: 'name') String? name,
+      @JsonKey(name: 'name') Multilingual? name,
       @JsonKey(name: 'slug') String? slug,
-      @JsonKey(name: 'translated') String? translated,
       @AppAssestUrlSerializer() @JsonKey(name: 'image') String? image,
       @JsonKey(name: 'statsExercises') int? statsExercises,
       @JsonKey(name: 'statsInteracted') int? statsInteracted});
+
+  @override
+  $MultilingualCopyWith<$Res>? get name;
 }
 
 /// @nodoc
@@ -665,7 +673,6 @@ class __$$GetExerciseCollectionsResponseCollectionImplCopyWithImpl<$Res>
     Object? id = freezed,
     Object? name = freezed,
     Object? slug = freezed,
-    Object? translated = freezed,
     Object? image = freezed,
     Object? statsExercises = freezed,
     Object? statsInteracted = freezed,
@@ -678,14 +685,10 @@ class __$$GetExerciseCollectionsResponseCollectionImplCopyWithImpl<$Res>
       name: freezed == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as Multilingual?,
       slug: freezed == slug
           ? _value.slug
           : slug // ignore: cast_nullable_to_non_nullable
-              as String?,
-      translated: freezed == translated
-          ? _value.translated
-          : translated // ignore: cast_nullable_to_non_nullable
               as String?,
       image: freezed == image
           ? _value.image
@@ -704,14 +707,14 @@ class __$$GetExerciseCollectionsResponseCollectionImplCopyWithImpl<$Res>
 }
 
 /// @nodoc
-@JsonSerializable()
+
+@JsonSerializable(explicitToJson: true)
 class _$GetExerciseCollectionsResponseCollectionImpl
     extends _GetExerciseCollectionsResponseCollection {
   _$GetExerciseCollectionsResponseCollectionImpl(
       {@JsonKey(name: 'id') this.id,
       @JsonKey(name: 'name') this.name,
       @JsonKey(name: 'slug') this.slug,
-      @JsonKey(name: 'translated') this.translated,
       @AppAssestUrlSerializer() @JsonKey(name: 'image') this.image,
       @JsonKey(name: 'statsExercises') this.statsExercises,
       @JsonKey(name: 'statsInteracted') this.statsInteracted})
@@ -726,13 +729,10 @@ class _$GetExerciseCollectionsResponseCollectionImpl
   final String? id;
   @override
   @JsonKey(name: 'name')
-  final String? name;
+  final Multilingual? name;
   @override
   @JsonKey(name: 'slug')
   final String? slug;
-  @override
-  @JsonKey(name: 'translated')
-  final String? translated;
   @override
   @AppAssestUrlSerializer()
   @JsonKey(name: 'image')
@@ -746,7 +746,7 @@ class _$GetExerciseCollectionsResponseCollectionImpl
 
   @override
   String toString() {
-    return 'GetExerciseCollectionsResponseCollection(id: $id, name: $name, slug: $slug, translated: $translated, image: $image, statsExercises: $statsExercises, statsInteracted: $statsInteracted)';
+    return 'GetExerciseCollectionsResponseCollection(id: $id, name: $name, slug: $slug, image: $image, statsExercises: $statsExercises, statsInteracted: $statsInteracted)';
   }
 
   @override
@@ -757,8 +757,6 @@ class _$GetExerciseCollectionsResponseCollectionImpl
             (identical(other.id, id) || other.id == id) &&
             (identical(other.name, name) || other.name == name) &&
             (identical(other.slug, slug) || other.slug == slug) &&
-            (identical(other.translated, translated) ||
-                other.translated == translated) &&
             (identical(other.image, image) || other.image == image) &&
             (identical(other.statsExercises, statsExercises) ||
                 other.statsExercises == statsExercises) &&
@@ -768,8 +766,8 @@ class _$GetExerciseCollectionsResponseCollectionImpl
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, id, name, slug, translated,
-      image, statsExercises, statsInteracted);
+  int get hashCode => Object.hash(
+      runtimeType, id, name, slug, image, statsExercises, statsInteracted);
 
   @JsonKey(ignore: true)
   @override
@@ -792,9 +790,8 @@ abstract class _GetExerciseCollectionsResponseCollection
     extends GetExerciseCollectionsResponseCollection {
   factory _GetExerciseCollectionsResponseCollection(
           {@JsonKey(name: 'id') final String? id,
-          @JsonKey(name: 'name') final String? name,
+          @JsonKey(name: 'name') final Multilingual? name,
           @JsonKey(name: 'slug') final String? slug,
-          @JsonKey(name: 'translated') final String? translated,
           @AppAssestUrlSerializer() @JsonKey(name: 'image') final String? image,
           @JsonKey(name: 'statsExercises') final int? statsExercises,
           @JsonKey(name: 'statsInteracted') final int? statsInteracted}) =
@@ -810,13 +807,10 @@ abstract class _GetExerciseCollectionsResponseCollection
   String? get id;
   @override
   @JsonKey(name: 'name')
-  String? get name;
+  Multilingual? get name;
   @override
   @JsonKey(name: 'slug')
   String? get slug;
-  @override
-  @JsonKey(name: 'translated')
-  String? get translated;
   @override
   @AppAssestUrlSerializer()
   @JsonKey(name: 'image')

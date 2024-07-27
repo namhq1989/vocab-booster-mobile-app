@@ -132,7 +132,7 @@ class __$$AnswerExerciseRequestImplCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$AnswerExerciseRequestImpl implements _AnswerExerciseRequest {
-  _$AnswerExerciseRequestImpl(
+  const _$AnswerExerciseRequestImpl(
       {@JsonKey(name: 'isCorrect') required this.isCorrect,
       @JsonKey(name: 'completionTime') required this.completionTime,
       @JsonKey(name: 'point') required this.point});
@@ -188,7 +188,7 @@ class _$AnswerExerciseRequestImpl implements _AnswerExerciseRequest {
 }
 
 abstract class _AnswerExerciseRequest implements AnswerExerciseRequest {
-  factory _AnswerExerciseRequest(
+  const factory _AnswerExerciseRequest(
           {@JsonKey(name: 'isCorrect') required final bool isCorrect,
           @JsonKey(name: 'completionTime') required final int completionTime,
           @JsonKey(name: 'point') required final int point}) =
@@ -362,7 +362,7 @@ class __$$AnswerExerciseResponseImplCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$AnswerExerciseResponseImpl implements _AnswerExerciseResponse {
-  _$AnswerExerciseResponseImpl(
+  const _$AnswerExerciseResponseImpl(
       {@JsonKey(name: 'success') this.success,
       @JsonKey(name: 'code') this.code,
       @JsonKey(name: 'data') this.data,
@@ -420,7 +420,7 @@ class _$AnswerExerciseResponseImpl implements _AnswerExerciseResponse {
 }
 
 abstract class _AnswerExerciseResponse implements AnswerExerciseResponse {
-  factory _AnswerExerciseResponse(
+  const factory _AnswerExerciseResponse(
           {@JsonKey(name: 'success') final bool? success,
           @JsonKey(name: 'code') final String? code,
           @JsonKey(name: 'data') final AnswerExerciseResponseData? data,
@@ -545,7 +545,7 @@ class __$$AnswerExerciseResponseDataImplCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$AnswerExerciseResponseDataImpl implements _AnswerExerciseResponseData {
-  _$AnswerExerciseResponseDataImpl(
+  const _$AnswerExerciseResponseDataImpl(
       {@TimestampSerializer()
       @JsonKey(name: 'nextReviewAt')
       this.nextReviewAt});
@@ -594,7 +594,7 @@ class _$AnswerExerciseResponseDataImpl implements _AnswerExerciseResponseData {
 
 abstract class _AnswerExerciseResponseData
     implements AnswerExerciseResponseData {
-  factory _AnswerExerciseResponseData(
+  const factory _AnswerExerciseResponseData(
       {@TimestampSerializer()
       @JsonKey(name: 'nextReviewAt')
       final DateTime? nextReviewAt}) = _$AnswerExerciseResponseDataImpl;

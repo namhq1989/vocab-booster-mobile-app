@@ -133,7 +133,7 @@ class __$$SessionSetupDataImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$SessionSetupDataImpl implements _SessionSetupData {
-  _$SessionSetupDataImpl(
+  const _$SessionSetupDataImpl(
       {required this.skill, required this.mode, required this.collection});
 
   @override
@@ -171,7 +171,7 @@ class _$SessionSetupDataImpl implements _SessionSetupData {
 }
 
 abstract class _SessionSetupData implements SessionSetupData {
-  factory _SessionSetupData(
+  const factory _SessionSetupData(
       {required final SessionSkill skill,
       required final SessionMode mode,
       required final ExerciseCollection? collection}) = _$SessionSetupDataImpl;

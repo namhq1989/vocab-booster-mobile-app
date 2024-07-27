@@ -1,15 +1,15 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:vocab_booster/packages/core/language/multilingual.dart';
 
 part 'exercise_collection.freezed.dart';
 part 'exercise_collection.g.dart';
 
 @freezed
 class ExerciseCollection with _$ExerciseCollection {
-  factory ExerciseCollection({
+  const factory ExerciseCollection({
     required String id,
-    required String name,
+    required Multilingual name,
     required String slug,
-    required String translated,
     required String image,
     required int statsExercises,
     required int statsInteracted,

@@ -61,8 +61,9 @@ _$GetExercisesResponseExerciseImpl _$$GetExercisesResponseExerciseImplFromJson(
       audio: _$JsonConverterFromJson<String, String>(
           json['audio'], const AppAssestUrlSerializer().fromJson),
       vocabulary: json['vocabulary'] as String?,
-      content: json['content'] as String?,
-      translated: json['translated'] as String?,
+      content: json['content'] == null
+          ? null
+          : Multilingual.fromJson(json['content'] as Map<String, dynamic>),
       options:
           (json['options'] as List<dynamic>).map((e) => e as String).toList(),
       correctAnswer: json['correctAnswer'] as String?,
@@ -79,8 +80,7 @@ Map<String, dynamic> _$$GetExercisesResponseExerciseImplToJson(
       'audio': _$JsonConverterToJson<String, String>(
           instance.audio, const AppAssestUrlSerializer().toJson),
       'vocabulary': instance.vocabulary,
-      'content': instance.content,
-      'translated': instance.translated,
+      'content': instance.content?.toJson(),
       'options': instance.options,
       'correctAnswer': instance.correctAnswer,
       'correctStreak': instance.correctStreak,
