@@ -19,6 +19,7 @@ import 'package:vocab_booster/packages/ui/widget/loading_state.dart';
 import 'package:vocab_booster/packages/ui/widget/style.dart';
 import 'package:vocab_booster/packages/exercise/presentation/exercise_with_input.dart';
 import 'package:vocab_booster/packages/ui/widget/secondary_text.dart';
+import 'package:vocab_booster/packages/vocabulary/presentation/preview.dart';
 import 'package:vocab_booster/utilities/extension/string.dart';
 import 'package:vocab_booster/utilities/number/format.dart';
 
@@ -590,7 +591,7 @@ class _ExerciseSessionScreenState extends ConsumerState<ExerciseSessionScreen> {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             const Icon(
-              LucideIcons.volume2,
+              LucideIcons.volume1,
               size: 24,
               // color: AppColor.borderColor(context),
             ),
@@ -675,20 +676,31 @@ class _ExerciseSessionScreenState extends ConsumerState<ExerciseSessionScreen> {
   }
 
   Widget _buildHelper(BuildContext context, Exercise exercise) {
-    return Container(
-      width: _groupButtonSize,
-      height: _groupButtonSize,
-      decoration: BoxDecoration(
-        color: Theme.of(context).colorScheme.surface,
-        border: Border.all(
+    return GestureDetector(
+      onTap: () {
+        showModalBottomSheet(
+            context: context,
+            isDismissible: true,
+            isScrollControlled: true,
+            builder: (BuildContext context) {
+              return VocabularyPreview(term: exercise.vocabulary);
+            });
+      },
+      child: Container(
+        width: _groupButtonSize,
+        height: _groupButtonSize,
+        decoration: BoxDecoration(
+          color: Theme.of(context).colorScheme.surface,
+          border: Border.all(
+            color: AppColor.borderColor(context),
+          ),
+          borderRadius: BorderRadius.circular(12),
+        ),
+        child: Icon(
+          LucideIcons.searchCode,
+          size: 24,
           color: AppColor.borderColor(context),
         ),
-        borderRadius: BorderRadius.circular(12),
-      ),
-      child: Icon(
-        LucideIcons.searchCode,
-        size: 24,
-        color: AppColor.borderColor(context),
       ),
     );
   }
