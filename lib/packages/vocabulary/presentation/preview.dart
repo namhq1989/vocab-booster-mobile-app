@@ -9,6 +9,7 @@ import 'package:vocab_booster/packages/ui/widget/style.dart';
 import 'package:vocab_booster/packages/ui/widget/toast.dart';
 import 'package:vocab_booster/packages/vocabulary/domain/vocabulary.dart';
 import 'package:vocab_booster/packages/vocabulary/domain/vocabulary_example.dart';
+import 'package:vocab_booster/packages/vocabulary/provider/bookmark_vocabulary.dart';
 import 'package:vocab_booster/packages/vocabulary/provider/search_vocabulary.dart';
 import 'package:flutter/services.dart';
 
@@ -97,7 +98,15 @@ class _VocabularyPreviewState extends ConsumerState<VocabularyPreview> {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              _buildAction(context, LucideIcons.bookmark, () {}),
+              _buildAction(
+                  context,
+                  vocabulary.isBookmarked
+                      ? LucideIcons.bookMarked
+                      : LucideIcons.bookmark, () async {
+                await ref.read(
+                    pBookmarkVocabularyProvider(vocabulary.term, vocabulary.id)
+                        .future);
+              }),
               _buildAudio(context, vocabulary),
               _buildAction(context, LucideIcons.copy, () async {
                 await Clipboard.setData(ClipboardData(text: vocabulary.term));

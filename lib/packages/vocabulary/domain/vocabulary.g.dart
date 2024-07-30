@@ -25,6 +25,7 @@ _$VocabularyImpl _$$VocabularyImplFromJson(Map<String, dynamic> json) =>
       examples: (json['examples'] as List<dynamic>)
           .map((e) => VocabularyExample.fromJson(e as Map<String, dynamic>))
           .toList(),
+      isBookmarked: json['isBookmarked'] as bool,
     );
 
 Map<String, dynamic> _$$VocabularyImplToJson(_$VocabularyImpl instance) =>
@@ -38,6 +39,7 @@ Map<String, dynamic> _$$VocabularyImplToJson(_$VocabularyImpl instance) =>
       'synonyms': instance.synonyms,
       'antonyms': instance.antonyms,
       'examples': instance.examples,
+      'isBookmarked': instance.isBookmarked,
     };
 
 _$VocabularyDefinitionImpl _$$VocabularyDefinitionImplFromJson(

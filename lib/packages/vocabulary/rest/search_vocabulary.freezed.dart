@@ -606,6 +606,8 @@ mixin _$SearchVocabularyResponseVocabulary {
   @JsonKey(name: 'examples')
   List<SearchVocabularyResponseVocabularyExample> get examples =>
       throw _privateConstructorUsedError;
+  @JsonKey(name: 'isBookmarked')
+  bool get isBookmarked => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -633,7 +635,8 @@ abstract class $SearchVocabularyResponseVocabularyCopyWith<$Res> {
       @JsonKey(name: 'synonyms') List<String> synonyms,
       @JsonKey(name: 'antonyms') List<String> antonyms,
       @JsonKey(name: 'examples')
-      List<SearchVocabularyResponseVocabularyExample> examples});
+      List<SearchVocabularyResponseVocabularyExample> examples,
+      @JsonKey(name: 'isBookmarked') bool isBookmarked});
 }
 
 /// @nodoc
@@ -659,6 +662,7 @@ class _$SearchVocabularyResponseVocabularyCopyWithImpl<$Res,
     Object? synonyms = null,
     Object? antonyms = null,
     Object? examples = null,
+    Object? isBookmarked = null,
   }) {
     return _then(_value.copyWith(
       id: freezed == id
@@ -697,6 +701,10 @@ class _$SearchVocabularyResponseVocabularyCopyWithImpl<$Res,
           ? _value.examples
           : examples // ignore: cast_nullable_to_non_nullable
               as List<SearchVocabularyResponseVocabularyExample>,
+      isBookmarked: null == isBookmarked
+          ? _value.isBookmarked
+          : isBookmarked // ignore: cast_nullable_to_non_nullable
+              as bool,
     ) as $Val);
   }
 }
@@ -721,7 +729,8 @@ abstract class _$$SearchVocabularyResponseVocabularyImplCopyWith<$Res>
       @JsonKey(name: 'synonyms') List<String> synonyms,
       @JsonKey(name: 'antonyms') List<String> antonyms,
       @JsonKey(name: 'examples')
-      List<SearchVocabularyResponseVocabularyExample> examples});
+      List<SearchVocabularyResponseVocabularyExample> examples,
+      @JsonKey(name: 'isBookmarked') bool isBookmarked});
 }
 
 /// @nodoc
@@ -746,6 +755,7 @@ class __$$SearchVocabularyResponseVocabularyImplCopyWithImpl<$Res>
     Object? synonyms = null,
     Object? antonyms = null,
     Object? examples = null,
+    Object? isBookmarked = null,
   }) {
     return _then(_$SearchVocabularyResponseVocabularyImpl(
       id: freezed == id
@@ -784,6 +794,10 @@ class __$$SearchVocabularyResponseVocabularyImplCopyWithImpl<$Res>
           ? _value._examples
           : examples // ignore: cast_nullable_to_non_nullable
               as List<SearchVocabularyResponseVocabularyExample>,
+      isBookmarked: null == isBookmarked
+          ? _value.isBookmarked
+          : isBookmarked // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -806,8 +820,8 @@ class _$SearchVocabularyResponseVocabularyImpl
       @JsonKey(name: 'synonyms') final List<String> synonyms = const [],
       @JsonKey(name: 'antonyms') final List<String> antonyms = const [],
       @JsonKey(name: 'examples')
-      final List<SearchVocabularyResponseVocabularyExample> examples =
-          const []})
+      final List<SearchVocabularyResponseVocabularyExample> examples = const [],
+      @JsonKey(name: 'isBookmarked') this.isBookmarked = false})
       : _definitions = definitions,
         _partsOfSpeech = partsOfSpeech,
         _synonyms = synonyms,
@@ -878,8 +892,12 @@ class _$SearchVocabularyResponseVocabularyImpl
   }
 
   @override
+  @JsonKey(name: 'isBookmarked')
+  final bool isBookmarked;
+
+  @override
   String toString() {
-    return 'SearchVocabularyResponseVocabulary(id: $id, audio: $audio, term: $term, definitions: $definitions, partsOfSpeech: $partsOfSpeech, ipa: $ipa, synonyms: $synonyms, antonyms: $antonyms, examples: $examples)';
+    return 'SearchVocabularyResponseVocabulary(id: $id, audio: $audio, term: $term, definitions: $definitions, partsOfSpeech: $partsOfSpeech, ipa: $ipa, synonyms: $synonyms, antonyms: $antonyms, examples: $examples, isBookmarked: $isBookmarked)';
   }
 
   @override
@@ -897,7 +915,9 @@ class _$SearchVocabularyResponseVocabularyImpl
             (identical(other.ipa, ipa) || other.ipa == ipa) &&
             const DeepCollectionEquality().equals(other._synonyms, _synonyms) &&
             const DeepCollectionEquality().equals(other._antonyms, _antonyms) &&
-            const DeepCollectionEquality().equals(other._examples, _examples));
+            const DeepCollectionEquality().equals(other._examples, _examples) &&
+            (identical(other.isBookmarked, isBookmarked) ||
+                other.isBookmarked == isBookmarked));
   }
 
   @JsonKey(ignore: true)
@@ -912,7 +932,8 @@ class _$SearchVocabularyResponseVocabularyImpl
       ipa,
       const DeepCollectionEquality().hash(_synonyms),
       const DeepCollectionEquality().hash(_antonyms),
-      const DeepCollectionEquality().hash(_examples));
+      const DeepCollectionEquality().hash(_examples),
+      isBookmarked);
 
   @JsonKey(ignore: true)
   @override
@@ -943,7 +964,8 @@ abstract class _SearchVocabularyResponseVocabulary
           @JsonKey(name: 'synonyms') final List<String> synonyms,
           @JsonKey(name: 'antonyms') final List<String> antonyms,
           @JsonKey(name: 'examples')
-          final List<SearchVocabularyResponseVocabularyExample> examples}) =
+          final List<SearchVocabularyResponseVocabularyExample> examples,
+          @JsonKey(name: 'isBookmarked') final bool isBookmarked}) =
       _$SearchVocabularyResponseVocabularyImpl;
   const _SearchVocabularyResponseVocabulary._() : super._();
 
@@ -979,6 +1001,9 @@ abstract class _SearchVocabularyResponseVocabulary
   @override
   @JsonKey(name: 'examples')
   List<SearchVocabularyResponseVocabularyExample> get examples;
+  @override
+  @JsonKey(name: 'isBookmarked')
+  bool get isBookmarked;
   @override
   @JsonKey(ignore: true)
   _$$SearchVocabularyResponseVocabularyImplCopyWith<

@@ -23,7 +23,7 @@ class PSessionSetupData extends _$PSessionSetupData {
   SessionSetupDataState build() {
     return SessionSetupDataState(
       formState: GlobalKey<ShadFormState>(),
-      data: SessionSetupData(
+      data: const SessionSetupData(
         skill: SessionSkill.vocabulary,
         mode: SessionMode.multipleOptions,
         collection: null,

@@ -11,7 +11,7 @@ class PExerciseRecentPointsChart extends _$PExerciseRecentPointsChart {
   Future<List<UserAggregatedPoint>> build() async {
     final api =
         GetRecentPointsChartAPI(http: await ref.read(appHttpProvider.notifier));
-    final response = await api.call(GetRecentPointsChartRequest());
+    final response = await api.call(const GetRecentPointsChartRequest());
 
     if (response.success == false) {
       return [];

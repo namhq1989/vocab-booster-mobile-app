@@ -370,16 +370,18 @@ class ExerciseScreen extends StatelessWidget {
                         ),
                         series: <CartesianSeries<UserAggregatedExercise,
                             String>>[
-                          SplineAreaSeries<UserAggregatedExercise, String>(
-                            gradient: LinearGradient(
-                              colors: [
-                                Theme.of(context).colorScheme.primary,
-                                Theme.of(context).colorScheme.surface,
-                              ],
-                              stops: const [0.0, 1.0],
-                              begin: Alignment.topCenter,
-                              end: Alignment.bottomCenter,
-                            ),
+                          SplineSeries<UserAggregatedExercise, String>(
+                            color: Theme.of(context).colorScheme.primary,
+                            // SplineAreaSeries<UserAggregatedExercise, String>(
+                            //   gradient: LinearGradient(
+                            //     colors: [
+                            //       Theme.of(context).colorScheme.primary,
+                            //       Theme.of(context).colorScheme.surface,
+                            //     ],
+                            //     stops: const [0.0, 1.0],
+                            //     begin: Alignment.topCenter,
+                            //     end: Alignment.bottomCenter,
+                            //   ),
                             splineType: SplineType.monotonic,
                             dataSource: value.toList(),
                             xValueMapper:
@@ -441,16 +443,18 @@ class ExerciseScreen extends StatelessWidget {
                           isVisible: false,
                         ),
                         series: <CartesianSeries<UserAggregatedPoint, String>>[
-                          SplineAreaSeries<UserAggregatedPoint, String>(
-                            gradient: LinearGradient(
-                              colors: [
-                                Theme.of(context).colorScheme.primary,
-                                Theme.of(context).colorScheme.surface
-                              ],
-                              stops: const [0.0, 1.0],
-                              begin: Alignment.topCenter,
-                              end: Alignment.bottomCenter,
-                            ),
+                          SplineSeries<UserAggregatedPoint, String>(
+                            color: Theme.of(context).colorScheme.primary,
+                            // SplineAreaSeries<UserAggregatedPoint, String>(
+                            //   gradient: LinearGradient(
+                            //     colors: [
+                            //       Theme.of(context).colorScheme.primary,
+                            //       Theme.of(context).colorScheme.surface
+                            //     ],
+                            //     stops: const [0.0, 1.0],
+                            //     begin: Alignment.topCenter,
+                            //     end: Alignment.bottomCenter,
+                            //   ),
                             splineType: SplineType.monotonic,
                             dataSource: value.toList(),
                             xValueMapper: (UserAggregatedPoint point, _) =>
