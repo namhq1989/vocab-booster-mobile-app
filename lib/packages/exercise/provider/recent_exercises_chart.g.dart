@@ -7,7 +7,7 @@ part of 'recent_exercises_chart.dart';
 // **************************************************************************
 
 String _$pExerciseRecentExercisesChartHash() =>
-    r'6056441cf319e057360e8c429b315387a6a876b4';
+    r'e5d1b165cb333725557f3527832d56bcb3582c8c';
 
 /// See also [PExerciseRecentExercisesChart].
 @ProviderFor(PExerciseRecentExercisesChart)

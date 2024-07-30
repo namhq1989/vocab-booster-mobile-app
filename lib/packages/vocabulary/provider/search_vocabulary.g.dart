@@ -6,7 +6,7 @@ part of 'search_vocabulary.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$pSearchVocabularyHash() => r'0ea47e303361a3f715002759e928b1920e12220a';
+String _$pSearchVocabularyHash() => r'bb8ad8c660b52470d6ad88970bed7237b0a3fca6';
 
 /// Copied from Dart SDK
 class _SystemHash {

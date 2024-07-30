@@ -30,6 +30,7 @@ mixin _$Vocabulary {
   List<String> get synonyms => throw _privateConstructorUsedError;
   List<String> get antonyms => throw _privateConstructorUsedError;
   List<VocabularyExample> get examples => throw _privateConstructorUsedError;
+  bool get isBookmarked => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -52,7 +53,8 @@ abstract class $VocabularyCopyWith<$Res> {
       List<String> partsOfSpeech,
       List<String> synonyms,
       List<String> antonyms,
-      List<VocabularyExample> examples});
+      List<VocabularyExample> examples,
+      bool isBookmarked});
 }
 
 /// @nodoc
@@ -77,6 +79,7 @@ class _$VocabularyCopyWithImpl<$Res, $Val extends Vocabulary>
     Object? synonyms = null,
     Object? antonyms = null,
     Object? examples = null,
+    Object? isBookmarked = null,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -115,6 +118,10 @@ class _$VocabularyCopyWithImpl<$Res, $Val extends Vocabulary>
           ? _value.examples
           : examples // ignore: cast_nullable_to_non_nullable
               as List<VocabularyExample>,
+      isBookmarked: null == isBookmarked
+          ? _value.isBookmarked
+          : isBookmarked // ignore: cast_nullable_to_non_nullable
+              as bool,
     ) as $Val);
   }
 }
@@ -136,7 +143,8 @@ abstract class _$$VocabularyImplCopyWith<$Res>
       List<String> partsOfSpeech,
       List<String> synonyms,
       List<String> antonyms,
-      List<VocabularyExample> examples});
+      List<VocabularyExample> examples,
+      bool isBookmarked});
 }
 
 /// @nodoc
@@ -159,6 +167,7 @@ class __$$VocabularyImplCopyWithImpl<$Res>
     Object? synonyms = null,
     Object? antonyms = null,
     Object? examples = null,
+    Object? isBookmarked = null,
   }) {
     return _then(_$VocabularyImpl(
       id: null == id
@@ -197,13 +206,17 @@ class __$$VocabularyImplCopyWithImpl<$Res>
           ? _value._examples
           : examples // ignore: cast_nullable_to_non_nullable
               as List<VocabularyExample>,
+      isBookmarked: null == isBookmarked
+          ? _value.isBookmarked
+          : isBookmarked // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
 
 /// @nodoc
 @JsonSerializable()
-class _$VocabularyImpl implements _Vocabulary {
+class _$VocabularyImpl extends _Vocabulary {
   const _$VocabularyImpl(
       {required this.id,
       required this.audio,
@@ -213,12 +226,14 @@ class _$VocabularyImpl implements _Vocabulary {
       required final List<String> partsOfSpeech,
       required final List<String> synonyms,
       required final List<String> antonyms,
-      required final List<VocabularyExample> examples})
+      required final List<VocabularyExample> examples,
+      required this.isBookmarked})
       : _definitions = definitions,
         _partsOfSpeech = partsOfSpeech,
         _synonyms = synonyms,
         _antonyms = antonyms,
-        _examples = examples;
+        _examples = examples,
+        super._();
 
   factory _$VocabularyImpl.fromJson(Map<String, dynamic> json) =>
       _$$VocabularyImplFromJson(json);
@@ -272,8 +287,11 @@ class _$VocabularyImpl implements _Vocabulary {
   }
 
   @override
+  final bool isBookmarked;
+
+  @override
   String toString() {
-    return 'Vocabulary(id: $id, audio: $audio, term: $term, ipa: $ipa, definitions: $definitions, partsOfSpeech: $partsOfSpeech, synonyms: $synonyms, antonyms: $antonyms, examples: $examples)';
+    return 'Vocabulary(id: $id, audio: $audio, term: $term, ipa: $ipa, definitions: $definitions, partsOfSpeech: $partsOfSpeech, synonyms: $synonyms, antonyms: $antonyms, examples: $examples, isBookmarked: $isBookmarked)';
   }
 
   @override
@@ -291,7 +309,9 @@ class _$VocabularyImpl implements _Vocabulary {
                 .equals(other._partsOfSpeech, _partsOfSpeech) &&
             const DeepCollectionEquality().equals(other._synonyms, _synonyms) &&
             const DeepCollectionEquality().equals(other._antonyms, _antonyms) &&
-            const DeepCollectionEquality().equals(other._examples, _examples));
+            const DeepCollectionEquality().equals(other._examples, _examples) &&
+            (identical(other.isBookmarked, isBookmarked) ||
+                other.isBookmarked == isBookmarked));
   }
 
   @JsonKey(ignore: true)
@@ -306,7 +326,8 @@ class _$VocabularyImpl implements _Vocabulary {
       const DeepCollectionEquality().hash(_partsOfSpeech),
       const DeepCollectionEquality().hash(_synonyms),
       const DeepCollectionEquality().hash(_antonyms),
-      const DeepCollectionEquality().hash(_examples));
+      const DeepCollectionEquality().hash(_examples),
+      isBookmarked);
 
   @JsonKey(ignore: true)
   @override
@@ -322,7 +343,7 @@ class _$VocabularyImpl implements _Vocabulary {
   }
 }
 
-abstract class _Vocabulary implements Vocabulary {
+abstract class _Vocabulary extends Vocabulary {
   const factory _Vocabulary(
       {required final String id,
       required final String audio,
@@ -332,7 +353,9 @@ abstract class _Vocabulary implements Vocabulary {
       required final List<String> partsOfSpeech,
       required final List<String> synonyms,
       required final List<String> antonyms,
-      required final List<VocabularyExample> examples}) = _$VocabularyImpl;
+      required final List<VocabularyExample> examples,
+      required final bool isBookmarked}) = _$VocabularyImpl;
+  const _Vocabulary._() : super._();
 
   factory _Vocabulary.fromJson(Map<String, dynamic> json) =
       _$VocabularyImpl.fromJson;
@@ -355,6 +378,8 @@ abstract class _Vocabulary implements Vocabulary {
   List<String> get antonyms;
   @override
   List<VocabularyExample> get examples;
+  @override
+  bool get isBookmarked;
   @override
   @JsonKey(ignore: true)
   _$$VocabularyImplCopyWith<_$VocabularyImpl> get copyWith =>

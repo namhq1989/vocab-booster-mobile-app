@@ -19,4 +19,7 @@ class PSearchVocabulary extends _$PSearchVocabulary {
 
     return response.data!.vocabulary!.toVocabulary();
   }
+
+  void setBookmarked(bool value) =>
+      state = AsyncData(state.value!.setBookmarked(value));
 }

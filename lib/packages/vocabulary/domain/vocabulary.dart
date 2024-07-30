@@ -7,6 +7,8 @@ part 'vocabulary.g.dart';
 
 @freezed
 class Vocabulary with _$Vocabulary {
+  const Vocabulary._();
+
   const factory Vocabulary({
     required final String id,
     required final String audio,
@@ -17,10 +19,13 @@ class Vocabulary with _$Vocabulary {
     required final List<String> synonyms,
     required final List<String> antonyms,
     required final List<VocabularyExample> examples,
+    required final bool isBookmarked,
   }) = _Vocabulary;
 
   factory Vocabulary.fromJson(Map<String, dynamic> json) =>
       _$VocabularyFromJson(json);
+
+  Vocabulary setBookmarked(bool value) => copyWith(isBookmarked: value);
 }
 
 @freezed

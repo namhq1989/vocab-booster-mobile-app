@@ -87,6 +87,7 @@ _$SearchVocabularyResponseVocabularyImpl
                           e as Map<String, dynamic>))
                   .toList() ??
               const [],
+          isBookmarked: json['isBookmarked'] as bool? ?? false,
         );
 
 Map<String, dynamic> _$$SearchVocabularyResponseVocabularyImplToJson(
@@ -102,6 +103,7 @@ Map<String, dynamic> _$$SearchVocabularyResponseVocabularyImplToJson(
       'synonyms': instance.synonyms,
       'antonyms': instance.antonyms,
       'examples': instance.examples.map((e) => e.toJson()).toList(),
+      'isBookmarked': instance.isBookmarked,
     };
 
 Value? _$JsonConverterFromJson<Json, Value>(

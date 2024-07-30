@@ -74,6 +74,7 @@ class SearchVocabularyResponseVocabulary
     @Default([])
     @JsonKey(name: 'examples')
     List<SearchVocabularyResponseVocabularyExample> examples,
+    @Default(false) @JsonKey(name: 'isBookmarked') bool isBookmarked,
   }) = _SearchVocabularyResponseVocabulary;
 
   factory SearchVocabularyResponseVocabulary.fromJson(
