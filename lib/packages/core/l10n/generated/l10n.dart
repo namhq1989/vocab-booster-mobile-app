@@ -590,6 +590,96 @@ class L10N {
     );
   }
 
+  /// `Check`
+  String get check {
+    return Intl.message(
+      'Check',
+      name: 'check',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Continue`
+  String get textContinue {
+    return Intl.message(
+      'Continue',
+      name: 'textContinue',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Review exercises`
+  String get reviewExercises {
+    return Intl.message(
+      'Review exercises',
+      name: 'reviewExercises',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Correct answer`
+  String get correctAnswer {
+    return Intl.message(
+      'Correct answer',
+      name: 'correctAnswer',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Definitions`
+  String get definitions {
+    return Intl.message(
+      'Definitions',
+      name: 'definitions',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Examples`
+  String get example {
+    return Intl.message(
+      'Examples',
+      name: 'example',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Sematic relations`
+  String get sematicRelations {
+    return Intl.message(
+      'Sematic relations',
+      name: 'sematicRelations',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Synonyms`
+  String get synonyms {
+    return Intl.message(
+      'Synonyms',
+      name: 'synonyms',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Antonyms`
+  String get antonyms {
+    return Intl.message(
+      'Antonyms',
+      name: 'antonyms',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Your name must be between 2 and 64 characters, including letters and numbers`
   String get userInvalidName {
     return Intl.message(

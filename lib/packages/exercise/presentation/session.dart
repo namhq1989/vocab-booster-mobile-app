@@ -101,6 +101,23 @@ class _ExerciseSessionScreenState extends ConsumerState<ExerciseSessionScreen> {
                 text: state.collection.name.getLocalized(lang),
               ),
               leading: const AutoLeadingButton(),
+              actions: [
+                state.isPreview
+                    ? Container(
+                        padding: const EdgeInsets.symmetric(horizontal: 24),
+                        child: IconButton(
+                          icon: Icon(
+                            LucideIcons.goal,
+                            color: Theme.of(context).colorScheme.primary,
+                          ),
+                          onPressed: () {
+                            ref
+                                .read(pSessionExercisesProvider.notifier)
+                                .setIsPreview(false);
+                          },
+                        ))
+                    : const SizedBox.shrink(),
+              ],
             ),
             body: state.isFetching
                 ? const Center(
@@ -113,7 +130,7 @@ class _ExerciseSessionScreenState extends ConsumerState<ExerciseSessionScreen> {
                     : SingleChildScrollView(
                         child: Column(
                           children: [
-                            !state.isCompleted
+                            (state.isPreview || !state.isCompleted)
                                 ? Column(
                                     children: [
                                       Padding(
@@ -248,14 +265,18 @@ class _ExerciseSessionScreenState extends ConsumerState<ExerciseSessionScreen> {
         const SizedBox(height: 40),
         ShadButton.outline(
           width: double.infinity,
-          text: const Text('Continue'),
-          onPressed: () {},
+          text: Text(L10N.of(context).textContinue),
+          onPressed: () {
+            ref.read(pSessionExercisesProvider.notifier).exit();
+          },
         ),
         const SizedBox(height: 10),
         ShadButton.outline(
           width: double.infinity,
-          text: const Text('Review exercises'),
-          onPressed: () {},
+          text: Text(L10N.of(context).reviewExercises),
+          onPressed: () {
+            ref.read(pSessionExercisesProvider.notifier).setIsPreview(true);
+          },
         )
       ],
     );
@@ -342,7 +363,7 @@ class _ExerciseSessionScreenState extends ConsumerState<ExerciseSessionScreen> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        'Exercise ${index + 1}',
+                        '${L10N.of(context).exerciseTitle} ${index + 1}',
                         style: TextStyle(
                           fontSize: 20,
                           fontWeight: FontWeight.bold,
@@ -427,7 +448,7 @@ class _ExerciseSessionScreenState extends ConsumerState<ExerciseSessionScreen> {
         const SizedBox(height: 10),
         RichText(
           text: TextSpan(
-            text: 'Correct answer: ',
+            text: '${L10N.of(context).correctAnswer}: ',
             style: const TextStyle(
               fontSize: 16,
             ),
@@ -513,7 +534,7 @@ class _ExerciseSessionScreenState extends ConsumerState<ExerciseSessionScreen> {
                 enabled: exercise.inputText != null &&
                     exercise.inputText!.isNotEmpty,
                 width: double.infinity,
-                text: const Text('Submit'),
+                text: Text(L10N.of(context).check),
                 onPressed: () async {
                   final (isCorrect, point) = await ref
                       .read(pSessionExercisesProvider.notifier)
@@ -529,7 +550,8 @@ class _ExerciseSessionScreenState extends ConsumerState<ExerciseSessionScreen> {
               const SizedBox(height: 10),
               ShadButton.ghost(
                 width: double.infinity,
-                text: const Text('Nhiều lựa chọn'),
+                text: Text(
+                    L10N.of(context).exerciseSessionModeMultipleOptionsLabel),
                 onPressed: () {
                   ref
                       .read(pSessionExercisesProvider.notifier)
