@@ -31,6 +31,7 @@ class SessionExercisesState with _$SessionExercisesState {
     required List<Exercise> incorrects,
     required PExerciseCompletionTimeCounter timer,
     required int points,
+    required bool isPreview,
     required bool isProgressing,
     required bool isCompleted,
     required bool isEvaluating,
@@ -57,6 +58,7 @@ class PSessionExercises extends _$PSessionExercises {
         incorrects: [],
         timer: ref.read(pExerciseCompletionTimeCounterProvider.notifier),
         points: 0,
+        isPreview: false,
         isProgressing: false,
         isCompleted: false,
         isEvaluating: false,
@@ -77,6 +79,7 @@ class PSessionExercises extends _$PSessionExercises {
       incorrects: [],
       timer: ref.read(pExerciseCompletionTimeCounterProvider.notifier),
       points: 0,
+      isPreview: false,
       isProgressing: false,
       isCompleted: false,
       isEvaluating: false,
@@ -109,6 +112,10 @@ class PSessionExercises extends _$PSessionExercises {
     }
 
     ref.read(appRouterProvider).back();
+  }
+
+  void setIsPreview(bool value) async {
+    state = AsyncData(state.value!.copyWith(isPreview: value));
   }
 
   int getCompletionTime() {

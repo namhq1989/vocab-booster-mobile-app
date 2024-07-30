@@ -66,6 +66,17 @@
   "skill": "Kỹ năng",
   "mode": "Chế độ",
 
+  "check": "Kiểm tra",
+  "textContinue": "Tiếp tục",
+  "reviewExercises": "Xem lại",
+  "correctAnswer": "Đáp án đúng",
+
+  "definitions": "Định nghĩa",
+  "example": "Ví dụ",
+  "sematicRelations": "Quan hệ",
+  "synonyms": "Đồng nghĩa",
+  "antonyms": "Trái nghĩa",
+
   "profileTitle": "Cá nhân",
   "profileStatsCompletionTime": "Thời gian học",
   "profileStatsPoints": "Điểm",

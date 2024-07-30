@@ -22,8 +22,12 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+        "antonyms": MessageLookupByLibrary.simpleMessage("Antonyms"),
         "bio": MessageLookupByLibrary.simpleMessage("Bio"),
         "cancel": MessageLookupByLibrary.simpleMessage("Cancel"),
+        "check": MessageLookupByLibrary.simpleMessage("Check"),
+        "correctAnswer": MessageLookupByLibrary.simpleMessage("Correct answer"),
+        "definitions": MessageLookupByLibrary.simpleMessage("Definitions"),
         "email": MessageLookupByLibrary.simpleMessage("Email"),
         "er_00_19_accuracy_1_encouragement":
             MessageLookupByLibrary.simpleMessage(
@@ -179,6 +183,7 @@ class MessageLookup extends MessageLookupByLibrary {
             "Something went wrong. Please try again later."),
         "errorInvalidForm": MessageLookupByLibrary.simpleMessage(
             "Form data is invalid. Please try again."),
+        "example": MessageLookupByLibrary.simpleMessage("Examples"),
         "exeeciseSessionLeaveConfirmation":
             MessageLookupByLibrary.simpleMessage(
                 "Are you sure you want to leave?"),
@@ -285,7 +290,11 @@ class MessageLookup extends MessageLookupByLibrary {
         "profileStatsPoints": MessageLookupByLibrary.simpleMessage("Points"),
         "profileTitle": MessageLookupByLibrary.simpleMessage("Profile"),
         "recents": MessageLookupByLibrary.simpleMessage("Recents"),
+        "reviewExercises":
+            MessageLookupByLibrary.simpleMessage("Review exercises"),
         "reviews": MessageLookupByLibrary.simpleMessage("Reviews"),
+        "sematicRelations":
+            MessageLookupByLibrary.simpleMessage("Sematic relations"),
         "settingsAccountAchievement":
             MessageLookupByLibrary.simpleMessage("Achievements"),
         "settingsAccountInformation":
@@ -343,6 +352,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "speaking": MessageLookupByLibrary.simpleMessage("Speaking"),
         "start": MessageLookupByLibrary.simpleMessage("Start"),
         "success": MessageLookupByLibrary.simpleMessage("Success"),
+        "synonyms": MessageLookupByLibrary.simpleMessage("Synonyms"),
+        "textContinue": MessageLookupByLibrary.simpleMessage("Continue"),
         "update": MessageLookupByLibrary.simpleMessage("Update"),
         "userInvalidName": MessageLookupByLibrary.simpleMessage(
             "Your name must be between 2 and 64 characters, including letters and numbers"),

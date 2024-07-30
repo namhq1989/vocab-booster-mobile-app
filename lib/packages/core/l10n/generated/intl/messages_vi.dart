@@ -22,8 +22,12 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+        "antonyms": MessageLookupByLibrary.simpleMessage("Trái nghĩa"),
         "bio": MessageLookupByLibrary.simpleMessage("Giới thiệu"),
         "cancel": MessageLookupByLibrary.simpleMessage("Hủy"),
+        "check": MessageLookupByLibrary.simpleMessage("Kiểm tra"),
+        "correctAnswer": MessageLookupByLibrary.simpleMessage("Đáp án đúng"),
+        "definitions": MessageLookupByLibrary.simpleMessage("Định nghĩa"),
         "email": MessageLookupByLibrary.simpleMessage("Email"),
         "er_00_19_accuracy_1_encouragement":
             MessageLookupByLibrary.simpleMessage(
@@ -179,6 +183,7 @@ class MessageLookup extends MessageLookupByLibrary {
             "Đã có lỗi xảy ra, vui lòng thử lại"),
         "errorInvalidForm": MessageLookupByLibrary.simpleMessage(
             "Dữ liệu không đúng, vui lòng thử lại"),
+        "example": MessageLookupByLibrary.simpleMessage("Ví dụ"),
         "exeeciseSessionLeaveConfirmation":
             MessageLookupByLibrary.simpleMessage(
                 "Bạn có chắc là muốn thoát không?"),
@@ -286,7 +291,9 @@ class MessageLookup extends MessageLookupByLibrary {
         "profileStatsPoints": MessageLookupByLibrary.simpleMessage("Điểm"),
         "profileTitle": MessageLookupByLibrary.simpleMessage("Cá nhân"),
         "recents": MessageLookupByLibrary.simpleMessage("Gần đây"),
+        "reviewExercises": MessageLookupByLibrary.simpleMessage("Xem lại"),
         "reviews": MessageLookupByLibrary.simpleMessage("Ôn tập"),
+        "sematicRelations": MessageLookupByLibrary.simpleMessage("Quan hệ"),
         "settingsAccountAchievement":
             MessageLookupByLibrary.simpleMessage("Thành tích"),
         "settingsAccountInformation":
@@ -344,6 +351,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "speaking": MessageLookupByLibrary.simpleMessage("Speaking"),
         "start": MessageLookupByLibrary.simpleMessage("Bắt đầu"),
         "success": MessageLookupByLibrary.simpleMessage("Thành công!"),
+        "synonyms": MessageLookupByLibrary.simpleMessage("Đồng nghĩa"),
+        "textContinue": MessageLookupByLibrary.simpleMessage("Tiếp tục"),
         "update": MessageLookupByLibrary.simpleMessage("Cập nhật"),
         "userInvalidName": MessageLookupByLibrary.simpleMessage(
             "Tên của bạn phải có từ 2-64 ký tự, chỉ bao gồm chữ và số"),

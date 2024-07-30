@@ -2,6 +2,7 @@ import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:shadcn_ui/shadcn_ui.dart';
+import 'package:vocab_booster/packages/core/l10n/generated/l10n.dart';
 import 'package:vocab_booster/packages/core/language/language.dart';
 import 'package:vocab_booster/packages/ui/widget/bottomsheet.dart';
 import 'package:vocab_booster/packages/ui/widget/loading_state.dart';
@@ -181,7 +182,7 @@ class _VocabularyPreviewState extends ConsumerState<VocabularyPreview> {
       tabs: [
         ShadTab(
           value: 'definition',
-          text: const Text('Definitions'),
+          text: Text(L10N.of(context).definitions),
           selectedBackgroundColor: ShadTheme.of(context).colorScheme.muted,
           height: 40,
           decoration: ShadDecoration(
@@ -209,7 +210,7 @@ class _VocabularyPreviewState extends ConsumerState<VocabularyPreview> {
         ),
         ShadTab(
           value: 'example',
-          text: const Text('Examples'),
+          text: Text(L10N.of(context).example),
           selectedBackgroundColor: ShadTheme.of(context).colorScheme.muted,
           height: 40,
           decoration: ShadDecoration(
@@ -239,7 +240,7 @@ class _VocabularyPreviewState extends ConsumerState<VocabularyPreview> {
         ),
         ShadTab(
           value: 'semantic_relations',
-          text: const Text('Semantic relations'),
+          text: Text(L10N.of(context).sematicRelations),
           selectedBackgroundColor: ShadTheme.of(context).colorScheme.muted,
           height: 40,
           decoration: ShadDecoration(
@@ -266,7 +267,7 @@ class _VocabularyPreviewState extends ConsumerState<VocabularyPreview> {
                     spacing: 8,
                     runSpacing: 8,
                     children: [
-                      const Text('Synonyms'),
+                      Text(L10N.of(context).synonyms),
                       const SizedBox(
                         width: 8,
                       ),
@@ -286,7 +287,7 @@ class _VocabularyPreviewState extends ConsumerState<VocabularyPreview> {
                     spacing: 8,
                     runSpacing: 8,
                     children: [
-                      const Text('Antonyms'),
+                      Text(L10N.of(context).antonyms),
                       const SizedBox(
                         width: 8,
                       ),

@@ -64,6 +64,17 @@
   "skill": "Skill",
   "mode": "Mode",
 
+  "check": "Check",
+  "textContinue": "Continue",
+  "reviewExercises": "Review exercises",
+  "correctAnswer": "Correct answer",
+
+  "definitions": "Definitions",
+  "example": "Examples",
+  "sematicRelations": "Sematic relations",
+  "synonyms": "Synonyms",
+  "antonyms": "Antonyms",
+
   "userInvalidName": "Your name must be between 2 and 64 characters, including letters and numbers",
 
   "profileTitle": "Profile",
